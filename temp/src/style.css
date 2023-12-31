@@ -45,7 +45,7 @@ body {
 
 header h1{
     text-indent: -999em;
-    background-image: url("../image/logo.png");
+    background-image: url("../image/logo.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -70,7 +70,7 @@ nav a:visited {
     margin: auto;
     padding: 0em 3em;
     list-style-type: none;
-    text-align: left;
+    text-align: center;
 }
 
 #menu ul li{
@@ -153,7 +153,6 @@ main div{
 }
 
 .cards li{
-    background-color: rgb(240, 240, 240);
     margin: 0 10px 20px 10px;
     padding: 10px;
     border-radius: 5px;
