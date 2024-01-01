@@ -1,40 +1,44 @@
 USE michelonr;
 
 DROP TABLE IF EXISTS Users;
-DROP TABLE IF EXISTS Artwork;
+DROP TABLE IF EXISTS Artworks;
+DROP TABLE IF EXISTS Labels;
 DROP TABLE IF EXISTS ArtworkLabels;
-DROP TABLE IF EXISTS Images;
 DROP TABLE IF EXISTS ArtworkDetails;
-DROP TABLE IF EXISTS Artshow;
+DROP TABLE IF EXISTS Artshows;
 DROP TABLE IF EXISTS ArtshowArtworks;
 DROP TABLE IF EXISTS ArtshowPrenotations;
 
 CREATE TABLE Users (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    username VARCHAR(30) NOT NULL,
+    username VARCHAR(30) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    name VARCHAR(30) NOT NULL,
-    surname VARCHAR(30) NOT NULL,
+    name VARCHAR(30),
+    surname VARCHAR(30),
     isAmm BOOLEAN NOT NULL,
-    image INT REFERENCES Images(id),
-    birth_date DATE NOT NULL,
-    birth_place VARCHAR(30) NOT NULL,
+    image VARCHAR(100),
+    birth_date DATE,
+    birth_place VARCHAR(30),
     biography VARCHAR(1000),
     experience VARCHAR(1000)
 );
 
-CREATE TABLE Artwork (
+CREATE TABLE Artworks (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    title VARCHAR(30) NOT NULL,
-    main_image INT NOT NULL REFERENCES Images(id),
+    title VARCHAR(50) NOT NULL,
+    main_image VARCHAR(100) NOT NULL,
     description VARCHAR(1000),
     height FLOAT,
     width FLOAT,
-    depth FLOAT,
+    length FLOAT,
     start_date DATE,
     end_date DATE,
     upload_time TIMESTAMP NOT NULL,
     id_artist INT REFERENCES Users(id)
+);
+
+CREATE TABLE Labels (
+    label VARCHAR(20) PRIMARY KEY NOT NULL
 );
 
 CREATE TABLE ArtworkLabels (
@@ -43,22 +47,13 @@ CREATE TABLE ArtworkLabels (
     PRIMARY KEY (id_artwork, label)
 );
 
-CREATE TABLE Labels (
-    label VARCHAR(20) PRIMARY KEY NOT NULL
-);
-
-CREATE TABLE Images (
-    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    source VARCHAR(300) NOT NULL
-);
-
 CREATE TABLE ArtworkDetails (
     id_artwork INT NOT NULL REFERENCES Artwork(id),
-    image INT NOT NULL REFERENCES Images(id),
+    image VARCHAR(100) NOT NULL,
     PRIMARY KEY (id_artwork, image)
 );
 
-CREATE TABLE Artshow (
+CREATE TABLE Artshows (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     title VARCHAR(30) NOT NULL,
     description VARCHAR(300) NOT NULL,
@@ -78,13 +73,16 @@ CREATE TABLE ArtshowPrenotations (
     PRIMARY KEY (id_artshow, id_artist)
 );
 
+INSERT INTO Users(username, password, isAmm) VALUES
+('admin', '$2b$12$9sm6jSUZr5up9OBU3GsTOewCMm4NUj5xK1EFwviI76xxAAcmTm.Je', True);
+
 INSERT INTO Labels VALUES
     ('dipinto'),
     ('digitale'),
     ('realismo'),
     ('astrazione'),
     ('minimalismo'),
-    ('schizzo'),
+    ('sketch'),
     ('scultura'),
     ('marmo'),
     ('bronzo'),
@@ -100,4 +98,3 @@ INSERT INTO Labels VALUES
     ('mare'),
     ('notte'),
     ('inverno');
-
