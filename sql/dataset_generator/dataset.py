@@ -2,8 +2,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "M",
-            "biography": "",
-            "experience": "",
+            "biography": "Studio Storia e tutela dei beni artistici e culturali. Appassionato di tatuaggi: un’immagine sulla nostra pelle racconta di noi più di qualsiasi altra cosa. Nel tempo libero mi piace suonare il pianoforte, dipingere, disegnare e ascoltare musica. Sogno di diventare divulgatore artistico a livello nazionale.",
+            "experience": "Ho frequentato il liceo artistico Modigliani di Padova. Mi piace rappresentare la natura e gli animali, ma anche ritrarre persone dal vivo. Sono abile nella pittura ad olio e con colori a tempera, ma mi diverte di più disegnare. L’arte è una parte fondamentale della mia vita, e voglio condividere la mia passione con tutti i miei colleghi studenti.",
             "password": ""
         },
         "user_artworks": [
@@ -48,8 +48,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "M",
-            "biography": "",
-            "experience": "",
+            "biography": "Scienze e tecniche dell'attività motoria preventiva e adattata presso UniPD. Baseball addicted. Interbase dei Castelfranco Dragons: tutta la mia vita appartiene ad una pallina e ad una mazza. Quando non mi alleno né studio, disegno per rilassarmi e rigenerare la mente.",
+            "experience": "Sono un autodidatta a cui piace disegnare per passare il tempo e divertirsi, ma non ho mai mostrato a nessuno questo lato di me. Ritraggo principalmente ex giocatori dello sport più bello del mondo. Voglio condividere le mie opere per promuovere il gioco baseball con tutti i miei coetanei.",
             "password": ""
         },
         "user_artworks": [
@@ -70,8 +70,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "F",
-            "biography": "",
-            "experience": "",
+            "biography": "Studentessa al quarto anno di Ingegneria edile e architettura. Amante del design innovativo e della sostenibilità. Quando non sono immersa nei progetti accademici, mi trovi a osservare i palazzi del centro storico di Padova. Quando non disegno case... dipingo case.",
+            "experience": "Le ore passate a disegnare tavole mi hanno trasmesso la passione per l’arte. Non c’è nulla di più magico della fusione tra natura e architettura. Voglio mostrare a tutti le mie creazioni per mostrare la bellezza, unica e inimitabile, che ogni edificio nasconde dentro di sé.",
             "password": ""
         },
         "user_artworks": [
@@ -122,8 +122,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "M",
-            "biography": "",
-            "experience": "",
+            "biography": "Studente di Scienze naturali e ambientali. Amante dei sentieri selvaggi e dei tramonti mozzafiato. Innamorato del canto degli uccelli e del fruscio delle foglie. Non puoi dire di sapere cos’è la bellezza se non sei mai stato a Venezia. Pittore amatoriale e musicista autodidatta nel tempo libero.",
+            "experience": "Ho cominciato a dipingere emulando mio papà, pittore professionista. Da lui ho ereditato la passione per i paesaggi e i colori della natura. Sono un esperto della pittura ad olio. Per dipingere preferisco essere all’aria aperta, per poter cogliere la forza emotiva dei colori al variare delle ore e del clima.",
             "password": ""
         },
         "user_artworks": [
@@ -168,8 +168,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "F",
-            "biography": "",
-            "experience": "",
+            "biography": "Dalla Romania con furore! Studentessa al secondo anno di Informatica. Gioco a pallavolo e pratico nuoto. Sogno di diventare una sviluppatrice web. Quando non studio, adoro disegnare mentre ascolto musica. Spegni e riaccendi come stile di vita.",
+            "experience": "Non ho mai seguito alcun corso o scuola per imparare a disegnare, ma questo non mi vieta di mostrare agli altri i miei disegni. Mi piace ritrarre edifici avvolti dall’oscurità, giocando con luci e ombre utilizzando colori ad acqua.",
             "password": ""
         },
         "user_artworks": [
@@ -190,8 +190,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "M",
-            "biography": "",
-            "experience": "",
+            "biography": "Lingue, letterature e mediazione culturale. Amante della vita e di ciò che ne deriva. Parlo sei lingue diverse, ma rimango umile. Il mio sogno è visitare la Cina. Non so disegnare, ma spaccio i miei scarabocchi per arte.",
+            "experience": "Non sono di certo un artista, ma la voglia di mettersi in gioco non mi manca. Qualche scarabocchio carino ogni tanto riesco a farlo, e quindi voglio mostrarlo anche agli altri. Tutte le mie opere cercano di essere ironiche e benauguranti, nella speranza di strappare un sorriso a qualcuno.",
             "password": ""
         },
         "user_artworks": [
@@ -218,8 +218,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "M",
-            "biography": "",
-            "experience": "",
+            "biography": "Studio Storia dell’arte alla Unipd. Quando non c’è Alberto Angela in televisione, dipingo per divertimento. Suono la chitarra e la tastiera. Amante dell'arte in tutti i suoi aspetti. Non chiedere la mia squadra del cuore, ma il mio pittore del cuore!",
+            "experience": "Ho studiato in un liceo artistico, raffinando le mie capacità artistiche ed espandendo il mio interesse per l’arte tutta. Solitamente ritraggo uomini e donne, esplorando le emozioni umane tramite l’uso delle ombre e i contrasti dei colori. Ogni mia opera cerca di dare una riflessione psicologica dell'essere umano.",
             "password": ""
         },
         "user_artworks": [
@@ -240,8 +240,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "F",
-            "biography": "",
-            "experience": "",
+            "biography": "Studentessa al primo anno di Scienze dello spettacolo e produzione multimediale. Fotografa e pittrice a tempo perso. Mi piacciono le passeggiate all’aria aperta e le escursioni in montagna. Anche quando studio, non posso non ascoltare musica. Faccio yoga e vado in palestra per tenermi in forma.",
+            "experience": "Prima di iscrivermi all’università ho frequentato un liceo artistico, dove sono migliorata molto nel disegno e nella pittura. Ho avuto il piacere di fare delle illustrazioni per riviste e giornali nazionali, con cui mi sono messa alla prova. Quello che disegno maggiormente sono i paesaggi. Mi piace raffigurare lo scorrere del tempo, dando forma al deterioramento naturale delle cose.",
             "password": ""
         },
         "user_artworks": [
@@ -262,8 +262,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "F",
-            "biography": "",
-            "experience": "",
+            "biography": "Frequento il terzo anno di Matematica. Studio e lavoro con i numeri, ma nel tempo libero dipingo per divertirmi. Adoro passeggiare all’aria aperta, a stretto contatto con la natura. Amo gli animali: ho due cani e tre gatti.",
+            "experience": "Non ho mai frequentato corsi di pittura, né partecipato a concorsi. Tutto quello che so fare con il pennello l’ho imparato da me. Nelle mie opere mi piace raffigurare il mare, cercando di catturare le emozioni che solo esso è in grado di farci provare.",
             "password": ""
         },
         "user_artworks": [
@@ -290,8 +290,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "F",
-            "biography": "",
-            "experience": "",
+            "biography": "Sono una studentessa di Medicina veterinaria alla UniPD. Gli animali sono tutta la mia vita. Mi piace portare a spasso i miei tre cani, e fare lunghe passeggiate all’aria aperta. Quando non studio, passo molto tempo con i miei amici a quattro zampe e a dipingere. Amante del buon cibo e del vino.",
+            "experience": "Ho imparato a dipingere grazie a un corso di disegno e pittura. Da allora, mi esercito tutti i giorni. Mi piace raffigurare la natura, usando i colori per trasmettere la pace e la calma che solo una giornata di sole ti può dare. Spesso dipingo all’aria aperta, osservando il paesaggio che voglio rappresentare.",
             "password": ""
         },
         "user_artworks": [
@@ -312,8 +312,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "M",
-            "biography": "",
-            "experience": "",
+            "biography": "Studio Scienze del paesaggio a Padova. Sono un fumettista provetto, con la passione per la fotografia e l’amore per la natura. Mi piace avventurarmi nei campi, con la macchina fotografica pronta a catturare la bellezza della natura. Quando non faccio queste cose, potete trovarmi in oratorio a giocare a calcetto.",
+            "experience": "Faccio disegni e illustrazioni per le riviste della mia parrocchia. Ho frequentato vari corsi di fumetti e illustrazioni a mano libera. Il mio marchio di fabbrica sono le vignette umoristiche, per questo ho deciso di portare il mio talento in questa esperienza. Strappare un sorriso è il mio obiettivo.",
             "password": ""
         },
         "user_artworks": [
@@ -350,8 +350,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "F",
-            "biography": "",
-            "experience": "",
+            "biography": "Studio Pluralismo culturale, mutamento sociale e migrazioni all’università di Padova. Mi piace viaggiare e scoprire nuove culture. Parlo francese, spagnolo, portoghese e tedesco, ma il mio sogno è imparare il russo. Nel tempo libero dipingo e suono l’arpa. Ad un buon caffè non dico mai di no.",
+            "experience": "Ho imparato a disegnare e dipingere grazie a mio fratello. Tutto quello che so fare, me lo ha insegnato lui. Nelle mie opere sono sempre presenti delle persone. Cerco di raffigurarle mentre compiono azioni semplici, in momenti intimi. Il mio obiettivo è raffigurare le emozioni dell’uomo, causate o dal luogo in cui si trova, o dallo stato emotivo del soggetto ritratto.",
             "password": ""
         },
         "user_artworks": [
