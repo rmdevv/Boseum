@@ -12,7 +12,7 @@ def generate_user(id_user, user):
     surname = fake.last_name()
     username = name.lower()[:random.randint(len(name)//2, len(name))] + random.choice(['_', '-', '.']) + surname.lower()[:random.randint(len(name)//2, len(name))] + random.choice(['', str(random.randint(0, 100))])
 
-    image = random.choice([0, f'../uploads/users/{id_user}.jpg'])
+    image = f'../uploads/users/{id_user}.jpg'
 
     is_amm = False
     birth_date = str(random.randint(1997, 2004)) + fake.date_of_birth().strftime('%Y-%m-%d')[4:]

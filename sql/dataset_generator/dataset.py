@@ -261,7 +261,7 @@ ARTISTS = [
     },
     {
         "user_data": {
-            "gender": "M",
+            "gender": "F",
             "biography": "",
             "experience": "",
             "password": ""
@@ -289,7 +289,7 @@ ARTISTS = [
     },
     {
         "user_data": {
-            "gender": "M",
+            "gender": "F",
             "biography": "",
             "experience": "",
             "password": ""
@@ -333,7 +333,7 @@ ARTISTS = [
     },
     {
         "user_data": {
-            "gender": "M",
+            "gender": "F",
             "biography": "",
             "experience": "",
             "password": ""
@@ -431,25 +431,25 @@ ARTSHOWS = [
     {
         "title": "Galleria di Espressioni",
         "description": "Lasciati ispirare dalle voci emergenti dell'arte. Gli studenti artisti trasformano la tela in uno specchio delle emozioni umane, con ritratti che narrano storie uniche e intime. Partecipa a questo viaggio emozionale e sostieni la nuova generazione di talentuosi artisti.",
-        "start_date": "2023-01-13",
-        "end_date": "2023-01-14"
+        "start_date": "2024-01-13",
+        "end_date": "2024-01-14"
     },
     {
         "title": "Natura libera",
         "description": "Esplora la bellezza selvaggia e incontaminata nella mostra 'Natura Libera'. Gli studenti artisti danno vita alla natura attraverso dipinti e sculture che catturano la maestosità degli ambienti naturali. Un invito a connettersi con la forza libera e inesplorata del mondo naturale, attraverso gli occhi e le mani dei talenti emergenti.",
-        "start_date": "2023-01-19",
-        "end_date": "2023-01-21"
+        "start_date": "2024-01-19",
+        "end_date": "2024-01-21"
     },
     {
         "title": "Arte in Movimento",
         "description": "'Arte in Movimento' diventa il palcoscenico per gli studenti artisti che esplorano il movimento attraverso i dipinti. Ogni pennellata racconta una storia di creatività e libertà espressiva. Unisciti a noi per celebrare l'arte in evoluzione, con opere che incarnano l'energia e la visione dei talenti emergenti.",
-        "start_date": "2023-02-09",
-        "end_date": "2023-02-11"
+        "start_date": "2024-02-09",
+        "end_date": "2024-02-11"
     },
-        {
+    {
         "title": "Donne in Arte: Giornata Internazionale della Donna",
         "description": "In occasione dell'8 Marzo, la mostra 'Donne in Arte' rende omaggio alla forza, alla bellezza e all'arte delle donne. Gli studenti artisti esplorano le molteplici sfaccettature dell'esperienza femminile attraverso dipinti, sculture e installazioni che riflettono la diversità, la resilienza e la creatività delle donne di ieri, oggi e domani. Un'occasione per celebrare e onorare il contributo unico delle donne nel mondo dell'arte e nella società.",
-        "start_date": "2023-03-08",
-        "end_date": "2023-03-10"
+        "start_date": "2024-03-08",
+        "end_date": "2024-03-10"
     }
 ]

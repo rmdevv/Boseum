@@ -144,7 +144,7 @@ VALUES
 if __name__ == "__main__":
     os.makedirs('../../uploads/artworks/original', exist_ok=True)
     
-    return_list = artworks_generator(ARTISTS)
+    return_list = artworks_generator(ARTISTS, download_images=True)
 
     print(insert_users_query() + '\n')
     print(insert_artworks_query(return_list) + '\n')

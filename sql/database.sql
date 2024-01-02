@@ -61,12 +61,6 @@ CREATE TABLE Artshows (
     end_date DATE NOT NULL
 );
 
-CREATE TABLE ArtshowArtworks (
-    id_artshow INT NOT NULL REFERENCES Artshow(id),
-    id_artwork INT NOT NULL REFERENCES Artwork(id),
-    PRIMARY KEY (id_artshow, id_artwork)
-);
-
 CREATE TABLE ArtshowPrenotations (
     id_artshow INT NOT NULL REFERENCES Artshow(id),
     id_artist INT NOT NULL REFERENCES Users(id),
