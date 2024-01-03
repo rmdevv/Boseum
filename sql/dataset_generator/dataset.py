@@ -334,8 +334,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "F",
-            "biography": "",
-            "experience": "",
+            "biography": "Medicina veterinaria. Gli animali sono migliori degli uomini. Nuoto e pallavolo per divertirmi. Mi piace ascoltare la musica e guardare serie televisive. Disegno animali per passare il tempo. Il mio sogno è diventare una veterinaria.",
+            "experience": "Non ho particolari esperienze. Da quando sono bambina, mi piace disegnare animali con gli acquerelli, e con il tempo sono diventata brava. Nelle mie opere sono sempre presenti, o in primo piano o in lontananza, degli animali. Cerco di esprimere la maestosità della natura con l’uso sapiente dei colori.",
             "password": ""
         },
         "user_artworks": [
@@ -378,8 +378,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "M",
-            "biography": "",
-            "experience": "",
+            "biography": "Fisica alla unipd. Sole, mare e musica i miei punti deboli. Viaggio molto, mi piace visitare le città d’arte. Mi piace andare in giro in bicicletta, pedalando sotto il sole all’aria fresca. Gioco a pallavolo nel tempo libero. Quando capita dipingo.",
+            "experience": "Frequento la scuola di pittura di mia zia, dove sono esposte alcune delle mie opere. Sono specializzato nella rappresentazione degli elementi naturali e delle cittadine. Quando viaggio, prendo sempre una cartolina del paesaggio del posto che visito per poi dipingerlo una volta tornato.",
             "password": ""
         },
         "user_artworks": [
@@ -400,8 +400,8 @@ ARTISTS = [
     {
         "user_data": {
             "gender": "F",
-            "biography": "",
-            "experience": "",
+            "biography": "Studentessa di Lingue, letterature e mediazione culturale presso l’Università degli studi di Padova. Mi piacciono gli anime e i manga. Nel tempo libero, aiuto mia mamma con il suo negozio di fiori. Amante della natura e degli animali.",
+            "experience": "Non sono un artista, né ho fatto alcun corso di disegno o pittura. Dipingo per puro divertimento. Decoro vasi di vetro e ceramica con disegni floreali, per poi venderli nella fioreria di famiglia. Con le mie opere cerco di unire l’eleganza dei fiori con la fragilità del vetro e della porcellana, alla ricerca della fusione tra bellezza e semplicità.",
             "password": ""
         },
         "user_artworks": [
