@@ -9,8 +9,8 @@ fake = Faker('it_IT')
 
 def generate_user(id_user, user):
     name = fake.first_name_male() if user.get('gender', 'M').upper() == 'M' else fake.first_name_female()
-    surname = fake.last_name()
-    username = name.lower()[:random.randint(len(name)//2, len(name))] + random.choice(['_', '-', '.']) + surname.lower()[:random.randint(len(name)//2, len(name))] + random.choice(['', str(random.randint(0, 100))])
+    lastname = fake.last_name()
+    username = name.lower()[:random.randint(len(name)//2, len(name))] + random.choice(['_', '-', '.']) + lastname.lower()[:random.randint(len(name)//2, len(name))] + random.choice(['', str(random.randint(0, 100))])
 
     image = f'../uploads/users/{id_user}.jpg'
 
@@ -27,7 +27,7 @@ def generate_user(id_user, user):
         username,
         hashed_password,
         name,
-        surname,
+        lastname,
         is_amm,
         image,
         birth_date,
@@ -38,7 +38,7 @@ def generate_user(id_user, user):
 
 def insert_users_query():
     insert_query = '''
-INSERT INTO Users(username, password, name, surname, isAmm, image, birth_date, birth_place, biography, experience)
+INSERT INTO Users(username, password, name, lastname, isAmm, image, birth_date, birth_place, biography, experience)
 VALUES 
 '''
     for id_artist, artist in enumerate(ARTISTS, start=2):

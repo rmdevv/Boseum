@@ -132,8 +132,8 @@ INSERT INTO Artshows
 VALUES 
 '''
 
-    for a in artshows:
-        insert_query = insert_query + f"('{a.get('title')}', '{a.get('description')}', '{a.get('start_date')}', '{a.get('end-date')}'),\n"
+    for id_a, a in enumerate(artshows, start=1):
+        insert_query = insert_query + f"('{a.get('title')}', '{a.get('description')}', '../uploads/artshows/{id_a}.jpg', '{a.get('start_date')}', '{a.get('end-date')}'),\n"
 
     insert_query = insert_query[:-2]+";"
     return insert_query if '(' in insert_query else ''

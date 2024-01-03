@@ -14,9 +14,9 @@ CREATE TABLE Users (
     username VARCHAR(30) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     name VARCHAR(30),
-    surname VARCHAR(30),
+    lastname VARCHAR(30),
     isAmm BOOLEAN NOT NULL,
-    image VARCHAR(100),
+    image VARCHAR(100) UNIQUE,
     birth_date DATE,
     birth_place VARCHAR(30),
     biography VARCHAR(1000),
@@ -26,7 +26,7 @@ CREATE TABLE Users (
 CREATE TABLE Artworks (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     title VARCHAR(50) NOT NULL,
-    main_image VARCHAR(100) NOT NULL,
+    main_image VARCHAR(100) NOT NULL UNIQUE,
     description VARCHAR(1000),
     height FLOAT,
     width FLOAT,
@@ -34,7 +34,7 @@ CREATE TABLE Artworks (
     start_date DATE,
     end_date DATE,
     upload_time TIMESTAMP NOT NULL,
-    id_artist INT REFERENCES Users(id)
+    id_artist INT NOT NULL REFERENCES Users(id)
 );
 
 CREATE TABLE Labels (
@@ -49,7 +49,7 @@ CREATE TABLE ArtworkLabels (
 
 CREATE TABLE ArtworkDetails (
     id_artwork INT NOT NULL REFERENCES Artwork(id),
-    image VARCHAR(100) NOT NULL,
+    image VARCHAR(100) NOT NULL UNIQUE,
     PRIMARY KEY (id_artwork, image)
 );
 
@@ -57,6 +57,7 @@ CREATE TABLE Artshows (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     title VARCHAR(30) NOT NULL,
     description VARCHAR(300) NOT NULL,
+    image VARCHAR(100) UNIQUE,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL
 );
