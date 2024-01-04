@@ -8,13 +8,17 @@
     --headerTxtColor: rgb(255,255,255);
     --bgColor: rgb(255,255,255);
     --txtColor: rgb(0,0,0);
+    --font-body-family: "Roboto Condensed", sans-serif;
+
     --footerBgColor: rgb(69,73,83);
     --footerTxtColor: rgb(255,255,255);
+    --footerlinkColor: rgb(255,255,255);
+    
     --navvisitedLinkColor: rgb(255,255,255);
     --navlinkColor: rgb(149,165,166);
-    --footerlinkColor: rgb(255,255,255);
-    --flagColor: rgb(155,0,20); 
-    --font-body-family: "Roboto Condensed", sans-serif;
+    --flagColor: rgb(155,0,20);
+    --imageBackground: rgb(248,248,248);
+    --bannerBackground: rgb(242,242,242);
 }
 
 html {
@@ -97,18 +101,24 @@ main{
     align-items: center;
 }
 
-main div{
+#bannermain{
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.95)), url(../images/palazzo_bo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 15em;
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255,255,255);
+    font-size: 1.5em;
 }
 
 .cardmain {
-    background-color: var(--flagColor);
+    background-color: var(--bannerBackground);
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
     margin: 2em 2em 0em;
     overflow: hidden; 
 }
@@ -122,25 +132,27 @@ main div{
 .cardtext {
     text-align: left;
     justify-content: left;
-    color: var(--headerTxtColor);
     width: 100%; 
     height: 50%;
     padding: 1em;
     box-sizing: border-box; 
 }
 
+.cardmain:nth-child(odd) {
+    flex-direction: column;
+}
+
 .cardmain a:link{
-    color: var(--navlinkColor);
+    color: var(--flagColor);
 }
 
 .cardmain a:visited{
-    color: var(--navvisitedLinkColor);
+    color: var(--footerBgColor);
 }
 
 .cardnextshow {
     text-align: left;
     justify-content: left;
-    color: var(--headerTxtColor);
     width: 100%; 
     padding: 1em;
     box-sizing: border-box; 
@@ -155,6 +167,7 @@ main div{
 #linknextshow{
     text-align: right;
     padding: 4em 1em 0em;
+    font-weight: bold;
 }
 
 #partners{

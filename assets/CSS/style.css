@@ -101,14 +101,31 @@ main{
     align-items: center;
 }
 
-.cardmain {
-    background-color: var(--flagColor);
+#bannermain{
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.95)), url(../images/palazzo_bo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 15em;
     display: flex;
-    flex-wrap: wrap; 
-    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255,255,255);
+    font-size: 1.5em;
+}
+
+#bannermain h2{
+    padding: 1em;
+}
+
+.cardmain {
+    background-color: var(--bannerBackground);
+    display: flex;
+    flex-direction: row;
     margin: 2em 2em 0em;
     overflow: hidden; 
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 .cardimg {
@@ -120,26 +137,28 @@ main{
 .cardtext {
     text-align: left;
     justify-content: left;
-    color: var(--headerTxtColor);
     width: 50%; 
-    padding: 1em;
+    padding: 2em;
     box-sizing: border-box; 
 }
 
+.cardmain:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
 .cardmain a:link{
-    color: var(--navlinkColor);
+    color: var(--flagColor);
 }
 
 .cardmain a:visited{
-    color: var(--navvisitedLinkColor);
+    color: var(--footerBgColor);
 }
 
 .cardnextshow {
     text-align: left;
     justify-content: left;
-    color: var(--headerTxtColor);
     width: 50%; 
-    padding: 1em;
+    padding: 2em;
     box-sizing: border-box; 
     display: flex;
     flex-direction: column;
@@ -152,6 +171,7 @@ main{
 #linknextshow{
     text-align: right;
     padding: 4em 2em 2em;
+    font-weight: bold;
 }
 
 .contentpartners{
@@ -244,16 +264,6 @@ footer a:visited{
 
 #orariofoot{
     font-size: 0.8em;
-    line-height: 1.5em;
-}
-
-footer h2{
-    text-indent: -999em;
-    background-image: url("../images/logomini.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-size: 3.5em;
     line-height: 1.5em;
 }
 
