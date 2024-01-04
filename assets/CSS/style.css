@@ -8,13 +8,17 @@
     --headerTxtColor: rgb(255,255,255);
     --bgColor: rgb(255,255,255);
     --txtColor: rgb(0,0,0);
+    --font-body-family: "Roboto Condensed", sans-serif;
+
     --footerBgColor: rgb(69,73,83);
     --footerTxtColor: rgb(255,255,255);
+    --footerlinkColor: rgb(255,255,255);
+    
     --navvisitedLinkColor: rgb(255,255,255);
     --navlinkColor: rgb(149,165,166);
-    --footerlinkColor: rgb(255,255,255);
-    --flagColor: rgb(155,0,20); 
-    --font-body-family: "Roboto Condensed", sans-serif;
+    --flagColor: rgb(155,0,20);
+    --imageBackground: rgb(248,248,248);
+    --bannerBackground: rgb(242,242,242);
 }
 
 html {
@@ -90,50 +94,76 @@ nav a:visited {
 }
 
 main{
-    text-align: center;
-}
-
-main div{
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.contentmaintesto{
+.cardmain {
+    background-color: var(--flagColor);
+    display: flex;
+    flex-wrap: wrap; 
+    border-radius: 10px;
+    margin: 2em 2em 0em;
+    overflow: hidden; 
+    max-width: 900px;
+}
+
+.cardimg {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+}
+
+.cardtext {
+    text-align: left;
+    justify-content: left;
+    color: var(--headerTxtColor);
+    width: 50%; 
+    padding: 1em;
+    box-sizing: border-box; 
+}
+
+.cardmain a:link{
+    color: var(--navlinkColor);
+}
+
+.cardmain a:visited{
+    color: var(--navvisitedLinkColor);
+}
+
+.cardnextshow {
+    text-align: left;
+    justify-content: left;
+    color: var(--headerTxtColor);
+    width: 50%; 
+    padding: 1em;
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+}
+
+#nextshow{
+    text-transform: uppercase;
+}
+
+#linknextshow{
+    text-align: right;
+    padding: 4em 2em 2em;
+}
+
+.contentpartners{
     text-align: justify;
     justify-content: center;
     display: flex;
-    max-width: 40em;
-    padding:  1em 2em 1em;
+    max-width: 900px;
+    padding:  3em 2em 1em;
     margin: auto;
 }
 
-.contentmainimg{
-    line-height: 1.5em;
-    font-size: 3.5em;
-    text-align: center;
-    padding: 2.5em;
-    margin: auto;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#homemotto{
-    background-image: url("../images/homemotto.png");
-}
-
-#homestudents{
-    background-image: url("../images/homestudents.png");
-}
-
-#homebo{
-    background-image: url("../images/homemaps.png");
-}
-
-
-.contentmaintesto, .contentmainimg{
+.contentpartners{
     display: inline-block;
 }
 
@@ -168,21 +198,14 @@ main div{
     filter: opacity(100%);
 }
 
-.sponsorlink{
-    text-indent: -999em;
-    background-image: url("../images/sponsor.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-size: 3.5em;
-    line-height: 1.5em;
-}
-
-h2, h3, h4, h5{
-    text-align: center;
+h2, h3, h4, h5, h6{
     font-size: 2em;
     line-height: 1em;
     margin-bottom: 1em;
+}
+
+h6{
+    text-align: center;
 }
 
 footer{
@@ -224,13 +247,14 @@ footer a:visited{
     line-height: 1.5em;
 }
 
-#footerlogo{
+footer h2{
     text-indent: -999em;
-    background-image: url("../images/logomini.png");
+    background-image: url("../images/logomini.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     font-size: 3.5em;
+    line-height: 1.5em;
 }
 
 #infofoot, #logofoot, #orariofoot{

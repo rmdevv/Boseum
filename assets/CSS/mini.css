@@ -90,7 +90,11 @@ nav a:visited {
 }
 
 main{
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 main div{
@@ -100,40 +104,57 @@ main div{
     margin-bottom: 1em;
 }
 
-.contentmaintesto{
-    text-align: justify;
-    justify-content: center;
+.cardmain {
+    background-color: var(--flagColor);
     display: flex;
-    max-width: 40em;
-    padding:  1em 2em 1em;
-    margin: auto;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 2em 2em 0em;
+    overflow: hidden; 
 }
 
-.contentmainimg{
-    text-align: center;
-    padding: 2.5em;
-    line-height: 1.5em;
-    font-size: 2em;
-    margin: auto;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+.cardimg {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
 }
 
-.contentmaintesto, .contentmainimg{
-    display: inline-block;
+.cardtext {
+    text-align: left;
+    justify-content: left;
+    color: var(--headerTxtColor);
+    width: 100%; 
+    height: 50%;
+    padding: 1em;
+    box-sizing: border-box; 
 }
 
-#homemotto{
-    background-image: url("../image/homemotto.png");
+.cardmain a:link{
+    color: var(--navlinkColor);
 }
 
-#homestudents{
-    background-image: url("../image/homestudents.png");
+.cardmain a:visited{
+    color: var(--navvisitedLinkColor);
 }
 
-#homebo{
-    background-image: url("../image/homemaps.png");
+.cardnextshow {
+    text-align: left;
+    justify-content: left;
+    color: var(--headerTxtColor);
+    width: 100%; 
+    padding: 1em;
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+}
+
+#nextshow{
+    text-transform: uppercase;
+}
+
+#linknextshow{
+    text-align: right;
+    padding: 4em 1em 0em;
 }
 
 #partners{
@@ -159,21 +180,12 @@ main div{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-.sponsorlink{
-    text-indent: -999em;
-    background-image: url("../image/sponsor.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-size: 3.5em;
-    line-height: 1.5em;
-}
-
-h2, h3, h4, h5{
-    text-align: center;
+h2, h3, h4, h5, h6{
     font-size: 2em;
     line-height: 1em;
-    margin-bottom: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    margin: auto;
 }
 
 footer{
