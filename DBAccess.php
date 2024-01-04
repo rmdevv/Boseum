@@ -420,8 +420,8 @@ class DBAccess{
 
     public function modifyUser($id, $username, $name, $lastname, $image, $birth_date, $birth_place, $biography, $experience){
         $mod_username = "username = '$username'";
-        $mod_name = "name = NULLIF('$name', '')";
-        $mod_lastname = "lastname = NULLIF('$lastname', '')";
+        $mod_name = "name = '$name'";
+        $mod_lastname = "lastname = '$lastname'";
         // su user c'è anche image perché può toglierla (delete imm da cartella users e update value a '')
         // mentre Artwork.main_image è obbligatoria e il value rimane quello, cambia solo l'imm dalla cartella artworks
         $mod_image = "image = NULLIF('$image', '')";
@@ -521,7 +521,7 @@ class DBAccess{
 
     public function insertNewUser($username, $password, $name, $lastname, $image, $birth_date, $birth_place, $biography, $experience){
         $query_insert = "INSERT INTO Users(username, password, name, lastname, isAmm, image, birth_date, birth_place, biography, experience)
-                            VALUES ('$username', '$password', NULLIF('$name', ''), NULLIF('$lastname', ''), 0, NULLIF('$image', ''), NULLIF('$birth_date', ''), NULLIF('$birth_place', ''), NULLIF('$biography', ''), NULLIF('$experience', ''))";
+                            VALUES ('$username', '$password', '$name', '$lastname', 0, NULLIF('$image', ''), NULLIF('$birth_date', ''), NULLIF('$birth_place', ''), NULLIF('$biography', ''), NULLIF('$experience', ''))";
 
         mysqli_query($this->connection, $query_insert) or die(mysqli_error($this->connection));
         return mysqli_affected_rows($this->connection)>0;

@@ -3,7 +3,7 @@ from faker import Faker
 import bcrypt
 import html
 
-from dataset import ARTISTS, ARTSHOWS
+from dataset import ARTISTS
 
 fake = Faker('it_IT')
 
