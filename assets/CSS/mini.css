@@ -57,196 +57,56 @@ header h1{
     line-height: 1.5em;
 }
 
-nav {
-    background-color: var(--headerBgColor);
-    color: var(--headerTxtColor);
-}
-
-nav a:link {
-    color: var(--navlinkColor);
-}
-
-nav a:visited {
-    color: var(--navvisitedLinkColor);
-}
-
-#menu ul {
-    margin: auto;
-    padding: 0em 3em;
-    list-style-type: none;
-    text-align: center;
-}
-
-#menu ul li{
-    display: inline-block;
-    width: 5em;
-    margin: 0 0.5em;
-    font-size: 1.1em;
-}
-
-#breadcrumb {
-    padding: 1em 3em;
-}
-
-#breadcrumb p {
-    padding: 1em;
-    margin: auto;
-}
-
-main{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-}
-
-#bannermain{
-    width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.95)), url(../images/palazzo_bo.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 15em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(255,255,255);
-    font-size: 1.5em;
-}
-
 .cardmain {
-    background-color: var(--bannerBackground);
-    display: flex;
     flex-direction: column;
     margin: 2em 2em 0em;
-    overflow: hidden; 
 }
 
-.cardimg {
+.cardmainimg {
     width: 100%;
     height: 50%;
     object-fit: cover;
 }
 
-.cardtext {
-    text-align: left;
-    justify-content: left;
+.cardmaintext {
     width: 100%; 
     height: 50%;
     padding: 1em;
-    box-sizing: border-box; 
 }
 
 .cardmain:nth-child(odd) {
     flex-direction: column;
 }
 
-.cardmain a:link{
-    color: var(--flagColor);
-}
-
-.cardmain a:visited{
-    color: var(--footerBgColor);
-}
-
 .cardnextshow {
-    text-align: left;
-    justify-content: left;
     width: 100%; 
     padding: 1em;
-    box-sizing: border-box; 
-    display: flex;
-    flex-direction: column;
-}
-
-#nextshow{
-    text-transform: uppercase;
 }
 
 #linknextshow{
-    text-align: right;
     padding: 4em 1em 0em;
-    font-weight: bold;
 }
 
-#partners{
-    text-align: center;
-    padding: 2em;
-}
-
-.cards{
-    margin: auto;
-    padding: 1em;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 80em;
-    justify-content: center;
-}
-
-.cards li{
-    margin: 0 10px 20px 10px;
-    padding: 10px;
-    border-radius: 5px;
-    flex: 0 0 200px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-h2, h3, h4, h5, h6{
-    font-size: 2em;
-    line-height: 1em;
+.indexh{
     padding-bottom: 1em;
     text-align: center;
     margin: auto;
 }
 
 footer{
-    background-color: var(--footerBgColor);
-    color: var(--footerTxtColor);
     flex-wrap: wrap-reverse;
-}
-
-footer div{
-    text-align: center;
-    padding: 1em 4em 1em;
-}
-
-footer a:link{
-    color: var(--footerlinkColor);
-}
-
-footer a:visited{
-    color: var(--footerlinkColor);
-}
-
-#infofoot{
-    font-size: 0.8em;
-    line-height: 1.5em;
-}
-
-#infofoot p{
-    padding: 0em 0em 1em;
-}
-
-#listinfofoot{
-    list-style: none;
-}
-
-#orariofoot{
-    font-size: 0.8em;
-    line-height: 1.5em;
 }
 
 #logofoot{
     display: none;
 }
 
-#orariofoot table tbody>tr:nth-child(even), #orariofoot table thead {
-    background-color: rgb(59,69,79);
-}
 
-#orariofoot table td, #orariofoot table th {
-    text-align: left;
-    padding: 0em 0.5em 0em;
+
+
+
+
+
+.error404 h2{
+    padding: 0;
 }

@@ -128,13 +128,14 @@ main{
     max-width: 1000px;
 }
 
-.cardimg {
+.cardmainimg {
     width: 50%;
     height: auto;
     object-fit: cover;
 }
 
-.cardtext {
+
+.cardmaintext {
     text-align: left;
     justify-content: left;
     width: 50%; 
@@ -218,13 +219,13 @@ main{
     filter: opacity(100%);
 }
 
-h2, h3, h4, h5, h6{
+.indexh{
     font-size: 2em;
     line-height: 1em;
     margin-bottom: 1em;
 }
 
-h6{
+h6[class="indexh"]{
     text-align: center;
 }
 
@@ -234,6 +235,7 @@ footer{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: auto;
 }
 
 footer div{
@@ -283,4 +285,43 @@ footer a:visited{
 #orariofoot table caption{
     font-weight: bold;
     font-size: 1.1em;
+}
+
+
+
+
+.error404{
+    width: 100%;
+}
+
+.error404 h2{
+    background-image: url("../images/404.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 10em;
+    line-height: 2em;
+    text-indent: -999em;
+    padding: 0.5em 1em 0em;
+    margin: 0;
+}
+
+.error404 p{
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 1em 2em 1em;
+}
+
+.error404 p+p{
+    font-size: 1em;
+    font-weight: normal;
+    padding: 0em 2em 1em;
+}
+
+.error404 a:link{
+    color: var(--flagColor);
+}
+
+.error404 a:visited{
+    color: var(--footerBgColor);
 }
