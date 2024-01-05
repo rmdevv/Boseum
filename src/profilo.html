@@ -19,7 +19,8 @@
     <body>
         <main id="contenuto">
             <div id="informazioniUtente">
-                <img id="immagineProfilo" src="../uploads/users/5.jpg" alt="immagine profilo" width="470" height="470">
+                <img id="immagineProfilo" src="../uploads/users/5.jpg" alt="immagine profilo">
+                <a href="modificaprofilo.php" id="linkModifica">Modifica</a>
                 <h1>Mario Rossi</h1>
                 <dl class="datiProfilo">
                     <div>
@@ -39,9 +40,8 @@
                         <dd>Francavilla al mare</dd>
                     </div>
                 </dl>
-                <a href="modificaprofilo.php" id="linkModifica">Modifica</a>
                 <article id="biografia">
-                <h2>Biografia:</h2>
+                <h2>Biografia</h2>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis scelerisque ante, id iaculis massa dignissim quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. 
                         Etiam vehicula molestie euismod. In volutpat mauris et felis vehicula sodales. Nunc lacinia odio et justo porta, facilisis porttitor dui tempus. Nullam at euismod libero, sit amet venenatis turpis. 
@@ -51,7 +51,7 @@
                     </p>
                 </article>
                 <article id="esperienze">
-                    <h2>Esperienze:</h2>
+                    <h2>Esperienze</h2>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis scelerisque ante, id iaculis massa dignissim quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. 
                         Etiam vehicula molestie euismod. In volutpat mauris et felis vehicula sodales. Nunc lacinia odio et justo porta, facilisis porttitor dui tempus. Nullam at euismod libero, sit amet venenatis turpis. 
@@ -85,10 +85,14 @@
                         <div class="cardMostra">
                             <img src="../uploads/artshows/1.jpg" alt="titolo mostra 1">
                             <dl class="date mostra">
-                                <dt>Giorno inizio mostra</dt>
-                                <dd><time datetime="2024-02-15">Mercoledi 15 Febbraio 2024</time></dd>
-                                <dt>Giorno fine mostra</dt>
-                                <dd><time datetime="2024-02-18">Sabato 18 Febbraio 2024</time></dd>
+                                <div>
+                                    <dt>Giorno inizio mostra</dt>
+                                    <dd><time datetime="2024-02-15">Mercoledi 15 Febbraio 2024</time></dd>
+                                </div>
+                                <div>
+                                    <dt>Giorno fine mostra</dt>
+                                    <dd><time datetime="2024-02-18">Sabato 18 Febbraio 2024</time></dd>
+                                </div>
                             </dl>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                                 Provident, sint quam aperiam in, sunt quo maxime necessitatibus deleniti dignissimos, 
@@ -98,10 +102,14 @@
                         <div class="cardMostra">
                             <img src="../uploads/artshows/2.jpg" alt="titolo mostra 2">
                             <dl class="date mostra">
-                                <dt>Giorno inizio mostra</dt>
-                                <dd><time datetime="2024-03-08">Mercoledì 8 Marzo 2024</time></dd>
-                                <dt>Giorno fine mostra</dt>
-                                <dd><time datetime="2024-03-10">Venerdì 10 Marzo 2024</time></dd>
+                                <div>
+                                    <dt>Giorno inizio mostra</dt>
+                                    <dd><time datetime="2024-03-08">Mercoledì 8 Marzo 2024</time></dd>
+                                </div>
+                                <div>
+                                    <dt>Giorno fine mostra</dt>
+                                    <dd><time datetime="2024-03-10">Venerdì 10 Marzo 2024</time></dd>
+                                </div>
                             </dl>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
