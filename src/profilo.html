@@ -15,14 +15,17 @@
             content="Sito ufficiale del Boseum, museo d'arte universitario con sede nel Palazzo Bo a Padova" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
-            rel="stylesheet"
-            href="../assets/css/styleprofilo.css"
-            media="screen" />
+        rel="stylesheet"
+        href="../assets/css/styleprofilo.css"
+        media="screen" />
         <link
             rel="stylesheet"
-            href="../assets/css/mini.css"
+            href="../assets/css/miniprofilo.css"
             media="screen and (max-width:600px)" />
     </head>
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <a href="../src/index.html">Home</a> / <a href="../src/artisti.html">Artisti</a> / Profilo Artista</p>
+    </nav>
     <body>
         <main id="contenuto">
             <div id="informazioniUtente">
@@ -31,26 +34,18 @@
                     src="../uploads/users/5.jpg"
                     alt="immagine profilo" />
                 <a href="modificaprofilo.php" id="linkModifica">Modifica</a>
-                <h1>Mario Rossi</h1>
+                <h1>Profilo artista</h1>
                 <dl class="datiProfilo">
-                    <div>
                         <dt>Nome</dt>
                         <dd>Mario</dd>
-                    </div>
-                    <div>
                         <dt>Cognome</dt>
                         <dd>Rossi</dd>
-                    </div>
-                    <div>
                         <dt>Data di nascita</dt>
                         <dd>
                             <time datetime="2001-12-11">11 Dicembre 2001</time>
                         </dd>
-                    </div>
-                    <div>
                         <dt>luogo di nascita</dt>
                         <dd>Francavilla al mare</dd>
-                    </div>
                 </dl>
                 <article id="biografia">
                     <h2>Biografia</h2>
@@ -146,23 +141,18 @@
                                     src="../uploads/artshows/1.jpg"
                                     alt="titolo mostra 1" />
                                 <dl class="date mostra">
-                                    <div>
-                                        <dt>Giorno inizio mostra</dt>
-                                        <dd>
-                                            <time datetime="2024-02-15"
-                                                >Mercoledi 15 Febbraio
-                                                2024</time
-                                            >
-                                        </dd>
-                                    </div>
-                                    <div>
-                                        <dt>Giorno fine mostra</dt>
-                                        <dd>
-                                            <time datetime="2024-02-18"
-                                                >Sabato 18 Febbraio 2024</time
-                                            >
-                                        </dd>
-                                    </div>
+                                    <dt>Giorno inizio mostra</dt>
+                                    <dd>
+                                        <time datetime="2024-02-15"
+                                            >Mercoledi 15 Febbraio
+                                            2024</time>
+                                    </dd>
+                                    <dt>Giorno fine mostra</dt>
+                                    <dd>
+                                        <time datetime="2024-02-18"
+                                            >Sabato 18 Febbraio 2024</time
+                                        >
+                                    </dd>
                                 </dl>
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur
@@ -178,23 +168,16 @@
                                     src="../uploads/artshows/2.jpg"
                                     alt="titolo mostra 2" />
                                 <dl class="date mostra">
-                                    <div>
-                                        <dt>Giorno inizio mostra</dt>
-                                        <dd>
-                                            <time datetime="2024-03-08"
-                                                >Mercoledì 8 Marzo 2024</time
-                                            >
-                                        </dd>
-                                    </div>
-                                    <div>
-                                        <dt>Giorno fine mostra</dt>
-                                        <dd>
-                                            <time datetime="2024-03-10"
-                                                >Venerdì 10 Marzo 2024</time
-                                            >
-                                        </dd>
-                                    </div>
-                                </dl>
+                                    <dt>Giorno inizio mostra</dt>
+                                    <dd>
+                                        <time datetime="2024-03-08">Mercoledì 8 Marzo 2024</time
+                                        >
+                                    </dd>
+                                    <dt>Giorno fine mostra</dt>
+                                    <dd>
+                                        <time datetime="2024-03-10">Venerdì 10 Marzo 2024</time>
+                                    </dd>
+                            </dl>
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur
                                     adipisicing elit. Provident, sint quam

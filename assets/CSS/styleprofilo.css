@@ -12,10 +12,12 @@
     --flagColor: rgb(155,0,20); 
     --font-body-family: "Roboto Condensed", sans-serif;
     --tagBgColor: rgb(180,0,20);
+    --linkColor: rgb(100,100,100);
+}
 
-
-    --cardMaxWidth: max(30vw,20vh);
-    --cardMaxHeight: min(15vh,20vw);
+*{
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -29,7 +31,6 @@ html {
 body{
     background-color: var(--bgColor);
     color: var(--txtColor);
-    font-size: 1em;
     margin: auto;
     max-width: 95%;
 }
@@ -43,13 +44,30 @@ h2{
 ul{
     list-style-type: none;
 }
+/*
+--------------------------------------------------------------------------------------------------------------
+Stile breadcrumb
+--------------------------------------------------------------------------------------------------------------
+*/
+#breadcrumb{
+    font-size: 0.7em;
+    text-align: left;
+}
+
+#breadcrumb a{
+    text-decoration: none;
+    color: var(--linkColor);
+}
+
+#breadcrumb a:hover{
+    text-decoration: underline;
+}
 
 /*
 --------------------------------------------------------------------------------------------------------------
 STILI INFORMAZIONI UTENTE
 --------------------------------------------------------------------------------------------------------------
 */
-
 #immagineProfilo{
     max-width: min(470px, 30%);
     min-width: 100px;
@@ -58,13 +76,21 @@ STILI INFORMAZIONI UTENTE
     margin-right: 15px;
 }
 
-div dd:only-of-type{
-    display: inline-block;
+.datiProfilo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    row-gap: 0.8em;
+    align-items: center;
 }
 
-div dt:only-of-type{
+dt{
     font-weight: bold;
-    display: inline;
+    display: block;
+}
+
+dd{
+    display: block;
 }
 
 #linkModifica{
@@ -124,31 +150,52 @@ STILE LISTA OPERE
 
 #opere li{
     flex-basis: 350px;
-    flex-grow: 1;
+    flex-grow: 0;
 }
 
+/*
+--------------------------------------------
+Stile Mostre
+--------------------------------------------
+*/
 #mostre>ul{
     list-style-type: none;
     text-align: center;
-}
-
-.cardMostra img{
-    height: var(--cardMaxHeight);
-    aspect-ratio: 1/1;
-    float: left;
-    min-height: 100px;
+    gap: 2em;
 }
 
 .cardMostra{
     background-color: var(--bannerBackground);
-    border-collapse: collapse;
     padding: 0 1em 0 0;
-    border: 1px solid black;
     display: inline-block;
-    max-height: var(--cardMaxHeight);
-    max-width: var(--cardMaxWidth);
-    min-width: 550px;
-    min-height: 100px;
     overflow: hidden; /*In caso lo schermo dell'utente non fosse abbastanza grande da contente la descrizione della mostra*/
     color: var(--txtColor);
+    font-size: 0.9em;
+    line-height: 1em;
+    min-width: 550px;
+    min-height: 100px;
+    max-height: 150px;
+    max-width: 600px;
+}
+
+.cardMostra img{
+    aspect-ratio: 1/1;
+    float: left;
+    width: auto;
+    min-height: 100px;
+    max-height: 150px;
+}
+.cardMostra dl{
+    display: grid;
+    position: relative;
+    top: 1em;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    row-gap: 0.8em;
+    align-items: center;
+}
+
+.cardMostra p{
+    position: relative;
+    top: 2em;
 }
