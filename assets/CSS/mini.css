@@ -91,3 +91,19 @@ footer div {
 .error404 h2{
     padding: 0;
 }
+
+
+#artshow_layout{
+    width: 100%;
+    flex-direction: column;
+}
+
+.artshow_mainimage{
+    width: 100%;
+    object-fit: cover;
+}
+
+#artshow_maininfo{
+    width: 100%;
+    padding: 2em;
+}
