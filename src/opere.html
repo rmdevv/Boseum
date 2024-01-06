@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Opere | Boseum</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png" />
+        <meta
+            name="keywors"
+            content="museo d'arte, palazzo bo, università degli studi di padova, padova" />
+        <meta
+            name="description"
+            content="Sito ufficiale del Boseum, museo d'arte universitario con sede nel Palazzo Bo a Padova" />
+        <link rel="stylesheet" href="../assets/css/style.css" media="screen" />
+        <link
+            rel="stylesheet"
+            href="../assets/css/mini.css"
+            media="screen and (max-width:600px)" />
+    </head>
+    <body>
+        <header>
+            <nav aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#contenuto">Vai al contenuto</a>
+            </nav>
+            <h1 lang="en">Boseum</h1>
+        </header>
+        <nav id="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="artisti.html">Artisti</a></li>
+                <li>Opere</li>
+                <li><a href="mostre.html">Mostre</a></li>
+                <li>
+                    <a href="accedi.html" id="accountnav" lang="en">Account</a>
+                </li>
+            </ul>
+        </nav>
+        <nav id="breadcrumb">
+            <p>Ti trovi in: <a href="index.html" lang="en">Home</a> / Artisti</p>
+        </nav>
+        <main id="contenuto">
+            <h2>Cerca le opere</h2>
+            <form id="ricerca">
+                <div id="ricercatitolo">
+                    <label for="titolo">Titolo: </label>
+                    <input type="text" id="titolo" name="titolo" placeholder="Titolo opera (facoltativo)">
+                    <input type="submit" value="Cerca">
+                </div>
+                <label for="opzioniricerca" id="opzioniricercalabel">Flitra per: </label>
+                <div id="opzioniricerca">
+                    <div>
+                        <label for="data">Data: </label>
+                        <select name="data" id="data">
+                            <option value="-">----</option>
+                            <option value="1900-1910">1900-1910</option>
+                            <option value="1910-1920">1910-1920</option>
+                            <option value="1920-1930">1920-1930</option>
+                            <option value="1930-1940">1930-1940</option>
+                            <option value="1940-1950">1940-1950</option>
+                            <option value="1950-1960">1950-1960</option>
+                            <option value="1960-1970">1960-1970</option>
+                            <option value="1970-1980">1970-1980</option>
+                            <option value="1980-1990">1980-1990</option>
+                            <option value="1990-2000">1990-2000</option>
+                            <option value="2000-2010">2000-2010</option>
+                            <option value="2010-2020">2010-2020</option>
+                        </select>  
+                    </div>
+                    
+                    <div class="dimensioni">
+                        <label for="altezza">Altezza (cm): </label>
+                        <input type="number" name="altezza" id="altezza">
+                    </div>
+                    <div class="dimensioni">
+                        <label for="larghezza">Larghezza (cm): </label>
+                        <input type="number" name="larghezza" id="larghezza">
+                    </div>
+                    <div class="dimensioni">
+                        <label for="profondita">Profondità (cm): </label>
+                        <input type="number" name="profondita" id="profondita">
+                    </div>
+                    
+                </div>
+                <div id="labelricerca">
+                    <label for="label">Etichette  :</label>
+                    <ul id="label">
+                        <li>
+                            <input type="checkbox" id="dipinto" name="dipinto">
+                            <label for="dipinto">Dipinto</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="digitale" name="digitale">
+                            <label for="digitale">Digitale</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="realismo" name="realismo">
+                            <label for="realismo">Realismo</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="astrazione" name="astrazione">
+                            <label for="astrazione">Astrazione</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="minimalismo" name="minimalismo">
+                            <label for="minimalismo">Minimalismo</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="sketch" name="sketch">
+                            <label for="sketch">Sketch</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="scultura" name="scultura">
+                            <label for="scultura">Scultura</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="marmo" name="marmo">
+                            <label for="marmo">Marmo</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="bronzo" name="bronzo">
+                            <label for="bronzo">Bronzo</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="oggetto" name="oggetto">
+                            <label for="oggetto">Oggetto</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="architettura" name="architettura">
+                            <label for="architettura">Architettura</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="paesaggio" name="paesaggio">
+                            <label for="paesaggio">Paesaggio</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="natura" name="natura">
+                            <label for="natura">Natura</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="ritratto" name="ritratto">
+                            <label for="ritratto">Ritratto</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="movimento" name="movimento">
+                            <label for="movimento">Movimento</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="bianco e nero" name="bianco e nero">
+                            <label for="bianco e nero">Bianco e nero</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="sfumature" name="sfumature">
+                            <label for="sfumature">Sfumature</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="mare" name="mare">
+                            <label for="mare">Mare</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="notte" name="notte">
+                            <label for="notte">Notte</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="inverno" name="inverno">
+                            <label for="inverno">Inverno</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="arte contemporanea" name="arte contemporanea">
+                            <label for="arte contemporanea">Arte contemporanea</label>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <div id="risultati">
+                <h3>Risulatati della ricerca (numero): </h3>
+                <ul id="opere">
+                    <li class="cardopera">
+                        <figure>
+                            <a href="10.html">
+                                <div class="immagineopera">
+                                    <img src="../uploads/users/10.jpg" alt="ciao">
+                                </div>
+                            </a>
+                            <figcaption>
+                                <a href="10.html"><h4 class="title">Titolo</h4></a>
+                                <a href="artista.html"><p class="artista">Artista</p></a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="cardopera">
+                        <figure>
+                            <a href="10.html">
+                                <div class="immagineopera">
+                                    <img src="../uploads/users/2.jpg" alt="ciao">
+                                </div>
+                            </a>
+                            <figcaption>
+                                <a href="10.html"><h4 class="title">Titolo</h4></a>
+                                <a href="artista.html"><p class="artista">Artista</p></a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="cardopera">
+                        <figure>
+                            <a href="10.html">
+                                <div class="immagineopera">
+                                    <img src="../uploads/users/3.jpg" alt="ciao">
+                                </div>
+                            </a>
+                            <figcaption>
+                                <a href="10.html"><h4 class="title">Titolo</h4></a>
+                                <a href="artista.html"><p class="artista">Artista</p></a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="cardopera">
+                        <figure>
+                            <a href="10.html">
+                                <div class="immagineopera">
+                                    <img src="../uploads/users/7.jpg" alt="ciao">
+                                </div>
+                            </a>
+                            <figcaption>
+                                <a href="10.html"><h4 class="title">Titolo</h4></a>
+                                <a href="artista.html"><p class="artista">Artista</p></a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="cardopera">
+                        <figure>
+                            <a href="10.html">
+                                <div class="immagineopera">
+                                    <img src="../uploads/users/15.jpg" alt="ciao">
+                                </div>
+                            </a>
+                            <figcaption>
+                                <a href="10.html"><h4 class="title">Titolo</h4></a>
+                                <a href="artista.html"><p class="artista">Artista</p></a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </div>
+            <nav id="navpagine">
+                <ul id="pagine">
+                    <li class="pagina">
+                        <a href="1.html">&lt;</a>
+                    </li>
+                    <li class="pagina">
+                        <a href="1.html">1</a>
+                    </li>
+                    <li class="pagina">
+                        <a href="1.html">2</a>
+                    </li>
+                    <li class="pagina">
+                        <a href="1.html">&gt;</a>
+                    </li>
+                </ul>
+                <a href="#contenuto"><p id="tornasu">Ritorna sopra</p></a>
+            </nav>
+        </main>
+        <footer>
+            <div id="infofoot">
+                <p>Dove il sapere incontra l'arte</p>
+                <ul id="listinfofoot">
+                    <li>
+                        Vieni a trovarci in
+                        <a
+                            href="https://maps.app.goo.gl/iicWxkvzbn2m2wsUA"
+                            target="_blank"
+                            >via VIII Febbraio, <abbr title="Numero">n</abbr>.
+                            2, 35122 Padova</a
+                        >
+                    </li>
+                    <li>
+                        <abbr title="Telefono">Tel</abbr>:
+                        <a href="tel:+390498273939">+39 0498273939</a>
+                    </li>
+                    <li>
+                        <span lang="en">E-mail</span>:
+                        <a href="mailto:tour@unipd.it"
+                            ><span lang="en">tour</span>&commat;unipd.it</a
+                        >
+                    </li>
+                    <li>
+                        Seguici su
+                        <a
+                            href="https://www.instagram.com/visitunipd/?hl=it"
+                            target="_blank"
+                            lang="en"
+                            >Instagram</a
+                        >,
+                        <a
+                            href="https://it-it.facebook.com/visitunipd/"
+                            target="_blank"
+                            lang="en"
+                            >Facebook</a
+                        >
+                        e
+                        <a
+                            href="https://vm.tiktok.com/ZMe791AJx/"
+                            target="_blank"
+                            lang="en"
+                            >TikTok</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div id="logofoot">
+                <img 
+                    src="../assets/images/logomini.svg" 
+                    alt=""
+                    width="100"
+                    height="100">
+            </div>
+            <div id="orariofoot">
+                <p id="descrOrariTable" class="navigationHelp">
+                    La tabella contiene gli orari di apertura del museo, aperto
+                    dal martedì alla domenica e chiuso il lunedì
+                </p>
+                <table aria-describedby="descrOrariTable">
+                    <caption>
+                        Orari di apertura
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giorno</th>
+                            <th scope="col">Mattino</th>
+                            <th scope="col">Pomeriggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">Chiuso</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">da Martedì a Venerdì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>15:00</time>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sabato e Domenica</th>
+                            <td data-title="mattino">
+                                <time>08:00</time>-<time>11:00</time>
+                            </td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>18:00</time>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+    </body>
+</html>
