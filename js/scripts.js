@@ -40,3 +40,114 @@ if (artworkImage && additionalImagesCarousel && imageSlideElements) {
         })
     })
 }
+
+const paginationNumbers = document.getElementById('pagination_numbers')
+const paginatedList = document.getElementById('paginated_section')
+const items = paginatedList.querySelectorAll('figure')
+const prevButton = document.getElementById('prev_pag_button')
+const nextButton = document.getElementById('next_pag_button')
+
+const paginationLimit = 10
+const pageCount = Math.ceil(items.length / paginationLimit)
+let currentPage = 1
+
+const disableButton = (button) => {
+    button.setAttribute('disabled', true)
+}
+
+const enableButton = (button) => {
+    button.removeAttribute('disabled')
+}
+
+const backToTop = () => {
+    document.getElementById('top_gallery').scrollIntoView()
+}
+
+const handlePageButtonsStatus = () => {
+    if (currentPage === 1) {
+        disableButton(prevButton)
+    } else {
+        enableButton(prevButton)
+    }
+
+    if (pageCount === currentPage) {
+        disableButton(nextButton)
+    } else {
+        enableButton(nextButton)
+    }
+}
+
+const handleActivePageNumber = () => {
+    document.querySelectorAll('.pagination_number').forEach((button) => {
+        button.classList.remove('active')
+        const pageIndex = Number(button.getAttribute('page-index'))
+        if (pageIndex == currentPage) {
+            button.classList.add('active')
+        }
+    })
+}
+
+const appendPageNumber = (index) => {
+    const pageNumber = document.createElement('button')
+    pageNumber.className =
+        'button_reverse pagination_controls pagination_number'
+    pageNumber.innerHTML = index
+    pageNumber.setAttribute('page-index', index)
+    pageNumber.setAttribute('aria-label', 'Pagina ' + index)
+
+    paginationNumbers.appendChild(pageNumber)
+}
+
+const getPaginationNumbers = () => {
+    for (let i = 1; i <= pageCount; i++) {
+        appendPageNumber(i)
+    }
+}
+
+const setCurrentPage = (pageNum, scroll) => {
+    currentPage = pageNum
+
+    handleActivePageNumber()
+    handlePageButtonsStatus()
+
+    const prevRange = (pageNum - 1) * paginationLimit
+    const currRange = pageNum * paginationLimit
+
+    items.forEach((item, index) => {
+        item.classList.add('hidden')
+        if (index >= prevRange && index < currRange) {
+            item.classList.remove('hidden')
+        }
+    })
+
+    scroll && backToTop()
+}
+
+window.addEventListener('load', () => {
+    getPaginationNumbers()
+    setCurrentPage(1, false)
+
+    prevButton.addEventListener('click', () => {
+        setCurrentPage(currentPage - 1)
+    })
+
+    nextButton.addEventListener('click', () => {
+        setCurrentPage(currentPage + 1)
+    })
+
+    document.querySelectorAll('.pagination_number').forEach((button) => {
+        const pageIndex = Number(button.getAttribute('page-index'))
+
+        if (pageIndex) {
+            button.addEventListener('click', () => {
+                setCurrentPage(pageIndex)
+            })
+        }
+    })
+
+    const back_to_top_button = document.getElementById('back_to_top')
+
+    back_to_top_button.addEventListener('click', () => {
+        backToTop()
+    })
+})
