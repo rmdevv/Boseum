@@ -38,18 +38,12 @@ header h1{
 }
 
 .cardnextshow {
-    width: 100%; 
+    width: 100%;
     padding: 1em;
 }
 
 #linknextshow{
     padding: 4em 1em 0em;
-}
-
-.indexh{
-    padding-bottom: 1em;
-    text-align: center;
-    margin: auto;
 }
 
 .artwork_section{
@@ -90,4 +84,10 @@ footer div {
 
 .error404 h2{
     padding: 0;
+}
+
+.artshow_list {
+    display: block;
+    width: 100%;
+    margin: 4em auto;
 }

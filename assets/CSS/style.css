@@ -17,8 +17,8 @@
 
     --linkColor: rgb(100,100,100);
     
-    --navVisitedLinkColor: rgb(255,255,255);
-    --navLinkColor: rgb(200, 200, 200);
+    --navVisitedLinkColor: rgb(200, 200, 200);
+    --navLinkColor: rgb(255,255,255);
     --flagColor: rgb(167, 0, 22);
     --imageBackground: rgb(248,248,248);
     --bannerBackground: rgb(242,242,242);
@@ -226,7 +226,7 @@ header h1{
     padding: 2em;
 }
 
-.cards{
+.partners_cards{
     margin: auto;
     padding: 1em;
     list-style: none;
@@ -236,35 +236,30 @@ header h1{
     justify-content: center;
 }
 
-.cards li{
-    background-color: var(--bannerBackground);
+.partners_cards li{
     margin: 0 10px 20px 10px;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 3px;
     flex: 0 0 200px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .1);
+    box-shadow: 6px 6px 10px 0 rgba(0, 0, 6, 0.18), 0 0 4px 0 rgba(0, 0, 6, 0.18);
 }
 
-.cards li:hover{
-    transform: scale(1.05);
+.partners_cards li:hover{
+    background-color: var(--bannerBackground);
     transition: all .2s ease-out;
 }
 
-.cards li a:link{
-    filter: opacity(70%);
-}
-
-.cards li a:hover{
+.partners_cards li a:link{
     filter: opacity(100%);
 }
 
-.index_card_header{
+.card_header{
     font-size: 2em;
     line-height: 1em;
     margin-bottom: 1em;
 }
 
-h5[class="index_card_header"]{
+h5[class="card_header"]{
     text-align: center;
 }
 
@@ -686,4 +681,52 @@ footer a:visited{
 }
 .related_artwork_title a:hover{
     text-decoration:underline
+}
+
+.artshow_list {
+    display: flex;
+    flex-wrap: wrap;
+    width: min(85vw, 1440px);
+    margin: 4em auto;
+    gap: 20px;
+}
+.artshow_card {
+    min-height: 400px;
+    background-color: var(--bannerBackground);
+    width: calc(50% - 20px);
+}
+.artshow_image_link {
+    background-color:#e3e3e3;
+    border:none;
+    display:flex;
+    height:350px;
+    justify-content: center;
+    overflow:hidden;
+}
+.artshow_image{
+    margin: auto;
+    max-height: 350px;
+    object-fit: contain;
+    transform-origin: center;
+    transition: all .4s ease-out
+}
+.artshow_image:focus-within,.artshow_image:hover{
+    transform:scale(1.06)
+}
+.artshow_card_info {
+    text-align: left;
+    padding: 1em 2em;
+    box-sizing: border-box;
+}
+.card_header a{
+    border:none;
+    text-decoration: none;
+    color: black;
+}
+.card_header a:hover{
+    text-decoration:underline
+}
+
+.artshow_card a:visited{
+    color: var(--linkColor);
 }
