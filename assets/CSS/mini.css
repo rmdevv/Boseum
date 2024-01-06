@@ -1,55 +1,10 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    --headerBgColor: rgb(155,0,20);
-    --headerTxtColor: rgb(255,255,255);
-    --bgColor: rgb(255,255,255);
-    --txtColor: rgb(0,0,0);
-    --font-body-family: "Roboto Condensed", sans-serif;
-
-    --footerBgColor: rgb(69,73,83);
-    --footerTxtColor: rgb(255,255,255);
-    --footerlinkColor: rgb(255,255,255);
-    
-    --navvisitedLinkColor: rgb(255,255,255);
-    --navlinkColor: rgb(149,165,166);
-    --flagColor: rgb(155,0,20);
-    --imageBackground: rgb(248,248,248);
-    --bannerBackground: rgb(242,242,242);
-}
-
-html {
-    font-size: 100%;
-    font-family: var(--font-body-family);
-    line-height: 1.5em;
-    margin: auto;
-    background-color: var(--bgColor);
-}
-
 .navigationHelp{
     position: absolute;
-    text-indent: -999em;
-}
-
-header {
-    background-color: var(--headerBgColor);
-    color: var(--headerTxtColor);
-    text-align: center;
-    padding: 1em;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 header h1{
     text-indent: -999em;
-    background-image: url("../image/logomini.png");
+    background-image: url("../images/logomini.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -58,23 +13,27 @@ header h1{
 }
 
 .cardmain {
+    width: 100%;
     flex-direction: column;
-    margin: 2em 2em 0em;
 }
 
 .cardmainimg {
     width: 100%;
-    height: 50%;
     object-fit: cover;
 }
 
 .cardmaintext {
-    width: 100%; 
-    height: 50%;
-    padding: 1em;
+    width: 100%;
+    padding: 2em 2em 4em 2em;
 }
 
-.cardmain:nth-child(odd) {
+.cardmain iframe {
+    width:100%;
+    min-height: 350px;
+    margin: 0;
+}
+
+.cardmain:nth-child(even) {
     flex-direction: column;
 }
 
@@ -93,19 +52,41 @@ header h1{
     margin: auto;
 }
 
+.artwork_section{
+    display:flex;
+    flex-direction:column-reverse;
+}
+.the_artwork{
+    display:flex;
+    flex:1;
+    flex-direction:column;
+    height:100vh;
+    position:relative;
+}
+
+.enlarged-overlay img {
+    object-fit: cover;
+}
+
+.related_artwork{
+    min-width: 250px;
+    width:min-content;
+    margin: auto;
+}
+
 footer{
     flex-wrap: wrap-reverse;
 }
 
-#logofoot{
-    display: none;
+footer div {
+    padding: 2em 1em;
 }
 
-
-
-
-
-
+.error404{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
 
 .error404 h2{
     padding: 0;

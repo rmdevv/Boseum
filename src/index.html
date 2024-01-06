@@ -2,14 +2,18 @@
 <html lang="it">
     <head>
         <meta charset="UTF-8" />
-        <title>Boseum</title>
-        <link rel="icon" type="image/x-icon" href="../image/favicon.png" />
+        <title>Home | Boseum</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png" />
         <meta
             name="keywors"
             content="museo d'arte, palazzo bo, università degli studi di padova, padova" />
         <meta
             name="description"
             content="Sito ufficiale del Boseum, museo d'arte universitario con sede nel Palazzo Bo a Padova" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../assets/css/style.css" media="screen" />
         <link
             rel="stylesheet"
@@ -34,24 +38,27 @@
                 </li>
             </ul>
         </nav>
+        <div id="bannermain">
+            <h2>Benvenuto al <span lang="en"> Boseum </span></h2>
+        </div>
         <nav id="breadcrumb">
-            <p>Ti trovi in: <span lang="en">Home</span></p>
+            <span>Ti trovi in:</span>
+            <ul class="breadcrumb">
+                <li>
+                    <span lang="en">Home</span>
+                </li>
+            </ul>
         </nav>
-        <main id="contenuto">
-            <div id="bannermain">
-                <h2>
-                    Benvenuto al <span lang="en">
-                        Boseum
-                    </span>
-                </h2>
-            </div>
+        <main id="content">
             <div class="cardmain">
-                <img 
-                    src="../assets/images/homemotto.jpg" 
+                <img
+                    src="../assets/images/homemotto.jpg"
                     class="cardmainimg"
-                    alt="Uno studente ammira interessato una serie di disegni esposti.">
+                    alt="Affresco Scuola di Atene di Raffaello" />
                 <div class="cardmaintext">
-                    <h2 class="indexh">Dove il sapere incontra l'arte</h2>
+                    <h2 class="index_card_header">
+                        Dove il sapere incontra l'arte
+                    </h2>
                     <p>
                         All'interno del <strong>Palazzo del Bo</strong>, storica
                         sede dell'<strong
@@ -68,12 +75,12 @@
                 </div>
             </div>
             <div class="cardmain">
-                <img 
-                    src="../assets/images/homestudents.jpg" 
+                <img
+                    src="../assets/images/homestudents.jpg"
                     class="cardmainimg"
-                    alt="Uno gruppo di studenti e studentesse che chiaccherano tra di loro.">
+                    alt="Uno gruppo di studenti e studentesse che chiaccherano tra di loro." />
                 <div class="cardmaintext">
-                    <h3 class="indexh">Per studenti, da studenti</h3>
+                    <h3 class="index_card_header">Da studenti, per studenti</h3>
                     <p>
                         L'idea del <span lang="en">Boseum</span> nasce da un
                         gruppo di <strong>studenti</strong>, ed è proprio agli
@@ -92,17 +99,10 @@
             </div>
             <div class="cardmain">
                 <iframe
-                        class="cardmainimg"
-                        width="100%"
-                        height="300"
-                        frameborder="0"
-                        scrolling="no"
-                        marginheight="0"
-                        marginwidth="0"
-                        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Palazzo%20del%20Bo,%20university,%20Padua,%20Italy+()&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-                    </iframe>
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Palazzo%20del%20Bo,%20university,%20Padua,%20Italy+()&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                </iframe>
                 <div class="cardmaintext">
-                    <h4 class="indexh">La sede</h4>
+                    <h3 class="index_card_header">La sede</h3>
                     <p>
                         La sede di <span lang="en">Boseum</span> è collocata
                         all'interno dello storico Palazzo del Bo, nel cuore di
@@ -124,21 +124,23 @@
             <div class="cardmain">
                 <img
                     src="../uploads/artshows/4.jpg"
-                    class="cardmainimg">
+                    class="cardmainimg"
+                    alt="Prossima mostra" />
                 <div class="cardnextshow">
-                    <h5 class="indexh">La prossima mostra</h5>
-                    <p id="nextshow">
-                        Nome della mostra
+                    <h4 class="index_card_header">La prossima mostra</h4>
+                    <p id="nextshow">Nome della mostra</p>
+                    <p>
+                        <time datetime="2024-01-11">2024-01-11</time>
+                        /
+                        <time datetime="2024-01-14">2024-01-14</time>
                     </p>
-                    <p id="linknextshow">
-                        <a href="">
-                            Scoprila
-                        </a>
-                    </p>
+                    <a href=""> Scoprila </a>
                 </div>
             </div>
             <div class="contentpartners">
-                <h6 class="indexh">Una missione sostenuta ed apprezzata</h6>
+                <h5 class="index_card_header">
+                    Una missione sostenuta ed apprezzata
+                </h5>
                 <p>
                     Per mantenere l'esperienza del
                     <span lang="en">Boseum</span> gratuita e quanto più
@@ -318,11 +320,11 @@
                 </ul>
             </div>
             <div id="logofoot">
-                <img 
-                    src="../assets/images/logomini.svg" 
+                <img
+                    src="../assets/images/logomini.svg"
                     alt=""
                     width="100"
-                    height="100">
+                    height="100" />
             </div>
             <div id="orariofoot">
                 <p id="descrOrariTable" class="navigationHelp">
