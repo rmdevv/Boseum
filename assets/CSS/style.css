@@ -21,6 +21,7 @@
     --navLinkColor: rgb(255,255,255);
     --flagColor: rgb(167, 0, 22);
     --imageBackground: rgb(248,248,248);
+    --imageBackgroundHover: rgb(240, 240, 240);
     --bannerBackground: rgb(242,242,242);
 }
 
@@ -729,4 +730,311 @@ footer a:visited{
 
 .artshow_card a:visited{
     color: var(--linkColor);
+}
+
+
+#contenuto h2{
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+#titolo{
+    width: 100%;
+    max-width: min(85vw, 1440px);
+    margin: 0em 1em;
+    padding: 0.5em 1em;
+}
+
+#label {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    max-width: min(85vw, 1440px);
+    justify-content: flex-start;
+    padding: 1em;
+    list-style-type: none;
+}
+
+#label li {
+    flex: 0 0 12em;
+    margin: 0 0.5em;
+}
+
+#labelricerca{
+    text-align: left;
+}
+
+#ricerca{
+    width: min(85vw, 1440px);
+    margin: auto;
+    text-align: center;
+}
+
+#ricerca > div{
+    margin-bottom: 1em;
+}
+
+#ricercatitolo {
+    display: flex;
+    flex-wrap: nowrap
+}
+
+#ricercatitolo input[type=submit]{
+    padding: 0.5em 1em;
+}
+
+#opzioniricerca{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#opzioniricerca > div{
+    display: inline;
+    margin: 0.25em;
+}
+
+#opzioniricercalabel{
+    display: block;
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+div label{
+    margin: 0em 0.5em;
+}
+
+.dimensioni input[type=number]{
+    padding-left: 0.5em;
+    width: 5em;
+    height: 1.5em;
+    text-align: left;
+}
+
+#opzioniricerca div select{
+    padding: 0.25em;
+}
+
+#risultati{
+    width: min(85vw, 1440px);
+    margin: auto;
+    text-align: center;
+}
+
+/*
+#opere{
+    display: grid;
+    margin: 1em 0em;
+    justify-content: center;
+    gap: 1em;
+    max-width: min(85vw, 1440px);
+    list-style: none;
+}
+
+@media (min-width: 600px) {
+    #opere {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 950px) {
+    #opere {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1250px) {
+    #opere {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}*/
+
+#opere{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0em;
+    justify-content: center;
+    gap: 1em;
+    max-width: min(85vw, 1440px);
+    list-style: none;
+}
+
+.cardopera{
+    flex: 0 0 310px;    
+}
+
+.immagineopera img{
+    margin: auto;
+    height: auto;
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.immagineopera{
+    background-color: var(--imageBackground);
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+}
+
+.immagineopera:hover{
+    background-color: var(--imageBackgroundHover);
+}
+
+#opere li figure figcaption{
+    text-align: left;
+    margin-top: 0.5em;
+}
+
+#opere li figure figcaption a{
+    color: black;
+    text-decoration: none;
+}
+
+#opere li figure figcaption a:hover{
+    text-decoration: underline;
+}
+
+#opere li figure figcaption .title{
+    font-size: large;
+}
+
+#opere li figure figcaption .artista{
+    font-size: small; 
+}
+
+#navpagine{
+    background-color: var(--bgColor);
+    width: min(85vw, 1440px);
+    margin: auto;
+    text-align: center;
+}
+
+#pagine{
+    list-style: none;
+    margin: 1em;
+}
+
+.pagina{
+    display: inline-block;
+    color: var(--txtColor);
+}
+
+#pagine .pagina a{
+    background-color: var(--imageBackground);
+    border: 1px solid var(--footerBgColor);
+    padding: 0.5em 1em;
+    text-decoration: none;
+}
+
+#pagine .pagina a:link{
+    color: var(--txtColor);
+}
+
+#pagine .pagina a:hover{
+    text-decoration: underline;
+    background-color: var(--imageBackgroundHover);
+}
+
+#navpagine a, #navpagine a:link, #navpagine a:visited{
+    color: var(--txtColor);
+    text-decoration: none;
+}
+
+#tornasu{
+    padding: 1em;   
+    width: fit-content;
+    margin: auto;
+    background-color: var(--imageBackground);
+    border: 1px solid var(--footerBgColor);
+}
+
+#tornasu:hover{
+    background-color: var(--imageBackgroundHover);
+    text-decoration: underline;
+}
+
+ /*
+#artisti{
+    display: grid;
+    margin: 1em 0em;
+    justify-content: center;
+    gap: 1em;
+    max-width: min(85vw, 1440px);
+    list-style: none;
+}
+
+@media (min-width: 600px) {
+    #artisti {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 950px) {
+    #artisti {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1250px) {
+    #artisti {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}*/
+
+
+#artisti{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0em;
+    justify-content: center;
+    gap: 1em;
+    max-width: min(85vw, 1440px);
+    list-style: none;
+}
+
+.cardartista{
+    flex: 0 0 310px;    
+}
+
+
+.immagineartista img{
+    margin: auto;
+    height: auto;
+    width: auto;
+    max-height: 80%;
+    max-width: 80%;
+    border-radius: 50%;
+}
+
+.immagineartista{
+    background-color: var(--imageBackground);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+}
+
+.immagineartista:hover{
+    background-color: var(--imageBackgroundHover);
+}
+
+#artisti li figure figcaption{
+    text-align: left;
+    margin-top: 0.5em;
+}
+
+#artisti li figure figcaption{
+    color: black;
+    text-decoration: none;
+}
+
+#artisti li figure figcaption .nome{
+    font-size: large;
+}
+
+#artisti li figure figcaption .username{
+    font-size: small;
 }
