@@ -80,6 +80,16 @@ footer div {
     padding: 0;
 }
 
+.error500{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.error500 h2{
+    padding: 0;
+}
+
 .artshow_list {
     display: block;
     width: 100%;
