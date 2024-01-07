@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Login | Boseum</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png" />
+        <meta name="keywords" content="TODO" />
+        <meta name="description" content="TODO" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../assets/css/style.css" media="screen" />
+        <link
+            rel="stylesheet"
+            href="../assets/css/mini.css"
+            media="screen and (max-width:600px)" />
+        <!-- <link rel="stylesheet" href="stampa.css" media="print" /> -->
+    </head>
+    <body>
+        <header>
+            <nav aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
+            <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul class="nav-list">
+                        <li class="nav-list-item">
+                            <a href="index.html"><span lang="en">Home</span></a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="artisti.html">Artisti</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="opere.html">Opere</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="mostre.html">Mostre</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="accedi.html" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main id="content">
+            <section class="login_page">
+                <div class="login_container">
+                    <h2>Crea account</h2>
+                    <p>Inserisci i tuoi dati.</p>
+                    <p>
+                        Già registrato?
+                        <a href="login.html">Accedi qui</a>
+                    </p>
+                    <form action="" method="post">
+                        <div class="input_container">
+                            <div class="form_item">
+                                <label for="username">Username</label>
+                                <input
+                                    placeholder="Username"
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    value=""
+                                    required />
+                            </div>
+                            <div class="form_item">
+                                <label for="password">Password</label>
+                                <input
+                                    placeholder="Password"
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    value=""
+                                    required />
+                            </div>
+                            <div class="form_item">
+                                <label for="name">Nome</label>
+                                <input
+                                    placeholder="Nome"
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value="" />
+                            </div>
+                            <div class="form_item">
+                                <label for="lastname">Cognome</label>
+                                <input
+                                    placeholder="Cognome"
+                                    type="text"
+                                    id="lastname"
+                                    name="lastname"
+                                    value="" />
+                            </div>
+                            <div class="form_item">
+                                <label for="birthdate">Data di nascita</label>
+                                <input
+                                    type="date"
+                                    id="birthdate"
+                                    name="birthdate"
+                                    value=""
+                                    min="1900-01-01" />
+                            </div>
+                            <div class="form_item">
+                                <label for="birthplace">Luogo di nascita</label>
+                                <input
+                                    placeholder="Luogo di nascita"
+                                    type="text"
+                                    id="birthplace"
+                                    name="birthplace"
+                                    value="" />
+                            </div>
+                        </div>
+                        <div class="form_button">
+                            <button type="submit" class="btn-primary">
+                                Registrati
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div id="infofoot">
+                <p>Dove il sapere incontra l'arte</p>
+                <ul id="listinfofoot">
+                    <li>
+                        Vieni a trovarci in
+                        <a
+                            href="https://maps.app.goo.gl/iicWxkvzbn2m2wsUA"
+                            target="_blank"
+                            >via VIII Febbraio, <abbr title="Numero">n</abbr>.
+                            2, 35122 Padova</a
+                        >
+                    </li>
+                    <li>
+                        <abbr title="Telefono">Tel</abbr>:
+                        <a href="tel:+390498273939">+39 0498273939</a>
+                    </li>
+                    <li>
+                        <span lang="en">E-mail</span>:
+                        <a href="mailto:tour@unipd.it"
+                            ><span lang="en">tour</span>&commat;unipd.it</a
+                        >
+                    </li>
+                    <li>
+                        Seguici su
+                        <a
+                            href="https://www.instagram.com/visitunipd/?hl=it"
+                            target="_blank"
+                            lang="en"
+                            >Instagram</a
+                        >,
+                        <a
+                            href="https://it-it.facebook.com/visitunipd/"
+                            target="_blank"
+                            lang="en"
+                            >Facebook</a
+                        >
+                        e
+                        <a
+                            href="https://vm.tiktok.com/ZMe791AJx/"
+                            target="_blank"
+                            lang="en"
+                            >TikTok</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div id="logofoot">
+                <img
+                    src="../assets/images/logomini.svg"
+                    alt=""
+                    width="100"
+                    height="100" />
+            </div>
+            <div id="orariofoot">
+                <p id="descrOrariTable" class="navigationHelp">
+                    La tabella contiene gli orari di apertura del museo, aperto
+                    dal martedì alla domenica e chiuso il lunedì
+                </p>
+                <table aria-describedby="descrOrariTable">
+                    <caption>
+                        Orari di apertura
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giorno</th>
+                            <th scope="col">Mattino</th>
+                            <th scope="col">Pomeriggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">Chiuso</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">da Martedì a Venerdì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>15:00</time>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sabato e Domenica</th>
+                            <td data-title="mattino">
+                                <time>08:00</time>-<time>11:00</time>
+                            </td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>18:00</time>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+        <script src="../js/scripts.js"></script>
+        <script>
+            document.getElementById('birthdate').max =
+                new Date().toLocaleDateString('fr-ca')
+        </script>
+    </body>
+</html>
