@@ -760,66 +760,72 @@ footer a:visited{
     font-size: small;
 }
 
-.gallery_item {
+.artist_results_section {
+    max-width: min(85vw, 1440px);
+    grid-column-gap: 15px;
+    column-gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin: 30px auto;
+    grid-row-gap: 15px;
+    row-gap: 15px;
+}
+
+.artist_gallery_item {
     margin: 0;
+    padding: 15px 0 20px;
+    border-radius: 5px;
+    box-shadow: 6px 6px 10px 0 rgba(0, 0, 6, 0.1), 0 0 4px 0 rgba(0, 0, 6, 0.1);
 }
 
 .artist_gallery_item_image {
     display: flex;
     position: relative;
     align-items: center;
-    background-color: var(--colorLightGrey);
+    margin: auto;
     color: var(--colorDarkGrey);
     height: 250px;
-    min-height: 250px;
-    min-width: 250px;
+    width: 250px;
     line-height: 0;
-    margin-bottom: 10px;
-}
-.artist_gallery_item_image:hover {
-    background-color: var(--colorMediumGrey);
-    box-shadow: inset 1px 0 0 0 var(--colorMediumGrey);
+    clip-path: circle(50%);
+    box-sizing: border-box;
+    border-radius: 50%;
 }
 
 .artist_gallery_item_image a {
     height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
     width: 100%;
     z-index: 1;
     overflow: hidden;
     display: flex;
     justify-content: center;
 }
-.artist_gallery_item_image a:focus-visible {
-    background-color: unset;
-    outline: none;
+
+.artist_gallery_item_info {
+    word-wrap: break-word;
 }
 
 .artist_gallery_item_title{
     font-size: 1.2em;
-    margin: 5px 0 0 10px;
+    margin: 5px 10px 0 10px;
 }
 .artist_gallery_item_title a{
     border:none;
     text-decoration: none;
     color: black;
 }
-.artist_gallery_item figcaption a:focus,
-.artist_gallery_item figcaption a:hover {
-    text-decoration: underline;
-}
 
 .artist_gallery_item_image img {
-    height: auto;
-    margin: auto;
-    max-height: 100%;
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    transition: all .2s ease-out;
     border-radius: 50%;
-    width: auto;
-    margin: 10px;
 }
+
+.artist_gallery_item_image img:hover {
+    transform: scale(1.06);
+}
+
 
 
 
