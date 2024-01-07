@@ -378,6 +378,35 @@ footer a:visited{
     color: var(--footerBgColor);
 }
 
+.error500{
+    width: min(85vw, 1440px);
+    margin: auto;
+    text-align: center;
+}
+
+.error500 h2{
+    background-image: url("../images/500.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 10em;
+    line-height: 2em;
+    text-indent: -999em;
+    padding: 0.5em 1em 0em;
+    margin: 0;
+}
+
+.error500 p{
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 1em 2em 1em;
+}
+
+.error500 p+p{
+    font-size: 1em;
+    font-weight: normal;
+    padding: 0em 2em 1em;
+}
 
 
 
