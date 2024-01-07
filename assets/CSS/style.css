@@ -60,32 +60,30 @@ header {
     padding: 1em;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: MetSerif,Georgia,serif;
-    line-height: normal;
-    font-weight: 500;
-}
-
 header h1{
     text-indent: -999em;
     background-image: url("../images/logo.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    width: 100%;
     font-size: 3.5em;
     line-height: 1.5em;
 }
 
 #menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--headerBgColor);
+    padding-top: 1em;
     color: var(--headerTxtColor);
-    padding-bottom: 20px;
+}
+
+#menu nav ul {
+    display: flex;
+    list-style-type: none;
+    text-align: center;
 }
 
 #menu a:link {
@@ -96,18 +94,36 @@ header h1{
     color: var(--navVisitedLinkColor);
 }
 
-#menu ul {
-    margin: auto;
-    padding: 0em 3em;
-    list-style-type: none;
-    text-align: center;
+#menu ul li{
+    padding: 0 1em;
+    font-size: 1.1em;
+    overflow: hidden;
 }
 
-#menu ul li{
-    display: inline-block;
-    width: 5em;
-    margin: 0 0.5em;
+#menu ul li a{
     font-size: 1.1em;
+    overflow: hidden;
+}
+
+#menu input,#menu label {
+    display: none;
+}
+
+#menu .checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: MetSerif,Georgia,serif;
+    line-height: normal;
+    font-weight: 500;
 }
 
 #breadcrumb {
@@ -156,6 +172,10 @@ header h1{
     color: rgb(255,255,255);
     font-size: 2.5em;
     text-align: center;
+}
+
+#bannermain h2{
+    margin: 0 20px;
 }
 
 .cardmain {
@@ -267,6 +287,10 @@ header h1{
 
 .partners_cards li a:link{
     filter: opacity(100%);
+}
+
+.partners_cards li a img {
+    width: 100%;
 }
 
 .card_header{
@@ -523,25 +547,6 @@ footer a:visited{
 
 .download_text,.enlarge_text{
     display:none
-}
-
-.enlarged-overlay {
-    text-align: center;
-    background: rgba(0,0,0,.5);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-    cursor: zoom-out;
-    overflow: hidden;
-}
-
-.enlarged-overlay img {
-    width: 80%;
-    height: auto;
-    margin: auto;
 }
 
 .the_artwork{
@@ -1032,6 +1037,10 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     margin-bottom: 10px;
 }
 
+.select_filter_presence label, .select_filter_presence input{
+    cursor: pointer;
+}
+
 .select_filter_list {
     display: flex;
     flex-wrap: wrap;
@@ -1142,7 +1151,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     display: flex;
 }
 
-#artshow_maininfo{
+#artshow_maintext{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1152,10 +1161,9 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     box-sizing: border-box;
 }
 
-.artshow_mainimage{
-    width: 50%;
-    height: auto;
-    object-fit: cover;
+.artshow_maintext_info {
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-grey-600);
 }
 
 .artshow_info_date{
@@ -1163,9 +1171,28 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 }
 
 #artshow_name{
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 #artshow_maindescr{
     padding: 2em 0em 0em;
+}
+
+#artshow_prenotation {
+    margin-top: 2em;
+    text-align: center;
+}
+
+#artshow_prenotation h2 {
+    margin-bottom: 0.5em;
+}
+
+#artshow_prenotation button {
+    margin-top: 1em;
+}
+
+.artshow_mainimage{
+    width: 50%;
+    height: auto;
+    object-fit: cover;
 }

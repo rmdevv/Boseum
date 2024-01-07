@@ -18,26 +18,46 @@
         <!-- <link rel="stylesheet" href="stampa.css" media="print" /> -->
     </head>
     <body>
-        <!-- TODO: header - aiuti alla navigazione - navbar  -->
         <header>
             <nav aria-label="Aiuti alla navigazione">
-                <a class="navigationHelp" href="#contenuto">Vai al contenuto</a>
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
             <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul class="nav-list">
+                        <li class="nav-list-item">
+                            <a href="index.html"><span lang="en">Home</span></a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="artisti.html">Artisti</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="opere.html">Opere</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="mostre.html">Mostre</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="accedi.html" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </header>
-        <nav id="menu">
-            <ul>
-                <li>
-                    <span lang="en"><a href="index.html">Home</a></span>
-                </li>
-                <li><a href="artisti.html">Artisti</a></li>
-                <li><a href="opere.html">Opere</a></li>
-                <li><a href="mostre.html">Mostre</a></li>
-                <li>
-                    <a href="accedi.html" id="accountnav" lang="en">Account</a>
-                </li>
-            </ul>
-        </nav>
         <nav id="breadcrumb">
             <span>Ti trovi in:</span>
             <ul class="breadcrumb">
@@ -54,38 +74,462 @@
         </nav>
         <main id="content">
             <div id="artshow_layout">
-                <div id="artshow_maininfo">
-                    <h2 id="artshow_name" class="elegant_font">
-                        Nome della mostra
-                    </h2>
-                    <p class="artshow_info_date">
-                        Dal
-                        <time datetime="2024-03-08"> 8 Marzo 2024 </time>
-                        al
-                        <time datetime="2024-03-10"> 10 Marzo 2024 </time>
-                    </p>
-                    <p id="artshow_maindescr">
-                        In occasione dell'8 Marzo, la mostra 'Donne in Arte'
-                        rende omaggio alla forza, alla bellezza e all'arte delle
-                        donne. Gli studenti artisti esplorano le molteplici
-                        sfaccettature dell'esperienza femminile attraverso
-                        dipinti, sculture e installazioni che riflettono la
-                        diversità, la resilienza e la creatività delle donne di
-                        ieri, oggi e domani. Un'occasione per celebrare e
-                        onorare il contributo unico delle donne nel mondo
-                        dell'arte e nella società.
-                    </p>
-                    <div class="return_top_button">
-                        <button id="back_to_top" class="button_reverse">
+                <div id="artshow_maintext">
+                    <div class="artshow_maintext_info">
+                        <h2 id="artshow_name">Nome della mostra</h2>
+                        <p class="artshow_info_date">
+                            Dal
+                            <time datetime="2024-03-08"> 8 Marzo 2024 </time>
+                            al
+                            <time datetime="2024-03-10"> 10 Marzo 2024 </time>
+                        </p>
+                        <p id="artshow_maindescr">
+                            In occasione dell'8 Marzo, la mostra 'Donne in Arte'
+                            rende omaggio alla forza, alla bellezza e all'arte
+                            delle donne. Gli studenti artisti esplorano le
+                            molteplici sfaccettature dell'esperienza femminile
+                            attraverso dipinti, sculture e installazioni che
+                            riflettono la diversità, la resilienza e la
+                            creatività delle donne di ieri, oggi e domani.
+                            Un'occasione per celebrare e onorare il contributo
+                            unico delle donne nel mondo dell'arte e nella
+                            società.
+                        </p>
+                    </div>
+                    <form id="artshow_prenotation">
+                        <h2>Partecipa alla mostra</h2>
+                        <p>
+                            Unisciti all'esposizione con pochi click, esponi le
+                            tue opere quando vuoi durante i giorni di apertura.
+                        </p>
+                        <button class="button_reverse" name="partecipa" id="">
                             Partecipa
                         </button>
-                    </div>
+                        <!-- OPPURE -->
+                        <!-- <p>
+                            Hai effettuato la prenotazione il giorno 2023-11-20.
+                        </p>
+                        <button class="button_reverse" name="partecipa" id="">
+                            Annulla iscrizione
+                        </button> -->
+                    </form>
                 </div>
                 <img
                     src="../uploads/artshows/4.jpg"
                     class="artshow_mainimage"
                     alt="" />
             </div>
+            <section class="results_gallery">
+                <h2 id="top_gallery">Artisti partecipanti</h2>
+                <div class="artist_results_section" id="paginated_section">
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery_item">
+                        <div class="artist_gallery_item">
+                            <div class="artist_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/users/2.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artist_gallery_item_info">
+                                <div class="artist_gallery_item_title">
+                                    <p title="{title}" href="TODO:{id_operp}">
+                                        {title}
+                                    </p>
+                                </div>
+                                <div class="artist_mini_preview_info">
+                                    <a href="TODO: link_artista"
+                                        >mario.rossi24</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="pagination">
+                        <button
+                            id="prev_pag_button"
+                            aria-label="Pagina precedente"
+                            class="pagination_controls"
+                            disabled>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="1em"
+                                width="1em"
+                                viewBox="0 0 320 512">
+                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    fill="currentColor"
+                                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </button>
+                        <div id="pagination_numbers"></div>
+                        <button
+                            id="next_pag_button"
+                            aria-label="Prossima pagina"
+                            class="pagination_controls"
+                            disabled>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="1em"
+                                width="1em"
+                                viewBox="0 0 320 512">
+                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    fill="currentColor"
+                                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="return_top_button">
+                        <button id="back_to_top" class="button_reverse">
+                            Ritorna sopra
+                        </button>
+                    </div>
+                </div>
+            </section>
         </main>
         <footer>
             <div id="infofoot">

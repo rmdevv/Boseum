@@ -23,23 +23,44 @@
     <body>
         <header>
             <nav aria-label="Aiuti alla navigazione">
-                <a class="navigationHelp" href="#contenuto">Vai al contenuto</a>
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
             <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul class="nav-list">
+                        <li class="nav-list-item">
+                            <a href="index.html"><span lang="en">Home</span></a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="artisti.html">Artisti</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="opere.html">Opere</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <span>Mostre</span>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="accedi.html" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </header>
-        <nav id="menu">
-            <ul>
-                <li>
-                    <a href="index.html"><span lang="en">Home</span></a>
-                </li>
-                <li><a href="artisti.html">Artisti</a></li>
-                <li><a href="opere.html">Opere</a></li>
-                <li>Mostre</li>
-                <li>
-                    <a href="profilo.html" id="accountnav" lang="en">Account</a>
-                </li>
-            </ul>
-        </nav>
         <nav id="breadcrumb">
             <span>Ti trovi in:</span>
             <ul class="breadcrumb">

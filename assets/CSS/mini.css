@@ -2,14 +2,102 @@
     position: absolute;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 header h1{
-    text-indent: -999em;
     background-image: url("../images/logomini.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-size: 3.5em;
-    line-height: 1.5em;
+    font-size: 3em;
+}
+
+#menu {
+    width: max-content;
+    color: white;
+    transition: transform 0.5s ease;
+    z-index: 3;
+}    
+
+#menu input,#menu label {
+    display: block;
+}
+
+#menu nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    padding: 5em 0 3em 0;
+    background: var(--headerBgColor);
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+}
+
+#menu nav ul {
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+#menu nav ul li {
+    padding-bottom: 15px;
+}
+
+.hamburger {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.5s ease;
+    z-index: 3;
+    cursor: pointer;
+    padding-top: 5px;
+    position: absolute;
+    right: 1em;
+}
+
+.hamburger .slice {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: all 0.5s ease;
+}
+
+.hamburger .slice:not(:first-child) {
+    margin-top: 10px;
+}
+
+#menu .checkbox:focus-visible ~ .hamburger {
+    outline: auto;
+}
+
+#menu nav a {
+    visibility: hidden;
+}
+
+#menu .checkbox:checked ~ nav a {
+    visibility: visible;
+}
+
+#menu .checkbox:checked ~ nav {
+    transform: translateX(0%);
+}
+
+#menu .checkbox:checked ~ .hamburger {
+    position: fixed;
+}
+
+#menu .checkbox:checked ~ .hamburger .slice:nth-child(1) {
+    transform: translateY(12px) rotate(45deg);
+}
+
+#menu .checkbox:checked ~ .hamburger .slice:nth-child(2) {
+    opacity: 0;
+}
+
+#menu .checkbox:checked ~ .hamburger .slice:nth-child(3) {
+    transform: translateY(-12px) rotate(-45deg);
 }
 
 .cardmain {

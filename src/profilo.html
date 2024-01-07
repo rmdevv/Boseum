@@ -15,16 +15,67 @@
             content="Sito ufficiale del Boseum, museo d'arte universitario con sede nel Palazzo Bo a Padova" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
-        rel="stylesheet"
-        href="../assets/css/styleprofilo.css"
-        media="screen" />
+            rel="stylesheet"
+            href="../assets/css/styleprofilo.css"
+            media="screen" />
         <link
             rel="stylesheet"
             href="../assets/css/miniprofilo.css"
             media="screen and (max-width:600px)" />
     </head>
+    <header>
+        <nav aria-label="Aiuti alla navigazione">
+            <a class="navigationHelp" href="#content">Vai al contenuto</a>
+        </nav>
+        <h1 lang="en">Boseum</h1>
+
+        <div id="menu">
+            <input
+                class="checkbox"
+                type="checkbox"
+                id="hamburger-toggle"
+                aria-label="Toggle Navigation" />
+            <label class="hamburger" for="hamburger-toggle">
+                <span class="slice"></span>
+                <span class="slice"></span>
+                <span class="slice"></span>
+            </label>
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-list-item">
+                        <a href="index.html"><span lang="en">Home</span></a>
+                    </li>
+                    <li class="nav-list-item">
+                        <a href="artisti.html">Artisti</a>
+                    </li>
+                    <li class="nav-list-item">
+                        <a href="opere.html">Opere</a>
+                    </li>
+                    <li class="nav-list-item">
+                        <a href="mostre.html">Mostre</a>
+                    </li>
+                    <li class="nav-list-item">
+                        <a href="accedi.html" id="accountnav" lang="en"
+                            >Account</a
+                        >
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../src/index.html">Home</a> / <a href="../src/artisti.html">Artisti</a> / Profilo Artista</p>
+        <span>Ti trovi in:</span>
+        <ul class="breadcrumb">
+            <li>
+                <a href="index.html"><span lang="en">Home</span></a>
+            </li>
+            <li>
+                <a href="opere.html">Artisti</a>
+            </li>
+            <li>
+                <span>{Username Artista}</span>
+            </li>
+        </ul>
     </nav>
     <body>
         <main id="contenuto">
@@ -36,16 +87,16 @@
                 <a href="modificaprofilo.php" id="linkModifica">Modifica</a>
                 <h1>Profilo artista</h1>
                 <dl class="datiProfilo">
-                        <dt>Nome</dt>
-                        <dd>Mario</dd>
-                        <dt>Cognome</dt>
-                        <dd>Rossi</dd>
-                        <dt>Data di nascita</dt>
-                        <dd>
-                            <time datetime="2001-12-11">11 Dicembre 2001</time>
-                        </dd>
-                        <dt>luogo di nascita</dt>
-                        <dd>Francavilla al mare</dd>
+                    <dt>Nome</dt>
+                    <dd>Mario</dd>
+                    <dt>Cognome</dt>
+                    <dd>Rossi</dd>
+                    <dt>Data di nascita</dt>
+                    <dd>
+                        <time datetime="2001-12-11">11 Dicembre 2001</time>
+                    </dd>
+                    <dt>luogo di nascita</dt>
+                    <dd>Francavilla al mare</dd>
                 </dl>
                 <article id="biografia">
                     <h2>Biografia</h2>
@@ -144,8 +195,8 @@
                                     <dt>Giorno inizio mostra</dt>
                                     <dd>
                                         <time datetime="2024-02-15"
-                                            >Mercoledi 15 Febbraio
-                                            2024</time>
+                                            >Mercoledi 15 Febbraio 2024</time
+                                        >
                                     </dd>
                                     <dt>Giorno fine mostra</dt>
                                     <dd>
@@ -170,14 +221,17 @@
                                 <dl class="date mostra">
                                     <dt>Giorno inizio mostra</dt>
                                     <dd>
-                                        <time datetime="2024-03-08">Mercoledì 8 Marzo 2024</time
+                                        <time datetime="2024-03-08"
+                                            >Mercoledì 8 Marzo 2024</time
                                         >
                                     </dd>
                                     <dt>Giorno fine mostra</dt>
                                     <dd>
-                                        <time datetime="2024-03-10">Venerdì 10 Marzo 2024</time>
+                                        <time datetime="2024-03-10"
+                                            >Venerdì 10 Marzo 2024</time
+                                        >
                                     </dd>
-                            </dl>
+                                </dl>
                                 <p>
                                     Lorem ipsum dolor sit amet consectetur
                                     adipisicing elit. Provident, sint quam

@@ -18,24 +18,46 @@
         <!-- <link rel="stylesheet" href="stampa.css" media="print" /> -->
     </head>
     <body>
-        <!-- TODO: header - aiuti alla navigazione - navbar  -->
         <header>
             <nav aria-label="Aiuti alla navigazione">
-                <a class="navigationHelp" href="#contenuto">Vai al contenuto</a>
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
             <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul class="nav-list">
+                        <li class="nav-list-item">
+                            <a href="index.html"><span lang="en">Home</span></a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="artisti.html">Artisti</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="opere.html">Opere</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="mostre.html">Mostre</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="accedi.html" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </header>
-        <nav id="menu">
-            <ul>
-                <li><span lang="en">Home</span></li>
-                <li><a href="artisti.html">Artisti</a></li>
-                <li><a href="opere.html">Opere</a></li>
-                <li><a href="mostre.html">Mostre</a></li>
-                <li>
-                    <a href="accedi.html" id="accountnav" lang="en">Account</a>
-                </li>
-            </ul>
-        </nav>
         <nav id="breadcrumb">
             <span>Ti trovi in:</span>
             <ul class="breadcrumb">
@@ -43,10 +65,10 @@
                     <a href="index.html"><span lang="en">Home</span></a>
                 </li>
                 <li>
-                    <a href="ricerca_opere.html">Opere</a>
+                    <a href="opere.html">Opere</a>
                 </li>
                 <li>
-                    <span>Titolo opera superlunghissimo lungo da break</span>
+                    <span>{Titolo opera}</span>
                 </li>
             </ul>
         </nav>
@@ -54,7 +76,7 @@
             <section id="artwork_section" class="artwork_section">
                 <div class="artwork_info">
                     <h2 id="artwork_title" class="elegant_font artwork_title">
-                        Titolo opera superlunghissimo lungo da break
+                        Titolo opera
                     </h2>
 
                     <div class="artist_mini_preview">
