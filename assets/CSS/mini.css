@@ -178,6 +178,11 @@ footer div {
     padding: 0;
 }
 
+.gallery_item {
+    margin: 0;
+    max-width: unset;
+}
+
 .artshow_list {
     display: block;
     width: 100%;

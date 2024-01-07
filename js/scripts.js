@@ -47,7 +47,7 @@ const items = paginatedList.querySelectorAll('.gallery_item')
 const prevButton = document.getElementById('prev_pag_button')
 const nextButton = document.getElementById('next_pag_button')
 
-const paginationLimit = 10
+const paginationLimit = 12
 const pageCount = Math.ceil(items.length / paginationLimit)
 let currentPage = 1
 
@@ -145,9 +145,28 @@ window.addEventListener('load', () => {
         }
     })
 
-    const back_to_top_button = document.getElementById('back_to_top')
+    const backToTopButton = document.getElementById('back_to_top')
 
-    back_to_top_button.addEventListener('click', () => {
+    backToTopButton.addEventListener('click', () => {
         backToTop()
+    })
+
+    const startDate = document.getElementById('start_date')
+    const endDate = document.getElementById('end_date')
+
+    today = new Date()
+    startDate.value = today.toLocaleDateString('fr-ca')
+    endDate.min = startDate.value
+    endDate.value = today.toLocaleDateString('fr-ca')
+    startDate.max = endDate.value
+
+    startDate.addEventListener('input', () => {
+        var min_limit = startDate.value
+        endDate.min = min_limit
+    })
+
+    endDate.addEventListener('input', () => {
+        var max_limit = endDate.value
+        startDate.max = max_limit
     })
 })
