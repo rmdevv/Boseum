@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{name} | Boseum</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png" />
+        <meta name="keywords" content="TODO" />
+        <meta name="description" content="TODO" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../assets/css/style.css" media="screen" />
+        <link
+            rel="stylesheet"
+            href="../assets/css/mini.css"
+            media="screen and (max-width:600px)" />
+        <!-- <link rel="stylesheet" href="stampa.css" media="print" /> -->
+    </head>
+    <body>
+        <!-- TODO: header - aiuti alla navigazione - navbar  -->
+        <header>
+            <nav aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#contenuto">Vai al contenuto</a>
+            </nav>
+            <h1 lang="en">Boseum</h1>
+        </header>
+        <nav id="menu">
+            <ul>
+                <li>
+                    <span lang="en"><a href="index.html">Home</a></span>
+                </li>
+                <li><a href="artisti.html">Artisti</a></li>
+                <li><a href="opere.html">Opere</a></li>
+                <li><a href="mostre.html">Mostre</a></li>
+                <li>
+                    <a href="accedi.html" id="accountnav" lang="en">Account</a>
+                </li>
+            </ul>
+        </nav>
+        <nav id="breadcrumb">
+            <span>Ti trovi in:</span>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html"><span lang="en">Home</span></a>
+                </li>
+                <li>
+                    <a href="mostre.html">Mostre</a>
+                </li>
+                <li>
+                    <span>Nome della mostra</span>
+                </li>
+            </ul>
+        </nav>
+        <main id="content">
+            <div id="artshow_layout">
+                <div id="artshow_maininfo">
+                    <h2 id="artshow_name" class="elegant_font">
+                        Nome della mostra
+                    </h2>
+                    <p class="artshow_info_date">
+                        Dal
+                        <time datetime="2024-03-08"> 8 Marzo 2024 </time>
+                        al
+                        <time datetime="2024-03-10"> 10 Marzo 2024 </time>
+                    </p>
+                    <p id="artshow_maindescr">
+                        In occasione dell'8 Marzo, la mostra 'Donne in Arte'
+                        rende omaggio alla forza, alla bellezza e all'arte delle
+                        donne. Gli studenti artisti esplorano le molteplici
+                        sfaccettature dell'esperienza femminile attraverso
+                        dipinti, sculture e installazioni che riflettono la
+                        diversità, la resilienza e la creatività delle donne di
+                        ieri, oggi e domani. Un'occasione per celebrare e
+                        onorare il contributo unico delle donne nel mondo
+                        dell'arte e nella società.
+                    </p>
+                    <div class="return_top_button">
+                        <button id="back_to_top" class="button_reverse">
+                            Partecipa
+                        </button>
+                    </div>
+                </div>
+                <img
+                    src="../uploads/artshows/4.jpg"
+                    class="artshow_mainimage"
+                    alt="" />
+            </div>
+        </main>
+        <footer>
+            <div id="infofoot">
+                <p>Dove il sapere incontra l'arte</p>
+                <ul id="listinfofoot">
+                    <li>
+                        Vieni a trovarci in
+                        <a
+                            href="https://maps.app.goo.gl/iicWxkvzbn2m2wsUA"
+                            target="_blank"
+                            >via VIII Febbraio, <abbr title="Numero">n</abbr>.
+                            2, 35122 Padova</a
+                        >
+                    </li>
+                    <li>
+                        <abbr title="Telefono">Tel</abbr>:
+                        <a href="tel:+390498273939">+39 0498273939</a>
+                    </li>
+                    <li>
+                        <span lang="en">E-mail</span>:
+                        <a href="mailto:tour@unipd.it"
+                            ><span lang="en">tour</span>&commat;unipd.it</a
+                        >
+                    </li>
+                    <li>
+                        Seguici su
+                        <a
+                            href="https://www.instagram.com/visitunipd/?hl=it"
+                            target="_blank"
+                            lang="en"
+                            >Instagram</a
+                        >,
+                        <a
+                            href="https://it-it.facebook.com/visitunipd/"
+                            target="_blank"
+                            lang="en"
+                            >Facebook</a
+                        >
+                        e
+                        <a
+                            href="https://vm.tiktok.com/ZMe791AJx/"
+                            target="_blank"
+                            lang="en"
+                            >TikTok</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div id="logofoot">
+                <img
+                    src="../assets/images/logomini.svg"
+                    alt=""
+                    width="100px"
+                    height="100px" />
+            </div>
+            <div id="orariofoot">
+                <p id="descrOrariTable" class="navigationHelp">
+                    La tabella contiene gli orari di apertura del museo, aperto
+                    dal martedì alla domenica e chiuso il lunedì
+                </p>
+                <table aria-describedby="descrOrariTable">
+                    <caption>
+                        Orari di apertura
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giorno</th>
+                            <th scope="col">Mattino</th>
+                            <th scope="col">Pomeriggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">Chiuso</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">da Martedì a Venerdì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>15:00</time>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sabato e Domenica</th>
+                            <td data-title="mattino">
+                                <time>08:00</time>-<time>11:00</time>
+                            </td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>18:00</time>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+        <script src="../js/scripts.js"></script>
+    </body>
+</html>

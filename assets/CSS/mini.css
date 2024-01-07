@@ -62,12 +62,6 @@ header h1{
     object-fit: cover;
 }
 
-.related_artwork{
-    min-width: 250px;
-    width:min-content;
-    margin: auto;
-}
-
 footer{
     flex-wrap: wrap-reverse;
 }
@@ -91,3 +85,37 @@ footer div {
     width: 100%;
     margin: 4em auto;
 }
+
+#artshow_layout{
+    flex-direction: column;
+}
+
+.artshow_mainimage{
+    width: 100%;
+    object-fit: cover;
+}
+
+#artshow_maininfo{
+    width: 100%;
+    padding: 2em;
+}
+
+.select_filter_list {
+    flex-direction: column;
+}
+
+.select_filter_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+}
+.select_filter_container label {
+    margin: 0;
+}
+
+.filters_labels {
+    width: 100%;
+}
+

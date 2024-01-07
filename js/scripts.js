@@ -43,7 +43,7 @@ if (artworkImage && additionalImagesCarousel && imageSlideElements) {
 
 const paginationNumbers = document.getElementById('pagination_numbers')
 const paginatedList = document.getElementById('paginated_section')
-const items = paginatedList.querySelectorAll('figure')
+const items = paginatedList.querySelectorAll('.gallery_item')
 const prevButton = document.getElementById('prev_pag_button')
 const nextButton = document.getElementById('next_pag_button')
 
@@ -104,7 +104,7 @@ const getPaginationNumbers = () => {
     }
 }
 
-const setCurrentPage = (pageNum, scroll) => {
+const setCurrentPage = (pageNum, scroll = true) => {
     currentPage = pageNum
 
     handleActivePageNumber()
