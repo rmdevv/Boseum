@@ -1393,3 +1393,127 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     border-radius: 3px;
     padding: 0.8125rem 1rem;
 }
+
+
+/*
+--------------------------
+PROFILO
+--------------------------
+*/
+
+#opere ul {
+    list-style: none;
+    margin: 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 5vh;
+    column-gap: 5vw;
+}
+
+#opere img{
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+#opere li{
+    flex-basis: 350px;
+    flex-grow: 0;
+}
+
+#opere ul {
+    list-style: none;
+    margin: 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 5vh;
+    column-gap: 5vw;
+}
+
+#opere img{
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+#opere li{
+    flex-basis: 350px;
+    flex-grow: 0;
+}
+
+#immagineProfilo{
+    max-width: min(470px, 30%);
+    min-width: 100px;
+    border-radius: 50%;
+    float:left;
+    padding: 2em 2em 0.5em 2em;
+}
+
+.datiProfilo{
+    max-width: 40vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    row-gap: 0.8em;
+    align-items: center;
+}
+
+.datiProfilo>dt{
+    font-weight: bold;
+    padding-bottom: .3em;
+}
+
+#linkModifica{
+    float: right;
+    background-color: var(--color-grey-700);
+    color: var(--color-white);
+    padding: 3px 5px;
+    text-decoration: none;
+    margin: 0.5em 1em 0.5em 0.3em;
+}
+
+#stiliArtistici ul{
+    text-align: center;
+    margin: 1em auto;
+}
+
+#stiliArtistici ul li{
+    font-size: 20px;
+    display: inline-block;
+    padding: 0.5em 1em 0em 1em;
+    background-color: var(--tagBgColor);
+    color: var(--headerTxtColor);
+    border-radius: 1.25em;
+    height: 2em;
+    margin: 0.25em 0.5em
+}
+
+#mostreartista{
+    text-align: center;
+}
+
+article{
+    padding: 1em;
+}
+
+article>h3{
+    font-weight: bold;
+    padding-bottom: 0.5em;
+}
+
+#contenuto{
+    width: 90%;
+    margin: auto;
+    max-width: 2048px;
+}
+
+.profiloh2{
+    position: relative;
+    top: 0.3em;
+}
