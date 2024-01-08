@@ -183,6 +183,10 @@ footer div {
     max-width: unset;
 }
 
+.artshow_results_section {
+    grid-template-columns: 1fr;
+}
+
 .artshow_list {
     display: block;
     width: 100%;

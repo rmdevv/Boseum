@@ -1185,35 +1185,34 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     grid-column-gap: 15px;
     column-gap: 15px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     margin: 30px auto;
     grid-row-gap: 15px;
     row-gap: 15px;
 }
 
 .artshow_gallery_item {
+    display: flex;
+    align-items: center;
     margin: auto;
-    padding: 0 0 20px;
     border-radius: 5px;
     background-color: var(--imageBackground);
-    max-width: 400px;
+    max-width: 800px;
 }
 
 .artshow_gallery_item_image {
     display: flex;
     position: relative;
     align-items: center;
-    margin: auto;
     color: var(--colorDarkGrey);
-    height: 250px;
-    width: 250px;
+    height: 150px;
+    width: 40%;
     line-height: 0;
     box-sizing: border-box;
 }
 
 .artshow_gallery_item_image a {
     height: 100%;
-    width: 100%;
     z-index: 1;
     overflow: hidden;
     display: flex;
@@ -1221,13 +1220,15 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 }
 
 .artshow_gallery_item_info {
-    word-wrap: break-word;
+    word-break: break-word;
     margin: 0 10px;
+    text-align: center;
+    width: 100%;
 }
 
 .artshow_gallery_item_title{
     font-size: 1.2em;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 .artshow_gallery_item_title a{
     border:none;
@@ -1266,6 +1267,8 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     text-align: left;
     padding: 2em;
     box-sizing: border-box;
+    max-width: calc(min(800px, 100%));
+    margin: auto;
 }
 
 .artshow_maintext_info {
