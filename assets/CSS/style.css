@@ -1371,12 +1371,37 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     flex-wrap: wrap;
 }
 
-.form_item input {
+.form_item input, .form_item textarea {
     border-radius: 3px;
     padding: 0.8125rem 1rem;
     width: 100%;
     border: 1px solid var(--color-grey-600);
     box-sizing: border-box;
+    resize: none;
+}
+
+.form_item label{
+    font-weight: normal;
+}
+
+.login_container fieldset{
+    border-radius: 7px;
+    padding: 0rem 0.8125rem 0.8125rem;
+}
+
+.login_container fieldset:last-of-type{
+    padding-bottom: 0rem;
+}
+
+.login_container fieldset legend{
+    padding: 0rem 0.8125rem;
+    font-weight: bold;
+}
+
+.form_item p{
+    background-color: var(--colorMediumGrey);/*rgb(234, 174, 174);*/
+    padding: 0.25rem 0.75rem;
+    border-radius: 10px;
 }
 
 .form_button button {
