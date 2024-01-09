@@ -151,28 +151,49 @@ if (paginatedList) {
 }
 
 const startDate = document.getElementById('start_date')
+const startDateFuture = document.getElementById('start_date_future')
 const endDate = document.getElementById('end_date')
 
-if (startDate && endDate) {
+if ((startDate || startDateFuture) && endDate) {
     today = new Date()
-    startDate.value = today.toLocaleDateString('fr-ca')
-    endDate.min = startDate.value
-    endDate.value = today.toLocaleDateString('fr-ca')
-    startDate.max = endDate.value
 
-    startDate.addEventListener('input', () => {
-        var min_limit = startDate.value
-        endDate.min = min_limit
-    })
+    if (startDate) {
+        startDate.value = today.toLocaleDateString('fr-ca')
+        endDate.value = today.toLocaleDateString('fr-ca')
+        endDate.min = startDate.value
+        startDate.max = endDate.value
 
+        startDate.addEventListener('input', () => {
+            var min_limit = startDate.value
+            endDate.min = min_limit
+        })
+    }
+
+    if (startDateFuture) {
+        startDateFuture.value = today.toLocaleDateString('fr-ca')
+        endDate.value = today.toLocaleDateString('fr-ca')
+        endDate.min = startDateFuture.value
+        startDateFuture.min = today.toLocaleDateString('fr-ca')
+        startDateFuture.max = endDate.value
+
+        startDateFuture.addEventListener('input', () => {
+            var min_limit = startDateFuture.value
+            endDate.min = min_limit
+        })
+    }
     endDate.addEventListener('input', () => {
         var max_limit = endDate.value
-        startDate.max = max_limit
+        if (startDate) {
+            startDate.max = max_limit
+        }
+        if (startDateFuture) {
+            startDateFuture.max = max_limit
+        }
     })
 }
 
-const birthdate = document.getElementById('birthdate')
-birthdate && (birthdate.max = new Date().toLocaleDateString('fr-ca'))
+const pastDate = document.getElementById('birthdate')
+pastDate && (pastDate.max = new Date().toLocaleDateString('fr-ca'))
 
 const additionalImagesInput = document.getElementById('additional-images-input')
 if (additionalImagesInput) {
@@ -226,6 +247,27 @@ if (additionalImagesInput) {
 
         uploadInput.files = dt.files
     }
+}
+
+const mainImageInput = document.getElementById('main-image-input')
+if (mainImageInput) {
+    mainImageInput.addEventListener('change', (event) => {
+        const mainImageContainer = document.querySelector('#main-image-viewer')
+        mainImageContainer.innerHTML = ''
+
+        if (event.target.files) {
+            file = event.target.files[0]
+
+            const imgContainer = document.createElement('div')
+            imgContainer.className = 'uploaded_image'
+
+            const img = document.createElement('img')
+            img.src = URL.createObjectURL(file)
+
+            imgContainer.appendChild(img)
+            mainImageContainer.appendChild(imgContainer)
+        }
+    })
 }
 
 const profileImageInput = document.getElementById('profile-image-input')

@@ -2,7 +2,7 @@
 <html lang="it">
     <head>
         <meta charset="UTF-8" />
-        <title>Login | Boseum</title>
+        <title>Crea mostra | Boseum</title>
         <link
             rel="shortcut icon"
             type="image/png"
@@ -59,43 +59,85 @@
             </div>
         </header>
         <main id="content">
-            <section class="login_page">
-                <div class="login_container">
-                    <div class="login_modal">
-                        <h2>Accedi</h2>
-                        <p>Inserisci il tuo username e la password.</p>
-                        <p>
-                            Non sei registrato?
-                            <a href="signup.html">Registrati qui</a>
-                        </p>
-                        <form action="" method="post">
+            <section class="ins_mod_page">
+                <div class="ins_mod_container">
+                    <h2>Nuova mostra</h2>
+                    <p>
+                        Inserisci i dati della mostra. I campi obbligatori sono
+                        segnati con (*).
+                    </p>
+                    <form action="" method="post">
+                        <fieldset class="fieldset_item">
+                            <legend>Immagine della mostra</legend>
                             <div class="form_item">
-                                <label for="username"> Username </label>
+                                <label for="main-image-input"
+                                    >Immagine (*)</label
+                                >
                                 <input
-                                    placeholder="Username"
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    value=""
+                                    type="file"
+                                    id="main-image-input"
+                                    name="main_image"
+                                    accept="image/png, image/jpeg"
+                                    required />
+                                <div
+                                    class="images_viewer"
+                                    id="main-image-viewer"></div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fieldset_item">
+                            <legend>Informazioni della mostra</legend>
+                            <div class="form_item">
+                                <label for="title">Titolo (*)</label>
+                                <input
+                                    placeholder="Titolo della mostra"
+                                    id="title"
+                                    name="title"
                                     required />
                             </div>
                             <div class="form_item">
-                                <label for="password"> Password </label>
-                                <input
-                                    placeholder="Password"
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    value=""
-                                    required />
+                                <label for="description">Descrizione (*)</label>
+                                <textarea
+                                    placeholder="Descrizione della mostra"
+                                    spellcheck="true"
+                                    rows="3"
+                                    id="description"
+                                    name="description"
+                                    required></textarea>
                             </div>
-                            <div class="form_button">
-                                <button type="submit" class="btn-primary">
-                                    Accedi
-                                </button>
+                            <div class="input_container">
+                                <div class="form_item">
+                                    <label for="start_date_future"
+                                        >Data di inizio (*)</label
+                                    >
+                                    <input
+                                        type="date"
+                                        min="1900-01-01"
+                                        id="start_date_future"
+                                        name="start_date"
+                                        value=""
+                                        required />
+                                </div>
+                                <div class="form_item">
+                                    <label for="end_date"
+                                        >Data di fine (*)</label
+                                    >
+                                    <input
+                                        type="date"
+                                        min="1900-01-01"
+                                        id="end_date"
+                                        name="end_date"
+                                        value=""
+                                        required />
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                        </fieldset>
+
+                        <div class="form_button">
+                            <button type="submit" class="btn-primary">
+                                Aggiungi l'opera
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </section>
         </main>
@@ -195,5 +237,6 @@
                 </table>
             </div>
         </footer>
+        <script src="../js/scripts.js"></script>
     </body>
 </html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Crea opera | Boseum</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png" />
+        <meta name="keywords" content="TODO" />
+        <meta name="description" content="TODO" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
+        <link
+            rel="stylesheet"
+            href="../assets/CSS/mini.css"
+            media="screen and (max-width:600px)" />
+        <!-- <link rel="stylesheet" href="stampa.css" media="print" /> -->
+    </head>
+    <body>
+        <header>
+            <nav aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
+            <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="menu_checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul class="nav-list">
+                        <li class="nav-list-item">
+                            <a href="index.html"><span lang="en">Home</span></a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="artisti.html">Artisti</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="opere.html">Opere</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="mostre.html">Mostre</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="accedi.html" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main id="content">
+            <section class="ins_mod_page">
+                <div class="ins_mod_container">
+                    <h2>Nuova opera</h2>
+                    <p>
+                        Inserisci i dati dell'opera. I campi obbligatori sono
+                        segnati con (*).
+                    </p>
+                    <form action="" method="post">
+                        <fieldset class="fieldset_item">
+                            <legend>Immagini dell'opera</legend>
+                            <div class="input_container">
+                                <div class="form_item">
+                                    <label for="main-image-input"
+                                        >Immagine principale (*)</label
+                                    >
+                                    <input
+                                        type="file"
+                                        id="main-image-input"
+                                        name="main_image"
+                                        accept="image/png, image/jpeg"
+                                        required />
+                                    <div
+                                        class="images_viewer"
+                                        id="main-image-viewer"></div>
+                                </div>
+
+                                <div class="form_item">
+                                    <label for="additional-images-input"
+                                        >Immagini di dettaglio</label
+                                    >
+                                    <input
+                                        type="file"
+                                        id="additional-images-input"
+                                        name="additional_images"
+                                        accept="image/png, image/jpeg"
+                                        multiple />
+                                    <div
+                                        class="images_viewer"
+                                        id="additional-images-viewer"></div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fieldset_item">
+                            <legend>Informazioni dell'opera</legend>
+                            <div class="form_item">
+                                <p>
+                                    Per favorire un'esperienza inclusiva,
+                                    descrivi l'opera con dettagli chiari su
+                                    colori, forme, dimensioni, scena,
+                                    disposizioni e luci. Aggiungi emozioni e
+                                    descrivi le espressioni per arricchire
+                                    l'interpretazione. Grazie per contribuire a
+                                    rendere questa esperienza condivisa e
+                                    inclusiva!
+                                </p>
+                                <label for="description">Descrizione (*)</label>
+                                <textarea
+                                    placeholder="Descrizione dell'opera"
+                                    spellcheck="true"
+                                    rows="3"
+                                    id="description"
+                                    name="description"
+                                    required></textarea>
+                            </div>
+                            <div class="filters_labels form_item">
+                                <label for="labels_list"
+                                    >Etichette correlate all'opera:</label
+                                >
+                                <ul id="labels_list">
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="dipinto"
+                                            value="dipinto"
+                                            name="dipinto" />
+                                        <label for="dipinto">Dipinto</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="digitale"
+                                            value="digitale"
+                                            name="digitale" />
+                                        <label for="digitale">Digitale</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="realismo"
+                                            value="realismo"
+                                            name="realismo" />
+                                        <label for="realismo">Realismo</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="astrazione"
+                                            value="astrazione"
+                                            name="astrazione" />
+                                        <label for="astrazione"
+                                            >Astrazione</label
+                                        >
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="minimalismo"
+                                            value="minimalismo"
+                                            name="minimalismo" />
+                                        <label for="minimalismo"
+                                            >Minimalismo</label
+                                        >
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="sketch"
+                                            value="sketch"
+                                            name="sketch" />
+                                        <label for="sketch">Sketch</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="scultura"
+                                            value="scultura"
+                                            name="scultura" />
+                                        <label for="scultura">Scultura</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="marmo"
+                                            value="marmo"
+                                            name="marmo" />
+                                        <label for="marmo">Marmo</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="bronzo"
+                                            value="bronzo"
+                                            name="bronzo" />
+                                        <label for="bronzo">Bronzo</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="oggetto"
+                                            value="oggetto"
+                                            name="oggetto" />
+                                        <label for="oggetto">Oggetto</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="architettura"
+                                            value="architettura"
+                                            name="architettura" />
+                                        <label for="architettura"
+                                            >Architettura</label
+                                        >
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="paesaggio"
+                                            value="paesaggio"
+                                            name="paesaggio" />
+                                        <label for="paesaggio">Paesaggio</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="natura"
+                                            value="natura"
+                                            name="natura" />
+                                        <label for="natura">Natura</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="ritratto"
+                                            value="ritratto"
+                                            name="ritratto" />
+                                        <label for="ritratto">Ritratto</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="movimento"
+                                            value="movimento"
+                                            name="movimento" />
+                                        <label for="movimento">Movimento</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="bianco e nero"
+                                            value="bianco e nero"
+                                            name="bianco e nero" />
+                                        <label for="bianco e nero"
+                                            >Bianco e nero</label
+                                        >
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="sfumature"
+                                            value="sfumature"
+                                            name="sfumature" />
+                                        <label for="sfumature">Sfumature</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="mare"
+                                            value="mare"
+                                            name="mare" />
+                                        <label for="mare">Mare</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="notte"
+                                            value="notte"
+                                            name="notte" />
+                                        <label for="notte">Notte</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="inverno"
+                                            value="inverno"
+                                            name="inverno" />
+                                        <label for="inverno">Inverno</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            type="checkbox"
+                                            class="label_checkbox"
+                                            id="arte contemporanea"
+                                            value="arte contemporanea"
+                                            name="arte contemporanea" />
+                                        <label for="arte contemporanea"
+                                            >Arte contemporanea</label
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fieldset_item">
+                            <legend>Dati dell'opera</legend>
+                            <div class="input_container">
+                                <div class="form_item">
+                                    <label for="start_date"
+                                        >Data di inizio</label
+                                    >
+                                    <input
+                                        type="date"
+                                        min="1900-01-01"
+                                        id="start_date"
+                                        name="start_date"
+                                        value="" />
+                                </div>
+                                <div class="form_item">
+                                    <label for="end_date">Data di fine</label>
+                                    <input
+                                        type="date"
+                                        min="1900-01-01"
+                                        id="end_date"
+                                        name="end_date"
+                                        value="" />
+                                </div>
+                                <div class="form_item">
+                                    <label for="height">Altezza (cm)</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        max="300"
+                                        id="height"
+                                        name="height"
+                                        value="" />
+                                </div>
+                                <div class="form_item">
+                                    <label for="width">Larghezza (cm)</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        max="300"
+                                        id="width"
+                                        name="width"
+                                        value="" />
+                                </div>
+                                <div class="form_item">
+                                    <label for="depth">Profondità (cm)</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        max="300"
+                                        id="depth"
+                                        name="depth"
+                                        value="" />
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <div class="form_button">
+                            <button type="submit" class="btn-primary">
+                                Aggiungi l'opera
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div id="infofoot">
+                <p>Dove il sapere incontra l'arte</p>
+                <ul id="listinfofoot">
+                    <li>
+                        Vieni a trovarci in
+                        <a
+                            href="https://maps.app.goo.gl/iicWxkvzbn2m2wsUA"
+                            target="_blank"
+                            >via VIII Febbraio, <abbr title="Numero">n</abbr>.
+                            2, 35122 Padova</a
+                        >
+                    </li>
+                    <li>
+                        <abbr title="Telefono">Tel</abbr>:
+                        <a href="tel:+390498273939">+39 0498273939</a>
+                    </li>
+                    <li>
+                        <span lang="en">E-mail</span>:
+                        <a href="mailto:tour@unipd.it"
+                            ><span lang="en">tour</span>&commat;unipd.it</a
+                        >
+                    </li>
+                    <li>
+                        Seguici su
+                        <a
+                            href="https://www.instagram.com/visitunipd/?hl=it"
+                            target="_blank"
+                            lang="en"
+                            >Instagram</a
+                        >,
+                        <a
+                            href="https://it-it.facebook.com/visitunipd/"
+                            target="_blank"
+                            lang="en"
+                            >Facebook</a
+                        >
+                        e
+                        <a
+                            href="https://vm.tiktok.com/ZMe791AJx/"
+                            target="_blank"
+                            lang="en"
+                            >TikTok</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div id="logofoot">
+                <img
+                    src="../assets/images/logomini.svg"
+                    alt=""
+                    width="100"
+                    height="100" />
+            </div>
+            <div id="orariofoot">
+                <p id="descrOrariTable" class="navigationHelp">
+                    La tabella contiene gli orari di apertura del museo, aperto
+                    dal martedì alla domenica e chiuso il lunedì
+                </p>
+                <table aria-describedby="descrOrariTable">
+                    <caption>
+                        Orari di apertura
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giorno</th>
+                            <th scope="col">Mattino</th>
+                            <th scope="col">Pomeriggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">Chiuso</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">da Martedì a Venerdì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>15:00</time>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sabato e Domenica</th>
+                            <td data-title="mattino">
+                                <time>08:00</time>-<time>11:00</time>
+                            </td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>18:00</time>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+        <script src="../js/scripts.js"></script>
+    </body>
+</html>

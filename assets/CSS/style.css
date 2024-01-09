@@ -245,7 +245,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cardnextshow a{
-    padding-top: 2em;
+    margin-top: 2em;
     color: var(--navLinkColor);
     font-weight: bold;
 }
@@ -262,21 +262,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .partners_cards{
+    width: min(85vw, 1440px);
+    display: flex;
+    flex-wrap: wrap;
     margin: auto;
     padding: 1em;
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 80em;
+    gap: 20px;
     justify-content: center;
 }
 
 .partners_cards li{
-    margin: 0 10px 20px 10px;
+    flex: 0 0 200px;
     padding: 10px;
     border-radius: 3px;
-    flex: 0 0 200px;
-    background-color: var(--imageBackground)
+    background-color: var(--imageBackground);
+    max-height: 200px;
 }
 
 .partners_cards li:hover{
@@ -284,12 +285,15 @@ h1, h2, h3, h4, h5, h6 {
     transition: all .2s ease-out;
 }
 
-.partners_cards li a:link{
-    filter: opacity(100%);
+.partners_cards li a {
+    width: 100%;
+    display: block;
+    height: 100%;
 }
 
 .partners_cards li a img {
-    width: 100%;
+    height: 100%;
+    max-width: 100%;
 }
 
 .card_header{
@@ -1275,7 +1279,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 }
 
 .artshow_info_mini{
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 #artshow_name{
@@ -1361,8 +1365,55 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     margin-left: 1rem;
 }
 
+.fieldset_item {
+    margin-top: 1.25rem;
+}
+
+.login_container fieldset{
+    border-radius: 7px;
+    padding: 0rem 0.8125rem 0.8125rem;
+}
+
+.login_container fieldset:last-of-type{
+    padding-bottom: 0rem;
+}
+
+.login_container fieldset legend{
+    padding: 0rem 0.8125rem;
+    font-weight: bold;
+}
+
+.ins_mod_page {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.ins_mod_container {
+    width: min(85vw, 1440px);
+    margin: 3em auto;
+    background-color: var(--colorLightGrey);
+    border-radius: 3px;
+    padding: 4em 2em;
+    box-sizing: border-box;
+}
+
+.ins_mod_container h2 {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.ins_mod_container p {
+    margin: 1em 0;
+}
+
+.ins_mod_container p a {
+    color: var(--linkColor);
+}
+
 .form_item {
     margin-top: 1.25rem;
+    overflow: auto;
 }
 
 .form_container {
@@ -1370,12 +1421,24 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     flex-wrap: wrap;
 }
 
-.form_item input {
+.form_item input, .form_item textarea {
     border-radius: 3px;
     padding: 0.8125rem 1rem;
     width: 100%;
     border: 1px solid var(--color-grey-600);
     box-sizing: border-box;
+    resize: none;
+}
+
+.form_item label{
+    font-weight: normal;
+}
+
+.form_item p{
+    background-color: var(--colorMediumGrey);
+    padding: 0.25rem 0.75rem;
+    border-radius: 10px;
+    margin-top: 0;
 }
 
 .form_button button {
@@ -1391,6 +1454,30 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     color: #ffffff;
     border-radius: 3px;
     padding: 0.8125rem 1rem;
+}
+
+.ins_mod_container h2 {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.ins_mod_container label {
+    font-size: 0.875rem;
+    margin-left: 1rem;
+}
+
+.ins_mod_container fieldset{
+    border-radius: 7px;
+    padding: 0rem 0.8125rem 0.8125rem;
+}
+
+.ins_mod_container .filters_labels{
+    padding-bottom: 0rem;
+}
+
+.ins_mod_container fieldset legend{
+    padding: 0rem 0.8125rem;
+    font-weight: bold;
 }
 
 .form_item input[type=file] {
@@ -1410,13 +1497,27 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     color: #fff;
     cursor: pointer;
 }
-#additional-images-viewer {
-    width: 100%;
+
+.images_viewer {
     display: flex;
-    column-gap: 20px;
-    overflow: auto;
-    padding: 20px 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    column-gap:10px;
+    width: 100%;
+    padding-top: 20px;
 }
+.uploaded_image{
+    flex: 0 0 auto;
+    height: 200px;
+    position: relative;
+    display: inline-block;
+}
+.uploaded_image img{
+    height:100%;
+    max-width: 100%;
+}
+
 .profile_image_container {
     height: 200px;
     width: 200px;
@@ -1430,13 +1531,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 #profile-image {
     height: 100%;
 }
-.uploaded_image {
-    position: relative;
-    display: inline-block;
-}
-.uploaded_image img{
-    height: 200px;
-}
+
 .remove_btn{
     position: absolute;
     top: 5px;
@@ -1453,4 +1548,126 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 .remove_btn:hover,.remove_btn:focus{
     background-color: var(--colorDarkGrey);
     color: white;
+}
+/*
+--------------------------
+PROFILO
+--------------------------
+*/
+
+#opere ul {
+    list-style: none;
+    margin: 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 5vh;
+    column-gap: 5vw;
+}
+
+#opere img{
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+#opere li{
+    flex-basis: 350px;
+    flex-grow: 0;
+}
+
+#opere ul {
+    list-style: none;
+    margin: 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 5vh;
+    column-gap: 5vw;
+}
+
+#opere img{
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+#opere li{
+    flex-basis: 350px;
+    flex-grow: 0;
+}
+
+#immagineProfilo{
+    max-width: min(470px, 30%);
+    min-width: 100px;
+    border-radius: 50%;
+    float:left;
+    padding: 2em 2em 0.5em 2em;
+}
+
+.datiProfilo{
+    max-width: 40vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    row-gap: 0.8em;
+    align-items: center;
+}
+
+.datiProfilo>dt{
+    font-weight: bold;
+    padding-bottom: .3em;
+}
+
+#linkModifica{
+    float: right;
+    background-color: var(--color-grey-700);
+    color: var(--color-white);
+    padding: 3px 5px;
+    text-decoration: none;
+    margin: 0.5em 1em 0.5em 0.3em;
+}
+
+#stiliArtistici ul{
+    text-align: center;
+    margin: 1em auto;
+}
+
+#stiliArtistici ul li{
+    font-size: 20px;
+    display: inline-block;
+    padding: 0.5em 1em 0em 1em;
+    background-color: var(--tagBgColor);
+    color: var(--headerTxtColor);
+    border-radius: 1.25em;
+    height: 2em;
+    margin: 0.25em 0.5em
+}
+
+#mostreartista{
+    text-align: center;
+}
+
+article{
+    padding: 1em;
+}
+
+article>h3{
+    font-weight: bold;
+    padding-bottom: 0.5em;
+}
+
+#contenuto{
+    width: 90%;
+    margin: auto;
+    max-width: 2048px;
+}
+
+.profiloh2{
+    position: relative;
+    top: 0.3em;
 }

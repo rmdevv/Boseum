@@ -2,82 +2,79 @@
 <html lang="it">
     <head>
         <meta charset="UTF-8" />
-        <title>Boseum</title>
+        <title>Profilo {artista}</title>
         <link
             rel="shortcut icon"
             type="image/png"
             href="../assets/images/favicon.png" />
         <meta
             name="keywors"
-            content="museo d'arte, palazzo bo, università degli studi di padova, padova" />
+            content="boseo, artista, opere, arte, {keywords}" />
         <meta
             name="description"
-            content="Sito ufficiale del Boseum, museo d'arte universitario con sede nel Palazzo Bo a Padova" />
+            content="Pagina boseo dell`artista {artista}, qui potrai trovare le informazioni su tale artista, le sue opere e le mostre in cui potrai vederle di persona" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
         <link
             rel="stylesheet"
-            href="../assets/css/styleprofilo.css"
-            media="screen" />
-        <link
-            rel="stylesheet"
-            href="../assets/css/miniprofilo.css"
+            href="../assets/CSS/mini.css"
             media="screen and (max-width:600px)" />
     </head>
-    <header>
-        <nav aria-label="Aiuti alla navigazione">
-            <a class="navigationHelp" href="#content">Vai al contenuto</a>
-        </nav>
-        <h1 lang="en">Boseum</h1>
-
-        <div id="menu">
-            <input
-                class="checkbox"
-                type="checkbox"
-                id="hamburger-toggle"
-                aria-label="Toggle Navigation" />
-            <label class="hamburger" for="hamburger-toggle">
-                <span class="slice"></span>
-                <span class="slice"></span>
-                <span class="slice"></span>
-            </label>
-            <nav>
-                <ul class="nav-list">
-                    <li class="nav-list-item">
-                        <a href="index.html"><span lang="en">Home</span></a>
-                    </li>
-                    <li class="nav-list-item">
-                        <a href="artisti.html">Artisti</a>
-                    </li>
-                    <li class="nav-list-item">
-                        <a href="opere.html">Opere</a>
-                    </li>
-                    <li class="nav-list-item">
-                        <a href="mostre.html">Mostre</a>
-                    </li>
-                    <li class="nav-list-item">
-                        <a href="accedi.html" id="accountnav" lang="en"
-                            >Account</a
-                        >
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <nav id="breadcrumb">
-        <span>Ti trovi in:</span>
-        <ul class="breadcrumb">
-            <li>
-                <a href="index.html"><span lang="en">Home</span></a>
-            </li>
-            <li>
-                <a href="opere.html">Artisti</a>
-            </li>
-            <li>
-                <span>{Username Artista}</span>
-            </li>
-        </ul>
-    </nav>
     <body>
+        <header>
+            <nav aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
+            <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="menu_checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul class="nav-list">
+                        <li class="nav-list-item">
+                            <a href="index.html"><span lang="en">Home</span></a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="artisti.html">Artisti</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="opere.html">Opere</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="mostre.html">Mostre</a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a href="accedi.html" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <nav id="breadcrumb">
+            <span>Ti trovi in:</span>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html"><span lang="en">Home</span></a>
+                </li>
+                <li>
+                    <a href="opere.html">Artisti</a>
+                </li>
+                <li>
+                    <span>{artista}</span>
+                </li>
+            </ul>
+        </nav>
         <main id="contenuto">
             <div id="informazioniUtente">
                 <img
@@ -85,7 +82,9 @@
                     src="../uploads/users/5.jpg"
                     alt="immagine profilo" />
                 <a href="modificaprofilo.php" id="linkModifica">Modifica</a>
-                <h1>Profilo artista</h1>
+                <h2 class="elegant_font artwork_title profiloh2">
+                    Pagina {artista}
+                </h2>
                 <dl class="datiProfilo">
                     <dt>Nome</dt>
                     <dd>Mario</dd>
@@ -99,7 +98,7 @@
                     <dd>Francavilla al mare</dd>
                 </dl>
                 <article id="biografia">
-                    <h2>Biografia</h2>
+                    <h3>Biografia</h3>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Phasellus sagittis scelerisque ante, id iaculis massa
@@ -120,7 +119,7 @@
                     </p>
                 </article>
                 <article id="esperienze">
-                    <h2>Esperienze</h2>
+                    <h3>Esperienze</h3>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Phasellus sagittis scelerisque ante, id iaculis massa
@@ -141,16 +140,29 @@
                     </p>
                 </article>
             </div>
-            <div id="stiliArtistici">
-                <h2>Stili Artistici più utilizzati</h2>
-                <ul>
-                    <li>Dipinto</li>
-                    <li>Arte contemporanea</li>
-                    <li>Paesaggio</li>
-                </ul>
+            <div id="labelprofilo">
+                <h2 class="elegant_font artwork_title profiloh2">
+                    Stili Artistici più utilizzati
+                </h2>
+                <div class="label_list">
+                    <ul class="label_list">
+                        <li class="label">
+                            <a href="TODO">Sketch </a>
+                        </li>
+                        <li class="label">
+                            <a href="TODO">Sketch </a>
+                        </li>
+                        <li class="label">
+                            <a href="TODO">Sketch </a>
+                        </li>
+                        <li class="label">
+                            <a href="TODO">Sketch </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div id="opere">
-                <h2>Opere</h2>
+                <h2 class="elegant_font artwork_title profiloh2">Opere</h2>
                 <ul>
                     <li>
                         <a href="opera.php?titolo=Titolo1"
@@ -183,67 +195,40 @@
                 </ul>
             </div>
             <div id="mostre">
-                <h2>Prossime mostre in cui sará presente</h2>
-                <ul>
-                    <li>
-                        <a href="mostra.php?titolo=Titolo1">
-                            <div class="cardMostra">
-                                <img
-                                    src="../uploads/artshows/1.jpg"
-                                    alt="titolo mostra 1" />
-                                <dl class="date mostra">
-                                    <dt>Giorno inizio mostra</dt>
-                                    <dd>
-                                        <time datetime="2024-02-15"
-                                            >Mercoledi 15 Febbraio 2024</time
-                                        >
-                                    </dd>
-                                    <dt>Giorno fine mostra</dt>
-                                    <dd>
-                                        <time datetime="2024-02-18"
-                                            >Sabato 18 Febbraio 2024</time
-                                        >
-                                    </dd>
-                                </dl>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Provident, sint quam
-                                    aperiam in, sunt quo maxime necessitatibus
-                                    deleniti dignissimos, placeat recusandae!
-                                    Perspiciatis quibusdam ea pariatur quod,
-                                    repudiandae optio dignissimos asperiores....
-                                </p>
-                            </div>
-                            <div class="cardMostra">
-                                <img
-                                    src="../uploads/artshows/2.jpg"
-                                    alt="titolo mostra 2" />
-                                <dl class="date mostra">
-                                    <dt>Giorno inizio mostra</dt>
-                                    <dd>
-                                        <time datetime="2024-03-08"
-                                            >Mercoledì 8 Marzo 2024</time
-                                        >
-                                    </dd>
-                                    <dt>Giorno fine mostra</dt>
-                                    <dd>
-                                        <time datetime="2024-03-10"
-                                            >Venerdì 10 Marzo 2024</time
-                                        >
-                                    </dd>
-                                </dl>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Provident, sint quam
-                                    aperiam in, sunt quo maxime necessitatibus
-                                    deleniti dignissimos, placeat recusandae!
-                                    Perspiciatis quibusdam ea pariatur quod,
-                                    repudiandae optio dignissimos asperiores....
-                                </p>
-                            </div>
+                <h2 class="elegant_font artwork_title profiloh2">
+                    Prossime mostre in cui sará presente
+                </h2>
+                <div class="artshow_gallery_item">
+                    <div class="artshow_gallery_item_image">
+                        <a
+                            aria-hidden="true"
+                            tabindex="-1"
+                            href="TODO:{id_opera}">
+                            <img
+                                src="../uploads/artshows/4.jpg"
+                                alt="{title}" />
                         </a>
-                    </li>
-                </ul>
+                    </div>
+                    <div class="artshow_gallery_item_info">
+                        <div class="artshow_gallery_item_title">
+                            <a href="TODO:{id_opera}" title="{title}">
+                                {title}
+                            </a>
+                        </div>
+                        <div class="artshow_gallery_item_dates">
+                            <p>
+                                <time datetime="2024-03-08">
+                                    8 Marzo 2024
+                                </time>
+                            </p>
+                            <p>
+                                <time datetime="2024-03-08">
+                                    10 Marzo 2024
+                                </time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </body>

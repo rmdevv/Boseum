@@ -27,7 +27,7 @@ CREATE TABLE Artworks (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     title VARCHAR(50) NOT NULL,
     main_image VARCHAR(100) NOT NULL UNIQUE,
-    description VARCHAR(1000),
+    description VARCHAR(1000) NOT NULL,
     height FLOAT,
     width FLOAT,
     length FLOAT,
@@ -57,7 +57,7 @@ CREATE TABLE Artshows (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     title VARCHAR(30) NOT NULL,
     description VARCHAR(300) NOT NULL,
-    image VARCHAR(100) UNIQUE,
+    image VARCHAR(100) UNIQUE NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL
 );
