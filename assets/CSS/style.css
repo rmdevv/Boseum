@@ -369,7 +369,7 @@ footer a:visited{
 
 .error404{
     width: min(85vw, 1440px);
-    margin: auto;
+    margin: 0 auto 5em;
     text-align: center;
 }
 
@@ -407,7 +407,7 @@ footer a:visited{
 
 .error500{
     width: min(85vw, 1440px);
-    margin: auto;
+    margin: 0 auto 5em;
     text-align: center;
 }
 
