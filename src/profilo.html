@@ -9,7 +9,7 @@
             href="../assets/images/favicon.png" />
         <meta
             name="keywors"
-            content="boseo, artista, opere, arte, {keywords}" />
+            content="{keywords}" />
         <meta
             name="description"
             content="Pagina boseo dell`artista {artista}, qui potrai trovare le informazioni su tale artista, le sue opere e le mostre in cui potrai vederle di persona" />
@@ -84,7 +84,9 @@
                     id="immagineProfilo"
                     src="../uploads/users/5.jpg"
                     alt="immagine profilo" />
-                <a href="modificaprofilo.php" id="linkModifica">Modifica</a>
+                {PHPMOD}
+                <a href="TODO" id="linkModifica">Modifica</a> <!-- Solo per utenti registrati con lo stesso id del profilo visualizzato -->
+                {PHPMOD}
                 <h2 class="elegant_font artwork_title profiloh2">Pagina {artista}</h2>
                 <dl class="datiProfilo">
                     <dt>Nome</dt>
