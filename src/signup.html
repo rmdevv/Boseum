@@ -64,70 +64,78 @@
             <section class="login_page">
                 <div class="login_container">
                     <h2>Crea account</h2>
-                    <p>Inserisci i tuoi dati.</p>
+                    <p>Inserisci i tuoi dati. I campi obbligatori sono segnati con (*).</p>
                     <p>
                         Già registrato?
                         <a href="login.html">Accedi qui</a>
                     </p>
                     <form action="" method="post">
-                        <div class="input_container">
-                            <div class="form_item">
-                                <label for="username">Username</label>
-                                <input
-                                    placeholder="Username"
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    value=""
-                                    required />
+                        <fieldset>
+                            <legend>Dati account</legend>
+                            <div class="input_container">
+                                <div class="form_item">
+                                    <label for="username">Username (*)</label>
+                                    <input
+                                        placeholder="Username"
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        value=""
+                                        required />
+                                </div>
+                                <div class="form_item">
+                                    <label for="password">Password (*)</label>
+                                    <input
+                                        placeholder="Password"
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        value=""
+                                        required />
+                                </div>
                             </div>
-                            <div class="form_item">
-                                <label for="password">Password</label>
-                                <input
-                                    placeholder="Password"
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    value=""
-                                    required />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Dati personali</legend>
+                            <div class="input_container">
+                                <div class="form_item">
+                                    <label for="name">Nome</label>
+                                    <input
+                                        placeholder="Nome"
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        value="" />
+                                </div>
+                                <div class="form_item">
+                                    <label for="lastname">Cognome</label>
+                                    <input
+                                        placeholder="Cognome"
+                                        type="text"
+                                        id="lastname"
+                                        name="lastname"
+                                        value="" />
+                                </div>
+                                <div class="form_item">
+                                    <label for="birthdate">Data di nascita</label>
+                                    <input
+                                        type="date"
+                                        id="birthdate"
+                                        name="birthdate"
+                                        value=""
+                                        min="1900-01-01" />
+                                </div>
+                                <div class="form_item">
+                                    <label for="birthplace">Luogo di nascita</label>
+                                    <input
+                                        placeholder="Luogo di nascita"
+                                        type="text"
+                                        id="birthplace"
+                                        name="birthplace"
+                                        value="" />
+                                </div>
                             </div>
-                            <div class="form_item">
-                                <label for="name">Nome</label>
-                                <input
-                                    placeholder="Nome"
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value="" />
-                            </div>
-                            <div class="form_item">
-                                <label for="lastname">Cognome</label>
-                                <input
-                                    placeholder="Cognome"
-                                    type="text"
-                                    id="lastname"
-                                    name="lastname"
-                                    value="" />
-                            </div>
-                            <div class="form_item">
-                                <label for="birthdate">Data di nascita</label>
-                                <input
-                                    type="date"
-                                    id="birthdate"
-                                    name="birthdate"
-                                    value=""
-                                    min="1900-01-01" />
-                            </div>
-                            <div class="form_item">
-                                <label for="birthplace">Luogo di nascita</label>
-                                <input
-                                    placeholder="Luogo di nascita"
-                                    type="text"
-                                    id="birthplace"
-                                    name="birthplace"
-                                    value="" />
-                            </div>
-                        </div>
+                        </fieldset>
                         <div class="form_button">
                             <button type="submit" class="btn-primary">
                                 Registrati
