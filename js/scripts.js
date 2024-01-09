@@ -214,11 +214,13 @@ if (additionalImagesInput) {
                 const img = document.createElement('img')
                 img.src = URL.createObjectURL(files[i])
                 img.setAttribute('add-img-id', i)
+                img.alt = files[i].name
                 files[i].imgId = i
 
                 const removeBtn = document.createElement('button')
                 removeBtn.type = 'button'
                 removeBtn.className = 'remove_btn'
+                removeBtn.ariaLabel = "Elimina l'immagine"
                 removeBtn.addEventListener('click', (e) => {
                     const removedImgContainer = e.target.parentNode
                     removedImgContainer.remove()
@@ -263,6 +265,7 @@ if (mainImageInput) {
 
             const img = document.createElement('img')
             img.src = URL.createObjectURL(file)
+            img.alt = file.name
 
             imgContainer.appendChild(img)
             mainImageContainer.appendChild(imgContainer)
