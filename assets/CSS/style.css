@@ -1375,10 +1375,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     padding: 0rem 0.8125rem 0.8125rem;
 }
 
-.login_container fieldset:last-of-type{
-    padding-bottom: 0rem;
-}
-
 .login_container fieldset legend{
     padding: 0rem 0.8125rem;
     font-weight: bold;
@@ -1433,20 +1429,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 
 .form_item label{
     font-weight: normal;
-}
-
-.login_container fieldset{
-    border-radius: 7px;
-    padding: 0rem 0.8125rem 0.8125rem;
-}
-
-/*.login_container fieldset:last-of-type{
-    padding-bottom: 0rem;
-}*/
-
-.login_container fieldset legend{
-    padding: 0rem 0.8125rem;
-    font-weight: bold;
 }
 
 .form_item p{
