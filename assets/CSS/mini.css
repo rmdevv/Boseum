@@ -68,7 +68,7 @@ header h1{
     margin-top: 10px;
 }
 
-#menu .checkbox:focus-visible ~ .hamburger {
+#menu .menu_checkbox:focus-visible .hamburger {
     outline: auto;
 }
 
@@ -76,27 +76,27 @@ header h1{
     visibility: hidden;
 }
 
-#menu .checkbox:checked ~ nav a {
+#menu .menu_checkbox:checked ~ nav a {
     visibility: visible;
 }
 
-#menu .checkbox:checked ~ nav {
+#menu .menu_checkbox:checked ~ nav {
     transform: translateX(0%);
 }
 
-#menu .checkbox:checked ~ .hamburger {
+#menu .menu_checkbox:checked ~ .hamburger {
     position: fixed;
 }
 
-#menu .checkbox:checked ~ .hamburger .slice:nth-child(1) {
+#menu .menu_checkbox:checked ~ .hamburger .slice:nth-child(1) {
     transform: translateY(12px) rotate(45deg);
 }
 
-#menu .checkbox:checked ~ .hamburger .slice:nth-child(2) {
+#menu .menu_checkbox:checked ~ .hamburger .slice:nth-child(2) {
     opacity: 0;
 }
 
-#menu .checkbox:checked ~ .hamburger .slice:nth-child(3) {
+#menu .menu_checkbox:checked ~ .hamburger .slice:nth-child(3) {
     transform: translateY(-12px) rotate(-45deg);
 }
 

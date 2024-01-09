@@ -10,10 +10,8 @@ if (additionalImagesCarousel) {
         additionalImagesCarousel.querySelectorAll('.thumbnail_slide')
 }
 
-var handleImageClick = function (element) {
-    Array.from(document.querySelectorAll('.thumbnail_slide')).forEach(function (
-        e
-    ) {
+var handleImageClick = (element) => {
+    Array.from(document.querySelectorAll('.thumbnail_slide')).forEach((e) => {
         e.classList.remove('is_active')
     })
     element.classList.add('is_active')
@@ -30,12 +28,12 @@ var handleImageClick = function (element) {
 }
 
 if (artworkImage && additionalImagesCarousel && imageSlideElements) {
-    imageSlideElements.forEach(function (element) {
-        element.addEventListener('click', function (event) {
+    imageSlideElements.forEach((element) => {
+        element.addEventListener('click', (event) => {
             handleImageClick(element)
         })
 
-        element.addEventListener('keypress', function (event) {
+        element.addEventListener('keypress', (event) => {
             handleImageClick(element)
         })
     })
@@ -43,87 +41,87 @@ if (artworkImage && additionalImagesCarousel && imageSlideElements) {
 
 const paginationNumbers = document.getElementById('pagination_numbers')
 const paginatedList = document.getElementById('paginated_section')
-const items = paginatedList.querySelectorAll('.gallery_item')
-const prevButton = document.getElementById('prev_pag_button')
-const nextButton = document.getElementById('next_pag_button')
+if (paginatedList) {
+    const items = paginatedList.querySelectorAll('.gallery_item')
+    const prevButton = document.getElementById('prev_pag_button')
+    const nextButton = document.getElementById('next_pag_button')
 
-const paginationLimit = 12
-const pageCount = Math.ceil(items.length / paginationLimit)
-let currentPage = 1
+    const paginationLimit = 12
+    let currentPage = 1
+    const pageCount = Math.ceil(items.length / paginationLimit)
 
-const disableButton = (button) => {
-    button.setAttribute('disabled', true)
-}
-
-const enableButton = (button) => {
-    button.removeAttribute('disabled')
-}
-
-const backToTop = () => {
-    document.getElementById('top_gallery').scrollIntoView()
-}
-
-const handlePageButtonsStatus = () => {
-    if (currentPage === 1) {
-        disableButton(prevButton)
-    } else {
-        enableButton(prevButton)
+    const disableButton = (button) => {
+        button.setAttribute('disabled', true)
     }
 
-    if (pageCount === currentPage) {
-        disableButton(nextButton)
-    } else {
-        enableButton(nextButton)
+    const enableButton = (button) => {
+        button.removeAttribute('disabled')
     }
-}
 
-const handleActivePageNumber = () => {
-    document.querySelectorAll('.pagination_number').forEach((button) => {
-        button.classList.remove('active')
-        const pageIndex = Number(button.getAttribute('page-index'))
-        if (pageIndex == currentPage) {
-            button.classList.add('active')
+    const backToTop = () => {
+        document.getElementById('top_gallery').scrollIntoView()
+    }
+
+    const handlePageButtonsStatus = () => {
+        if (currentPage === 1) {
+            disableButton(prevButton)
+        } else {
+            enableButton(prevButton)
         }
-    })
-}
 
-const appendPageNumber = (index) => {
-    const pageNumber = document.createElement('button')
-    pageNumber.className =
-        'button_reverse pagination_controls pagination_number'
-    pageNumber.innerHTML = index
-    pageNumber.setAttribute('page-index', index)
-    pageNumber.setAttribute('aria-label', 'Pagina ' + index)
-
-    paginationNumbers.appendChild(pageNumber)
-}
-
-const getPaginationNumbers = () => {
-    for (let i = 1; i <= pageCount; i++) {
-        appendPageNumber(i)
-    }
-}
-
-const setCurrentPage = (pageNum, scroll = true) => {
-    currentPage = pageNum
-
-    handleActivePageNumber()
-    handlePageButtonsStatus()
-
-    const prevRange = (pageNum - 1) * paginationLimit
-    const currRange = pageNum * paginationLimit
-
-    items.forEach((item, index) => {
-        item.classList.add('hidden')
-        if (index >= prevRange && index < currRange) {
-            item.classList.remove('hidden')
+        if (pageCount === currentPage) {
+            disableButton(nextButton)
+        } else {
+            enableButton(nextButton)
         }
-    })
+    }
 
-    scroll && backToTop()
-}
+    const handleActivePageNumber = () => {
+        document.querySelectorAll('.pagination_number').forEach((button) => {
+            button.classList.remove('active')
+            const pageIndex = Number(button.getAttribute('page-index'))
+            if (pageIndex == currentPage) {
+                button.classList.add('active')
+            }
+        })
+    }
 
-window.addEventListener('load', () => {
+    const appendPageNumber = (index) => {
+        const pageNumber = document.createElement('button')
+        pageNumber.className =
+            'button_reverse pagination_controls pagination_number'
+        pageNumber.innerHTML = index
+        pageNumber.setAttribute('page-index', index)
+        pageNumber.setAttribute('aria-label', 'Pagina ' + index)
+
+        paginationNumbers.appendChild(pageNumber)
+    }
+
+    const getPaginationNumbers = () => {
+        for (let i = 1; i <= pageCount; i++) {
+            appendPageNumber(i)
+        }
+    }
+
+    const setCurrentPage = (pageNum, scroll = true) => {
+        currentPage = pageNum
+
+        handleActivePageNumber()
+        handlePageButtonsStatus()
+
+        const prevRange = (pageNum - 1) * paginationLimit
+        const currRange = pageNum * paginationLimit
+
+        items.forEach((item, index) => {
+            item.classList.add('hidden')
+            if (index >= prevRange && index < currRange) {
+                item.classList.remove('hidden')
+            }
+        })
+
+        scroll && backToTop()
+    }
+
     getPaginationNumbers()
     setCurrentPage(1, false)
 
@@ -150,10 +148,12 @@ window.addEventListener('load', () => {
     backToTopButton.addEventListener('click', () => {
         backToTop()
     })
+}
 
-    const startDate = document.getElementById('start_date')
-    const endDate = document.getElementById('end_date')
+const startDate = document.getElementById('start_date')
+const endDate = document.getElementById('end_date')
 
+if (startDate && endDate) {
     today = new Date()
     startDate.value = today.toLocaleDateString('fr-ca')
     endDate.min = startDate.value
@@ -169,4 +169,74 @@ window.addEventListener('load', () => {
         var max_limit = endDate.value
         startDate.max = max_limit
     })
-})
+}
+
+const birthdate = document.getElementById('birthdate')
+birthdate && (birthdate.max = new Date().toLocaleDateString('fr-ca'))
+
+const additionalImagesInput = document.getElementById('additional-images-input')
+if (additionalImagesInput) {
+    additionalImagesInput.addEventListener('change', (event) => {
+        const uploadImgContainer = document.querySelector(
+            '#additional-images-viewer'
+        )
+        uploadImgContainer.innerHTML = ''
+
+        if (event.target.files) {
+            files = event.target.files
+            const fragment = document.createDocumentFragment()
+
+            for (let i = 0; i < files.length; i++) {
+                const imgContainer = document.createElement('div')
+                imgContainer.className = 'uploaded_image'
+
+                const img = document.createElement('img')
+                img.src = URL.createObjectURL(files[i])
+                img.setAttribute('add-img-id', i)
+                files[i].imgId = i
+
+                const removeBtn = document.createElement('button')
+                removeBtn.type = 'button'
+                removeBtn.className = 'remove_btn'
+                removeBtn.addEventListener('click', (e) => {
+                    const removedImgContainer = e.target.parentNode
+                    removedImgContainer.remove()
+
+                    updateFileList(i)
+                })
+
+                imgContainer.appendChild(img)
+                imgContainer.appendChild(removeBtn)
+                fragment.appendChild(imgContainer)
+            }
+
+            uploadImgContainer.appendChild(fragment)
+        }
+    })
+
+    const updateFileList = (idRemoved) => {
+        const dt = new DataTransfer()
+        const uploadInput = document.getElementById('additional-images-input')
+        const updatedFiles = uploadInput.files
+
+        for (let i = 0; i < updatedFiles.length; i++) {
+            if (idRemoved != updatedFiles[i].imgId)
+                dt.items.add(updatedFiles[i])
+        }
+
+        uploadInput.files = dt.files
+    }
+}
+
+const profileImageInput = document.getElementById('profile-image-input')
+if (profileImageInput) {
+    profileImageInput.addEventListener('change', (event) => {
+        const profileImage = document.querySelector('#profile-image')
+
+        if (event.target.files) {
+            file = event.target.files[0]
+
+            profileImage.src = URL.createObjectURL(file)
+        }
+    })
+}

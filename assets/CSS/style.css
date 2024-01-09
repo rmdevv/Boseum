@@ -97,7 +97,6 @@ header h1{
 #menu ul li{
     padding: 0 1em;
     font-size: 1.1em;
-    overflow: hidden;
 }
 
 #menu ul li a{
@@ -109,7 +108,7 @@ header h1{
     display: none;
 }
 
-#menu .checkbox {
+#menu .menu_checkbox {
     opacity: 0;
     position: absolute;
 }
@@ -155,7 +154,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--linkColor);
 }
 
-.breadcrumb a:hover, a:focus{
+.breadcrumb a:hover, .breadcrumb a:focus{
     text-decoration: underline;
 }
 
@@ -1392,4 +1391,66 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     color: #ffffff;
     border-radius: 3px;
     padding: 0.8125rem 1rem;
+}
+
+.form_item input[type=file] {
+    background-color: var(--bannerBackground);
+}
+
+.form_item input[type=file]:hover,.form_item input[type=file]:focus {
+    cursor: pointer;
+}
+
+.form_item input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: var(--colorDarkGrey);
+    padding: 10px 20px;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+}
+#additional-images-viewer {
+    width: 100%;
+    display: flex;
+    column-gap: 20px;
+    overflow: auto;
+    padding: 20px 0;
+}
+.profile_image_container {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    background-color: var(--bannerBackground);
+}
+#profile-image {
+    height: 100%;
+}
+.uploaded_image {
+    position: relative;
+    display: inline-block;
+}
+.uploaded_image img{
+    height: 200px;
+}
+.remove_btn{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 2em;
+    height: 2em;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.remove_btn::after{
+    content: '\2716';
+}
+.remove_btn:hover,.remove_btn:focus{
+    background-color: var(--colorDarkGrey);
+    color: white;
 }

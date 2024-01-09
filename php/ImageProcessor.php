@@ -84,13 +84,9 @@ class ImageProcessor {
     }
 }
 
-// Example usage:
-$uploadedFiles = $_FILES['uploadedFiles']; // Assuming you have an input field named 'uploadedFiles' for multiple file uploads
-$destinationFolder = '/path/to/destination/folder/';
-
-$savedImageNames = ImageProcessor::processImages($uploadedFiles, $destinationFolder);
-
-// Do something with $savedImageNames if needed
-print_r($savedImageNames);
+// $uploadedFiles = $_FILES['uploadedFiles']; // Assuming you have an input field named 'uploadedFiles' for multiple file uploads
+// $destinationFolder = '/path/to/destination/folder/';
+// $savedImageNames = ImageProcessor::processImages($uploadedFiles, $destinationFolder);
+// print_r($savedImageNames);
 
 ?>

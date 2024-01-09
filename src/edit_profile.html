@@ -2,7 +2,7 @@
 <html lang="it">
     <head>
         <meta charset="UTF-8" />
-        <title>Registrazione | Boseum</title>
+        <title>Edit Profile | Boseum</title>
         <link
             rel="shortcut icon"
             type="image/png"
@@ -26,7 +26,7 @@
 
             <div id="menu">
                 <input
-                    class="checkbox"
+                    class="menu_checkbox"
                     type="checkbox"
                     id="hamburger-toggle"
                     aria-label="Toggle Navigation" />
@@ -36,20 +36,20 @@
                     <span class="slice"></span>
                 </label>
                 <nav>
-                    <ul class="nav-list">
-                        <li class="nav-list-item">
+                    <ul>
+                        <li>
                             <a href="index.html"><span lang="en">Home</span></a>
                         </li>
-                        <li class="nav-list-item">
+                        <li>
                             <a href="artisti.html">Artisti</a>
                         </li>
-                        <li class="nav-list-item">
+                        <li>
                             <a href="opere.html">Opere</a>
                         </li>
-                        <li class="nav-list-item">
+                        <li>
                             <a href="mostre.html">Mostre</a>
                         </li>
-                        <li class="nav-list-item">
+                        <li>
                             <a href="accedi.html" id="accountnav" lang="en"
                                 >Account</a
                             >
@@ -125,7 +125,36 @@
                                     name="birthplace"
                                     value="" />
                             </div>
+                            <div class="form_item">
+                                <label for="additional-images-input"
+                                    >Immagini di dettaglio</label
+                                >
+                                <input
+                                    type="file"
+                                    id="additional-images-input"
+                                    name="additional_images"
+                                    accept="image/png, image/jpeg"
+                                    multiple />
+                            </div>
+                            <div class="form_item">
+                                <label for="profile-image-input"
+                                    >Immagine profilo</label
+                                >
+                                <input
+                                    type="file"
+                                    id="profile-image-input"
+                                    name="profile_image"
+                                    accept="image/png, image/jpeg" />
+
+                                <div class="profile_image_container">
+                                    <img
+                                        id="profile-image"
+                                        src="../assets/images/default_user.svg"
+                                        alt="" />
+                                </div>
+                            </div>
                         </div>
+                        <div id="additional-images-viewer"></div>
                         <div class="form_button">
                             <button type="submit" class="btn-primary">
                                 Registrati
@@ -232,5 +261,9 @@
             </div>
         </footer>
         <script src="../js/scripts.js"></script>
+        <script>
+            document.getElementById('birthdate').max =
+                new Date().toLocaleDateString('fr-ca')
+        </script>
     </body>
 </html>
