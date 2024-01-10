@@ -738,60 +738,6 @@ footer a:visited{
     list-style-type: none;
 }
 
-
-#artisti{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 1em 0em;
-    justify-content: center;
-    gap: 1em;
-    max-width: min(85vw, 1440px);
-    list-style: none;
-}
-
-.cardartista{
-    flex: 0 0 310px;    
-}
-
-
-.immagineartista img{
-    margin: auto;
-    height: auto;
-    width: auto;
-    max-height: 80%;
-    max-width: 80%;
-    border-radius: 50%;
-}
-
-.immagineartista{
-    background-color: var(--imageBackground);
-    min-height: 300px;
-    display: flex;
-    align-items: center;
-}
-
-.immagineartista:hover{
-    background-color: var(--imageBackgroundHover);
-}
-
-#artisti li figure figcaption{
-    text-align: left;
-    margin-top: 0.5em;
-}
-
-#artisti li figure figcaption{
-    color: black;
-    text-decoration: none;
-}
-
-#artisti li figure figcaption .nome{
-    font-size: large;
-}
-
-#artisti li figure figcaption .username{
-    font-size: small;
-}
-
 .artist_results_section {
     max-width: min(85vw, 1440px);
     grid-column-gap: 15px;
@@ -853,6 +799,7 @@ footer a:visited{
     width: 100%;
     transition: all .2s ease-out;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .artist_gallery_item_image img:hover {
@@ -1177,7 +1124,12 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     background-color:var(--color-text);
     color:var(--color-site-background);
 }
-
+#pagination_numbers {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 .artshow_results_section {
     max-width: min(85vw, 1440px);
@@ -1510,20 +1462,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     max-width: 100%;
 }
 
-.profile_image_container {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: auto;
-    background-color: var(--bannerBackground);
-}
-#profile-image {
-    height: 100%;
-}
-
 .remove_btn{
     position: absolute;
     top: 5px;
@@ -1541,97 +1479,148 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     background-color: var(--colorDarkGrey);
     color: white;
 }
-/*
---------------------------
-PROFILO
---------------------------
-*/
 
-#opere ul {
-    list-style: none;
+.artist_section {
+    max-width: min(85vw, 900px);
+    margin: auto;
+}
+
+.artist_header {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-    gap: 30px;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+    border-bottom: 2px solid var(--colorMediumGrey);
 }
 
-#opere li img:hover{
-    transform: scale(1.2);
-    transition: 0.5s;
+.artist_button {
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    column-gap: 10px;
 }
 
-#immagineProfilo{
-    max-width: min(300px, 30%);
-    min-width: 100px;
+.artist_button a{
+    text-decoration: none;
+    flex-grow: 1;
+    display: block;
+    color: var(--colorDarkGrey);
+    border: 3px solid var(--colorDarkGrey);
+    border-radius: 3px;
+    padding: 5px 0;
+    text-align: center;
+}
+.artist_button a:hover {
+    background-color: var(--colorDarkGrey);
+    color: var(--color-white);
+}
+.artist_button a:focus-visible {
+    background-color: var(--colorDarkGrey);
+    color: var(--color-white);
+    outline-width: 0;
+}
+
+.artist_button button{
+    flex-grow: 1;
+    display: block;
+    color: var(--flagColor);
+    border: 3px solid var(--flagColor);
+    border-radius: 3px;
+    padding: 5px 0;
+    text-align: center;
+}
+.artist_button button:hover {
+    background-color: var(--flagColor);
+    color: var(--color-white);
+}
+.artist_button button:focus-visible {
+    background-color: var(--flagColor);
+    color: var(--color-white);
+    outline-width: 0;
+}
+
+.artist_image_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: auto;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
-    float:left;
-    padding: 0 2em 0.5em 0;
+    box-sizing: border-box;
+    border:var(--bannerBackground) 10px solid;
 }
 
-.datiProfilo{
-    max-width: 40vw;
+.artist_image_container img {
+    height: 100%;
+    width: 100%;
+    transition: all .2s ease-out;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.artist_info h2 {
+    font-size: 2em;
+    font-weight: 500;
+    word-break: break-word;
+    margin-bottom: 0.2em;
+}
+
+.artist_info h3 {
+    margin-bottom: 1em;
+}
+
+.artist_info h4 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.artist_info dl {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     column-gap: 2em;
     row-gap: 0.8em;
     align-items: center;
 }
 
-.datiProfilo>dt{
-    font-weight: bold;
-    padding-bottom: .3em;
+.artist_info dl dt {
+    grid-column-start: 1;
+    font-weight: 600;
 }
 
-#linkModifica{
-    float: right;
-    background-color: var(--color-grey-700);
-    color: var(--color-white);
-    padding: 3px 5px;
-    text-decoration: none;
-    margin: 0.5em 1em 0.5em 0.3em;
+.artist_info dl dd {
+    grid-column-start: 2;
 }
 
-#stiliArtistici ul{
-    text-align: center;
-    margin: 1em auto;
+.artist_info dl dt:last-child {
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
-#stiliArtistici ul li{
-    font-size: 20px;
-    display: inline-block;
-    padding: 0.5em 1em 0em 1em;
-    background-color: var(--tagBgColor);
-    color: var(--headerTxtColor);
-    border-radius: 1.25em;
-    height: 2em;
-    margin: 0.25em 0.5em
+.artist_info dl dd:last-child {
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
-#mostreartista{
-    text-align: center;
+.artist_description {
+    margin: 0 auto 2em;
+    text-align: justify;
 }
 
-article{
-    padding: 1em;
+.artist_description h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
 }
 
-article>h3{
-    font-weight: bold;
-    padding-bottom: 0.5em;
+.artist_next_artshow h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
 }
 
-#contenuto{
-    width: 90%;
+.artist_artworks_header {
+    max-width: 900px;
     margin: auto;
-    max-width: 2048px;
-}
-
-.profiloh2{
-    position: relative;
-    top: 0.3em;
-}
-
-#mostre{
-    margin-bottom: 2em;
 }

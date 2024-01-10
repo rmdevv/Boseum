@@ -150,6 +150,18 @@ header h1{
     object-fit: cover;
 }
 
+.results_section {
+    max-width: min(85vw, 1440px);
+    display: block;
+    margin: 30px auto;
+}
+
+.artwork_gallery_item_image {
+    max-height: 250px;
+    min-height: unset;
+    min-width: unset;
+}
+
 footer{
     flex-wrap: wrap-reverse;
 }
@@ -179,7 +191,7 @@ footer div {
 }
 
 .gallery_item {
-    margin: 0;
+    margin-top: 2em;
     max-width: unset;
 }
 
@@ -262,4 +274,16 @@ footer div {
 .form_button button {
     width: 100%;
     margin: 2em auto 2em;
+}
+
+.artist_header {
+    display: block;
+}
+
+.edit_artist_container {
+    margin-bottom: 2em;
+}
+
+.artist_image_container {
+    width: 100%;
 }

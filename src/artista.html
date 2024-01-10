@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{name}} | Boseum</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png" />
+        <meta
+            name="keywords"
+            content="museo d'arte, palazzo bo, università degli studi di padova, padova, profilo, {{name}}" />
+        <meta
+            name="description"
+            content="Profilo Boseum dell'artista {{name}}, qui potrai trovare le informazioni su tale artista, le sue opere e le mostre in cui potrai vederle di persona" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
+        <link
+            rel="stylesheet"
+            href="../assets/CSS/mini.css"
+            media="screen and (max-width:600px)" />
+    </head>
+    <body>
+        <header>
+            <nav class="navigationHelp" aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
+            <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="menu_checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="index.html"><span lang="en">Home</span></a>
+                        </li>
+                        <li>
+                            <a href="artisti.html">Artisti</a>
+                        </li>
+                        <li>
+                            <a href="opere.html">Opere</a>
+                        </li>
+                        <li>
+                            <a href="mostre.html">Mostre</a>
+                        </li>
+                        <li>{{login_or_profile_title}}</li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <nav id="breadcrumb">
+            <span>Ti trovi in:</span>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html"><span lang="en">Home</span></a>
+                </li>
+                <li>
+                    <a href="opere.html">Artisti</a>
+                </li>
+                <li>
+                    <span>{{id_artist}}</span>
+                </li>
+            </ul>
+        </nav>
+        <main id="content">
+            <div class="artist_section">
+                <article class="artist_header">
+                    <div class="edit_artist_container">
+                        <div class="artist_image_container">
+                            <img src="{{main_image}}" alt="immagine profilo" />
+                        </div>
+                        <div class="artist_button">
+                            <a href="{{edit_profile.php}}">Modifica profilo</a>
+                            <button id="logout_button">Logout</button>
+                        </div>
+                    </div>
+                    <div class="artist_info">
+                        <h2>{{name}} {{lastname}}</h2>
+                        <h3>@{{username}}</h3>
+                        <dl>
+                            <dt>Data di nascita</dt>
+                            <dd>
+                                <time datetime="2001-12-11">11-12-2001</time>
+                            </dd>
+                            <dt>Luogo di nascita</dt>
+                            <dd>Francavilla al mare</dd>
+                            <dt>Stili artistici</dt>
+                            <dd>
+                                <div class="label_list">
+                                    <ul class="label_list">
+                                        <li class="label">
+                                            <a href="TODO">Sketch</a>
+                                        </li>
+                                        <li class="label">
+                                            <a href="TODO">Sketch</a>
+                                        </li>
+                                        <li class="label">
+                                            <a href="TODO">Sketch</a>
+                                        </li>
+                                        <li class="label">
+                                            <a href="TODO">Sketch</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </article>
+                <article class="artist_description">
+                    <h3>Biografia</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus sagittis scelerisque ante, id iaculis massa
+                        dignissim quis. Interdum et malesuada fames ac ante
+                        ipsum primis in faucibus. Etiam vehicula molestie
+                        euismod. In volutpat mauris et felis vehicula sodales.
+                        Nunc lacinia odio et justo porta, facilisis porttitor
+                        dui tempus. Nullam at euismod libero, sit amet venenatis
+                        turpis. Proin eu orci pretium, volutpat nibh a,
+                        tristique massa. Aenean rutrum, justo et tempor pretium,
+                        erat orci venenatis nulla, vel finibus lectus enim
+                        pellentesque magna. Vestibulum feugiat nisl sed luctus
+                        efficitur. Sed ullamcorper ipsum quis arcu tincidunt
+                        rhoncus. In scelerisque, dui id fermentum interdum, ex
+                        eros aliquam mi, in imperdiet ipsum nibh eu mauris.
+                        Donec eget nisi ut nulla cursus sollicitudin sit amet
+                        vel nisi.
+                    </p>
+                </article>
+                <article class="artist_description">
+                    <h3>Esperienze</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus sagittis scelerisque ante, id iaculis massa
+                        dignissim quis. Interdum et malesuada fames ac ante
+                        ipsum primis in faucibus. Etiam vehicula molestie
+                        euismod. In volutpat mauris et felis vehicula sodales.
+                        Nunc lacinia odio et justo porta, facilisis porttitor
+                        dui tempus. Nullam at euismod libero, sit amet venenatis
+                        turpis. Proin eu orci pretium, volutpat nibh a,
+                        tristique massa. Aenean rutrum, justo et tempor pretium,
+                        erat orci venenatis nulla, vel finibus lectus enim
+                        pellentesque magna. Vestibulum feugiat nisl sed luctus
+                        efficitur. Sed ullamcorper ipsum quis arcu tincidunt
+                        rhoncus. In scelerisque, dui id fermentum interdum, ex
+                        eros aliquam mi, in imperdiet ipsum nibh eu mauris.
+                        Donec eget nisi ut nulla cursus sollicitudin sit amet
+                        vel nisi.
+                    </p>
+                </article>
+                <section class="artist_next_artshow">
+                    <h3>Prossima mostra</h3>
+                    <div class="gallery_item">
+                        <div class="artshow_gallery_item">
+                            <div class="artshow_gallery_item_image">
+                                <a
+                                    aria-hidden="true"
+                                    tabindex="-1"
+                                    href="TODO:{id_opera}">
+                                    <img
+                                        src="../uploads/artshows/4.jpg"
+                                        alt="{title}" />
+                                </a>
+                            </div>
+                            <div class="artshow_gallery_item_info">
+                                <div class="artshow_gallery_item_title">
+                                    <a href="TODO:{id_opera}" title="{title}">
+                                        {title}
+                                    </a>
+                                </div>
+                                <div class="artshow_gallery_item_dates">
+                                    <p>
+                                        <time datetime="2024-03-08">
+                                            8 Marzo 2024
+                                        </time>
+                                    </p>
+                                    <p>
+                                        <time datetime="2024-03-08">
+                                            10 Marzo 2024
+                                        </time>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <section class="results_gallery">
+                <h2 id="top_gallery" class="artist_artworks_header">Opere</h2>
+                <div class="results_section" id="paginated_section">
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/1_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/2_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/3_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/4_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/1_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/6_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/5_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/4_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/3_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/1_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/1_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/5_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery_item">
+                        <div class="artwork_gallery_item_image">
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="TODO:{id_opera}">
+                                <img
+                                    src="../uploads/artworks/2_0.jpg"
+                                    alt="{title}" />
+                            </a>
+                        </div>
+                        <figcaption>
+                            <div class="artwork_gallery_item_title">
+                                <a title="{title}" href="TODO:{id_opera}"
+                                    >{title}</a
+                                >
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div>
+                    <div class="pagination">
+                        <button
+                            id="prev_pag_button"
+                            aria-label="Pagina precedente"
+                            class="pagination_controls"
+                            disabled>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="1em"
+                                width="1em"
+                                viewBox="0 0 320 512">
+                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    fill="currentColor"
+                                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </button>
+                        <div id="pagination_numbers"></div>
+                        <button
+                            id="next_pag_button"
+                            aria-label="Prossima pagina"
+                            class="pagination_controls"
+                            disabled>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="1em"
+                                width="1em"
+                                viewBox="0 0 320 512">
+                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    fill="currentColor"
+                                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="return_top_button">
+                        <button id="back_to_top" class="button_reverse">
+                            Ritorna sopra
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div id="infofoot">
+                <p>Dove il sapere incontra l'arte</p>
+                <ul id="listinfofoot">
+                    <li>
+                        Vieni a trovarci in
+                        <a
+                            href="https://maps.app.goo.gl/iicWxkvzbn2m2wsUA"
+                            target="_blank"
+                            >via VIII Febbraio, <abbr title="Numero">n</abbr>.
+                            2, 35122 Padova</a
+                        >
+                    </li>
+                    <li>
+                        <abbr title="Telefono">Tel</abbr>:
+                        <a href="tel:+390498273939">+39 0498273939</a>
+                    </li>
+                    <li>
+                        <span lang="en">E-mail</span>:
+                        <a href="mailto:tour@unipd.it"
+                            ><span lang="en">tour</span>&commat;unipd.it</a
+                        >
+                    </li>
+                    <li>
+                        Seguici su
+                        <a
+                            href="https://www.instagram.com/visitunipd/?hl=it"
+                            target="_blank"
+                            lang="en"
+                            >Instagram</a
+                        >,
+                        <a
+                            href="https://it-it.facebook.com/visitunipd/"
+                            target="_blank"
+                            lang="en"
+                            >Facebook</a
+                        >
+                        e
+                        <a
+                            href="https://vm.tiktok.com/ZMe791AJx/"
+                            target="_blank"
+                            lang="en"
+                            >TikTok</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div id="logofoot">
+                <img
+                    src="../assets/images/logomini.svg"
+                    alt=""
+                    width="100"
+                    height="100" />
+            </div>
+            <div id="orariofoot">
+                <p id="descrOrariTable" class="navigationHelp">
+                    La tabella contiene gli orari di apertura del museo, aperto
+                    dal martedì alla domenica e chiuso il lunedì
+                </p>
+                <table aria-describedby="descrOrariTable">
+                    <caption>
+                        Orari di apertura
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giorno</th>
+                            <th scope="col">Mattino</th>
+                            <th scope="col">Pomeriggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">Chiuso</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">da Martedì a Venerdì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>15:00</time>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sabato e Domenica</th>
+                            <td data-title="mattino">
+                                <time>08:00</time>-<time>11:00</time>
+                            </td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>18:00</time>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+        <script src="../js/scripts.js"></script>
+    </body>
+</html>
