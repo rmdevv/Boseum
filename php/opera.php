@@ -7,8 +7,13 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 setlocale(LC_ALL,'it_IT');
 
-$connection=new DB\DBAccess();
+session_start();
+$isLoggedIn = isset($_SESSION['logged_id']);
+$loginOrProfileTitle = $isLoggedIn ?
+        "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>"
+        : "<a href=\"login.php\">Accedi</a>";
 
+$connection=new DB\DBAccess();
 if (!$connection->openDBConnection()) {
     header("location: ../src/500.html");
     exit();
@@ -20,6 +25,7 @@ if (!isset($_GET["id"])) {
 }
 
 $idArtwork = $_GET["id"];
+
 
 $infoArtworkArtist = $connection->getArtworkWithArtist($idArtwork);
 $labels = $connection->getArtworkLabels($idArtwork);
@@ -52,8 +58,12 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
         $src_artista = '../assets/images/default_user.svg';
     }
     $height = $infoArtworkArtist[0]['height'];
+    $height == 0 ? $height = '-' : $height .= ' cm';
     $width = $infoArtworkArtist[0]['width'];
+    $width == 0 ? $width = '-' : $width .= ' cm';
     $length = $infoArtworkArtist[0]['length'];
+    $length == 0 ? $length = '-' : $length .= ' cm';
+
     $startDateReverse = $infoArtworkArtist[0]['start_date'];
     $startDate = DateManager::toDMY($startDateReverse);
     $endDateReverse = $infoArtworkArtist[0]['end_date'];
@@ -106,6 +116,7 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
     }
 
     $opera = file_get_contents("../templates/opera.html");
+    $opera = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $opera);
     $opera = str_replace("{{title}}", $title, $opera);
     $opera = str_replace("{{id_artista}}", $id_artista, $opera);
     $opera = str_replace("{{src_user}}", $src_artista, $opera);

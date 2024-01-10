@@ -7,8 +7,13 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 setlocale(LC_ALL,'it_IT');
 
-$connection=new DB\DBAccess();
+session_start();
+$isLoggedIn = isset($_SESSION['logged_id']);
+$loginOrProfileTitle = $isLoggedIn ?
+        "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>"
+        : "<a href=\"login.php\">Accedi</a>";
 
+$connection=new DB\DBAccess();
 if (!$connection->openDBConnection()) {
     header("location: ../src/500.html");
     exit();
@@ -69,6 +74,7 @@ if(!$infoArtshow || sizeof($infoArtshow) <= 0){
     }
 
     $mostra = file_get_contents("../templates/mostra.html");
+    $mostra = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $mostra);
     $mostra = str_replace("{{name}}", $title, $mostra);
     $mostra = str_replace("{{start_date}}", $startDate, $mostra);
     $mostra = str_replace("{{start_date_reversed}}", $startDateReverse, $mostra);

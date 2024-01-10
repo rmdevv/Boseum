@@ -2,12 +2,14 @@
 <html lang="it">
     <head>
         <meta charset="UTF-8" />
-        <title> {{name}} | Boseum</title>
+        <title>{{name}} | Boseum</title>
         <link
             rel="shortcut icon"
             type="image/png"
             href="../assets/images/favicon.png" />
-        <meta name="keywords" content="museo d'arte, palazzo bo, università degli studi di padova, padova" />
+        <meta
+            name="keywords"
+            content="museo d'arte, palazzo bo, università degli studi di padova, padova" />
         <meta name="description" content="Mostra {{name}} al Boseum" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
@@ -49,11 +51,7 @@
                         <li>
                             <a href="mostre.php">Mostre</a>
                         </li>
-                        <li>
-                            <a href="accedi.php" id="accountnav" lang="en"
-                                >Account</a
-                            >
-                        </li>
+                        <li>{{login_or_profile_title}}</li>
                     </ul>
                 </nav>
             </div>
@@ -79,19 +77,19 @@
                         <h2 id="artshow_name">{{name}}</h2>
                         <p class="artshow_info_date">
                             Dal
-                            <time datetime="{{start_date_reversed}}"> {{start_date}} </time>
+                            <time datetime="{{start_date_reversed}}">
+                                {{start_date}}
+                            </time>
                             al
-                            <time datetime="{{end_date_reversed}}"> {{end_date}} </time>
+                            <time datetime="{{end_date_reversed}}">
+                                {{end_date}}
+                            </time>
                         </p>
-                        <p id="artshow_maindescr">
-                            {{description}}
-                        </p>
+                        <p id="artshow_maindescr">{{description}}</p>
                     </div>
                     <form id="artshow_prenotation">
                         <h2>Partecipa alla mostra</h2>
-                        <p>
-                            {{isBooked}}
-                        </p>
+                        <p>{{isBooked}}</p>
                         <button class="button_reverse" name="partecipa" id="">
                             {{isBooked_button}}
                         </button>
@@ -114,10 +112,7 @@
                         </button> -->
                     </form>
                 </div>
-                <img
-                    src="{{image}}"
-                    class="artshow_mainimage"
-                    alt="" />
+                <img src="{{image}}" class="artshow_mainimage" alt="" />
             </div>
             <section class="results_gallery">
                 <h2 id="top_gallery">Artisti partecipanti</h2>

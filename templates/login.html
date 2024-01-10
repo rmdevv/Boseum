@@ -2,23 +2,24 @@
 <html lang="it">
     <head>
         <meta charset="UTF-8" />
-        <title>{{username}} | Boseum</title>
+        <title>Login | Boseum</title>
         <link
             rel="shortcut icon"
             type="image/png"
             href="../assets/images/favicon.png" />
         <meta
             name="keywords"
-            content="museo d'arte, palazzo bo, università degli studi di padova, padova, profilo, {{name}} {{lastname}}, {{username}}" />
+            content="museo d'arte, palazzo bo, università degli studi di padova, padova, login" />
         <meta
             name="description"
-            content="Profilo Boseum dell'artista {{name}} {{lastname}}, qui potrai trovare le informazioni su tale artista, le sue opere e le mostre in cui potrai vederle di persona" />
+            content="Accedi al tuo profilo ufficiale Boseum" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
         <link
             rel="stylesheet"
             href="../assets/CSS/mini.css"
             media="screen and (max-width:600px)" />
+        <!-- <link rel="stylesheet" href="stampa.css" media="print" /> -->
     </head>
     <body>
         <header>
@@ -52,95 +53,57 @@
                         <li>
                             <a href="mostre.php">Mostre</a>
                         </li>
-                        <li>{{login_or_profile_title}}</li>
+                        <li><span lang="en">Login</span></li>
                     </ul>
                 </nav>
             </div>
         </header>
-        <nav id="breadcrumb">
-            <span>Ti trovi in:</span>
-            <ul class="breadcrumb">
-                <li>
-                    <a href="index.php"><span lang="en">Home</span></a>
-                </li>
-                <li>
-                    <a href="artisti.php">Artisti</a>
-                </li>
-                <li>
-                    <span>{{username}}</span>
-                </li>
-            </ul>
-        </nav>
         <main id="content">
-            <div class="artist_section">
-                <article class="artist_header">
-                    <div class="edit_artist_container">
-                        <div class="artist_image_container">
-                            <img src="{{image}}" alt="immagine profilo" />
-                        </div>
-                        {{artist_buttons}}
+            <section class="login_page">
+                <div class="login_container">
+                    <div class="login_modal">
+                        <h2>Accedi</h2>
+                        <p>Inserisci il tuo username e la password.</p>
+                        <p>
+                            Non sei ancora registrato?
+                            <a href="signup.php">Registrati qui</a>
+                        </p>
+                        <form action="login.php" method="post">
+                            <fieldset class="fieldset_item">
+                                <legend>Dati account</legend>
+                                <div class="form_item">
+                                    <label for="username"> Username </label>
+                                    <input
+                                        placeholder="Username"
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        value=""
+                                        required />
+                                </div>
+                                <div class="form_item">
+                                    <label for="password"> Password </label>
+                                    <input
+                                        placeholder="Password"
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        value=""
+                                        required />
+                                </div>
+                            </fieldset>
+                            <div class="form_button">
+                                <button
+                                    type="submit"
+                                    name="login"
+                                    class="btn-primary">
+                                    Accedi
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="artist_info">
-                        <h2>{{name}} {{lastname}}</h2>
-                        <h3>@{{username}}</h3>
-                        {{details}}
-                    </div>
-                </article>
-                {{biography}} {{experience}}
-                <section class="artist_next_artshow">
-                    <h3>Prossima mostra</h3>
-                    {{next_artshow}}
-                </section>
-
-                <section class="results_gallery">
-                    <h2 id="top_gallery" class="artist_artworks_header">
-                        Opere
-                    </h2>
-                    {{artworks}}
-                    <div>
-                        <div class="pagination">
-                            <button
-                                id="prev_pag_button"
-                                aria-label="Pagina precedente"
-                                class="pagination_controls"
-                                disabled>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    height="1em"
-                                    width="1em"
-                                    viewBox="0 0 320 512">
-                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                    <path
-                                        fill="currentColor"
-                                        d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
-                                </svg>
-                            </button>
-                            <div id="pagination_numbers"></div>
-                            <button
-                                id="next_pag_button"
-                                aria-label="Prossima pagina"
-                                class="pagination_controls"
-                                disabled>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    height="1em"
-                                    width="1em"
-                                    viewBox="0 0 320 512">
-                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                    <path
-                                        fill="currentColor"
-                                        d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="return_top_button">
-                            <button id="back_to_top" class="button_reverse">
-                                Ritorna sopra
-                            </button>
-                        </div>
-                    </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </main>
         <footer>
             <div id="infofoot">
@@ -238,6 +201,5 @@
                 </table>
             </div>
         </footer>
-        <script src="../js/scripts.js"></script>
     </body>
 </html>

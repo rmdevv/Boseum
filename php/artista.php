@@ -7,12 +7,8 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 setlocale(LC_ALL,'it_IT');
 
-$connection=new DB\DBAccess();
-
-if (!$connection->openDBConnection()) {
-    header("location: ../src/500.html");
-    exit();
-}
+session_start();
+$isLoggedIn = isset($_SESSION['logged_id']);
 
 if (!isset($_GET["id"])) {
 	header("location: artisti.php");
@@ -21,6 +17,24 @@ if (!isset($_GET["id"])) {
 
 $idArtist = $_GET["id"];
 
+$loginOrProfileTitle = $isLoggedIn ?
+        ($idArtist == $_SESSION['logged_id'] ?
+            '<span lang=\"en\">Account</span>'
+            : "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>")
+        : "<a href=\"login.php\">Accedi</a>";
+$artistButtons = $isLoggedIn && $idArtist == $_SESSION['logged_id'] ?
+                    "<div class=\"artist_button\">
+                        <a href=\"modifica_profilo.php\">Modifica profilo</a>
+                        <button id=\"logout_button\">Logout</button>
+                    </div>"
+                    : "";
+
+$connection=new DB\DBAccess();
+if (!$connection->openDBConnection()) {
+    header("location: ../src/500.html");
+    exit();
+}
+
 $infoArtistArtworks = $connection->getArtist($idArtist);
 $labels = $connection->getArtistLabels($idArtist);
 $artistNextArtshow = $connection->getNextArtshowOfArtist($idArtist);
@@ -28,15 +42,8 @@ $artworksPreview = $connection->getArtistArtworksPreview($idArtist);
 
 $connection->closeConnection();
 
-$loginOrProfileTitle = "<span lang=\"en\">Account</span>"; // TODO: or Login
-
-$artistButtons = "<div class=\"artist_button\">
-                            <a href=\"modifica_profilo.php\">Modifica profilo</a>
-                            <button id=\"logout_button\">Logout</button>
-                        </div>"; // TODO: or ''
-
 if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
-    header("location: ../src/404.html");
+    // header("location: ../src/404.html");
 }else{
     $name = $infoArtistArtworks[0]['name'];
     $lastname = $infoArtistArtworks[0]['lastname'];
@@ -151,10 +158,10 @@ if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
     }
 
     $artista = file_get_contents("../templates/artista.html");
+    $artista = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $artista);
     $artista = str_replace("{{name}}", $name, $artista);
     $artista = str_replace("{{lastname}}", $lastname, $artista);
     $artista = str_replace("{{username}}", $username, $artista);
-    $artista = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $artista);
     $artista = str_replace("{{artist_buttons}}", $artistButtons, $artista);
     $artista = str_replace("{{image}}", $image, $artista);
     $artista = str_replace("{{details}}", $details, $artista);

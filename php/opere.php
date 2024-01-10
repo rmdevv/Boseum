@@ -7,10 +7,15 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 setlocale(LC_ALL,'it_IT');
 
+session_start();
+$isLoggedIn = isset($_SESSION['logged_id']);
+$loginOrProfileTitle = $isLoggedIn ?
+    "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>" :
+    "<a href=\"login.php\">Accedi</a>";
+
 $connection=new DB\DBAccess();
 
 if (!$connection->openDBConnection()) {
-    // redirect to 500.html
     header("location: ../src/500.html");
     exit();
 }
@@ -80,8 +85,8 @@ foreach ($depthRanges as $depth) {
     $depthOptions .= "<option value=\"".$depth."\"".$depthSelected.">".$depth."</option>";
 }
 
-
 $opere = file_get_contents("../templates/opere.html");
+$opere = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $opere);
 $opere = str_replace("{{title}}", $titleSearch, $opere);
 $opere = str_replace("{{date}}", $dateOptions, $opere);
 $opere = str_replace("{{height}}", $heightOptions, $opere);

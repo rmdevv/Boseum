@@ -592,9 +592,9 @@ class DBAccess{
     }
 
     public function getUserPassword($username){
-        $query = "SELECT Users.password
+        $query = "SELECT Users.*
                     FROM Users
-                    WHERE Users.username = $username";
+                    WHERE Users.username = '$username'";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){

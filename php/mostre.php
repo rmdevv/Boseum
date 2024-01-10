@@ -7,10 +7,14 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 setlocale(LC_ALL,'it_IT');
 
-$connection=new DB\DBAccess();
+session_start();
+$isLoggedIn = isset($_SESSION['logged_id']);
+$loginOrProfileTitle = $isLoggedIn ?
+        "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>"
+        : "<a href=\"login.php\">Accedi</a>";
 
+$connection=new DB\DBAccess();
 if (!$connection->openDBConnection()) {
-    // redirect to 500.html
     header("location: ../src/500.html");
     exit();
 }
@@ -72,6 +76,7 @@ if (!isset($_GET["start_date"]) && !isset($_GET["end_date"])) {
     }
 
     $mostre = file_get_contents("../templates/mostre.html");
+    $mostre = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $mostre);
     $mostre = str_replace("{{count}}", $size, $mostre);
     $mostre = str_replace("{{artshow_items}}", $resultsArtshowContainer, $mostre);
     echo($mostre);

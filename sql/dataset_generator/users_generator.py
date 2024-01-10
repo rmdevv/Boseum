@@ -18,6 +18,8 @@ def generate_user(id_user, user):
     birth_date = str(random.randint(1997, 2004)) + fake.date_of_birth().strftime('%Y-%m-%d')[4:]
     birth_place = random.choice([fake.city(), 'Padova'])
     password = user.get('password', 'user')
+    if(password == ''):
+        password = 'user'
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
     # print(bcrypt.checkpw(''.encode('utf-8'), ''.encode('utf-8')))
     biography = html.escape(user.get('biography', 'NULL'))
