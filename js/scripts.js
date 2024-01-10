@@ -46,7 +46,7 @@ if (paginatedList) {
     const prevButton = document.getElementById('prev_pag_button')
     const nextButton = document.getElementById('next_pag_button')
 
-    const paginationLimit = 12
+    const paginationLimit = 10
     let currentPage = 1
     const pageCount = Math.ceil(items.length / paginationLimit)
 

@@ -9,13 +9,17 @@ class DBAccess{
     private $connection;
 
     public function openDBConnection(){
-        $this -> connection = mysqli_connect(
-            self::HOST_DB,
-            self::USERNAME,
-            self::PASSWORD,
-            self::DATABASE_NAME
-        );
-        return mysqli_connect_errno()==0;
+        try {
+            $this -> connection = mysqli_connect(
+                self::HOST_DB,
+                self::USERNAME,
+                self::PASSWORD,
+                self::DATABASE_NAME
+            );
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
     }
 
     public function closeConnection(){

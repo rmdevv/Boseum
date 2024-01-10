@@ -11,7 +11,8 @@ $connection=new DB\DBAccess();
 
 if (!$connection->openDBConnection()) {
     // redirect to 500.html
-    exit("errore nella creazione della connessione con il DB\n");
+    header("location: ../src/500.html");
+    exit();
 }
 
 if (!isset($_GET["id"])) {
@@ -34,8 +35,9 @@ $connection->closeConnection();
 //     echo '</pre>';
 // }
 
-if(sizeof($infoArtworkArtist) <= 0){
+if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
     //redirect 404.html
+    header("location: ../src/404.html");
 }else{
     $labelsContainer = '';
     if($labels && sizeof($labels) > 0){
