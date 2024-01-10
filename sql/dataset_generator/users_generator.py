@@ -20,8 +20,8 @@ def generate_user(id_user, user):
     password = user.get('password', 'user')
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
     # print(bcrypt.checkpw(''.encode('utf-8'), ''.encode('utf-8')))
-    biography = html.escape(user.get('biography', ''))
-    experience = html.escape(user.get('experience', ''))
+    biography = html.escape(user.get('biography', 'NULL'))
+    experience = html.escape(user.get('experience', 'NULL'))
 
     return (
         username,
@@ -42,7 +42,7 @@ INSERT INTO Users(username, password, name, lastname, isAmm, image, birth_date, 
 VALUES 
 '''
     for id_artist, artist in enumerate(ARTISTS, start=2):
-        insert_query = insert_query + f"{str(tuple(generate_user(id_artist, artist)))},\n"
+        insert_query = insert_query + f"{str(tuple(generate_user(id_artist, artist.get('user_data'))))},\n"
 
     insert_query = insert_query[:-2]+";"
     return insert_query

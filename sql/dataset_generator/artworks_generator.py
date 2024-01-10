@@ -95,7 +95,7 @@ VALUES
 '''
 
     for a in insert_list:
-        insert_query = insert_query + f"({a.get('id')}, '{a.get('title')}', '{a.get('main_image')}', '{a.get('description')}', {a.get('height')}, {a.get('width')}, {a.get('length')}, '{a.get('start_date')}', '{a.get('end_date')}', '{a.get('upload_time')}', {a.get('id_artist')}),\n"
+        insert_query = insert_query + f"({a.get('id')}, '{a.get('title')}', '{a.get('main_image')}', '{a.get('description')}', {a.get('height')}, {a.get('width')}, {a.get('length')}, '{a.get('start_date')}', '{a.get('end_date')}', {a.get('upload_time')}, {a.get('id_artist')}),\n"
 
     insert_query = insert_query[:-2]+";"
     return insert_query if '(' in insert_query else ''
@@ -138,7 +138,7 @@ VALUES
 '''
 
     for id_a, a in enumerate(artshows, start=1):
-        insert_query = insert_query + f"('{a.get('title')}', '{a.get('description')}', '../uploads/artshows/{id_a}.jpg', '{a.get('start_date')}', '{a.get('end_date')}'),\n"
+        insert_query = insert_query + f"('{a.get('title')}', '{html.escape(a.get('description'))}', '../uploads/artshows/{id_a}.jpg', '{a.get('start_date')}', '{a.get('end_date')}'),\n"
 
     insert_query = insert_query[:-2]+";"
     return insert_query if '(' in insert_query else ''
