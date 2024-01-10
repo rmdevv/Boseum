@@ -227,7 +227,7 @@ ARTISTS = [
                 "id_met": 395566,
                 "title": "The Melancholic Man",
                 "labels": ["bianco e nero", "realismo", "ritratto", "sketch"],
-                "description": "In questa rappresentazione in bianco e nero, ho cercato di catturare l'intensità della solitudine e del M di vivere. Il soggetto, un signore profondamente assorto nei suoi pensieri, si appoggia al tavolo: il volto velato da un'espressione di malinconia. Attraverso tratti fini e un gioco di chiaro-scuro, ho voluto evocare un'atmosfera di introspezione e silenziosa contemplazione, dove la solitudine dell'uomo viene impersonificata dal soggetto."
+                "description": "In questa rappresentazione in bianco e nero, ho cercato di catturare l'intensità della solitudine e del male di vivere. Il soggetto, un signore profondamente assorto nei suoi pensieri, si appoggia al tavolo: il volto velato da un'espressione di malinconia. Attraverso tratti fini e un gioco di chiaro-scuro, ho voluto evocare un'atmosfera di introspezione e silenziosa contemplazione, dove la solitudine dell'uomo viene impersonificata dal soggetto."
             },
             {
                 "id_met": 418620,

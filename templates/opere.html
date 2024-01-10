@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Opere | Boseum</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png" />
+        <meta
+            name="keywords"
+            content="museo d'arte, palazzo bo, università degli studi di padova, padova, opere, dipinti, disegni, creazioni" />
+        <meta
+            name="description"
+            content="Le opere esposte al Boseum, visibili nelle mostre organizzate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
+        <link
+            rel="stylesheet"
+            href="../assets/CSS/mini.css"
+            media="screen and (max-width:600px)" />
+    </head>
+    <body>
+        <header>
+            <nav class="navigationHelp" aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
+            <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="menu_checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="index.html"><span lang="en">Home</span></a>
+                        </li>
+                        <li>
+                            <a href="artisti.html">Artisti</a>
+                        </li>
+                        <li>
+                            <span>Opere</span>
+                        </li>
+                        <li>
+                            <a href="mostre.html">Mostre</a>
+                        </li>
+                        <li>
+                            <a href="accedi.html" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <nav id="breadcrumb">
+            <span>Ti trovi in:</span>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html"><span lang="en">Home</span></a>
+                </li>
+                <li>
+                    <span>Ricerca opere</span>
+                </li>
+            </ul>
+        </nav>
+        <main id="content">
+            <section class="search_section">
+                <form id="search" action="" method="get">
+                    <h2>Ricerca opere</h2>
+                    <div class="search_bar">
+                        <label for="searchbar">Titolo: </label>
+                        <input
+                            class="search_bar_input"
+                            placeholder="Titolo opera (facoltativo)"
+                            type="search"
+                            inputmode="text"
+                            id="searchbar"
+                            value="{{title}}"
+                            name="title" />
+                        <button
+                            aria-label="Invio ricerca"
+                            class="search_button">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="1em"
+                                height="1em"
+                                viewBox="0 0 512 512">
+                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    fill="currentColor"
+                                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <section class="filters_section">
+                        <details open>
+                            <summary>
+                                <span>Filtri</span>
+                            </summary>
+                            <section>
+                                <div class="select_filter_list">
+                                    <div class="select_filter_container">
+                                        <label for="date"
+                                            >Periodo di creazione:
+                                        </label>
+                                        <select
+                                            class="select_filter"
+                                            name="date"
+                                            id="date">
+                                            {{date}}
+                                        </select>
+                                    </div>
+                                    <div class="select_filter_container">
+                                        <label for="height"
+                                            >Altezza (cm):
+                                        </label>
+                                        <select
+                                            class="select_filter"
+                                            name="height"
+                                            id="height">
+                                            {{height}}
+                                        </select>
+                                    </div>
+                                    <div class="select_filter_container">
+                                        <label for="width"
+                                            >Larghezza (cm):
+                                        </label>
+                                        <select
+                                            class="select_filter"
+                                            name="width"
+                                            id="width">
+                                            {{width}}
+                                        </select>
+                                    </div>
+                                    <div class="select_filter_container">
+                                        <label for="depth"
+                                            >Profondità (cm):
+                                        </label>
+                                        <select
+                                            class="select_filter"
+                                            name="depth"
+                                            id="depth">
+                                            {{depth}}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="filters_labels">
+                                    <label for="labels_list">Etichette:</label>
+                                    {{labels}}
+                                </div>
+                            </section>
+                        </details>
+                    </section>
+                </form>
+            </section>
+            <section class="results_gallery">
+                <p id="top_gallery">
+                    La ricerca ha prodotto {{count}} risultato/i.
+                </p>
+                {{results}}
+                <div>
+                    <div class="pagination">
+                        <button
+                            id="prev_pag_button"
+                            aria-label="Pagina precedente"
+                            class="pagination_controls"
+                            disabled>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="1em"
+                                width="1em"
+                                viewBox="0 0 320 512">
+                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    fill="currentColor"
+                                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </button>
+                        <div id="pagination_numbers"></div>
+                        <button
+                            id="next_pag_button"
+                            aria-label="Prossima pagina"
+                            class="pagination_controls"
+                            disabled>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="1em"
+                                width="1em"
+                                viewBox="0 0 320 512">
+                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    fill="currentColor"
+                                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="return_top_button">
+                        <button id="back_to_top" class="button_reverse">
+                            Ritorna sopra
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div id="infofoot">
+                <p>Dove il sapere incontra l'arte</p>
+                <ul id="listinfofoot">
+                    <li>
+                        Vieni a trovarci in
+                        <a
+                            href="https://maps.app.goo.gl/iicWxkvzbn2m2wsUA"
+                            target="_blank"
+                            >via VIII Febbraio, <abbr title="Numero">n</abbr>.
+                            2, 35122 Padova</a
+                        >
+                    </li>
+                    <li>
+                        <abbr title="Telefono">Tel</abbr>:
+                        <a href="tel:+390498273939">+39 0498273939</a>
+                    </li>
+                    <li>
+                        <span lang="en">E-mail</span>:
+                        <a href="mailto:tour@unipd.it"
+                            ><span lang="en">tour</span>&commat;unipd.it</a
+                        >
+                    </li>
+                    <li>
+                        Seguici su
+                        <a
+                            href="https://www.instagram.com/visitunipd/?hl=it"
+                            target="_blank"
+                            lang="en"
+                            >Instagram</a
+                        >,
+                        <a
+                            href="https://it-it.facebook.com/visitunipd/"
+                            target="_blank"
+                            lang="en"
+                            >Facebook</a
+                        >
+                        e
+                        <a
+                            href="https://vm.tiktok.com/ZMe791AJx/"
+                            target="_blank"
+                            lang="en"
+                            >TikTok</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div id="logofoot">
+                <img
+                    src="../assets/images/logomini.svg"
+                    alt=""
+                    width="100"
+                    height="100" />
+            </div>
+            <div id="orariofoot">
+                <p id="descrOrariTable" class="navigationHelp">
+                    La tabella contiene gli orari di apertura del museo, aperto
+                    dal martedì alla domenica e chiuso il lunedì
+                </p>
+                <table aria-describedby="descrOrariTable">
+                    <caption>
+                        Orari di apertura
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giorno</th>
+                            <th scope="col">Mattino</th>
+                            <th scope="col">Pomeriggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">Chiuso</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">da Martedì a Venerdì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>15:00</time>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sabato e Domenica</th>
+                            <td data-title="mattino">
+                                <time>08:00</time>-<time>11:00</time>
+                            </td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>18:00</time>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+        <script src="../js/scripts.js"></script>
+    </body>
+</html>
