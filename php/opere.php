@@ -28,6 +28,7 @@ if($labels && sizeof($labels) > 0){
     $labelsContainer = "<ul id=\"label_list\">";
     foreach($labels as $label){
         $labelName = str_replace(" ", "", strtolower($label['label']));
+        $labelChecked = isset($_GET[$labelName]) ? "checked" : "";
         $labelsContainer .= "
         <li>
             <input
@@ -35,7 +36,8 @@ if($labels && sizeof($labels) > 0){
                 class=\"label_checkbox\"
                 id=\"".$labelName."\"
                 value=\"".$label['label']."\"
-                name=\"".$labelName."\" >
+                name=\"".$labelName."\" 
+                ".$labelChecked.">
             <label for=\"".$labelName."\">".ucfirst($label['label'])."</label>
         </li>";
 

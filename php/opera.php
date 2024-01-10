@@ -44,7 +44,7 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
         $labelsContainer = "<h3>Labels</h3><ul class=\"label_list\">";
         foreach($labels as $label){
             $labelName = str_replace(" ", "", strtolower($label['label']));
-            $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=true\">".$label['label']."</a></li>";
+            $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=true\">".ucfirst($label['label'])."</a></li>";
         }
         $labelsContainer .= "</ul>";
     }
