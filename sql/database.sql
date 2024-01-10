@@ -6,7 +6,6 @@ DROP TABLE IF EXISTS Labels;
 DROP TABLE IF EXISTS ArtworkLabels;
 DROP TABLE IF EXISTS ArtworkDetails;
 DROP TABLE IF EXISTS Artshows;
-DROP TABLE IF EXISTS ArtshowArtworks;
 DROP TABLE IF EXISTS ArtshowPrenotations;
 
 CREATE TABLE Users (
@@ -25,7 +24,7 @@ CREATE TABLE Users (
 
 CREATE TABLE Artworks (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    title VARCHAR(50) NOT NULL,
+    title VARCHAR(100) NOT NULL,
     main_image VARCHAR(100) NOT NULL UNIQUE,
     description VARCHAR(1000) NOT NULL,
     height FLOAT,
@@ -55,8 +54,8 @@ CREATE TABLE ArtworkDetails (
 
 CREATE TABLE Artshows (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    title VARCHAR(30) NOT NULL,
-    description VARCHAR(300) NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    description VARCHAR(1000) NOT NULL,
     image VARCHAR(100) UNIQUE NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL
@@ -93,3 +92,4 @@ INSERT INTO Labels VALUES
     ('mare'),
     ('notte'),
     ('inverno');
+

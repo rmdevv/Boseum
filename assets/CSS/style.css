@@ -52,6 +52,7 @@ html {
     position: absolute;
     text-indent: -999em;
     font-size: 1px;
+    opacity: 0;
 }
 
 header {
@@ -606,11 +607,6 @@ footer a:visited{
     justify-content:center;
     padding:15px
 }
-.artwork_image_cover{
-    position:absolute;
-    width:100%;
-    z-index:99
-}
 .artwork_image{
     max-height:100%;
     max-width:100%;
@@ -1034,8 +1030,8 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     text-decoration: none;
     color: black;
 }
-.artwork_gallery_item figcaption a:focus,
-.artwork_gallery_item figcaption a:hover {
+.gallery_item figcaption a:focus,
+.gallery_item figcaption a:hover {
     text-decoration: underline;
 }
 

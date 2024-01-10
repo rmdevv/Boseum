@@ -35,13 +35,18 @@ def artworks_generator(artists, download_images=False):
 
             artwork_data = get_artwork(artwork.get('id_met'))
 
-            height = int(artwork_data['measurements'][0].get('elementMeasurements').get('Height', 0))
-            width = int(artwork_data['measurements'][0].get('elementMeasurements').get('Width', 0))
-            length = int(artwork_data['measurements'][0].get('elementMeasurements').get('Length', 0))
-            diameter = int(artwork_data['measurements'][0].get('elementMeasurements').get('Diameter', 0))
-            if diameter > 0 and width==0 and length==0:
-                width = diameter
-                length = diameter
+            if(artwork_data.get('measurements')):
+                height = int(artwork_data['measurements'][0].get('elementMeasurements').get('Height', 0))
+                width = int(artwork_data['measurements'][0].get('elementMeasurements').get('Width', 0))
+                length = int(artwork_data['measurements'][0].get('elementMeasurements').get('Length', 0))
+                diameter = int(artwork_data['measurements'][0].get('elementMeasurements').get('Diameter', 0))
+                if diameter > 0 and width==0 and length==0:
+                    width = diameter
+                    length = diameter
+            else:
+                height = 'NULL'
+                width = 'NULL'
+                length = 'NULL'
 
             main_image_url = artwork_data.get('primaryImage')
             additional_images_url = artwork_data.get('additionalImages', [])
@@ -71,7 +76,7 @@ def artworks_generator(artists, download_images=False):
                     'length': length,
                     'start_date': start_date,
                     'end_date': end_date,
-                    'upload_time': datetime.now(),
+                    'upload_time': 'CURRENT_TIMESTAMP()',
                     'id_artist': id_artist,
                     'additional_images': db_url_list[1:],
                     'labels': labels
@@ -128,12 +133,12 @@ VALUES
 
 def insert_artshow_query(artshows):
     insert_query = '''
-INSERT INTO Artshows
+INSERT INTO Artshows(title, description, image, start_date, end_date)
 VALUES 
 '''
 
     for id_a, a in enumerate(artshows, start=1):
-        insert_query = insert_query + f"('{a.get('title')}', '{a.get('description')}', '../uploads/artshows/{id_a}.jpg', '{a.get('start_date')}', '{a.get('end-date')}'),\n"
+        insert_query = insert_query + f"('{a.get('title')}', '{a.get('description')}', '../uploads/artshows/{id_a}.jpg', '{a.get('start_date')}', '{a.get('end_date')}'),\n"
 
     insert_query = insert_query[:-2]+";"
     return insert_query if '(' in insert_query else ''
@@ -144,7 +149,7 @@ VALUES
 if __name__ == "__main__":
     os.makedirs('../../uploads/artworks/original', exist_ok=True)
     
-    return_list = artworks_generator(ARTISTS, download_images=True)
+    return_list = artworks_generator(ARTISTS, download_images=False)
 
     print(insert_users_query() + '\n')
     print(insert_artworks_query(return_list) + '\n')

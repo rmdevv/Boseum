@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{title}} | Boseum</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png" />
+        <meta name="keywords" content="TODO" />
+        <meta name="description" content="TODO" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
+        <link
+            rel="stylesheet"
+            href="../assets/CSS/mini.css"
+            media="screen and (max-width:600px)" />
+        <!-- <link rel="stylesheet" href="stampa.css" media="print" /> -->
+    </head>
+    <body>
+        <header>
+            <nav aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
+            <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="menu_checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="index.html"><span lang="en">Home</span></a>
+                        </li>
+                        <li>
+                            <a href="artisti.html">Artisti</a>
+                        </li>
+                        <li>
+                            <a href="opere.html">Opere</a>
+                        </li>
+                        <li>
+                            <a href="mostre.html">Mostre</a>
+                        </li>
+                        <li>
+                            <a href="accedi.html" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <nav id="breadcrumb">
+            <span>Ti trovi in:</span>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html"><span lang="en">Home</span></a>
+                </li>
+                <li>
+                    <a href="opere.html">Opere</a>
+                </li>
+                <li>
+                    <span>{{title}}</span>
+                </li>
+            </ul>
+        </nav>
+        <main id="content">
+            <section id="artwork_section" class="artwork_section">
+                <div class="artwork_info">
+                    <h2 id="artwork_title" class="elegant_font artwork_title">
+                        {{title}}
+                    </h2>
+
+                    <div class="artist_mini_preview">
+                        <a
+                            href="artista.php?id={{id_artista}}"
+                            title="Visita la pagina dell'artista">
+                            <img src="{{src_user}}" alt="Immagine artista" />
+                        </a>
+                        <div class="artist_mini_preview_info">
+                            <p>{{user_name}} {{user_lastname}}</p>
+                            <a href="artista.php?id={{id_artista}}"
+                                >{{username}}</a
+                            >
+                        </div>
+                    </div>
+
+                    <div class="artwork_info_desc">
+                        <h3>Descrizione</h3>
+                        <p>{{description}}</p>
+                        {{labels}}
+                        <h3>Dettagli</h3>
+                        <dl class="artwork_details">
+                            <dt>Altezza</dt>
+                            <dd>{{height}}</dd>
+
+                            <dt>Larghezza</dt>
+                            <dd>{{width}}</dd>
+
+                            <dt>Profondità</dt>
+                            <dd>{{length}}</dd>
+
+                            <dt>Data di inzio</dt>
+                            <dd>
+                                <time datetime="{{start_date_reversed}}"
+                                    >{{start_date}}</time
+                                >
+                            </dd>
+
+                            <dt>Data di fine</dt>
+                            <dd>
+                                <time datetime="{{end_date_reversed}}"
+                                    >{{end_date}}</time
+                                >
+                            </dd>
+
+                            <dt>Data di caricamento</dt>
+                            <dd>
+                                <time datetime="{{upload_time_reversed}}"
+                                    >{{upload_time}}</time
+                                >
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="the_artwork the_artwork_sticky">
+                    <figure class="the_artwork_figure">
+                        <div
+                            id="artwork_image_wrapper"
+                            class="artwork_image_wrapper">
+                            <img
+                                id="artwork_image"
+                                class="artwork_image"
+                                src="{{main_image}}"
+                                alt="{{title}}" />
+                        </div>
+                        <div class="the_artwork_meta">
+                            <div class="artwork_interactions">
+                                <div class="artwork_interaction">
+                                    <a
+                                        id="download_image"
+                                        href="{{main_image}}"
+                                        title="Download"
+                                        download="{{main_image}}"
+                                        aria-label="Scarica l'immagine">
+                                        <svg
+                                            aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon"
+                                            viewBox="0 0 384 512">
+                                            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                            <path
+                                                d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+                                        </svg>
+                                        <span class="download_text"
+                                            >Scarica l'immagine
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="artwork_interaction">
+                                    <a
+                                        id="enlarge_link"
+                                        href="{{main_image}}"
+                                        target="_blank"
+                                        title="Zoom"
+                                        aria-label="Ingrandisci l'immagine">
+                                        <svg
+                                            aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon"
+                                            viewBox="0 0 448 512">
+                                            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                            <path
+                                                d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z" />
+                                        </svg>
+                                        <span class="enlarge_text"
+                                            >Ingrandisci l'immagine
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                    {{additional_images}}
+                </div>
+            </section>
+
+            <section class="results_gallery">
+                <h2 id="top_gallery">Opere simili</h2>
+                <div class="results_section" id="paginated_section">
+                    {{similar_images}}
+                </div>
+                <div>
+                    <div class="pagination">
+                        <button
+                            id="prev_pag_button"
+                            aria-label="Pagina precedente"
+                            class="pagination_controls"
+                            disabled>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="1em"
+                                width="1em"
+                                viewBox="0 0 320 512">
+                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    fill="currentColor"
+                                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </button>
+                        <div id="pagination_numbers"></div>
+                        <button
+                            id="next_pag_button"
+                            aria-label="Prossima pagina"
+                            class="pagination_controls"
+                            disabled>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="1em"
+                                width="1em"
+                                viewBox="0 0 320 512">
+                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    fill="currentColor"
+                                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="return_top_button">
+                        <button id="back_to_top" class="button_reverse">
+                            Ritorna sopra
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div id="infofoot">
+                <p>Dove il sapere incontra l'arte</p>
+                <ul id="listinfofoot">
+                    <li>
+                        Vieni a trovarci in
+                        <a
+                            href="https://maps.app.goo.gl/iicWxkvzbn2m2wsUA"
+                            target="_blank"
+                            >via VIII Febbraio, <abbr title="Numero">n</abbr>.
+                            2, 35122 Padova</a
+                        >
+                    </li>
+                    <li>
+                        <abbr title="Telefono">Tel</abbr>:
+                        <a href="tel:+390498273939">+39 0498273939</a>
+                    </li>
+                    <li>
+                        <span lang="en">E-mail</span>:
+                        <a href="mailto:tour@unipd.it"
+                            ><span lang="en">tour</span>&commat;unipd.it</a
+                        >
+                    </li>
+                    <li>
+                        Seguici su
+                        <a
+                            href="https://www.instagram.com/visitunipd/?hl=it"
+                            target="_blank"
+                            lang="en"
+                            >Instagram</a
+                        >,
+                        <a
+                            href="https://it-it.facebook.com/visitunipd/"
+                            target="_blank"
+                            lang="en"
+                            >Facebook</a
+                        >
+                        e
+                        <a
+                            href="https://vm.tiktok.com/ZMe791AJx/"
+                            target="_blank"
+                            lang="en"
+                            >TikTok</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div id="logofoot">
+                <img
+                    src="../assets/images/logomini.svg"
+                    alt=""
+                    width="100px"
+                    height="100px" />
+            </div>
+            <div id="orariofoot">
+                <p id="descrOrariTable" class="navigationHelp">
+                    La tabella contiene gli orari di apertura del museo, aperto
+                    dal martedì alla domenica e chiuso il lunedì
+                </p>
+                <table aria-describedby="descrOrariTable">
+                    <caption>
+                        Orari di apertura
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giorno</th>
+                            <th scope="col">Mattino</th>
+                            <th scope="col">Pomeriggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">Chiuso</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">da Martedì a Venerdì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>15:00</time>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sabato e Domenica</th>
+                            <td data-title="mattino">
+                                <time>08:00</time>-<time>11:00</time>
+                            </td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>18:00</time>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+        <script src="../js/scripts.js"></script>
+    </body>
+</html>

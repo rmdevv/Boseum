@@ -32,7 +32,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -49,7 +49,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -67,7 +67,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -85,7 +85,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -102,7 +102,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -119,7 +119,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -141,7 +141,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -159,7 +159,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -176,7 +176,25 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
+                $result[]=$row;
+            }
+            $queryResult->free();
+            return $result;
+        }
+        else return null;
+    }
+
+    public function getArtworkLabels($id){
+        $query = "SELECT ArtworkLabels.label
+                    FROM Artworks JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
+                    WHERE Artworks.id = $id
+                    ORDER BY ArtworkLabels.label";
+
+        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        if (mysqli_num_rows($queryResult) != 0){
+            $result=array();
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -186,7 +204,7 @@ class DBAccess{
     }
 
     public function getSimilarArtworks($id){
-        $query = "SELECT Artworks.*, Users.id, Users.username 
+        $query = "SELECT Artworks.id, Artworks.title, Artworks.main_image, Users.id AS artist_id, Users.username 
                     FROM (Artworks JOIN Users ON Artworks.id_artist = Users.id)
                     JOIN (
                         SELECT A.id
@@ -195,13 +213,13 @@ class DBAccess{
                         JOIN ArtworkLabels AL2 ON AL1.label = AL2.label
                         WHERE AL2.id_artwork = $id AND A.id <> $id
                         GROUP BY A.id
-                        HAVING COUNT(DISTINCT AL1.label) >= (SELECT COUNT(DISTINCT ArtworkLabels.label) FROM ArtworkLabels WHERE ArtworkLabels.id_artwork = $id)
+                        HAVING COUNT(DISTINCT AL1.label) >= (SELECT LEAST(2, COUNT(DISTINCT ArtworkLabels.label)) FROM ArtworkLabels WHERE ArtworkLabels.id_artwork = $id)
                     ) AS QR ON Artworks.id = QR.id";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -216,7 +234,7 @@ class DBAccess{
             $start_year = $time.str_split("-")[0];
             $end_year = $time.str_split("-")[1];
             $time_filter = "AND NOT
-                (YEAR(Artworks.start_time) >= $end_year OR YEAR(Artworks.end_time) <= $start_year)";
+                (YEAR(Artworks.start_date) >= $end_year OR YEAR(Artworks.end_date) <= $start_year)";
         }
         $height_filter = "";
         if($height != ""){
@@ -238,16 +256,16 @@ class DBAccess{
         }
         $labels_filter = "";
         if(count($labels) > 0){
-            $labels_filter = "AND ArtworksLabels.label IN ('" . implode("', '", $labels) . "')
+            $labels_filter = "AND ArtworkLabels.label IN ('" . implode("', '", $labels) . "')
                             GROUP BY Artworks.id
-                            HAVING COUNT(DISTINCT ArtworksLabels.label) >= " . count($labels);
+                            HAVING COUNT(DISTINCT ArtworkLabels.label) >= " . count($labels);
         }
 
         $query = "SELECT DISTINCT A1.id, A1.title, A1.main_image, U1.id, U1.username
                     FROM (Artworks AS A1 JOIN Users AS U1 ON A1.id_artist = U1.id)
                     JOIN (
                         SELECT DISTINCT Artworks.id
-                        FROM (Artworks JOIN Users ON Artworks.id_artist = Users.id) JOIN ArtworksLabels ON Artworks.id = ArtworksLabels.id_artwork
+                        FROM (Artworks JOIN Users ON Artworks.id_artist = Users.id) JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
                         WHERE Artworks.title LIKE '%$text%'
                             $time_filter
                             $height_filter
@@ -255,12 +273,12 @@ class DBAccess{
                             $depth_filter
                             $labels_filter
                         ) AS QR ON A1.id = QR.id
-                    ORDER BY Artworks.upload_time DESC";
+                    ORDER BY A1.upload_time DESC";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -276,9 +294,9 @@ class DBAccess{
         }
         $labels_filter = "";
         if(count($labels) > 0){
-            $labels_filter = "AND ArtworksLabels.label IN ('" . implode("', '", $labels) . "')
+            $labels_filter = "AND ArtworkLabels.label IN ('" . implode("', '", $labels) . "')
                             GROUP BY Users.id
-                            HAVING COUNT(DISTINCT ArtworksLabels.label) >= " . count($labels);
+                            HAVING COUNT(DISTINCT ArtworkLabels.label) >= " . count($labels);
         }
         $present_in_artshow_filter = "";
         if($isPresentInArtshow){
@@ -291,7 +309,7 @@ class DBAccess{
                     FROM Users AS U1
                     JOIN (
                         SELECT DISTINCT Users.id
-                        FROM (Users JOIN Artworks ON Users.id = Artworks.id_artist) JOIN ArtworksLabels ON Artworks.id = ArtworksLabels.id_artwork
+                        FROM (Users JOIN Artworks ON Users.id = Artworks.id_artist) JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
                         WHERE (Users.username LIKE '%$text%' OR Users.name LIKE '%$text%' OR Users.lastname LIKE '%$text%')
                             AND NOT Users.isAmm
                             $time_filter
@@ -302,7 +320,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -320,7 +338,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -339,7 +357,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -352,7 +370,7 @@ class DBAccess{
         if($start_date == ""){
             $start_date = "CURDATE()";
         }
-        $time_filter = "NOT (Artshows.start_time >= $end_date OR Artshows.end_time <= $start_date)";        
+        $time_filter = "NOT (Artshows.start_date >= $end_date OR Artshows.end_date <= $start_date)";        
 
         $query = "SELECT Artshows.*
                     FROM Artshows
@@ -361,7 +379,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -378,7 +396,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
@@ -510,7 +528,7 @@ class DBAccess{
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
-            while($row = mysqli_fetch_array($queryResult)){
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
                 $result[]=$row;
             }
             $queryResult->free();
