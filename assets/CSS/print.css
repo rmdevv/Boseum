@@ -1,0 +1,124 @@
+html{
+    padding: 0.5cm;
+}
+
+h3, h4, h5, h6{
+    font-size: 1.5em;
+}
+
+.navigationHelp{
+    display: none;
+}
+
+#menu{
+    display: none;
+}
+
+/*da fare image replace per boseum con negativo logo*/
+
+.breadcrumb, .breadcrumb li{
+    display: inline;
+    list-style: none;
+}
+
+.breadcrumb li:after{
+    content: "/";
+    padding: 1em;
+}
+
+.cardmain{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.cardmainimg{
+    display: none;
+}
+
+.cardmain iframe{
+    display: none;
+}
+
+#imgnextartshow{
+    display: block;
+    width: 10cm;
+    height: auto;
+    margin: 1.5cm;
+}
+
+.cardnextshow p, .cardnextshow p+p{
+    display: inline;
+}
+
+.cardnextshow a{
+    display: none;
+}
+
+#partners{
+    text-align: center;
+}
+
+.partners_cards{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1cm;
+    list-style: none;
+    gap: 0.75cm;
+    justify-content: center;
+}
+
+.partners_cards li a img {
+    height: 4em;
+    width: 4em;
+}
+
+#infofoot{
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+#listinfofoot{
+    list-style: none;
+}
+
+#logofoot{
+    display: none;
+}
+
+#orariofoot{
+    display: none;
+}
+
+
+#artshow_maintext_info{
+    font-size: 1em;
+}
+
+#artshow_layout img{
+    display: none;
+}
+
+.artshow_gallery_item{
+    padding: 0.5cm 0 0.5cm;
+    display: flex;
+    flex-direction: row;
+}
+
+.artshow_gallery_item_info{
+    padding: 1cm;
+}
+
+.artshow_gallery_item_image img{
+    width: auto;
+    height: 4cm;
+}
+
+.return_top_button{
+    display: none;
+}
+
+.pagination_controls{
+    display: none;
+}
