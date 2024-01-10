@@ -251,6 +251,20 @@ class DBAccess{
         else return null;
     }
 
+    public function getLabels(){
+        $query = "SELECT * FROM Labels";
+        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        if (mysqli_num_rows($queryResult) != 0){
+            $result=array();
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
+                $result[]=$row;
+            }
+            $queryResult->free();
+            return $result;
+        }
+        else return null;
+    }
+
     public function getArtworksQuery($text = "", $time = "", $height = "", $width = "", $depth = "", $labels = array()){
         $time_filter = "";
         if($time != ""){
