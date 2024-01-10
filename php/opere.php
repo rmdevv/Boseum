@@ -52,16 +52,44 @@ $artworks = $connection->getArtworksQuery($titleSearch, $dateSearch, $heightSear
 
 $connection->closeConnection();
 
+$dateRanges = array("1960-1970", "1970-1980", "1990-2000", "2000-2005", "2005-2010", "2010-2015", "2015-2020", "2020-2024");
+$dateOptions = "<option value=\"\">-</option>";
+foreach ($dateRanges as $date) {
+    $dateSelected = $dateSearch == $date ? " selected": "";
+    $dateOptions .= "<option value=\"".$date."\"".$dateSelected.">".$date."</option>";
+}
+
+$heightRanges = array("0-20", "20-50", "50-80", "80-150", "150-300");
+$heightOptions = "<option value=\"\">-</option>";
+foreach ($heightRanges as $height) {
+    $heightSelected = $heightSearch == $height ? " selected": "";
+    $heightOptions .= "<option value=\"".$height."\"".$heightSelected.">".$height."</option>";
+}
+
+$widthRanges = array("0-20", "20-50", "50-80", "80-150", "150-300");
+$widthOptions = "<option value=\"\">-</option>";
+foreach ($widthRanges as $width) {
+    $widthSelected = $widthSearch == $width ? " selected": "";
+    $widthOptions .= "<option value=\"".$width."\"".$widthSelected.">".$width."</option>";
+}
+
+$depthRanges = array("0-20", "20-50", "50-80", "80-150", "150-300");
+$depthOptions = "<option value=\"\">-</option>";
+foreach ($depthRanges as $depth) {
+    $depthSelected = $depthSearch == $depth ? " selected": "";
+    $depthOptions .= "<option value=\"".$depth."\"".$depthSelected.">".$depth."</option>";
+}
 
 
-
-    
-
+$opere = file_get_contents("../templates/opere.html");
+$opere = str_replace("{{title}}", $titleSearch, $opere);
+$opere = str_replace("{{date}}", $dateOptions, $opere);
+$opere = str_replace("{{height}}", $heightOptions, $opere);
+$opere = str_replace("{{width}}", $widthOptions, $opere);
+$opere = str_replace("{{depth}}", $depthOptions, $opere);
+$opere = str_replace("{{labels}}", $labelsContainer, $opere);
 
 if(!$artworks|| sizeof($artworks) <= 0){
-    $opere = file_get_contents("../templates/opere.html");
-    $opere = str_replace("{{title}}", $titleSearch, $opere);
-    $opere = str_replace("{{labels}}", $labelsContainer, $opere);
     $opere = str_replace("{{count}}", "0", $opere);
     $opere = str_replace("{{results}}", "", $opere);
     echo($opere);
@@ -94,11 +122,6 @@ if(!$artworks|| sizeof($artworks) <= 0){
     }
     $figuresContainer .= "</div>";
 
-    
-
-    $opere = file_get_contents("../templates/opere.html");
-    $opere = str_replace("{{title}}", $titleSearch, $opere);
-    $opere = str_replace("{{labels}}", $labelsContainer, $opere);
     $opere = str_replace("{{count}}", $artworksCount, $opere);
     $opere = str_replace("{{results}}", $figuresContainer, $opere);
     echo($opere);
