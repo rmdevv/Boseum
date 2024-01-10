@@ -254,50 +254,50 @@ class DBAccess{
     public function getArtworksQuery($text = "", $time = "", $height = "", $width = "", $depth = "", $labels = array()){
         $time_filter = "";
         if($time != ""){
-            $start_year = $time.str_split("-")[0];
-            $end_year = $time.str_split("-")[1];
+            $start_year = explode("-", $time)[0];
+            $end_year = explode("-", $time)[1];
             $time_filter = "AND NOT
                 (YEAR(Artworks.start_date) >= $end_year OR YEAR(Artworks.end_date) <= $start_year)";
         }
         $height_filter = "";
         if($height != ""){
-            $start_height = $height.str_split("-")[0];
-            $end_height = $height.str_split("-")[1];
-            $height_filter = "AND YEAR(Artworks.height) >= $start_height AND YEAR(Artworks.height) <= $end_height)";
+            $start_height = explode("-", $height)[0];
+            $end_height = explode("-", $height)[1];
+            $height_filter = "AND Artworks.height >= $start_height AND Artworks.height <= $end_height";
         }
         $width_filter = "";
         if($width != ""){
-            $start_width = $width.str_split("-")[0];
-            $end_width = $width.str_split("-")[1];
-            $width_filter = "AND YEAR(Artworks.width) >= $start_width AND YEAR(Artworks.width) <= $end_width)";
+            $start_width = explode("-", $width)[0];
+            $end_width = explode("-", $width)[1];
+            $width_filter = "AND Artworks.width >= $start_width AND Artworks.width <= $end_width";
         }
         $depth_filter = "";
         if($depth != ""){
-            $start_depth = $depth.str_split("-")[0];
-            $end_depth = $depth.str_split("-")[1];
-            $depth_filter = "AND YEAR(Artworks.depth) >= $start_depth AND YEAR(Artworks.depth) <= $end_depth)";
+            $start_depth = explode("-", $depth)[0];
+            $end_depth = explode("-", $depth)[1];
+            $depth_filter = "AND Artworks.length >= $start_depth AND Artworks.length <= $end_depth";
         }
         $labels_filter = "";
+        $groupby_labels_filter = "";
         if(count($labels) > 0){
-            $labels_filter = "AND ArtworkLabels.label IN ('" . implode("', '", $labels) . "')
-                            GROUP BY Artworks.id
-                            HAVING COUNT(DISTINCT ArtworkLabels.label) >= " . count($labels);
+            $labels_filter = "AND ArtworkLabels.label IN ('" . implode("', '", $labels) . "')";
+            $groupby_labels_filter = "GROUP BY Artworks.id HAVING COUNT(DISTINCT ArtworkLabels.label) >= " . count($labels);
         }
 
-        $query = "SELECT DISTINCT A1.id, A1.title, A1.main_image, U1.id, U1.username
+        $query = "SELECT DISTINCT A1.id AS artistID, A1.title, A1.main_image, U1.id AS artworkID, U1.username
                     FROM (Artworks AS A1 JOIN Users AS U1 ON A1.id_artist = U1.id)
                     JOIN (
                         SELECT DISTINCT Artworks.id
                         FROM (Artworks JOIN Users ON Artworks.id_artist = Users.id) JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
-                        WHERE Artworks.title LIKE '%$text%'
+                        WHERE (Artworks.title LIKE '%$text%'
                             $time_filter
                             $height_filter
                             $width_filter
                             $depth_filter
                             $labels_filter
-                        ) AS QR ON A1.id = QR.id
+                        ) $groupby_labels_filter ) AS QR ON A1.id = QR.id
                     ORDER BY A1.upload_time DESC";
-
+        
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
