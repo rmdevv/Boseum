@@ -290,7 +290,7 @@ const logoutButton = document.getElementById('logout_button')
 if (logoutButton) {
     logoutButton.addEventListener('click', () => {
         if (window.confirm('Vuoi veramente uscire?')) {
-            window.open('../php/logout.php', 'Thanks for Visiting!')
+            window.open('../php/logout.php')
         }
     })
 }

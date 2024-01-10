@@ -1091,7 +1091,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 .return_top_button {
     display: flex;
     justify-content: center;
-    padding-top: 30px;
 }
 
 .hidden {
@@ -1487,7 +1486,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 
 .artist_header {
     display: flex;
-    flex-wrap: wrap;
     gap: 20px;
     align-items: center;
     justify-content: center;
@@ -1621,6 +1619,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 }
 
 .artist_artworks_header {
-    max-width: 900px;
-    margin: auto;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
 }

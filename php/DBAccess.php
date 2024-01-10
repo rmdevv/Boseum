@@ -81,7 +81,25 @@ class DBAccess{
     }
 
     public function getArtistWithArtworksPreview($id){
-        $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image, Users.birth_date, Users.birth_place, Users.biography, Users.experience, Artworks.id, Artworks.main_image
+        $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image, Users.birth_date, Users.birth_place, Users.biography, Users.experience, Artworks.id AS id_artwork, Artworks.main_image, Artworks.title
+                    FROM Users JOIN Artworks ON Users.id = Artworks.id_artist
+                    WHERE Users.id = $id AND NOT Users.isAmm
+                    ORDER BY Artworks.upload_time DESC";
+
+        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        if (mysqli_num_rows($queryResult) != 0){
+            $result=array();
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
+                $result[]=$row;
+            }
+            $queryResult->free();
+            return $result;
+        }
+        else return null;
+    }
+
+    public function getArtistArtworksPreview($id){
+        $query = "SELECT Artworks.id, Artworks.main_image, Artworks.title
                     FROM Users JOIN Artworks ON Users.id = Artworks.id_artist
                     WHERE Users.id = $id AND NOT Users.isAmm
                     ORDER BY Artworks.upload_time DESC";
@@ -115,7 +133,6 @@ class DBAccess{
         else return null;
     }
 
-    //vedere se va
     public function getArtshow($id){
         $query = "SELECT *
                     FROM Artshows
@@ -132,7 +149,6 @@ class DBAccess{
         }
         else return null;
     }
-    //
 
     public function getArtworkPreview($id){
         $query = "SELECT Artworks.id, Artworks.title, Artworks.main_image, Users.id, Users.username
@@ -209,9 +225,27 @@ class DBAccess{
     }
 
     public function getArtworkLabels($id){
-        $query = "SELECT ArtworkLabels.label
+        $query = "SELECT DISTINCT ArtworkLabels.label
                     FROM Artworks JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
                     WHERE Artworks.id = $id
+                    ORDER BY ArtworkLabels.label";
+
+        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        if (mysqli_num_rows($queryResult) != 0){
+            $result=array();
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
+                $result[]=$row;
+            }
+            $queryResult->free();
+            return $result;
+        }
+        else return null;
+    }
+
+    public function getArtistLabels($id){
+        $query = "SELECT DISTINCT ArtworkLabels.label
+                    FROM Artworks JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
+                    WHERE Artworks.id_artist = $id
                     ORDER BY ArtworkLabels.label";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
@@ -370,12 +404,12 @@ class DBAccess{
         else return null;
     }
 
-    public function getNextArtshowsOfArtist($id){
+    public function getNextArtshowOfArtist($id){
         $query = "SELECT Artshows.*
                 FROM Users JOIN ArtshowPrenotations ON Users.id = ArtshowPrenotations.id_artist JOIN Artshows ON ArtshowPrenotations.id_artshow = Artshows.id
                 WHERE Users.id = $id AND CURDATE() < Artshows.start_date
-                ORDER BY A.start_date ASC
-                LIMIT 5";
+                ORDER BY Artshows.start_date ASC
+                LIMIT 1";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){

@@ -10,7 +10,6 @@ setlocale(LC_ALL,'it_IT');
 $connection=new DB\DBAccess();
 
 if (!$connection->openDBConnection()) {
-    // redirect to 500.html
     header("location: ../src/500.html");
     exit();
 }
@@ -28,7 +27,6 @@ $partecipantsArtshow = $connection->getArtshowsPartecipants($idArtshow);
 $connection->closeConnection();
 
 if(!$infoArtshow || sizeof($infoArtshow) <= 0){
-    //redirect 404.html
     header("location: ../src/404.html");
 }else{
     $title = $infoArtshow[0]['title'];

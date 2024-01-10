@@ -10,7 +10,6 @@ setlocale(LC_ALL,'it_IT');
 $connection=new DB\DBAccess();
 
 if (!$connection->openDBConnection()) {
-    // redirect to 500.html
     header("location: ../src/500.html");
     exit();
 }
@@ -28,15 +27,7 @@ $additionalImages = $connection->getArtworkAdditionalImages($idArtwork);
 $similarArtworks = $connection->getSimilarArtworks($idArtwork);
 
 $connection->closeConnection();
-
-// foreach($similarArtworks as $valore) {
-//     echo '<pre>';
-//     print_r($valore);
-//     echo '</pre>';
-// }
-
 if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
-    //redirect 404.html
     header("location: ../src/404.html");
 }else{
     $labelsContainer = '';
