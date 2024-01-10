@@ -115,6 +115,25 @@ class DBAccess{
         else return null;
     }
 
+    //vedere se va
+    public function getArtshow($id){
+        $query = "SELECT *
+                    FROM Artshows
+                    WHERE Artshows.id = $id";
+
+        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        if (mysqli_num_rows($queryResult) != 0){
+            $result=array();
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
+                $result[]=$row;
+            }
+            $queryResult->free();
+            return $result;
+        }
+        else return null;
+    }
+    //
+
     public function getArtworkPreview($id){
         $query = "SELECT Artworks.id, Artworks.title, Artworks.main_image, Users.id, Users.username
                     FROM Artworks JOIN Users ON Artworks.id_artist = Users.id
