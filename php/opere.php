@@ -30,7 +30,7 @@ $labels = $connection->getLabels();
 
 $labelsContainer = '';
 if($labels && sizeof($labels) > 0){
-    $labelsContainer = "<ul id=\"label_list\">";
+    $labelsContainer = "<ul id=\"labels_list\">";
     foreach($labels as $label){
         $labelName = str_replace(" ", "", strtolower($label['label']));
         $labelChecked = isset($_GET[$labelName]) ? "checked" : "";
