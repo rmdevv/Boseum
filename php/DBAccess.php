@@ -400,6 +400,20 @@ class DBAccess{
         else return null;
     }
 
+    public function getNextArtshow(){
+        $query = "SELECT id, title, image, start_date, end_date FROM artshows
+        WHERE (start_date >= CURRENT_DATE OR end_date >= CURRENT_DATE)
+        ORDER BY start_date LIMIT 1;";
+
+        $queryResult = mysqli_query($this->connection,$query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        if (mysqli_num_rows($queryResult) != 0){
+            $result = mysqli_fetch_array($queryResult, MYSQLI_ASSOC);
+            $queryResult->free();
+            return $result;
+        }
+        else return null;
+    }
+
     public function getArtshowsNextMonth(){
         $query = "SELECT *
                 FROM Artshows

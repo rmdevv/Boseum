@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Home | Boseum</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png" />
+        <meta
+            name="keywords"
+            content="museo d'arte, palazzo bo, università degli studi di padova, padova, indirizzo, sede, mostre, partner, orari" />
+        <meta
+            name="description"
+            content="Sito ufficiale del Boseum, museo d'arte universitario con sede nel Palazzo Bo a Padova" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link 
+            rel="stylesheet" 
+            href="../assets/CSS/style.css" 
+            media="screen" />
+        <link
+            rel="stylesheet"
+            href="../assets/CSS/mini.css"
+            media="screen and (max-width:600px)" />
+        <link 
+            rel="stylesheet" 
+            href="../assets/CSS/print.css" 
+            media="print" />
+    </head>
+    <body>
+        <header>
+            <nav class="navigationHelp" aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
+            <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="menu_checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul>
+                        <li>
+                            <span lang="en">Home</span>
+                        </li>
+                        <li>
+                            <a href="artisti.php">Artisti</a>
+                        </li>
+                        <li>
+                            <a href="opere.php">Opere</a>
+                        </li>
+                        <li>
+                            <a href="mostre.php">Mostre</a>
+                        </li>
+                        <li>
+                            <a href="login.php" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div id="bannermain">
+            <h2>Benvenuto al<span lang="en"> Boseum </span></h2>
+        </div>
+        <nav id="breadcrumb">
+            <span>Ti trovi in:</span>
+            <ul class="breadcrumb">
+                <li>
+                    <span lang="en">Home</span>
+                </li>
+            </ul>
+        </nav>
+        <main id="content">
+            <div class="cardmain">
+                <img
+                    src="../assets/images/homemotto.jpg"
+                    class="cardmainimg"
+                    alt="Affresco Scuola di Atene di Raffaello" />
+                <div class="cardmaintext">
+                    <h2 class="card_header">Dove il sapere incontra l'arte</h2>
+                    <p>
+                        All'interno del <strong>Palazzo del Bo</strong>, storica
+                        sede dell'<strong
+                            >Università degli Studi di Padova</strong
+                        >
+                        fin dal XV secolo, sorge la sede del
+                        <span lang="en">Boseum</span>,
+                        <strong>museo d'arte</strong> che espone le opere degli
+                        studenti dell'università cittadina. Più di 800 anni di
+                        storia, cultura ed istruzione incontrano bellezza,
+                        creatività ed estro: arte e sapere compongono il binomio
+                        perfetto.
+                    </p>
+                </div>
+            </div>
+            <div class="cardmain">
+                <img
+                    src="../assets/images/homestudents.jpg"
+                    class="cardmainimg"
+                    alt="Uno gruppo di studenti e studentesse che chiaccherano tra di loro." />
+                <div class="cardmaintext">
+                    <h3 class="card_header">Da studenti, per studenti</h3>
+                    <p>
+                        L'idea del <span lang="en">Boseum</span> nasce da un
+                        gruppo di <strong>studenti</strong>, ed è proprio agli
+                        studenti che l'intera iniziativa vuole rivolgersi. Tutte
+                        le opere d'arte esposte nelle mostre a Palazzo del Bo
+                        sono creazioni di universitari. Boseum punta ad essere
+                        faro di forza e di ispirazione per le generazioni
+                        future. Crediamo nel potere dell'arte come veicolo di
+                        cambiamento, innovazione e progresso. Non serve che tu
+                        sia un artista provetto per esporre le tue opere qui:
+                        l'unico requisito per mettersi in gioco e sfogare la
+                        propria creatività è avere un account
+                        <span lang="en">Boseum</span>.
+                    </p>
+                </div>
+            </div>
+            <div class="cardmain">
+                <iframe
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Palazzo%20del%20Bo,%20university,%20Padua,%20Italy+()&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                </iframe>
+                <div class="cardmaintext">
+                    <h3 class="card_header">La sede</h3>
+                    <p>
+                        La sede di <span lang="en">Boseum</span> è collocata
+                        all'interno dello storico Palazzo del Bo, nel cuore di
+                        <strong>Padova</strong>. Situata in
+                        <strong>via VIII Febbraio</strong> a soli 30 minuti a
+                        piedi dalla stazione ferroviaria, è facilmente
+                        raggiungibile dalla fermata di "Piazzale Boschetti"
+                        della linea T1 dei tram, o in alternativa via autobus
+                        dalla fermata "Ponti Romani 6". Per ammirare le opere
+                        esposte, puoi venire a trovarci dal martedì al venerdì,
+                        dalle <time>12:00</time> alle <time>15:00</time>, e il
+                        sabato e la domenica dalle <time>08:00</time> alle
+                        <time>11:00</time> e dalle <time>12:00</time> alle
+                        <time>18:00</time>. Non è neccessaria alcuna
+                        prenotazione, né è richiesto l'acquisto di un biglietto.
+                    </p>
+                </div>
+            </div>
+            {{prossimaMostra}}
+            <div class="contentpartners">
+                <h5 class="card_header">
+                    Una missione sostenuta ed apprezzata
+                </h5>
+                <p>
+                    Per mantenere l'esperienza del
+                    <span lang="en">Boseum</span> gratuita e quanto più
+                    accessibile a tutti, l'iniziativa è resa possibile dalla
+                    generosità di enti ed aziende patrocinanti. Con l'impegno
+                    costante di promuovere e sostenere la creatività degli
+                    studenti, noi e i
+                    <strong>nostri <span lang="en">partner</span></strong>
+                    aspiriamo a plasmare un futuro in cui l'arte universitaria
+                    non solo riflette, ma anche definisce, le tendenze e le
+                    visioni del domani. Ogni pennellata, scultura e
+                    installazione rappresenta l'essenza stessa della nostra
+                    missione: celebrare il potere trasformativo dell'arte
+                    studentesca. E questa missione non può avere prezzo.
+                </p>
+            </div>
+            <div id="partners">
+                <ul class="partners_cards">
+                    <li>
+                        <a href="https://www.padovanet.it/" target="_blank"
+                            ><img
+                                src="../assets/images/stemma_padova.png"
+                                alt="Logo di sponsor"
+                        /></a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://github.com/sweetcode-team"
+                            target="_blank"
+                            ><img
+                                src="../assets/images/sweetcode_logo.png"
+                                alt="Logo di sponsor"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.padovanet.it/" target="_blank"
+                            ><img
+                                src="../assets/images/stemma_padova.png"
+                                alt="Logo di sponsor"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.padovanet.it/" target="_blank"
+                            ><img
+                                src="../assets/images/stemma_padova.png"
+                                alt="Logo di sponsor"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.padovanet.it/" target="_blank"
+                            ><img
+                                src="../assets/images/stemma_padova.png"
+                                alt="Logo di sponsor"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.padovanet.it/" target="_blank"
+                            ><img
+                                src="../assets/images/stemma_padova.png"
+                                alt="Logo di sponsor"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.padovanet.it/" target="_blank"
+                            ><img
+                                src="../assets/images/stemma_padova.png"
+                                alt="Logo di sponsor"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.padovanet.it/" target="_blank"
+                            ><img
+                                src="../assets/images/stemma_padova.png"
+                                alt="Logo di sponsor"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.padovanet.it/" target="_blank"
+                            ><img
+                                src="../assets/images/stemma_padova.png"
+                                alt="Logo di sponsor"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="https://www.padovanet.it/" target="_blank"
+                            ><img
+                                src="../assets/images/stemma_padova.png"
+                                alt="Logo di sponsor"
+                        /></a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <div id="infofoot">
+                <p>Dove il sapere incontra l'arte</p>
+                <ul id="listinfofoot">
+                    <li>
+                        Vieni a trovarci in
+                        <a
+                            href="https://maps.app.goo.gl/iicWxkvzbn2m2wsUA"
+                            target="_blank"
+                            >via VIII Febbraio, <abbr title="Numero">n</abbr>.
+                            2, 35122 Padova</a
+                        >
+                    </li>
+                    <li>
+                        <abbr title="Telefono">Tel</abbr>:
+                        <a href="tel:+390498273939">+39 0498273939</a>
+                    </li>
+                    <li>
+                        <span lang="en">E-mail</span>:
+                        <a href="mailto:tour@unipd.it"
+                            ><span lang="en">tour</span>@unipd.it</a
+                        >
+                    </li>
+                    <li>
+                        Seguici su
+                        <a
+                            href="https://www.instagram.com/visitunipd/?hl=it"
+                            target="_blank"
+                            lang="en"
+                            >Instagram</a
+                        >,
+                        <a
+                            href="https://it-it.facebook.com/visitunipd/"
+                            target="_blank"
+                            lang="en"
+                            >Facebook</a
+                        >
+                        e
+                        <a
+                            href="https://vm.tiktok.com/ZMe791AJx/"
+                            target="_blank"
+                            lang="en"
+                            >TikTok</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div id="logofoot">
+                <img
+                    src="../assets/images/logomini.svg"
+                    alt=""
+                    width="100"
+                    height="100" />
+            </div>
+            <div id="orariofoot">
+                <p id="descrOrariTable" class="navigationHelp">
+                    La tabella contiene gli orari di apertura del museo, aperto
+                    dal martedì alla domenica e chiuso il lunedì
+                </p>
+                <table aria-describedby="descrOrariTable">
+                    <caption>
+                        Orari di apertura
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giorno</th>
+                            <th scope="col">Mattino</th>
+                            <th scope="col">Pomeriggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">Chiuso</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">da Martedì a Venerdì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>15:00</time>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sabato e Domenica</th>
+                            <td data-title="mattino">
+                                <time>08:00</time>-<time>11:00</time>
+                            </td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>18:00</time>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+    </body>
+</html>
