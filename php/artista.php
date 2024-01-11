@@ -80,7 +80,7 @@ if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
         $labelsContainer = "<dt>Stili artistici</dt><dd><ul class=\"label_list\">";
         foreach($labels as $label){
             $labelName = str_replace(" ", "", strtolower($label['label']));
-            $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=true\">".$label['label']."</a></li>";
+            $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=true\">".ucfirst($label['label'])."</a></li>";
         }
         $labelsContainer .= "</ul></dd></dl>";
         $details .= $labelsContainer;
