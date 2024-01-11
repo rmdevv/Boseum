@@ -96,10 +96,6 @@ h3, h4, h5, h6{
     font-size: 1em;
 }
 
-#artshow_layout img{
-    display: none;
-}
-
 .artshow_gallery_item{
     padding: 0.5cm 0 0.5cm;
     display: flex;
@@ -120,5 +116,81 @@ h3, h4, h5, h6{
 }
 
 .pagination_controls{
+    display: none;
+}
+
+#labels_list{
+    list-style: none;
+}
+
+.filters_labels ul {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column-gap: 25px;
+    grid-row-gap: 10px;
+}
+.filters_labels ul li {
+    align-items: center;
+    display: flex;
+    position: relative;
+    white-space: nowrap;
+}
+
+.artist_gallery_item{
+    padding: 0.5cm 0 0.5cm;
+    display: flex;
+    flex-direction: row;
+}
+
+.artist_gallery_item_info{
+    padding: 1cm;
+}
+
+.artist_gallery_item_image img{
+    width: auto;
+    height: 4cm;
+}
+
+._gallery_item{
+    padding: 0.5cm 0 0.5cm;
+    display: flex;
+    flex-direction: row;
+}
+
+.artwork_gallery_item_title{
+    padding: 1cm;
+}
+
+.artwork_gallery_item_image img{
+    width: auto;
+    height: 4cm;
+}
+
+.artwork_interactions{
+    display: none;
+}
+
+.label_list li a{
+    color: black;
+    text-decoration: none;
+}
+
+#artwork_image{
+    max-width: 10cm;
+    max-height: 10cm;
+    width: auto;
+    height: auto;
+}
+
+.additional_images_carousel div img{
+    height: 5cm;
+    width: auto;
+}
+
+.artshow_mainimage {
+    display: none;
+}
+
+.button_reverse{
     display: none;
 }
