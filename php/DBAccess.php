@@ -27,9 +27,8 @@ class DBAccess{
     }
 
     public function errorDB(bool $case){
-        if($case == true) $page = file_get_contents("../src/500.html");
-        else $page = file_get_contents("../src/404.html");
-        echo($page);
+        $case ? header("location: ../php/500.php")
+            : header("location: ../php/404.php");
         die();
     }
 
