@@ -41,8 +41,6 @@ if ($artshows && sizeof($artshows) > 0) {
                 <div class=\"artshow_gallery_item\">
                     <div class=\"artshow_gallery_item_image\">
                         <a
-                            aria-hidden=\"true\"
-                            tabindex=\"-1\"
                             href=\"mostra.php?id=".$artshow['id']."\">
                             <img
                                 src=\"".$artshow['image']."\"
@@ -51,7 +49,10 @@ if ($artshows && sizeof($artshows) > 0) {
                     </div>
                     <div class=\"artshow_gallery_item_info\">
                         <div class=\"artshow_gallery_item_title\">
-                            <a href=\"mostra.php?id=".$artshow['id']."\" title=\"".$artshow['title']."\">
+                            <a
+                            aria-hidden=\"true\"
+                            tabindex=\"-1\"
+                            href=\"mostra.php?id=".$artshow['id']."\" title=\"".$artshow['title']."\">
                                 ".$artshow['title']."
                             </a>
                         </div>

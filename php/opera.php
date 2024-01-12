@@ -97,8 +97,6 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
                     "<figure class=\"gallery_item\">
                         <div class=\"artwork_gallery_item_image\">
                             <a
-                                aria-hidden=\"true\"
-                                tabindex=\"-1\"
                                 href=\"opera.php?id=".$similarArtwork['id']."\">
                                 <img
                                     src=\"".$similarArtwork['main_image']."\"
@@ -107,7 +105,10 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
                         </div>
                         <figcaption>
                             <div class=\"artwork_gallery_item_title\">
-                                <a href=\"opera.php?id=".$similarArtwork['id']."\">"
+                                <a
+                                aria-hidden=\"true\"
+                                tabindex=\"-1\"
+                                href=\"opera.php?id=".$similarArtwork['id']."\">"
                                 .$similarArtwork['title'].
                                 "</a>
                             </div>

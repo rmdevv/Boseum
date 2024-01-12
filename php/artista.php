@@ -112,8 +112,6 @@ if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
                             <div class=\"artshow_gallery_item\">
                                 <div class=\"artshow_gallery_item_image\">
                                     <a
-                                        aria-hidden=\"true\"
-                                        tabindex=\"-1\"
                                         href=\"mostra.php?id=".$artistNextArtshow[0]['id']."\">
                                         <img
                                             src=\"".$artistNextArtshow[0]['image']."\"
@@ -122,7 +120,10 @@ if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
                                 </div>
                                 <div class=\"artshow_gallery_item_info\">
                                     <div class=\"artshow_gallery_item_title\">
-                                        <a href=\"".$artistNextArtshow[0]['id']."\">
+                                        <a
+                                            aria-hidden=\"true\"
+                                            tabindex=\"-1\"
+                                            href=\"mostra.php?id=".$artistNextArtshow[0]['id']."\">
                                             ".$artistNextArtshow[0]['title']."
                                         </a>
                                     </div>
@@ -150,8 +151,6 @@ if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
             $artworks .= "<figure class=\"gallery_item\">
                         <div class=\"artwork_gallery_item_image\">
                             <a
-                                aria-hidden=\"true\"
-                                tabindex=\"-1\"
                                 href=\"opera.php?id=".$artwork['id']."\">
                                 <img
                                     src=\"".$artwork['main_image']."\"
@@ -160,7 +159,10 @@ if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
                         </div>
                         <figcaption>
                             <div class=\"artwork_gallery_item_title\">
-                                <a href=\"opera.php?id=".$artwork['id']."\">"
+                                <a
+                                aria-hidden=\"true\"
+                                tabindex=\"-1\"
+                                href=\"opera.php?id=".$artwork['id']."\">"
                                 .$artwork['title'].
                                 "</a>
                             </div>

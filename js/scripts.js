@@ -17,6 +17,10 @@ var handleImageClick = (element) => {
     element.classList.add('is_active')
 
     artworkImage.src = element.querySelector('img').src
+
+    var image_weight = document.querySelector('#image_weight')
+    image_weight && (image_weight.innerHTML = 'TODO')
+
     var download_link = document.querySelector('#download_image')
     download_link &&
         download_link.setAttribute('href', element.querySelector('img').src),
@@ -78,10 +82,10 @@ if (paginatedList) {
 
     const handleActivePageNumber = () => {
         document.querySelectorAll('.pagination_number').forEach((button) => {
-            button.classList.remove('active')
+            button.removeAttribute('disabled')
             const pageIndex = Number(button.getAttribute('page-index'))
             if (pageIndex == currentPage) {
-                button.classList.add('active')
+                button.setAttribute('disabled', true)
             }
         })
     }
@@ -281,13 +285,39 @@ if (profileImageInput) {
     })
 }
 
-const logoutButton = document.getElementById('logout_button')
-if (logoutButton) {
-    logoutButton.addEventListener('click', () => {
-        if (window.confirm('Vuoi veramente uscire?')) {
-            if (window.location) {
-                window.location = '../php/logout.php'
-            }
-        }
-    })
+// const logoutButton = document.getElementById('logout_button')
+// if (logoutButton) {
+//     logoutButton.addEventListener('click', () => {
+//         if (window.confirm('Vuoi veramente uscire?')) {
+//             if (window.location) {
+//                 window.location = '../php/logout.php'
+//             }
+//         }
+//     })
+// }
+
+const confirmAction = (question) => {
+    var confirm = window.confirm(question)
+    return confirm
 }
+
+const logoutButton = document.getElementById('logout_button')
+logoutButton &&
+    logoutButton.addEventListener('click', (event) => {
+        confirmAction('Vuoi veramente uscire?') &&
+            window.location &&
+            (window.location = '../php/logout.php')
+    })
+
+const bookForm = document.getElementById('artshow_prenotation')
+bookForm &&
+    bookForm.addEventListener('submit', (event) => {
+        !confirmAction('Vuoi iscriverti alla mostra?') && event.preventDefault()
+    })
+
+const cancelBookForm = document.getElementById('artshow_cancel_prenotation')
+cancelBookForm &&
+    cancelBookForm.addEventListener('submit', (event) => {
+        !confirmAction("Vuoi veramente annullare l'iscrizione?") &&
+            event.preventDefault()
+    })

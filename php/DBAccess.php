@@ -534,7 +534,7 @@ class DBAccess{
     }
 
     public function getLoggedUserPrenotationArtshow($id_artist, $id_artshow){
-        $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image
+        $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image, ArtshowPrenotations.time
                     FROM ArtshowPrenotations JOIN Users ON ArtshowPrenotations.id_artist = Users.id
                     WHERE ArtshowPrenotations.id_artshow = $id_artshow AND ArtshowPrenotations.id_artist = $id_artist";
 
@@ -548,6 +548,23 @@ class DBAccess{
             return $result;
         }
         else return null;
+    }
+
+    public function insertPrenotation($id_artist, $id_artshow){
+        $query_insert = "INSERT INTO ArtshowPrenotations(id_artshow, id_artist, time)
+                            VALUES ($id_artshow, $id_artist, CURRENT_TIMESTAMP())";
+
+        mysqli_query($this->connection, $query_insert) or die(mysqli_error($this->connection));
+        return mysqli_affected_rows($this->connection)>0;
+    }
+
+    public function deletePrenotation($id_artist, $id_artshow){
+        $query_delete = "DELETE FROM ArtshowPrenotations
+                            WHERE ArtshowPrenotations.id_artshow = $id_artshow
+                            AND ArtshowPrenotations.id_artist = $id_artist";
+
+        mysqli_query($this->connection, $query_delete) or die(mysqli_error($this->connection));
+        return mysqli_affected_rows($this->connection)>0;
     }
 
     public function insertNewArtwork($title, $main_image, $description="", $height="", $width="", $length="", $start_date="", $end_date="", $id_artist, $additional_images = array()){

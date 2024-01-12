@@ -4,22 +4,24 @@
 }
 
 :root {
-    --headerBgColor: rgb(167, 0, 22);
+    --headerBgColor: #DD3232;
     --headerTxtColor: rgb(255,255,255);
     --bgColor: rgb(255,255,255);
     --txtColor: rgb(0,0,0);
     --font-body-family: MetSans,"Helvetica Neue",Helvetica,Arial,sans-serif;
     --elegant-font-family: MetSerif,Georgia,serif;
 
-    --footerBgColor: rgb(69,73,83);
+    --footerBgColor: #181818;
     --footerTxtColor: rgb(255,255,255);
     --footerlinkColor: rgb(255,255,255);
+    --footerVisitedLinkColor: #DD3232;
 
-    --linkColor: rgb(100,100,100);
-    
-    --navVisitedLinkColor: rgb(200, 200, 200);
-    --navLinkColor: rgb(255,255,255);
-    --flagColor: rgb(167, 0, 22);
+    --linkColor: rgb(0,0,0);
+    --visitedLinkColor: rgb(100,100,100);
+    --navVisitedLinkColor: rgb(0,0,0);
+    --navLinkColor: rgb(0,0,0);
+
+    --flagColor: #DD3232;
     --imageBackground: rgb(248,248,248);
     --imageBackgroundHover: rgb(240, 240, 240);
     --bannerBackground: rgb(242,242,242);
@@ -34,7 +36,6 @@
     --color-white:#fff;
     --color-site-background:var(--color-white);
     --color-text:var(--colorDarkGrey);
-    --color-text-accent:var(--color-grey-700);
     --color-border: var(--color-grey-600);
     scroll-behavior: smooth;
 }
@@ -130,6 +131,14 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
 }
 
+a {
+    color: var(--linkColor);
+}
+
+a:visited {
+    color: var(--visitedLinkColor);
+}
+
 #breadcrumb {
     width: min(85vw, 1440px);
     margin: 20px auto;
@@ -152,15 +161,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .breadcrumb li:last-child{
     color: var(--txtColor);
-}
-
-.breadcrumb a{
-    text-decoration: none;
-    color: var(--linkColor);
-}
-
-.breadcrumb a:hover, .breadcrumb a:focus{
-    text-decoration: underline;
 }
 
 #bannermain{
@@ -216,14 +216,6 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: row-reverse;
 }
 
-.cardmain a:link{
-    color: var(--flagColor);
-}
-
-.cardmain a:visited{
-    color: var(--navVisitedLinkColor);
-}
-
 .cardnextshow {
     background-color: var(--headerBgColor);
     min-height: 400px;
@@ -250,9 +242,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cardnextshow a{
-    margin-top: 2em;
-    color: var(--navLinkColor);
-    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    border: 3px solid var(--color-white);
+    border-radius: 3px;
+    margin-top: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    color: var(--color-white);
+}
+.cardnextshow a:visited{
+    color: var(--navVisitedLinkColor);
+    border: 3px solid var(--navVisitedLinkColor);
+}
+.cardnextshow a:hover, .cardnextshow a:focus-visible {
+    text-decoration: underline;
 }
 
 .contentpartners{
@@ -330,7 +334,7 @@ footer a:link{
 }
 
 footer a:visited{
-    color: var(--footerlinkColor);
+    color: var(--footerVisitedLinkColor);
 }
 
 #infofoot{
@@ -356,7 +360,7 @@ footer a:visited{
 }
 
 #orariofoot table tbody>tr:nth-child(even), #orariofoot table thead {
-    background-color: rgb(59,69,79);
+    background-color: #333333;
 }
 
 #orariofoot table td, #orariofoot table th {
@@ -368,8 +372,6 @@ footer a:visited{
     font-weight: bold;
     font-size: 1.1em;
 }
-
-
 
 .error404{
     width: min(85vw, 1440px);
@@ -399,14 +401,6 @@ footer a:visited{
     font-size: 1em;
     font-weight: normal;
     padding: 0em 2em 1em;
-}
-
-.error404 a:link{
-    color: var(--flagColor);
-}
-
-.error404 a:visited{
-    color: var(--footerBgColor);
 }
 
 .error500{
@@ -485,7 +479,6 @@ footer a:visited{
 }
 .artist_mini_preview_info a{
     font-size: 0.8em;
-    color: black;
 }
 .artist_mini_preview_info a::before {
     content: "@";
@@ -526,20 +519,10 @@ footer a:visited{
     justify-content: end;
 }
 
-.artwork_caption{
-    color:#4a4a4a;
-    flex:0.8;
-    font-size:0.8em;
-    line-height:1em;
-    text-align:left;
-    margin:0 15px;
-}
-
 .artwork_interactions{
     list-style-type: none;
     margin: 0;
     padding: 0;
-    flex: 0.2;
     display: flex;
     justify-content: flex-end;
     order: 4;
@@ -664,7 +647,6 @@ footer a:visited{
     border-radius: 32px;
     margin-bottom: 5px;
     box-sizing: border-box;
-    color: var(--colorDarkGrey);
     font-size: 0.8em;
     padding: 5px 15px;
     user-select: none;
@@ -680,46 +662,6 @@ footer a:visited{
     width: min(85vw, 1440px);
     margin: 4em auto;
     gap: 20px;
-}
-.artshow_card {
-    min-height: 400px;
-    background-color: var(--bannerBackground);
-    width: calc(50% - 20px);
-}
-.artshow_image_link {
-    background-color:var(--colorMediumGrey);
-    border:none;
-    display:flex;
-    height:350px;
-    justify-content: center;
-    overflow:hidden;
-}
-.artshow_image{
-    margin: auto;
-    max-height: 350px;
-    object-fit: contain;
-    transform-origin: center;
-    transition: all .4s ease-out
-}
-.artshow_image:focus-within,.artshow_image:hover{
-    transform:scale(1.06)
-}
-.artshow_card_info {
-    text-align: left;
-    padding: 1em 2em;
-    box-sizing: border-box;
-}
-.card_header a{
-    border:none;
-    text-decoration: none;
-    color: black;
-}
-.card_header a:hover{
-    text-decoration:underline
-}
-
-.artshow_card a:visited{
-    color: var(--linkColor);
 }
 
 #titolo{
@@ -792,7 +734,6 @@ footer a:visited{
 .artist_gallery_item_title a{
     border:none;
     text-decoration: none;
-    color: black;
 }
 
 .artist_gallery_item_image img {
@@ -803,12 +744,9 @@ footer a:visited{
     object-fit: cover;
 }
 
-.artist_gallery_item_image img:hover {
-    transform: scale(1.06);
+.artist_gallery_item_image a:focus img, .artist_gallery_item_image a:hover img{
+    transform: scale(1.1);
 }
-
-
-
 
 button{
     background:transparent;
@@ -821,7 +759,7 @@ button:not(:disabled):hover,button:not(:disabled):focus{
     cursor:pointer
 }
 button:disabled,button:disabled:focus,button:disabled:hover{
-    color:var(--color-text-accent);
+    color:var(--color-grey-700);
 }
 .button_reverse{
     min-width:160px;
@@ -829,18 +767,11 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     text-decoration:none
 }
 .button_reverse{
-    box-shadow:inset 0 0 0 2px var(--color-text)
+    border: 2px solid var(--color-text);
 }
 .button_reverse:focus,.button_reverse:hover{
     background-color:var(--color-text);
     color:var(--color-site-background)
-}
-.button_reverse:focus-visible{
-    background-color:var(--color-focus-state-background);
-    color:var(--color-grey-800);
-    outline-color:var(--color-focus-state-background);
-    outline-offset:0;
-    outline-width:4px
 }
 .search_bar {
     background-color: var(--color-white);
@@ -909,9 +840,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 .filters_section summary::-webkit-details-marker {
     display: none;
 }
-.filters_section summary:hover {
-    text-decoration: underline;
-}
 .filters_section summary:after {
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' style='transform:rotate(180deg)' viewBox='0 0 48 48'%3E%3Cpath fill='%23333' stroke='%23333' stroke-width='2.5' d='M14 8.223 16.077 6 35 24.011 16.079 42 14 39.777l16.888-15.813L14 8.224Z'/%3E%3C/svg%3E");
     height: 25px;
@@ -964,8 +892,8 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     width: auto;
     transition: all .4s ease-out;
 }
-.artwork_gallery_item_image img:focus-within, .artwork_gallery_item_image img:hover {
-    transform: scale(1.06);
+.artwork_gallery_item_image a:focus img, .artwork_gallery_item_image a:hover img {
+    transform: scale(1.1);
 }
 
 .artwork_gallery_item_title{
@@ -975,7 +903,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 .artwork_gallery_item_title a{
     border:none;
     text-decoration: none;
-    color: black;
     font-family: var(--elegant-font-family);
 }
 .gallery_item figcaption a:focus,
@@ -1118,12 +1045,12 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     border: 0;
     opacity: 0.7;
 }
-.pagination_number{
-  margin: 0 0.25rem;
-}
-.button_reverse.pagination_controls.pagination_number.active{
+.pagination_controls:focus,.pagination_controls:hover {
     background-color:var(--color-text);
     color:var(--color-site-background);
+}
+.pagination_number{
+  margin: 0 0.25rem;
 }
 #pagination_numbers {
     display: flex;
@@ -1186,7 +1113,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 .artshow_gallery_item_title a{
     border:none;
     text-decoration: none;
-    color: black;
 }
 .artshow_gallery_item_title a:hover{
     text-decoration: underline;
@@ -1197,8 +1123,8 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     transition: all .2s ease-out;
 }
 
-.artshow_gallery_item_image img:hover {
-    transform: scale(1.06);
+.artshow_gallery_item_image a:focus img, .artshow_gallery_item_image a:hover img {
+    transform: scale(1.1);
 }
 
 .artshow_gallery_item_dates {
@@ -1240,17 +1166,17 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     padding: 2em 0em 0em;
 }
 
-#artshow_prenotation {
+#artshow_maintext form {
     padding-top: 2em;
     text-align: center;
     border-top: 1px solid var(--color-grey-600);
 }
 
-#artshow_prenotation h2 {
+#artshow_maintext form h2 {
     margin-bottom: 0.5em;
 }
 
-#artshow_prenotation button {
+#artshow_maintext form button {
     margin-top: 1em;
 }
 
@@ -1301,10 +1227,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     margin: 1em 0;
 }
 
-.login_container p a {
-    color: var(--linkColor);
-}
-
 .login_container h2 {
     font-size: 2em;
     font-weight: 700;
@@ -1351,10 +1273,6 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 
 .ins_mod_container p {
     margin: 1em 0;
-}
-
-.ins_mod_container p a {
-    color: var(--linkColor);
 }
 
 .form_item {

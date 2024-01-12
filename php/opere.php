@@ -98,13 +98,17 @@ if($artworks && sizeof($artworks) > 0){
         $figuresContainer .= "
         <figure class=\"gallery_item\">
             <div class=\"artwork_gallery_item_image\">
-                <a aria-hidden=\"true\" tabindex=\"-1\" href=\"opera.php?id=".$idArtowrk."\">
+                <a
+                    href=\"opera.php?id=".$idArtowrk."\">
                     <img src=\"".$mainImage."\" alt=\"".$title."\" />
                 </a>
             </div>
             <figcaption>
                 <div class=\"artwork_gallery_item_title\">
-                    <a title=\"".$title."\" href=\"opera.php?id=".$idArtowrk."\">".$title."</a>
+                    <a
+                    aria-hidden=\"true\"
+                    tabindex=\"-1\"
+                    href=\"opera.php?id=".$idArtowrk."\">".$title."</a>
                 </div>
                 <div class=\"artist_mini_preview_info\">
                     <a href=\"artista.php?id=".$idArtist."\">".$username."</a>

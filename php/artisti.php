@@ -71,8 +71,6 @@ if($artists and sizeof($artists) > 0){
                 <div class=\"artist_gallery_item\">
                     <div class=\"artist_gallery_item_image\">
                         <a
-                            aria-hidden=\"true\"
-                            tabindex=\"-1\"
                             href=\"artista.php?id=".$id."\">
                             <img src=\"".$image."\" alt=\"".$name." ".$lastname."\">
                         </a>
@@ -82,7 +80,10 @@ if($artists and sizeof($artists) > 0){
                             <p title=\"".$name." ".$lastname."\">".$name." ".$lastname."</p>
                         </div>
                         <div class=\"artist_mini_preview_info\">
-                            <a href=\"artista.php?id=".$id."\">".$username."</a>
+                            <a
+                            aria-hidden=\"true\"
+                            tabindex=\"-1\"
+                            href=\"artista.php?id=".$id."\">".$username."</a>
                         </div>
                     </div>
                 </div>

@@ -20,17 +20,21 @@ if (!$connection->openDBConnection()) {
     exit();
 }
 
-if (isset($_POST['book'])) {
-    // TODO:INSERT PRENOTATION
-} else if (isset($_POST["cancel_book"])) {
-    // TODO:DELETE PRENOTATION
+if ($isLoggedIn && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['book'])) {
+        $connection->insertPrenotation($_SESSION["logged_id"], $_POST["id_artshow"]);
+
+    } else if (isset($_POST["cancel_book"])) {
+        $connection->deletePrenotation($_SESSION["logged_id"], $_POST["id_artshow"]);
+    }
+    header("Location: {$_SERVER['REQUEST_URI']}");
+    exit();
 }
 
 if (!isset($_GET["id"])) {
-	header("location: mostre.php");
+    // header("location: mostre.php");
 	exit();
 }
-
 $idArtshow = $_GET["id"];
 
 $infoArtshow = $connection->getArtshow($idArtshow);
@@ -61,22 +65,23 @@ if(!$infoArtshow || sizeof($infoArtshow) <= 0){
                     <div class=\"artist_gallery_item\">
                         <div class=\"artist_gallery_item_image\">
                             <a
-                                aria-hidden=\"true\"
-                                tabindex=\"-1\"
-                                href=\"profilo.php?id=".$partecipantArtshow['id']."\">
+                                href=\"artista.php?id=".$partecipantArtshow['id']."\">
                                 <img
-                                    src=\"profilo.php?id=".$partecipantArtshow['image']."\"
+                                    src=\"".$partecipantArtshow['image']."\"
                                     alt=\"".$partecipantArtshow['username']."\" />
                             </a>
                         </div>
                         <div class=\"artist_gallery_item_info\">
                             <div class=\"artist_gallery_item_title\">
                                 <p>
-                                ".$partecipantArtshow['name']." ".$partecipantArtshow['last']."
+                                ".$partecipantArtshow['name']." ".$partecipantArtshow['lastname']."
                                 </p>
                             </div>
                             <div class=\"artist_mini_preview_info\">
-                                <a href=\"profilo.php?id=".$partecipantArtshow['id']."\"
+                                <a
+                                aria-hidden=\"true\"
+                                tabindex=\"-1\"
+                                href=\"artista.php?id=".$partecipantArtshow['id']."\"
                                     >".$partecipantArtshow['username']."</a
                                 >
                             </div>
@@ -88,28 +93,40 @@ if(!$infoArtshow || sizeof($infoArtshow) <= 0){
     }
 
     $prenotationSection = "";
-    !$prenotation ? ($isLoggedIn ? $prenotationSection = "
-            <form id=\"artshow_prenotation\">
-                <h2>Partecipa alla mostra</h2>
-                <p>
-                    Unisciti all'esposizione con pochi <span lang=\"en\">click</span>!
-                    Esponi le tue opere quando vuoi durante i giorni di apertura.
-                </p>
-                <button class=\"button_reverse\" name=\"book\" id=\"book_button\">
-                    Partecipa
-                </button>
-            </form>" :
-            "") :
-        $prenotationSection = "
-        <form id=\"artshow_prenotation\">
-            <h2>Partecipa alla mostra</h2>
-            <p>
-                Data e orario in cui è stata fatta la prenotazione: <time datetime=\"".$prenotation[0]["time"]."\">".DateManager::toFormattedTimestamp($prenotation[0]["time"])."</time>
-            </p>
-            <button class=\"button_reverse\" name=\"cancel_book\" id=\"cancel_book_button\">
-                Annulla iscrizione
-            </button>
-        </form>";
+    if($isLoggedIn){
+        if($_SESSION['is_admin']){
+            $prenotationSection = "
+                <div class=\"artist_button\">
+                    <a href=\"crea_mostra.php?id=".$idArtshow."\">Modifica mostra</a>
+                </div>
+            ";
+        }else if(!$prenotation) {
+            $prenotationSection = "
+                <form id=\"artshow_prenotation\"  method=\"post\">
+                    <h2>Partecipa alla mostra</h2>
+                    <p>
+                        Unisciti all'esposizione con pochi <span lang=\"en\">click</span>!
+                        Esponi le tue opere quando vuoi durante i giorni di apertura.
+                    </p>
+                    <input type=\"hidden\" name=\"id_artshow\" value=\"".$idArtshow."\">
+                    <button class=\"button_reverse\" name=\"book\" id=\"book_button\">
+                        Partecipa
+                    </button>
+                </form>";
+        }else {
+            $prenotationSection = "
+                <form id=\"artshow_cancel_prenotation\"  method=\"post\">
+                    <h2>Partecipa alla mostra</h2>
+                    <p>
+                        Data e orario in cui è stata fatta la prenotazione: <time datetime=\"".$prenotation[0]["time"]."\">".DateManager::toFormattedTimestamp($prenotation[0]["time"])."</time>
+                    </p>
+                    <input type=\"hidden\" name=\"id_artshow\" value=\"".$idArtshow."\">
+                    <button class=\"button_reverse\" name=\"cancel_book\" id=\"cancel_book_button\">
+                        Annulla iscrizione
+                    </button>
+                </form>";
+        }
+    }
 
     $mostra = file_get_contents("../templates/mostra.html");
     $mostra = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $mostra);

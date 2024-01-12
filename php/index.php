@@ -39,7 +39,7 @@ if ($nextArtshow && sizeof($nextArtshow) > 0) {
                 /
                 <time datetime=\"".$nextArtshow[0]["end_date"]."\">". DateManager::toDMY($nextArtshow[0]["end_date"]) ."</time>
             </p>
-            <a href=\"mostra.php?id=".$nextArtshow[0]["id"]."\"> Scoprila </a>
+                <a href=\"mostra.php?id=".$nextArtshow[0]["id"]."\" class=\"scoprila_link\">Scoprila</a>
         </div>
     </div>";
 }
