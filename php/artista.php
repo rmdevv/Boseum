@@ -23,16 +23,28 @@ $loginOrProfileTitle = $isLoggedIn ?
             '<span lang=\"en\">Account</span>'
             : "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>")
         : "<a href=\"login.php\">Accedi</a>";
-$artistButtons = $isLoggedIn && $idArtist == $_SESSION['logged_id'] ?
-                    "<div class=\"artist_button\">
+$artistButtons="";
+if($isLoggedIn) {
+    if($_SESSION['is_admin']) {
+        if($idArtist == $_SESSION['logged_id']) {
+            header("location: ../php/admin.php");
+            exit();
+        }else {
+            $artistButtons = "<div class=\"artist_button\">
+                        <a href=\"modifica_profilo.php\">Modifica profilo</a>
+                    </div>";
+        }
+    }else if($idArtist == $_SESSION['logged_id']) {
+        $artistButtons = "<div class=\"artist_button\">
                         <a href=\"modifica_profilo.php\">Modifica profilo</a>
                         <button id=\"logout_button\">Logout</button>
-                    </div>"
-                    : "";
+                    </div>";
+    }
+}
 
 $connection=new DB\DBAccess();
 if (!$connection->openDBConnection()) {
-    header("location: ../src/500.html");
+    header("location: ../php/500.php");
     exit();
 }
 
@@ -44,7 +56,7 @@ $artworksPreview = $connection->getArtistArtworksPreview($idArtist);
 $connection->closeConnection();
 
 if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
-    header("location: ../src/404.html");
+    header("location: ../php/404.php");
 }else{
     $name = $infoArtistArtworks[0]['name'];
     $lastname = $infoArtistArtworks[0]['lastname'];

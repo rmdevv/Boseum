@@ -16,7 +16,7 @@ $loginOrProfileTitle = $isLoggedIn ?
 
 $connection=new DB\DBAccess();
 if (!$connection->openDBConnection()) {
-    header("location: ../src/500.html");
+    header("location: ../php/500.php");
     exit();
 }
 
@@ -35,7 +35,7 @@ $similarArtworks = $connection->getSimilarArtworks($idArtwork);
 
 $connection->closeConnection();
 if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
-    header("location: ../src/404.html");
+    header("location: ../php/404.php");
 }else{
     $labelsContainer = '';
     if($labels && sizeof($labels) > 0){
@@ -92,7 +92,8 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
     if($similarArtworks && sizeof($similarArtworks) > 0){
         $similarArtworksContainer = "<div class=\"results_section\" id=\"paginated_section\">";
         foreach($similarArtworks as $similarArtwork){
-            $similarArtworksContainer .= "<figure class=\"gallery_item\">
+            $similarArtworksContainer .= 
+                    "<figure class=\"gallery_item\">
                         <div class=\"artwork_gallery_item_image\">
                             <a
                                 aria-hidden=\"true\"
@@ -115,7 +116,7 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
                         </figcaption>
                     </figure>";
         }
-        $similarArtworksContainer = "</div>".addPaginator();
+        $similarArtworksContainer .= "</div>".addPaginator();
     }
 
     $opera = file_get_contents("../templates/opera.html");

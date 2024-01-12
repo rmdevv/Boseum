@@ -16,7 +16,7 @@ $loginOrProfileTitle = $isLoggedIn ?
 
 $connection=new DB\DBAccess();
 if (!$connection->openDBConnection()) {
-    header("location: ../src/500.html");
+    header("location: ../php/500.php");
     exit();
 }
 
@@ -44,7 +44,7 @@ if($isLoggedIn && $idArtshow){
 $connection->closeConnection();
 
 if(!$infoArtshow || sizeof($infoArtshow) <= 0){
-    header("location: ../src/404.html");
+    header("location: ../php/404.php");
 }else{
     $title = $infoArtshow[0]['title'];
     $description = $infoArtshow[0]['description'];

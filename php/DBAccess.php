@@ -31,7 +31,7 @@ class DBAccess{
     public function getArtist($id){
         $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image, Users.birth_date, Users.birth_place, Users.biography, Users.experience
                     FROM Users
-                    WHERE Users.id = $id AND NOT Users.isAmm";
+                    WHERE Users.id = $id AND NOT Users.is_admin";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
@@ -48,7 +48,7 @@ class DBAccess{
     public function getArtistPreview($id){
         $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image
                     FROM Users
-                    WHERE Users.id = $id AND NOT Users.isAmm";
+                    WHERE Users.id = $id AND NOT Users.is_admin";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
@@ -65,7 +65,7 @@ class DBAccess{
     public function getArtistWithArtworks($id){
         $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image, Users.birth_date, Users.birth_place, Users.biography, Users.experience, Artworks.*
                     FROM Users JOIN Artworks ON Users.id = Artworks.id_artist
-                    WHERE Users.id = $id AND NOT Users.isAmm
+                    WHERE Users.id = $id AND NOT Users.is_admin
                     ORDER BY Artworks.upload_time DESC";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
@@ -83,7 +83,7 @@ class DBAccess{
     public function getArtistWithArtworksPreview($id){
         $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image, Users.birth_date, Users.birth_place, Users.biography, Users.experience, Artworks.id AS id_artwork, Artworks.main_image, Artworks.title
                     FROM Users JOIN Artworks ON Users.id = Artworks.id_artist
-                    WHERE Users.id = $id AND NOT Users.isAmm
+                    WHERE Users.id = $id AND NOT Users.is_admin
                     ORDER BY Artworks.upload_time DESC";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
@@ -101,7 +101,7 @@ class DBAccess{
     public function getArtistArtworksPreview($id){
         $query = "SELECT Artworks.id, Artworks.main_image, Artworks.title
                     FROM Users JOIN Artworks ON Users.id = Artworks.id_artist
-                    WHERE Users.id = $id AND NOT Users.isAmm
+                    WHERE Users.id = $id AND NOT Users.is_admin
                     ORDER BY Artworks.upload_time DESC";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
@@ -382,7 +382,7 @@ class DBAccess{
                         SELECT DISTINCT Users.id
                         FROM (Users JOIN Artworks ON Users.id = Artworks.id_artist) JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
                         WHERE (Users.username LIKE '%$text%' OR Users.name LIKE '%$text%' OR Users.lastname LIKE '%$text%')
-                            AND NOT Users.isAmm
+                            AND NOT Users.is_admin
                             $time_filter
                             $labels_filter
                         ) AS QR ON U1.id = QR.id
@@ -659,7 +659,7 @@ class DBAccess{
         return mysqli_affected_rows($this->connection)>0;
     }
 
-    public function getUserPassword($username){
+    public function getUserLogin($username){
         $query = "SELECT Users.*
                     FROM Users
                     WHERE Users.username = '$username'";
@@ -677,7 +677,7 @@ class DBAccess{
     }
 
     public function insertNewUser($username, $password, $name, $lastname, $image, $birth_date, $birth_place, $biography, $experience){
-        $query_insert = "INSERT INTO Users(username, password, name, lastname, isAmm, image, birth_date, birth_place, biography, experience)
+        $query_insert = "INSERT INTO Users(username, password, name, lastname, is_admin, image, birth_date, birth_place, biography, experience)
                             VALUES ('$username', '$password', '$name', '$lastname', 0, NULLIF('$image', ''), NULLIF('$birth_date', ''), NULLIF('$birth_place', ''), NULLIF('$biography', ''), NULLIF('$experience', ''))";
 
         mysqli_query($this->connection, $query_insert) or die(mysqli_error($this->connection));

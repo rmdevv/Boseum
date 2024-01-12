@@ -40,7 +40,7 @@ def generate_user(id_user, user):
 
 def insert_users_query():
     insert_query = '''
-INSERT INTO Users(username, password, name, lastname, isAmm, image, birth_date, birth_place, biography, experience)
+INSERT INTO Users(username, password, name, lastname, is_admin, image, birth_date, birth_place, biography, experience)
 VALUES 
 '''
     for id_artist, artist in enumerate(ARTISTS, start=2):

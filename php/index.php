@@ -15,7 +15,7 @@ $loginOrProfileTitle = $isLoggedIn ?
 
 $connection=new DB\DBAccess();
 if (!$connection->openDBConnection()) {
-    header('location: ../src/500.html');
+    header('location: ../php/500.php');
     exit();
 }
 

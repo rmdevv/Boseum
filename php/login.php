@@ -23,16 +23,17 @@ if (isset($_POST['login'])) {
     }else{
         $connection=new DB\DBAccess();
         if (!$connection->openDBConnection()) {
-            header("location: ../src/500.html");
+            header("location: ../php/500.php");
             exit();
         }
 
-        $potentialUser = $connection->getUserPassword($username);
+        $potentialUser = $connection->getUserLogin($username);
 
         $connection->closeConnection();
 
         if ($potentialUser && password_verify($password, $potentialUser[0]['password'])) {
             $_SESSION['logged_id'] = $potentialUser[0]['id'];
+            $_SESSION['is_admin'] = $potentialUser[0]['is_admin'];
 
             header('Location: artista.php?id='.$_SESSION['logged_id']);
             exit();
@@ -43,8 +44,6 @@ if (isset($_POST['login'])) {
         }
     }
 }
-
-
 
     $login = file_get_contents("../templates/login.html");
     echo($login);

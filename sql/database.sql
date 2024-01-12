@@ -14,7 +14,7 @@ CREATE TABLE Users (
     password VARCHAR(255) NOT NULL,
     name VARCHAR(30) NOT NULL,
     lastname VARCHAR(30) NOT NULL,
-    isAmm BOOLEAN NOT NULL,
+    is_admin BOOLEAN NOT NULL,
     image VARCHAR(100) UNIQUE,
     birth_date DATE,
     birth_place VARCHAR(30),

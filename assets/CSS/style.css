@@ -48,6 +48,10 @@ html {
     scroll-behavior: smooth;
 }
 
+#content {
+    min-height: 70vh;
+}
+
 .navigationHelp{
     position: absolute;
     text-indent: -9999em;
@@ -1620,4 +1624,55 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 .artist_artworks_header {
     font-size: 1.5em;
     margin-bottom: 0.5em;
+}
+
+.admin_container {
+    max-width: min(600px, 85vw);
+    margin: auto;
+    text-align: center;
+}
+
+.admin_container h2 {
+    margin-bottom: 2em;
+}
+
+.admin_container img {
+    max-height: 350px;
+    max-width: 100%;
+    margin-top: 2em;
+}
+
+.admin_button a{
+    text-decoration: none;
+    color: var(--colorDarkGrey);
+    border: 3px solid var(--colorDarkGrey);
+    border-radius: 3px;
+    padding: 5px 10px;
+    text-align: center;
+}
+.admin_button a:hover {
+    background-color: var(--colorDarkGrey);
+    color: var(--color-white);
+}
+.admin_button a:focus-visible {
+    background-color: var(--colorDarkGrey);
+    color: var(--color-white);
+    outline-width: 0;
+}
+
+.admin_button button{
+    color: var(--flagColor);
+    border: 3px solid var(--flagColor);
+    border-radius: 3px;
+    padding: 5px 10px;
+    text-align: center;
+}
+.admin_button button:hover {
+    background-color: var(--flagColor);
+    color: var(--color-white);
+}
+.admin_button button:focus-visible {
+    background-color: var(--flagColor);
+    color: var(--color-white);
+    outline-width: 0;
 }
