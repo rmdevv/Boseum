@@ -76,6 +76,9 @@ if ($artshows && sizeof($artshows) > 0) {
 
 $mostre = file_get_contents("../templates/mostre.html");
 $mostre = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $mostre);
+$mostre = str_replace("{{title}}", $titleFilter, $mostre);
+$mostre = str_replace("{{start_date}}", $startDateFilter, $mostre);
+$mostre = str_replace("{{end_date}}", $endDateFilter, $mostre);
 $mostre = str_replace("{{count}}", $artshows ? sizeof($artshows) : 0, $mostre);
 $mostre = str_replace("{{artshow_items}}", $artshowsContainer, $mostre);
 echo($mostre);
