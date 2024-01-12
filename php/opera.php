@@ -34,6 +34,7 @@ $additionalImages = $connection->getArtworkAdditionalImages($idArtwork);
 $similarArtworks = $connection->getSimilarArtworks($idArtwork);
 
 $connection->closeConnection();
+
 if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
     header("location: ../php/404.php");
 }else{
@@ -117,11 +118,19 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
                     </figure>";
         }
         $similarArtworksContainer .= "</div>".addPaginator();
+
+        $artworkButtons = "";
+        if($isLoggedIn && ($id_artista == $_SESSION['logged_id'] || $_SESSION['is_admin'])) {
+            $artworkButtons = "<div class=\"artist_button\">
+                        <a href=\"crea_opera.php?id=".$idArtwork."\">Modifica opera</a>
+                    </div>";
+        }
     }
 
     $opera = file_get_contents("../templates/opera.html");
     $opera = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $opera);
     $opera = str_replace("{{title}}", $title, $opera);
+    $opera = str_replace("{{artwork_buttons}}", $artworkButtons, $opera);
     $opera = str_replace("{{id_artista}}", $id_artista, $opera);
     $opera = str_replace("{{src_user}}", $src_artista, $opera);
     $opera = str_replace("{{user_name}}", $user_name, $opera);
