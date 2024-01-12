@@ -2,6 +2,7 @@
 
 require_once 'DBAccess.php';
 require_once 'DateManager.php';
+require_once 'utils.php';
 
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
@@ -43,7 +44,7 @@ $artworksPreview = $connection->getArtistArtworksPreview($idArtist);
 $connection->closeConnection();
 
 if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
-    // header("location: ../src/404.html");
+    header("location: ../src/404.html");
 }else{
     $name = $infoArtistArtworks[0]['name'];
     $lastname = $infoArtistArtworks[0]['lastname'];
@@ -80,7 +81,7 @@ if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
         $labelsContainer = "<dt>Stili artistici</dt><dd><ul class=\"label_list\">";
         foreach($labels as $label){
             $labelName = str_replace(" ", "", strtolower($label['label']));
-            $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=true\">".ucfirst($label['label'])."</a></li>";
+            $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=".$label['label']."\">".ucfirst($label['label'])."</a></li>";
         }
         $labelsContainer .= "</ul></dd></dl>";
         $details .= $labelsContainer;
@@ -154,7 +155,7 @@ if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
                         </figcaption>
                     </figure>";
         }
-        $artworks .= "</div>";
+        $artworks .= "</div>".addPaginator();
     }
 
     $artista = file_get_contents("../templates/artista.html");

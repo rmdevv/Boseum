@@ -64,6 +64,7 @@ CREATE TABLE Artshows (
 CREATE TABLE ArtshowPrenotations (
     id_artshow INT NOT NULL REFERENCES Artshow(id),
     id_artist INT NOT NULL REFERENCES Users(id),
+    time TIMESTAMP NOT NULL,
     PRIMARY KEY (id_artshow, id_artist)
 );
 

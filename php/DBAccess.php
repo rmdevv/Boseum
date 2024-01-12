@@ -400,14 +400,46 @@ class DBAccess{
         else return null;
     }
 
+    public function getArtshowsQuery($text = "", $start_date = "", $end_date = ""){
+        $start_date_filter = "'$start_date'";
+        if($start_date == ""){
+            $start_date_filter = "CURRENT_DATE";
+        }
+        $end_date_filter = "";
+        if($end_date != ""){
+            $end_date_filter = "Artshows.start_date >= '$end_date' OR ";
+        }
+        $time_filter = "AND NOT (".$end_date_filter." Artshows.end_date <= $start_date_filter)";
+        
+        $query = "SELECT Artshows.*
+                FROM Artshows
+                WHERE Artshows.title LIKE '%$text%' 
+                $time_filter
+                ";
+    
+        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        if (mysqli_num_rows($queryResult) != 0){
+            $result=array();
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
+                $result[]=$row;
+            }
+            $queryResult->free();
+            return $result;
+        }
+        else return null;
+    }
+
     public function getNextArtshow(){
         $query = "SELECT id, title, image, start_date, end_date FROM artshows
         WHERE (start_date >= CURRENT_DATE OR end_date >= CURRENT_DATE)
-        ORDER BY start_date LIMIT 1;";
+        ORDER BY start_date LIMIT 1";
 
-        $queryResult = mysqli_query($this->connection,$query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
-            $result = mysqli_fetch_array($queryResult, MYSQLI_ASSOC);
+            $result=array();
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
+                $result[]=$row;
+            }
             $queryResult->free();
             return $result;
         }
@@ -415,10 +447,10 @@ class DBAccess{
     }
 
     public function getArtshowsNextMonth(){
-        $query = "SELECT *
+        $query = "SELECT Artshows.*
                 FROM Artshows
-                WHERE (Artshows.start_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 30 DAY)
-                    OR (Artshows.end_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 30 DAY)";
+                WHERE (Artshows.start_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL 30 DAY)
+                    OR (Artshows.end_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL 30 DAY)";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){
@@ -435,7 +467,7 @@ class DBAccess{
     public function getNextArtshowOfArtist($id){
         $query = "SELECT Artshows.*
                 FROM Users JOIN ArtshowPrenotations ON Users.id = ArtshowPrenotations.id_artist JOIN Artshows ON ArtshowPrenotations.id_artshow = Artshows.id
-                WHERE Users.id = $id AND CURDATE() < Artshows.start_date
+                WHERE Users.id = $id AND CURRENT_DATE < Artshows.start_date
                 ORDER BY Artshows.start_date ASC
                 LIMIT 1";
 
@@ -451,11 +483,16 @@ class DBAccess{
         else return null;
     }
 
-    public function getArtshowsInPeriod($start_date="", $end_date){
+    public function getArtshowsInPeriod($start_date="", $end_date=""){
+        $start_date_filter = "'$start_date'";
         if($start_date == ""){
-            $start_date = "CURDATE()";
+            $start_date_filter = "CURRENT_DATE";
         }
-        $time_filter = "NOT (Artshows.start_date >= $end_date OR Artshows.end_date <= $start_date)";        
+        $end_date_filter = "";
+        if($end_date != ""){
+            $end_date_filter = "Artshows.start_date >= '$end_date' OR ";
+        }
+        $time_filter = "NOT (".$end_date_filter." Artshows.end_date <= $start_date_filter)";
 
         $query = "SELECT Artshows.*
                     FROM Artshows
@@ -477,6 +514,23 @@ class DBAccess{
         $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image
                     FROM ArtshowPrenotations JOIN Users ON ArtshowPrenotations.id_artist = Users.id
                     WHERE ArtshowPrenotations.id_artshow = $id";
+
+        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        if (mysqli_num_rows($queryResult) != 0){
+            $result=array();
+            while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
+                $result[]=$row;
+            }
+            $queryResult->free();
+            return $result;
+        }
+        else return null;
+    }
+
+    public function getLoggedUserPrenotationArtshow($id_artist, $id_artshow){
+        $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image
+                    FROM ArtshowPrenotations JOIN Users ON ArtshowPrenotations.id_artist = Users.id
+                    WHERE ArtshowPrenotations.id_artshow = $id_artshow AND ArtshowPrenotations.id_artist = $id_artist";
 
         $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
         if (mysqli_num_rows($queryResult) != 0){

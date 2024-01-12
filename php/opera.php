@@ -2,6 +2,7 @@
 
 require_once 'DBAccess.php';
 require_once 'DateManager.php';
+require_once 'utils.php';
 
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
@@ -41,7 +42,7 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
         $labelsContainer = "<h3>Labels</h3><ul class=\"label_list\">";
         foreach($labels as $label){
             $labelName = str_replace(" ", "", strtolower($label['label']));
-            $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=true\">".ucfirst($label['label'])."</a></li>";
+            $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=".$label['label']."\">".ucfirst($label['label'])."</a></li>";
         }
         $labelsContainer .= "</ul>";
     }
@@ -89,6 +90,7 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
 
     $similarArtworksContainer = '';
     if($similarArtworks && sizeof($similarArtworks) > 0){
+        $similarArtworksContainer = "<div class=\"results_section\" id=\"paginated_section\">";
         foreach($similarArtworks as $similarArtwork){
             $similarArtworksContainer .= "<figure class=\"gallery_item\">
                         <div class=\"artwork_gallery_item_image\">
@@ -113,6 +115,7 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
                         </figcaption>
                     </figure>";
         }
+        $similarArtworksContainer = "</div>".addPaginator();
     }
 
     $opera = file_get_contents("../templates/opera.html");

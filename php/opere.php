@@ -2,6 +2,7 @@
 
 require_once 'DBAccess.php';
 require_once 'DateManager.php';
+require_once 'utils.php';
 
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
@@ -14,7 +15,6 @@ $loginOrProfileTitle = $isLoggedIn ?
     "<a href=\"login.php\">Accedi</a>";
 
 $connection=new DB\DBAccess();
-
 if (!$connection->openDBConnection()) {
     header("location: ../src/500.html");
     exit();
@@ -85,21 +85,8 @@ foreach ($depthRanges as $depth) {
     $depthOptions .= "<option value=\"".$depth."\"".$depthSelected.">".$depth."</option>";
 }
 
-$opere = file_get_contents("../templates/opere.html");
-$opere = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $opere);
-$opere = str_replace("{{title}}", $titleSearch, $opere);
-$opere = str_replace("{{date}}", $dateOptions, $opere);
-$opere = str_replace("{{height}}", $heightOptions, $opere);
-$opere = str_replace("{{width}}", $widthOptions, $opere);
-$opere = str_replace("{{depth}}", $depthOptions, $opere);
-$opere = str_replace("{{labels}}", $labelsContainer, $opere);
-
-if(!$artworks|| sizeof($artworks) <= 0){
-    $opere = str_replace("{{count}}", "0", $opere);
-    $opere = str_replace("{{results}}", "", $opere);
-    echo($opere);
-}else{
-    $artworksCount = sizeof($artworks);
+$figuresContainer = "";
+if($artworks && sizeof($artworks) > 0){
     $figuresContainer = "<div class=\"results_section\" id=\"paginated_section\">";
     foreach($artworks as $artwork){
         $idArtowrk = $artwork['artistID'];
@@ -125,10 +112,18 @@ if(!$artworks|| sizeof($artworks) <= 0){
             </figcaption>
         </figure>";
     }
-    $figuresContainer .= "</div>";
-
-    $opere = str_replace("{{count}}", $artworksCount, $opere);
-    $opere = str_replace("{{results}}", $figuresContainer, $opere);
-    echo($opere);
+    $figuresContainer .= "</div>".addPaginator();
 }
+
+$opere = file_get_contents("../templates/opere.html");
+$opere = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $opere);
+$opere = str_replace("{{title}}", $titleSearch, $opere);
+$opere = str_replace("{{date}}", $dateOptions, $opere);
+$opere = str_replace("{{height}}", $heightOptions, $opere);
+$opere = str_replace("{{width}}", $widthOptions, $opere);
+$opere = str_replace("{{depth}}", $depthOptions, $opere);
+$opere = str_replace("{{labels}}", $labelsContainer, $opere);
+$opere = str_replace("{{count}}", $artworks ? sizeof($artworks) : 0, $opere);
+$opere = str_replace("{{results}}", $figuresContainer, $opere);
+echo($opere);
 ?>

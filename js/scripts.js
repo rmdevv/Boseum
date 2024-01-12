@@ -158,11 +158,8 @@ if ((startDate || startDateFuture) && endDate) {
     today = new Date()
 
     if (startDate) {
-        startDate.value = today.toLocaleDateString('fr-ca')
-        endDate.value = today.toLocaleDateString('fr-ca')
-        endDate.min = startDate.value
-        startDate.max = endDate.value
-
+        endDate.min = today.toLocaleDateString('fr-ca')
+        startDate.max = today.toLocaleDateString('fr-ca')
         startDate.addEventListener('input', () => {
             var min_limit = startDate.value
             endDate.min = min_limit
@@ -170,11 +167,9 @@ if ((startDate || startDateFuture) && endDate) {
     }
 
     if (startDateFuture) {
-        startDateFuture.value = today.toLocaleDateString('fr-ca')
-        endDate.value = today.toLocaleDateString('fr-ca')
-        endDate.min = startDateFuture.value
+        endDate.min = today.toLocaleDateString('fr-ca')
         startDateFuture.min = today.toLocaleDateString('fr-ca')
-        startDateFuture.max = endDate.value
+        startDateFuture.max = today.toLocaleDateString('fr-ca')
 
         startDateFuture.addEventListener('input', () => {
             var min_limit = startDateFuture.value
@@ -290,7 +285,9 @@ const logoutButton = document.getElementById('logout_button')
 if (logoutButton) {
     logoutButton.addEventListener('click', () => {
         if (window.confirm('Vuoi veramente uscire?')) {
-            window.open('../php/logout.php')
+            if (window.location) {
+                window.location = '../php/logout.php'
+            }
         }
     })
 }

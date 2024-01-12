@@ -653,11 +653,8 @@ footer a:visited{
     flex-wrap: wrap;
     column-gap: 7px;
 }
-.label_list .label a{
-    color: black;
-    text-decoration: none
-}
-.label{
+.label a{
+    display: block;
     background: #fff;
     border: 2px solid var(--colorMediumGrey);
     border-radius: 32px;
@@ -668,7 +665,7 @@ footer a:visited{
     padding: 5px 15px;
     user-select: none;
 }
-.label:hover{
+.label a:hover{
     background-color:var(--colorMediumGrey);
     cursor:pointer
 }
@@ -975,6 +972,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     border:none;
     text-decoration: none;
     color: black;
+    font-family: var(--elegant-font-family);
 }
 .gallery_item figcaption a:focus,
 .gallery_item figcaption a:hover {
@@ -1179,6 +1177,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 .artshow_gallery_item_title{
     font-size: 1.2em;
     margin: 10px 0;
+    font-family: var(--elegant-font-family);
 }
 .artshow_gallery_item_title a{
     border:none;
