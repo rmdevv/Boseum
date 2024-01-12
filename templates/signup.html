@@ -73,6 +73,7 @@
                     <p>
                         Già registrato?
                         <a href="login.html">Accedi qui</a>
+                        {{messaggioerrore}}
                     </p>
                     <form action="../php/signup.php" method="post">
                         <fieldset class="fieldset_item">
@@ -85,7 +86,8 @@
                                         type="text"
                                         id="username"
                                         name="username"
-                                        value=""
+                                        value="{{username}}"
+                                        {{focus}}
                                         required />
                                 </div>
                                 <div class="form_item">
@@ -95,7 +97,8 @@
                                         type="password"
                                         id="password"
                                         name="password"
-                                        value=""
+                                        value="{{password}}"
+                                        {{focus}}
                                         required />
                                 </div>
                             </div>
@@ -110,7 +113,8 @@
                                         type="text"
                                         id="name"
                                         name="name"
-                                        value="" />
+                                        value="{{name}}"
+                                        />
                                 </div>
                                 <div class="form_item">
                                     <label for="lastname">Cognome</label>
@@ -119,7 +123,8 @@
                                         type="text"
                                         id="lastname"
                                         name="lastname"
-                                        value="" />
+                                        value="{{lastname}}"
+                                        />
                                 </div>
                                 <div class="form_item">
                                     <label for="birthdate"
@@ -129,8 +134,9 @@
                                         type="date"
                                         id="birthdate"
                                         name="birthdate"
-                                        value=""
-                                        min="1900-01-01" />
+                                        value="{{birthdate}}"
+                                        min="1900-01-01"
+                                        {{focus}}/>
                                 </div>
                                 <div class="form_item">
                                     <label for="birthplace"
@@ -141,7 +147,7 @@
                                         type="text"
                                         id="birthplace"
                                         name="birthplace"
-                                        value="" />
+                                        value="{{birthplace}}" />
                                 </div>
                             </div>
                         </fieldset>
