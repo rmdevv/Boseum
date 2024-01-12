@@ -26,6 +26,13 @@ class DBAccess{
         mysqli_close($this->connection);
     }
 
+    public function errorDB(bool $case){
+        if($case == true) $page = file_get_contents("../src/500.html");
+        else $page = file_get_contents("../src/404.html");
+        echo($page);
+        die();
+    }
+
     // QUERIES
 
     public function getArtist($id){
@@ -33,7 +40,7 @@ class DBAccess{
                     FROM Users
                     WHERE Users.id = $id AND NOT Users.isAmm";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -50,7 +57,7 @@ class DBAccess{
                     FROM Users
                     WHERE Users.id = $id AND NOT Users.isAmm";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -68,7 +75,7 @@ class DBAccess{
                     WHERE Users.id = $id AND NOT Users.isAmm
                     ORDER BY Artworks.upload_time DESC";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -86,7 +93,7 @@ class DBAccess{
                     WHERE Users.id = $id AND NOT Users.isAmm
                     ORDER BY Artworks.upload_time DESC";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -104,7 +111,7 @@ class DBAccess{
                     WHERE Users.id = $id AND NOT Users.isAmm
                     ORDER BY Artworks.upload_time DESC";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -121,7 +128,7 @@ class DBAccess{
                     FROM Artworks
                     WHERE Artworks.id = $id";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -138,7 +145,7 @@ class DBAccess{
                     FROM Artshows
                     WHERE Artshows.id = $id";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -155,7 +162,7 @@ class DBAccess{
                     FROM Artworks JOIN Users ON Artworks.id_artist = Users.id
                     WHERE Artworks.id = $id";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -177,7 +184,7 @@ class DBAccess{
                     WHERE Artworks.id = $id
                     ORDER BY ArtworkDetails.image DESC";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -195,7 +202,7 @@ class DBAccess{
                     WHERE Artworks.id = $id
                     ORDER BY ArtworkDetails.image DESC";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -212,7 +219,7 @@ class DBAccess{
                     FROM Artworks JOIN Users ON Artworks.id_artist = Users.id
                     WHERE Artworks.id = $id";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -230,7 +237,7 @@ class DBAccess{
                     WHERE Artworks.id = $id
                     ORDER BY ArtworkLabels.label";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -248,7 +255,7 @@ class DBAccess{
                     WHERE Artworks.id_artist = $id
                     ORDER BY ArtworkLabels.label";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -273,7 +280,7 @@ class DBAccess{
                         HAVING COUNT(DISTINCT AL1.label) >= (SELECT LEAST(2, COUNT(DISTINCT ArtworkLabels.label)) FROM ArtworkLabels WHERE ArtworkLabels.id_artwork = $id)
                     ) AS QR ON Artworks.id = QR.id";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -287,7 +294,7 @@ class DBAccess{
 
     public function getLabels(){
         $query = "SELECT * FROM Labels";
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -346,7 +353,7 @@ class DBAccess{
                         ) $groupby_labels_filter ) AS QR ON A1.id = QR.id
                     ORDER BY A1.upload_time DESC";
         
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -388,7 +395,7 @@ class DBAccess{
                         ) AS QR ON U1.id = QR.id
                     $present_in_artshow_filter";
                     
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -417,7 +424,7 @@ class DBAccess{
                 $time_filter
                 ";
     
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -434,7 +441,7 @@ class DBAccess{
         WHERE (start_date >= CURRENT_DATE OR end_date >= CURRENT_DATE)
         ORDER BY start_date LIMIT 1";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -452,7 +459,7 @@ class DBAccess{
                 WHERE (Artshows.start_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL 30 DAY)
                     OR (Artshows.end_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL 30 DAY)";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -471,7 +478,7 @@ class DBAccess{
                 ORDER BY Artshows.start_date ASC
                 LIMIT 1";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -498,7 +505,7 @@ class DBAccess{
                     FROM Artshows
                     WHERE $time_filter";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -515,7 +522,7 @@ class DBAccess{
                     FROM ArtshowPrenotations JOIN Users ON ArtshowPrenotations.id_artist = Users.id
                     WHERE ArtshowPrenotations.id_artshow = $id";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -532,7 +539,7 @@ class DBAccess{
                     FROM ArtshowPrenotations JOIN Users ON ArtshowPrenotations.id_artist = Users.id
                     WHERE ArtshowPrenotations.id_artshow = $id_artshow AND ArtshowPrenotations.id_artist = $id_artist";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
@@ -664,7 +671,7 @@ class DBAccess{
                     FROM Users
                     WHERE Users.username = '$username'";
 
-        $queryResult = mysqli_query($this->connection, $query) or die("Errore in DBAccess".mysqli_error($this->connection));
+        $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
             $result=array();
             while($row = mysqli_fetch_array($queryResult, MYSQLI_ASSOC)){
