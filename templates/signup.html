@@ -2,30 +2,24 @@
 <html lang="it">
     <head>
         <meta charset="UTF-8" />
-        <title>Login | Boseum</title>
+        <title>Registrazione | Boseum</title>
         <link
             rel="shortcut icon"
             type="image/png"
             href="../assets/images/favicon.png" />
-        <meta
-            name="keywords"
-            content="museo d'arte, palazzo bo, università degli studi di padova, padova, login" />
+        <meta name="keywords" content="museo d'arte, palazzo bo, università degli studi di padova, padova, iscriviti" />
         <meta
             name="description"
-            content="Accedi al tuo profilo ufficiale Boseum" />
+            content="Registrati alla pagina Boseum come artista per 
+        prendere parte a questa iniziativa e esporre le tue opere 
+        nelle nostre mostre" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link 
-            rel="stylesheet" 
-            href="../assets/CSS/style.css" 
-            media="screen" />
+        <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
         <link
             rel="stylesheet"
             href="../assets/CSS/mini.css"
             media="screen and (max-width:600px)" />
-        <link 
-            rel="stylesheet" 
-            href="../assets/CSS/print.css" 
-            media="print" />
+        <!-- <link rel="stylesheet" href="stampa.css" media="print" /> -->
     </head>
     <body>
         <header>
@@ -48,18 +42,22 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="index.php"><span lang="en">Home</span></a>
+                            <a href="index.html"><span lang="en">Home</span></a>
                         </li>
                         <li>
-                            <a href="artisti.php">Artisti</a>
+                            <a href="artisti.html">Artisti</a>
                         </li>
                         <li>
-                            <a href="opere.php">Opere</a>
+                            <a href="opere.html">Opere</a>
                         </li>
                         <li>
-                            <a href="mostre.php">Mostre</a>
+                            <a href="mostre.html">Mostre</a>
                         </li>
-                        <li><span lang="en">Login</span></li>
+                        <li>
+                            <a href="accedi.html" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -67,47 +65,98 @@
         <main id="content">
             <section class="login_page">
                 <div class="login_container">
-                    <div class="login_modal">
-                        <h2>Accedi</h2>
-                        <p>Inserisci il tuo username e la password.</p>
-                        <p>
-                            Non sei ancora registrato?
-                            <a href="signup.php">Registrati qui</a>
-                        </p>
-                        <form action="login.php" method="post">
-                            <fieldset class="fieldset_item">
-                                <legend>Dati account</legend>
+                    <h2>Crea account</h2>
+                    <p>
+                        Inserisci i tuoi dati. I campi obbligatori sono segnati
+                        con (*).
+                    </p>
+                    <p>
+                        Già registrato?
+                        <a href="login.html">Accedi qui</a>
+                        {{messaggioerrore}}
+                    </p>
+                    <form action="../php/signup.php" method="post">
+                        <fieldset class="fieldset_item">
+                            <legend>Dati account</legend>
+                            <div class="input_container">
                                 <div class="form_item">
-                                    <label for="username"> Username </label>
+                                    <label for="username">Username (*)</label>
                                     <input
                                         placeholder="Username"
                                         type="text"
                                         id="username"
                                         name="username"
-                                        value=""
+                                        value="{{username}}"
+                                        {{focus}}
                                         required />
                                 </div>
                                 <div class="form_item">
-                                    <label for="password"> Password </label>
+                                    <label for="password">Password (*)</label>
                                     <input
                                         placeholder="Password"
                                         type="password"
                                         id="password"
                                         name="password"
-                                        value=""
+                                        value="{{password}}"
+                                        {{focus}}
                                         required />
                                 </div>
-                            </fieldset>
-                            <div class="form_button">
-                                <button
-                                    type="submit"
-                                    name="login"
-                                    class="btn-primary">
-                                    Accedi
-                                </button>
                             </div>
-                        </form>
-                    </div>
+                        </fieldset>
+                        <fieldset class="fieldset_item">
+                            <legend>Dati personali</legend>
+                            <div class="input_container">
+                                <div class="form_item">
+                                    <label for="name">Nome</label>
+                                    <input
+                                        placeholder="Nome"
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        value="{{name}}"
+                                        />
+                                </div>
+                                <div class="form_item">
+                                    <label for="lastname">Cognome</label>
+                                    <input
+                                        placeholder="Cognome"
+                                        type="text"
+                                        id="lastname"
+                                        name="lastname"
+                                        value="{{lastname}}"
+                                        />
+                                </div>
+                                <div class="form_item">
+                                    <label for="birthdate"
+                                        >Data di nascita</label
+                                    >
+                                    <input
+                                        type="date"
+                                        id="birthdate"
+                                        name="birthdate"
+                                        value="{{birthdate}}"
+                                        min="1900-01-01"
+                                        {{focus}}/>
+                                </div>
+                                <div class="form_item">
+                                    <label for="birthplace"
+                                        >Luogo di nascita</label
+                                    >
+                                    <input
+                                        placeholder="Luogo di nascita"
+                                        type="text"
+                                        id="birthplace"
+                                        name="birthplace"
+                                        value="{{birthplace}}" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form_button">
+                            <button type="submit" class="btn-primary">
+                                Registrati
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </section>
         </main>
@@ -131,7 +180,7 @@
                     <li>
                         <span lang="en">E-mail</span>:
                         <a href="mailto:tour@unipd.it"
-                            ><span lang="en">tour</span>@unipd.it</a
+                            ><span lang="en">tour</span>&commat;unipd.it</a
                         >
                     </li>
                     <li>
@@ -207,5 +256,6 @@
                 </table>
             </div>
         </footer>
+        <script src="../js/scripts.js"></script>
     </body>
 </html>

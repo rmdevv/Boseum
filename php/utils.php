@@ -1,6 +1,6 @@
 <?php
 class Sanitizer{
-    public function trimValues(&$value){
+    public static function trimValues(&$value){
         if(is_array($value)){
             foreach($value as &$a){
                 $a=trim($a);
@@ -11,23 +11,36 @@ class Sanitizer{
         }
         return $value;
     }
-    public function Sanitize(&$value){
+
+    public static function SanitizeWord(&$value){
+        $value=preg_replace('/[^\p{L}-]/u',"",$value);
+        return $value;
+    }
+
+    public static function ValidateDate($value){
+        return preg_match('/$\d{4}-\d{2}-d{2}^/',$value);
+    }
+    public static function SanitizeDate(&$value){
+        $value=preg_replace('/[^\w\s-]/','',$value);
+        return $value;
+    }
+    public static function Sanitize(&$value){
+        /*Elimina tutti i valori che non siano caratteri o spaziature (comprese lettere accentate)*/
         $value=strip_tags($value);
         if(is_array($value)){
             foreach($value as &$a){
-                $a=preg_replace('/[^\w\s]/',"",$a);
+                $a=preg_replace('/[^\s\p{L}-]/u',"",$a);
                 $a=trim($a);
             }
         }
         else{
-            $value=preg_replace('/[^\w\s]/',"",$value);
+            $value=preg_replace('/[^\s\p{L}-]/u',"",$value);
             $value=trim($value);
         }
         return $value;
-            /*  Per eseguire sanificare numeir o mail, basta utilizzare la funzione filter_var($var,FILTER_SANITIZE...).
-                Per le stringhe l'opzione FILTER_SANITIZE_STRINGb è deprecata
-                Qualcosa di simile é htmlspecialchars();
-                */
+            /*  Per eseguire sanificare numeri o mail, basta utilizzare la funzione filter_var($var,FILTER_SANITIZE...).
+                Per le stringhe l'opzione FILTER_SANITIZE_STRING è deprecata
+                Qualcosa di simile é htmlspecialchars();*/
     }
 }
 
