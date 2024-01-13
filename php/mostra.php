@@ -94,37 +94,50 @@ if(!$infoArtshow || sizeof($infoArtshow) <= 0){
 
     $prenotationSection = "";
     if($isLoggedIn){
-        if($_SESSION['is_admin']){
+        if($startDateReverse && new DateTime($startDateReverse) > new DateTime()){
+            if($_SESSION['is_admin']){
+                $prenotationSection = "
+                    <div class=\"artist_button\">
+                        <a href=\"crea_mostra.php?id=".$idArtshow."\">Modifica mostra</a>
+                    </div>
+                ";
+            }else if(!$prenotation) {
+                $prenotationSection = "
+                    <form id=\"artshow_prenotation\"  method=\"post\">
+                        <h2>Partecipa alla mostra</h2>
+                        <p>
+                            Unisciti all'esposizione con pochi <span lang=\"en\">click</span>!
+                            Esponi le tue opere quando vuoi durante i giorni di apertura.
+                        </p>
+                        <input type=\"hidden\" name=\"id_artshow\" value=\"".$idArtshow."\">
+                        <button class=\"button_reverse\" name=\"book\" id=\"book_button\">
+                            Partecipa
+                        </button>
+                    </form>";
+            }else {
+                $prenotationSection = "
+                    <form id=\"artshow_cancel_prenotation\"  method=\"post\">
+                        <h2>Parteciperai alla mostra!</h2>
+                        <p>
+                            Data e orario in cui è stata effettuata la prenotazione: <time datetime=\"".$prenotation[0]["time"]."\">".DateManager::toFormattedTimestamp($prenotation[0]["time"])."</time>
+                        </p>
+                        <input type=\"hidden\" name=\"id_artshow\" value=\"".$idArtshow."\">
+                        <button class=\"button_reverse\" name=\"cancel_book\" id=\"cancel_book_button\">
+                            Annulla iscrizione
+                        </button>
+                    </form>";
+            }
+        }else if($endDateReverse && new DateTime($endDateReverse) >= new DateTime()){
             $prenotationSection = "
-                <div class=\"artist_button\">
-                    <a href=\"crea_mostra.php?id=".$idArtshow."\">Modifica mostra</a>
-                </div>
-            ";
-        }else if(!$prenotation) {
+                        <h2>Mostra in corso!</h2>
+                        <p>Questa mostra è in corso ora e pronta ad affascinarti!
+                        Non è necessaria alcuna prenotazione né richiesto l'acquisto di un biglietto.</p>";
+        } else {
+            echo $endDateReverse;
+            echo (new DateTime())->format('Y-m-d H:i:s');
             $prenotationSection = "
-                <form id=\"artshow_prenotation\"  method=\"post\">
-                    <h2>Partecipa alla mostra</h2>
-                    <p>
-                        Unisciti all'esposizione con pochi <span lang=\"en\">click</span>!
-                        Esponi le tue opere quando vuoi durante i giorni di apertura.
-                    </p>
-                    <input type=\"hidden\" name=\"id_artshow\" value=\"".$idArtshow."\">
-                    <button class=\"button_reverse\" name=\"book\" id=\"book_button\">
-                        Partecipa
-                    </button>
-                </form>";
-        }else {
-            $prenotationSection = "
-                <form id=\"artshow_cancel_prenotation\"  method=\"post\">
-                    <h2>Partecipa alla mostra</h2>
-                    <p>
-                        Data e orario in cui è stata fatta la prenotazione: <time datetime=\"".$prenotation[0]["time"]."\">".DateManager::toFormattedTimestamp($prenotation[0]["time"])."</time>
-                    </p>
-                    <input type=\"hidden\" name=\"id_artshow\" value=\"".$idArtshow."\">
-                    <button class=\"button_reverse\" name=\"cancel_book\" id=\"cancel_book_button\">
-                        Annulla iscrizione
-                    </button>
-                </form>";
+                        <h2>Mostra conclusa</h2>
+                        <p>Questa mostra è già conclusa. Speriamo tu possa partecipare alle prossime.</p>";
         }
     }
 

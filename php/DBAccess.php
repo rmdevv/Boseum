@@ -473,7 +473,7 @@ class DBAccess{
     public function getNextArtshowOfArtist($id){
         $query = "SELECT Artshows.*
                 FROM Users JOIN ArtshowPrenotations ON Users.id = ArtshowPrenotations.id_artist JOIN Artshows ON ArtshowPrenotations.id_artshow = Artshows.id
-                WHERE Users.id = $id AND CURRENT_DATE < Artshows.start_date
+                WHERE Users.id = $id AND CURRENT_DATE <= Artshows.start_date
                 ORDER BY Artshows.start_date ASC
                 LIMIT 1";
 
