@@ -72,6 +72,10 @@ h3, h4, h5, h6{
     width: 4em;
 }
 
+footer{
+    margin-top: 2cm;
+}
+
 #infofoot{
     border: 1px solid black;
     border-radius: 10px;
@@ -151,7 +155,15 @@ h3, h4, h5, h6{
     height: 4cm;
 }
 
-._gallery_item{
+.results_gallery .results_section .hidden{
+    display: none;
+}
+
+.results_gallery .artist_results_section .hidden{
+    display: none;
+}
+
+.gallery_item{
     padding: 0.5cm 0 0.5cm;
     display: flex;
     flex-direction: row;
@@ -164,6 +176,14 @@ h3, h4, h5, h6{
 .artwork_gallery_item_image img{
     width: auto;
     height: 4cm;
+}
+
+.artwork_gallery_item_image, .gallery_item figcaption{
+    display: inline-block;
+}
+
+.gallery_item figcaption .artist_mini_preview_info{
+    margin-left: 1cm;
 }
 
 .artwork_interactions{
@@ -192,5 +212,31 @@ h3, h4, h5, h6{
 }
 
 .button_reverse{
+    display: none;
+}
+
+.artist_mini_preview a, .artist_mini_preview_info{
+    display: inline-block;
+}
+
+.artist_mini_preview a img{
+    height: 3cm;
+    width: auto;
+    margin-right: 1cm;
+}
+
+.artist_image_container img {
+    height: 5cm;
+    width: auto;
+    margin-top: 1cm;
+}
+
+#content #artshow_layout .artshow_mainimage{
+    display: block;
+    height: 5cm;
+    width: auto;
+}
+
+#content #artshow_layout .print_hidden{
     display: none;
 }
