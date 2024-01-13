@@ -68,7 +68,7 @@ CREATE TABLE ArtshowPrenotations (
     PRIMARY KEY (id_artshow, id_artist)
 ) ENGINE=INNODB;
 
-INSERT INTO Users(username, password, isAmm) VALUES
+INSERT INTO Users(username, password, is_admin) VALUES
 ('admin', '$2b$12$9sm6jSUZr5up9OBU3GsTOewCMm4NUj5xK1EFwviI76xxAAcmTm.Je', True);
 
 INSERT INTO Labels VALUES
@@ -94,7 +94,7 @@ INSERT INTO Labels VALUES
     ('notte'),
     ('inverno');
 
-INSERT INTO Users(username, password, name, lastname, isAmm, image, birth_date, birth_place, biography, experience)
+INSERT INTO Users(username, password, name, lastname, is_admin, image, birth_date, birth_place, biography, experience)
 VALUES 
 ('ant-ali14', '$2b$12$xQdT0EE1NhAXz11yOIH3oeTszOVZ/0YbrXyMVZ6kP/V7kaF3HkMUW', 'Antonio', 'Alighieri', False, '../uploads/users/2.jpg', '2002-06-24', 'Bagnara Calabra', 'Studio Storia e tutela dei beni artistici e culturali. Appassionato di tatuaggi: un’immagine sulla nostra pelle racconta di noi più di qualsiasi altra cosa. Nel tempo libero mi piace suonare il pianoforte, dipingere, disegnare e ascoltare musica. Sogno di diventare divulgatore artistico a livello nazionale.', 'Ho frequentato il liceo artistico Modigliani di Padova. Mi piace rappresentare la natura e gli animali, ma anche ritrarre persone dal vivo. Sono abile nella pittura ad olio e con colori a tempera, ma mi diverte di più disegnare. L’arte è una parte fondamentale della mia vita, e voglio condividere la mia passione con tutti i miei colleghi studenti.'),
 ('gustav.peder', '$2b$12$9stUizf0lZOBOYiqWRsJQ.5M9rJGjNqn4FRvYDAmxZWYAi/C4sthm', 'Gustavo', 'Pederiva', False, '../uploads/users/3.jpg', '1998-08-27', 'Litta Parodi', 'Scienze e tecniche dell&#x27;attività motoria preventiva e adattata presso UniPD. Baseball addicted. Interbase dei Castelfranco Dragons: tutta la mia vita appartiene ad una pallina e ad una mazza. Quando non mi alleno né studio, disegno per rilassarmi e rigenerare la mente.', 'Sono un autodidatta a cui piace disegnare per passare il tempo e divertirsi, ma non ho mai mostrato a nessuno questo lato di me. Ritraggo principalmente ex giocatori dello sport più bello del mondo. Voglio condividere le mie opere per promuovere il gioco baseball con tutti i miei coetanei.'),
