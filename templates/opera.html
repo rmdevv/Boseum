@@ -86,9 +86,12 @@
                         </a>
                         <div class="artist_mini_preview_info">
                             <p>{{user_name}} {{user_lastname}}</p>
-                            <a href="artista.php?id={{id_artista}}"
-                                >{{username}}</a
-                            >
+                            <a
+                                aria-hidden="true"
+                                tabindex="-1"
+                                href="artista.php?id={{id_artista}}">
+                                {{username}}
+                            </a>
                         </div>
                     </div>
                     {{artwork_buttons}}

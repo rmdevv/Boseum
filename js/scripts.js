@@ -285,17 +285,6 @@ if (profileImageInput) {
     })
 }
 
-// const logoutButton = document.getElementById('logout_button')
-// if (logoutButton) {
-//     logoutButton.addEventListener('click', () => {
-//         if (window.confirm('Vuoi veramente uscire?')) {
-//             if (window.location) {
-//                 window.location = '../php/logout.php'
-//             }
-//         }
-//     })
-// }
-
 const confirmAction = (question) => {
     var confirm = window.confirm(question)
     return confirm
