@@ -1315,6 +1315,13 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     margin: 2em auto 0;
 }
 
+.profile_image_section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
 .btn-primary {
     display: inline-block;
     cursor: pointer;
@@ -1380,6 +1387,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     height: 200px;
     position: relative;
     display: inline-block;
+    margin: auto;
 }
 .uploaded_image img{
     height:100%;

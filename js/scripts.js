@@ -277,10 +277,13 @@ if (profileImageInput) {
     profileImageInput.addEventListener('change', (event) => {
         const profileImage = document.querySelector('#profile-image')
 
-        if (event.target.files) {
+        if (event.target.files && event.target.files.length > 0) {
             file = event.target.files[0]
 
             profileImage.src = URL.createObjectURL(file)
+            profileImage.alt = file.name
+        } else {
+            profileImage.src = '../assets/images/default_user.svg'
         }
     })
 }

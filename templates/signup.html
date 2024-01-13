@@ -7,7 +7,9 @@
             rel="shortcut icon"
             type="image/png"
             href="../assets/images/favicon.png" />
-        <meta name="keywords" content="museo d'arte, palazzo bo, università degli studi di padova, padova, iscriviti" />
+        <meta
+            name="keywords"
+            content="museo d'arte, palazzo bo, università degli studi di padova, padova, iscriviti" />
         <meta
             name="description"
             content="Registrati alla pagina Boseum come artista per 
@@ -107,24 +109,24 @@
                             <legend>Dati personali</legend>
                             <div class="input_container">
                                 <div class="form_item">
-                                    <label for="name">Nome</label>
+                                    <label for="name">Nome (*)</label>
                                     <input
                                         placeholder="Nome"
                                         type="text"
                                         id="name"
                                         name="name"
                                         value="{{name}}"
-                                        />
+                                        required />
                                 </div>
                                 <div class="form_item">
-                                    <label for="lastname">Cognome</label>
+                                    <label for="lastname">Cognome (*)</label>
                                     <input
                                         placeholder="Cognome"
                                         type="text"
                                         id="lastname"
                                         name="lastname"
                                         value="{{lastname}}"
-                                        />
+                                        required />
                                 </div>
                                 <div class="form_item">
                                     <label for="birthdate"
@@ -136,7 +138,7 @@
                                         name="birthdate"
                                         value="{{birthdate}}"
                                         min="1900-01-01"
-                                        {{focus}}/>
+                                        {{focus}} />
                                 </div>
                                 <div class="form_item">
                                     <label for="birthplace"

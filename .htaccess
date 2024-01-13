@@ -1,0 +1,2 @@
+ErrorDocument 404 /progettoTecWeb/php/404.php
+ErrorDocument 500 /progettoTecWeb/php/500.php

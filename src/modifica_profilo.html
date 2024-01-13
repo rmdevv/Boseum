@@ -2,20 +2,24 @@
 <html lang="it">
     <head>
         <meta charset="UTF-8" />
-        <title>Edit Profile | Boseum</title>
+        <title>Modifica profilo | Boseum</title>
         <link
             rel="shortcut icon"
             type="image/png"
             href="../assets/images/favicon.png" />
-        <meta name="keywords" content="museo d'arte, palazzo bo, università degli studi di padova, padova, profilo, informazioni" />
-        <meta name="description" content="Modifica il tuo profilo ufficiale Boseum" />
+        <meta
+            name="keywords"
+            content="museo d'arte, palazzo bo, università degli studi di padova, padova, profilo, informazioni" />
+        <meta
+            name="description"
+            content="Modifica il tuo profilo ufficiale Boseum" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../assets/css/style.css" media="screen" />
         <link
             rel="stylesheet"
             href="../assets/css/mini.css"
             media="screen and (max-width:600px)" />
-        <!-- <link rel="stylesheet" href="stampa.css" media="print" /> -->
+        <link rel="stylesheet" href="../assets/CSS/print.css" media="print" />
     </head>
     <body>
         <header>
@@ -59,83 +63,16 @@
             </div>
         </header>
         <main id="content">
-            <section class="login_page">
-                <div class="login_container">
-                    <h2>Crea account</h2>
-                    <p>Inserisci i tuoi dati.</p>
+            <section class="ins_mod_page">
+                <div class="ins_mod_container">
+                    <h2>Modifica profilo</h2>
                     <p>
-                        Già registrato?
-                        <a href="login.html">Accedi qui</a>
+                        Modifica i tuoi dati. I campi obbligatori sono segnati
+                        con (*).
                     </p>
                     <form action="" method="post">
-                        <div class="input_container">
-                            <div class="form_item">
-                                <label for="username">Username</label>
-                                <input
-                                    placeholder="Username"
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    value=""
-                                    required />
-                            </div>
-                            <div class="form_item">
-                                <label for="password">Password</label>
-                                <input
-                                    placeholder="Password"
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    value=""
-                                    required />
-                            </div>
-                            <div class="form_item">
-                                <label for="name">Nome</label>
-                                <input
-                                    placeholder="Nome"
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value="" />
-                            </div>
-                            <div class="form_item">
-                                <label for="lastname">Cognome</label>
-                                <input
-                                    placeholder="Cognome"
-                                    type="text"
-                                    id="lastname"
-                                    name="lastname"
-                                    value="" />
-                            </div>
-                            <div class="form_item">
-                                <label for="birthdate">Data di nascita</label>
-                                <input
-                                    type="date"
-                                    id="birthdate"
-                                    name="birthdate"
-                                    value=""
-                                    min="1900-01-01" />
-                            </div>
-                            <div class="form_item">
-                                <label for="birthplace">Luogo di nascita</label>
-                                <input
-                                    placeholder="Luogo di nascita"
-                                    type="text"
-                                    id="birthplace"
-                                    name="birthplace"
-                                    value="" />
-                            </div>
-                            <div class="form_item">
-                                <label for="additional-images-input"
-                                    >Immagini di dettaglio</label
-                                >
-                                <input
-                                    type="file"
-                                    id="additional-images-input"
-                                    name="additional_images"
-                                    accept="image/png, image/jpeg"
-                                    multiple />
-                            </div>
+                        <fieldset class="fieldset_item">
+                            <legend>Immagine profilo</legend>
                             <div class="form_item">
                                 <label for="profile-image-input"
                                     >Immagine profilo</label
@@ -145,19 +82,87 @@
                                     id="profile-image-input"
                                     name="profile_image"
                                     accept="image/png, image/jpeg" />
-
-                                <div class="profile_image_container">
-                                    <img
-                                        id="profile-image"
-                                        src="../assets/images/default_user.svg"
-                                        alt="" />
+                                <div class="profile_image_section">
+                                    <div class="artist_image_container">
+                                        <img
+                                            id="profile-image"
+                                            src="../assets/images/default_user.svg"
+                                            alt="" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="additional-images-viewer"></div>
+                        </fieldset>
+                        <fieldset class="fieldset_item">
+                            <legend>Informazioni personali</legend>
+                            <div class="input_container">
+                                <div class="form_item">
+                                    <label for="name">Nome (*)</label>
+                                    <input
+                                        placeholder="Nome"
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        value=""
+                                        required />
+                                </div>
+                                <div class="form_item">
+                                    <label for="lastname">Cognome (*)</label>
+                                    <input
+                                        placeholder="Cognome"
+                                        type="text"
+                                        id="lastname"
+                                        name="lastname"
+                                        value=""
+                                        required />
+                                </div>
+                                <div class="form_item">
+                                    <label for="birthdate"
+                                        >Data di nascita</label
+                                    >
+                                    <input
+                                        type="date"
+                                        id="birthdate"
+                                        name="birthdate"
+                                        value=""
+                                        min="1900-01-01" />
+                                </div>
+                                <div class="form_item">
+                                    <label for="birthplace"
+                                        >Luogo di nascita</label
+                                    >
+                                    <input
+                                        placeholder="Luogo di nascita"
+                                        type="text"
+                                        id="birthplace"
+                                        name="birthplace"
+                                        value="" />
+                                </div>
+                            </div>
+                            <div class="form_item">
+                                <label for="biography">Biografia</label>
+                                <textarea
+                                    placeholder="Biografia"
+                                    spellcheck="true"
+                                    rows="3"
+                                    id="biography"
+                                    name="biography"
+                                    required></textarea>
+                            </div>
+                            <div class="form_item">
+                                <label for="experience">Esperienza</label>
+                                <textarea
+                                    placeholder="Esperienza"
+                                    spellcheck="true"
+                                    rows="3"
+                                    id="experience"
+                                    name="experience"
+                                    required></textarea>
+                            </div>
+                        </fieldset>
+
                         <div class="form_button">
                             <button type="submit" class="btn-primary">
-                                Registrati
+                                Conferma modifiche
                             </button>
                         </div>
                     </form>
