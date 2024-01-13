@@ -567,11 +567,11 @@ class DBAccess{
         return mysqli_affected_rows($this->connection)>0;
     }
 
-    public function insertNewArtwork($title, $main_image, $description="", $height="", $width="", $length="", $start_date="", $end_date="", $id_artist, $additional_images = array()){
+    public function insertNewArtwork($title, $main_image, $description="", $height="", $width="", $length="", $start_date="", $end_date="", $id_artist, $additional_images = array(), $labels = array()){
         $this->connection->begin_transaction();
         try {
             $query_insert_artwork = "INSERT INTO Artworks(title, main_image, description, height, width, length, start_date, end_date, upload_time, id_artist)
-                                        VALUES ('$title', '$main_image', NULLIF('$description', ''), NULLIF($height, ''), NULLIF($width, ''), NULLIF($length, ''),
+                                        VALUES ('$title', '$main_image', NULLIF('$description', ''), NULLIF('$height', ''), NULLIF('$width', ''), NULLIF('$length', ''),
                                             NULLIF('$start_date', ''), NULLIF('$end_date', ''), CURRENT_TIMESTAMP(), $id_artist)";
             $this->connection->query($query_insert_artwork);
 
@@ -582,8 +582,13 @@ class DBAccess{
                 $this->connection->query($query_insert_additional_image);
             }
 
+            foreach ($labels as $label) {
+                $query_insert_label = "INSERT INTO ArtworkLabels(id_artwork, label) VALUES ($last_inserted_id, '$label')";
+                $this->connection->query($query_insert_label);
+            }
+
             $this->connection->commit();
-            return True;
+            return $last_inserted_id;
         } catch (\Exception $e) {
             $this->connection->rollback();
             return False;
