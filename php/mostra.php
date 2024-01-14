@@ -127,14 +127,12 @@ if(!$infoArtshow || sizeof($infoArtshow) <= 0){
                         </button>
                     </form>";
             }
-        }else if($endDateReverse && new DateTime($endDateReverse) >= new DateTime()){
+        }else if($endDateReverse && (new DateTime($endDateReverse))->format('Y-m-d') >= (new DateTime())->format('Y-m-d')){
             $prenotationSection = "
                         <h2>Mostra in corso!</h2>
                         <p>Questa mostra è in corso ora e pronta ad affascinarti!
                         Non è necessaria alcuna prenotazione né richiesto l'acquisto di un biglietto.</p>";
         } else {
-            echo $endDateReverse;
-            echo (new DateTime())->format('Y-m-d H:i:s');
             $prenotationSection = "
                         <h2>Mostra conclusa</h2>
                         <p>Questa mostra è già conclusa. Speriamo tu possa partecipare alle prossime.</p>";
