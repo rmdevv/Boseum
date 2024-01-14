@@ -74,10 +74,10 @@
                     </p>
                     <p>
                         Già registrato?
-                        <a href="login.html">Accedi qui</a>
+                        <a href="login.php">Accedi qui</a>
                         {{messaggioerrore}}
                     </p>
-                    <form action="../php/signup.php" method="post">
+                    <form action="signup.php" method="post">
                         <fieldset class="fieldset_item">
                             <legend>Dati account</legend>
                             <div class="input_container">
@@ -89,7 +89,7 @@
                                         id="username"
                                         name="username"
                                         value="{{username}}"
-                                                                                required />
+                                        required />
                                 </div>
                                 <div class="form_item">
                                     <label for="password">Password (*)</label>
@@ -99,7 +99,7 @@
                                         id="password"
                                         name="password"
                                         value="{{password}}"
-                                                                                required />
+                                        required />
                                 </div>
                             </div>
                         </fieldset>
@@ -135,8 +135,7 @@
                                         id="birthdate"
                                         name="birthdate"
                                         value="{{birthdate}}"
-                                        min="1900-01-01"
-                                        />
+                                        min="1900-01-01" />
                                 </div>
                                 <div class="form_item">
                                     <label for="birthplace"

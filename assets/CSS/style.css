@@ -1193,6 +1193,9 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     object-fit: cover;
 }
 
+.error_message {
+    color: var(--flagColor);
+}
 
 .login_page {
     display: flex;

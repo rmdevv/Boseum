@@ -22,10 +22,8 @@ function validazione($var,string $errmsg){
     if($var == ""){
         $ret = compilaerrore($GLOBALS["username"],$GLOBALS["password"],$GLOBALS["name"],$GLOBALS["lastname"],
         $GLOBALS["birthdate"],$GLOBALS["birthplace"]);
-        echo(str_replace("{{messaggioerrore}}","
-        <br> <em>$errmsg<em>
-        ", $ret));
-        die();   
+        echo(str_replace("{{messaggioerrore}}","<p class=\"error_message\"><em>$errmsg</em></p>", $ret));
+        die();
     }
 }
 
@@ -38,7 +36,7 @@ $san->trimValues($_POST);
 /*Valori teoricamente presenti, controllo da fare per sicurezza in quanto utenti malintenzionati possono togliere l'attributo required*/
 $username="";
 if(isset($_POST["username"])){
-    $username=$san->SanitizeWord($_POST["username"]);
+    $username=$san->sanitizeWord($_POST["username"]);
     unset($_POST["username"]);
 }
 
@@ -52,25 +50,25 @@ if(isset($_POST["password"])){
 
 $name="";
 if(isset($_POST["name"])){
-    $name=$san->Sanitize($_POST["name"]);
+    $name=$san->sanitize($_POST["name"]);
     unset($_POST["name"]);
 }
 
 $lastname="";
 if(isset($_POST["lastname"])){
-    $lastname=$san->Sanitize($_POST["lastname"]);
+    $lastname=$san->sanitize($_POST["lastname"]);
     unset($_POST["lastname"]);
 }
 
 $birthplace="";
 if(isset($_POST["birthplace"])){
-    $birthplace=$san->Sanitize($_POST["birthplace"]);
+    $birthplace=$san->sanitize($_POST["birthplace"]);
     unset($_POST["birthplace"]);
 }
 
 $birthdate="";
 if(isset($_POST["birthdate"])){
-    $birthdate=$san->SanitizeDate($_POST["birthdate"]);
+    $birthdate=$san->sanitizeDate($_POST["birthdate"]);
     unset($_POST["birthdate"]);
 }
 
@@ -86,8 +84,8 @@ validazione($name,"Inserire un nome");
 /*Validazione Cognome*/
 validazione($lastname,"Inserire un cognome");
 
-/*validazione data solo se la data non é nulla*/
-if($birthdate!="" && $san->ValidateDate($birthdate) && $birthdate>"1900-01-01" && $birthdate<=date("Y-m-d")){
+/*validazione data solo se la data non è nulla*/
+if($birthdate!="" && $san->validateDate($birthdate) && $birthdate>"1900-01-01" && $birthdate<=date("Y-m-d")){
     $ret = compilaerrore($username,$password,$name,$lastname,$birthdate,$birthplace);
     echo(str_replace("{{messaggioerrore}}","
     <br> <em>Inserire una data valida<em>
@@ -97,11 +95,11 @@ if($birthdate!="" && $san->ValidateDate($birthdate) && $birthdate>"1900-01-01" &
 
 
 
-$con=new DB\DBAccess();
-$con->openDBConnection();
-if($con->insertNewUser($username,$password,$name,$lastname,"","","","","") != false){
-    $_SESSION['logged_id']=$con->getUserLogin($username)[0]["id"];
-    $con->closeConnection();
+$connection = new DB\DBAccess();
+$connection->openDBConnection();
+if($connection->insertNewUser($username,$password,$name,$lastname,"","","","","") != false){
+    $_SESSION['logged_id']=$connection->getUserLogin($username)[0]["id"];
+    $connection->closeConnection();
     $_POST['logged_id']=$_SESSION['logged_id'];
     header("location: ../php/artista.php");
     exit;

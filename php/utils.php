@@ -12,19 +12,19 @@ class Sanitizer{
         return $value;
     }
 
-    public static function SanitizeWord(&$value){
+    public static function sanitizeWord(&$value){
         $value=preg_replace('/[^\p{L}-]/u',"",$value);
         return $value;
     }
 
-    public static function ValidateDate($value){
+    public static function validateDate($value){
         return preg_match('/$\d{4}-\d{2}-d{2}^/',$value);
     }
-    public static function SanitizeDate(&$value){
+    public static function sanitizeDate(&$value){
         $value=preg_replace('/[^\w\s-]/','',$value);
         return $value;
     }
-    public static function Sanitize(&$value){
+    public static function sanitize(&$value){
         /*Elimina tutti i valori che non siano caratteri o spaziature (comprese lettere accentate)*/
         $value=strip_tags($value);
         if(is_array($value)){
