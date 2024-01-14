@@ -1,6 +1,7 @@
 <?php
 
 require_once 'DBAccess.php';
+require_once 'ImageProcessor.php';
 
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
@@ -50,25 +51,14 @@ $creaOpera = str_replace("{{labels}}", $labelsContainer, $creaOpera);
 if (isset($_POST['addartwork'])) {
 
     $imagesDir = "../uploads/artworks/";
-    if(!getimagesize($_FILES["main_image"]["tmp_name"])) {
-        echo "File non è una immagine";
-        exit();
-    }
-    $mainImage = $imagesDir . basename($_FILES["main_image"]["name"]);
 
-    $additionalImages = array();
-    $nAdditionalImages = 0;
-    if(isset($_FILES["additional_images"]["name"])){
-        foreach ($_FILES["additional_images"]["name"] as $additionalImage) {
-            if($additionalImage != '') $nAdditionalImages++;
-        }
-        for($i=0; $i<$nAdditionalImages; $i++) {
-            if(!getimagesize($_FILES["additional_images"]["tmp_name"][$i])) {
-                echo "File non è una immagine";
-                exit();
-            }
-            array_push( $additionalImages, $imagesDir . basename($_FILES["additional_images"]["name"][$i]));
-        }
+    $mainImage = null;
+    if ($_FILES["main_image"] && sizeof($_FILES["main_image"]) > 0) {
+        $mainImage = ImageProcessor::processImage($_FILES["main_image"]);
+    }
+    $additionalImagesPath = array();
+    if ($_FILES["additional_images"] && sizeof($_FILES["additional_images"]) > 0) {
+        $additionalImagesPath = ImageProcessor::processImages($_FILES["additional_images"]);
     }
 
     $idArtist = $_SESSION['logged_id'];
@@ -83,35 +73,26 @@ if (isset($_POST['addartwork'])) {
 
     foreach($labels as $label){
         $labelName = str_replace(" ", "", strtolower($label['label']));
-        if(isset($_POST[$labelName])) array_push( $labelsArtwork, $label['label']);
+        if(isset($_POST[$labelName])) array_push($labelsArtwork, $label['label']);
     }
 
     if (empty($title) || empty($mainImage) || empty($description)) {
         // TODO: Messaggio errore (non dovrebbe mai accadere per i campi required)
         echo "Parametri non sufficienti";
         exit();
-    }else{
+    }else {
         $connection=new DB\DBAccess();
         if (!$connection->openDBConnection()) {
             header("location: ../php/500.php");
             exit();
         }
 
-        $addArtwork = $connection->insertNewArtwork($title, $mainImage, $description, $height, $width, $depth, $startDate, $endDate, $idArtist, $additionalImages, $labelsArtwork);
+        $addArtwork = $connection->insertNewArtwork($title, $mainImage, $description, $height, $width, $depth, $startDate, $endDate, $idArtist, $additionalImagesPath, $labelsArtwork);
         $connection->closeConnection();
 
         if(!$addArtwork){
             echo "Errore nella creazione dell'opera";
             exit();
-        }
-        
-        if( !move_uploaded_file($_FILES["main_image"]["tmp_name"], $mainImage)){
-            echo "Errore nel salvataggio del file";
-        }
-        for($i=0; $i<$nAdditionalImages; $i++) {
-            if( !move_uploaded_file($_FILES["additional_images"]["tmp_name"][$i], $imagesDir . basename($_FILES["additional_images"]["name"][$i]))){
-                echo "Errore nel salvataggio del file";
-            }
         }
         
         header("location: ../php/opera.php?id=".$addArtwork);

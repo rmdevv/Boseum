@@ -27,6 +27,7 @@ if (!isset($_GET["id"])) {
 
 $idArtwork = $_GET["id"];
 
+$artworkButtons = "";
 
 $infoArtworkArtist = $connection->getArtworkWithArtist($idArtwork);
 $labels = $connection->getArtworkLabels($idArtwork);
@@ -68,8 +69,10 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
 
     $startDateReverse = $infoArtworkArtist[0]['start_date'];
     $startDate = DateManager::toDMY($startDateReverse);
+    $startDate = $startDate == "" ? "-" : $startDate;
     $endDateReverse = $infoArtworkArtist[0]['end_date'];
     $endDate = DateManager::toDMY($endDateReverse);
+    $endDate = $endDate == "" ? "-" : $endDate;
     $uploadTimeReversed = $infoArtworkArtist[0]['upload_time'];
     $uploadTime = DateManager::toFormattedTimestamp($uploadTimeReversed);
 
@@ -89,7 +92,7 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
         $additionalImagesContainer .= "</div>";
     }
 
-    $similarArtworksContainer = '';
+    $similarArtworksContainer = '<p>Questa opera non assomiglia a nessun\'altra opera presente nel sito.</p>';
     if($similarArtworks && sizeof($similarArtworks) > 0){
         $similarArtworksContainer = "<div class=\"results_section\" id=\"paginated_section\">";
         foreach($similarArtworks as $similarArtwork){
@@ -119,13 +122,12 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
                     </figure>";
         }
         $similarArtworksContainer .= "</div>".addPaginator();
+    }
 
-        $artworkButtons = "";
-        if($isLoggedIn && ($id_artista == $_SESSION['logged_id'] || $_SESSION['is_admin'])) {
-            $artworkButtons = "<div class=\"artist_button\">
-                        <a href=\"crea_opera.php?id=".$idArtwork."\">Modifica opera</a>
-                    </div>";
-        }
+    if($isLoggedIn && ($id_artista == $_SESSION['logged_id'] || $_SESSION['is_admin'])) {
+        $artworkButtons = "<div class=\"artist_button\">
+                    <a href=\"crea_opera.php?id=".$idArtwork."\">Modifica opera</a>
+                </div>";
     }
 
     $opera = file_get_contents("../templates/opera.html");

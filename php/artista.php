@@ -90,7 +90,7 @@ if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
     }
     if($labels && sizeof($labels) > 0){
         $insertDetails = true;
-        $labelsContainer = "<dt>Stili artistici</dt><dd><ul class=\"label_list\">";
+        $labelsContainer = "<dt>Stili artistici</dt><dd id=\"artist_labels\"><ul class=\"label_list\">";
         foreach($labels as $label){
             $labelName = str_replace(" ", "", strtolower($label['label']));
             $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=".$label['label']."\">".ucfirst($label['label'])."</a></li>";

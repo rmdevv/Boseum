@@ -342,7 +342,7 @@ class DBAccess{
                     FROM (Artworks AS A1 JOIN Users AS U1 ON A1.id_artist = U1.id)
                     JOIN (
                         SELECT DISTINCT Artworks.id
-                        FROM (Artworks JOIN Users ON Artworks.id_artist = Users.id) JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
+                        FROM (Artworks LEFT OUTER JOIN Users ON Artworks.id_artist = Users.id) LEFT OUTER JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
                         WHERE (Artworks.title LIKE '%$text%'
                             $time_filter
                             $height_filter
@@ -386,7 +386,7 @@ class DBAccess{
                     FROM Users AS U1
                     JOIN (
                         SELECT DISTINCT Users.id
-                        FROM (Users JOIN Artworks ON Users.id = Artworks.id_artist) JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
+                        FROM (Users LEFT OUTER JOIN Artworks ON Users.id = Artworks.id_artist) LEFT OUTER JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
                         WHERE (Users.username LIKE '%$text%' OR Users.name LIKE '%$text%' OR Users.lastname LIKE '%$text%')
                             AND NOT Users.is_admin
                             $time_filter

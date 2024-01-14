@@ -1528,12 +1528,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     grid-column-start: 2;
 }
 
-.artist_info dl dt:last-child {
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-
-.artist_info dl dd:last-child {
+#artist_labels {
     grid-column-start: 1;
     grid-column-end: 3;
 }

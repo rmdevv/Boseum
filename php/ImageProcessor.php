@@ -1,22 +1,33 @@
 <?php
 
 class ImageProcessor {
-    public static function processImages($imageFiles, $destinationFolder, $maxSize = 800, $jpegQuality = 85) {
+    public static function processImages($imageFiles, $destinationFolder = '../uploads/artworks/', $maxSize = 800, $jpegQuality = 85) {
         $savedImageNames = [];
 
-        foreach ($imageFiles as $uploadedFile) {
-            $result = self::processImage($uploadedFile, $destinationFolder, $maxSize, $jpegQuality);
-            
-            if ($result !== false) {
-                $savedImageNames[] = $result;
+        if (count($imageFiles['name']) > 0) {
+            foreach ($imageFiles['name'] as $key => $value) {
+                $uploadedFile = [
+                    'name' => $imageFiles['name'][$key],
+                    'type' => $imageFiles['type'][$key],
+                    'tmp_name' => $imageFiles['tmp_name'][$key],
+                    'error' => $imageFiles['error'][$key],
+                    'size' => $imageFiles['size'][$key],
+                ];
+
+                $result = self::processImage($uploadedFile, $destinationFolder, $maxSize, $jpegQuality);
+
+                if ($result !== false) {
+                    $savedImageNames[] = $result;
+                }
             }
         }
 
         return $savedImageNames;
     }
 
-    private static function processImage($uploadedFile, $destinationFolder, $maxSize, $jpegQuality) {
+    public static function processImage($uploadedFile, $destinationFolder = '../uploads/artworks/', $maxSize = 800, $jpegQuality = 85) {
         // Check if there are no errors during the file upload
+        print_r($uploadedFile);
         if ($uploadedFile['error'] === UPLOAD_ERR_OK) {
             // Load the image based on the file type
             $image = self::loadImage($uploadedFile);
@@ -25,7 +36,11 @@ class ImageProcessor {
             list($newWidth, $newHeight) = self::calculateResizedDimensions($image, $maxSize);
 
             // Resize the image
-            $resizedImage = imagescale($image, $newWidth, $newHeight);
+            if ($newWidth != imagesx($image) || $newHeight != imagesy($image)) {
+                $resizedImage = imagescale($image, $newWidth, $newHeight);
+            } else {
+                $resizedImage = $image;
+            }
 
             // Generate a unique filename
             $uniqueFilename = self::generateUniqueFilename();
@@ -39,7 +54,7 @@ class ImageProcessor {
 
                 echo 'Conversion and resizing completed successfully for ' . $uploadedFile['name'] . '. Saved as ' . $uniqueFilename . '<br>';
                 
-                return $uniqueFilename;
+                return $outputFile;
             } else {
                 echo 'Error during image processing for ' . $uploadedFile['name'] . '. Please try again.<br>';
             }
@@ -68,15 +83,17 @@ class ImageProcessor {
         $originalWidth = imagesx($image);
         $originalHeight = imagesy($image);
 
-        if ($originalWidth > $originalHeight) {
-            $newWidth = $maxSize;
-            $newHeight = intval($originalHeight * ($maxSize / $originalWidth));
-        } else {
-            $newHeight = $maxSize;
-            $newWidth = intval($originalWidth * ($maxSize / $originalHeight));
+        if ($originalWidth > $maxSize || $originalHeight > $maxSize) {
+            if ($originalWidth > $originalHeight) {
+                $newWidth = $maxSize;
+                $newHeight = intval($originalHeight * ($maxSize / $originalWidth));
+            } else {
+                $newHeight = $maxSize;
+                $newWidth = intval($originalWidth * ($maxSize / $originalHeight));
+            }
+            return [$newWidth, $newHeight];
         }
-
-        return [$newWidth, $newHeight];
+        return [$originalWidth, $originalHeight];
     }
 
     private static function generateUniqueFilename() {

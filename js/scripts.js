@@ -157,38 +157,62 @@ if (paginatedList) {
 const startDate = document.getElementById('start_date')
 const startDateFuture = document.getElementById('start_date_future')
 const endDate = document.getElementById('end_date')
+const endDatePast = document.getElementById('end_date_past')
 
-if ((startDate || startDateFuture) && endDate) {
+if ((startDate || startDateFuture) && (endDate || endDatePast)) {
     today = new Date()
 
     if (startDate) {
-        endDate.min = today.toLocaleDateString('fr-ca')
-        startDate.max = today.toLocaleDateString('fr-ca')
-        startDate.addEventListener('input', () => {
-            var min_limit = startDate.value
-            endDate.min = min_limit
-        })
+        if (endDate) {
+            endDate.min = today.toLocaleDateString('fr-ca')
+            startDate.max = today.toLocaleDateString('fr-ca')
+            startDate.addEventListener('input', () => {
+                var min_limit = startDate.value
+                endDate.min = min_limit
+            })
+        } else {
+            endDatePast.max = today.toLocaleDateString('fr-ca')
+            startDate.max = today.toLocaleDateString('fr-ca')
+            startDate.addEventListener('input', () => {
+                var min_limit = startDate.value
+                endDatePast.min = min_limit
+            })
+        }
     }
 
     if (startDateFuture) {
-        endDate.min = today.toLocaleDateString('fr-ca')
-        startDateFuture.min = today.toLocaleDateString('fr-ca')
-        startDateFuture.max = today.toLocaleDateString('fr-ca')
+        if (endDate) {
+            endDate.min = today.toLocaleDateString('fr-ca')
+            startDateFuture.min = today.toLocaleDateString('fr-ca')
+            startDateFuture.max = today.toLocaleDateString('fr-ca')
 
-        startDateFuture.addEventListener('input', () => {
-            var min_limit = startDateFuture.value
-            endDate.min = min_limit
+            startDateFuture.addEventListener('input', () => {
+                var min_limit = startDateFuture.value
+                endDate.min = min_limit
+            })
+        }
+    }
+    if (endDate) {
+        endDate.addEventListener('input', () => {
+            var max_limit = endDate.value
+            if (startDate) {
+                startDate.max = max_limit
+            }
+            if (startDateFuture) {
+                startDateFuture.max = max_limit
+            }
+        })
+    } else {
+        endDatePast.addEventListener('input', () => {
+            var max_limit = endDate.value
+            if (startDate) {
+                startDate.max = max_limit
+            }
+            if (startDateFuture) {
+                startDateFuture.max = max_limit
+            }
         })
     }
-    endDate.addEventListener('input', () => {
-        var max_limit = endDate.value
-        if (startDate) {
-            startDate.max = max_limit
-        }
-        if (startDateFuture) {
-            startDateFuture.max = max_limit
-        }
-    })
 }
 
 const pastDate = document.getElementById('birthdate')
