@@ -165,14 +165,16 @@ if ((startDate || startDateFuture) && (endDate || endDatePast)) {
     if (startDate) {
         if (endDate) {
             endDate.min = today.toLocaleDateString('fr-ca')
-            startDate.max = today.toLocaleDateString('fr-ca')
+            var max_limit = endDate.value
+            startDate.max = max_limit
             startDate.addEventListener('input', () => {
                 var min_limit = startDate.value
                 endDate.min = min_limit
             })
         } else {
             endDatePast.max = today.toLocaleDateString('fr-ca')
-            startDate.max = today.toLocaleDateString('fr-ca')
+            var max_limit = endDatePast.value
+            startDate.max = max_limit
             startDate.addEventListener('input', () => {
                 var min_limit = startDate.value
                 endDatePast.min = min_limit
@@ -184,7 +186,8 @@ if ((startDate || startDateFuture) && (endDate || endDatePast)) {
         if (endDate) {
             endDate.min = today.toLocaleDateString('fr-ca')
             startDateFuture.min = today.toLocaleDateString('fr-ca')
-            startDateFuture.max = today.toLocaleDateString('fr-ca')
+            var max_limit = endDate.value
+            startDateFuture.max = max_limit
 
             startDateFuture.addEventListener('input', () => {
                 var min_limit = startDateFuture.value

@@ -1152,6 +1152,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     box-sizing: border-box;
     max-width: calc(min(800px, 100%));
     margin: auto;
+    word-break: break-word;
 }
 
 .artshow_maintext_info {
@@ -1188,7 +1189,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 
 .artshow_mainimage{
     width: 50%;
-    height: auto;
+    max-height: 75vh;
     object-fit: cover;
 }
 
