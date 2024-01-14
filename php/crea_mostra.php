@@ -1,14 +1,21 @@
 <?php
 
 require_once 'DBAccess.php';
+require_once 'ImageProcessor.php';
 
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 setlocale(LC_ALL,'it_IT');
 
 session_start();
+$isLoggedIn = isset($_SESSION['logged_id']);
+if($isLoggedIn && !$_SESSION['is_admin']){
+    header("Location: ../php/index.php");
+    exit();
+}
+
 $loginOrProfileTitle = "";
-if (!isset($_SESSION['logged_id'])) {
+if (!$isLoggedIn) {
     header('Location: ../php/login.php');
     exit();
 }else{
@@ -26,12 +33,10 @@ $creaMostra = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $c
 
 if (isset($_POST['addArtshow'])) {
 
-    $imagesDir = "../uploads/artshows/";
-    if(!getimagesize($_FILES["main_image"]["tmp_name"])) {
-        echo "File non è una immagine";
-        exit();
+    $image = null;
+    if ($_FILES["main_image"] && sizeof($_FILES["main_image"]) > 0) {
+        $image = ImageProcessor::processImage($_FILES["main_image"], "../uploads/artshows/");
     }
-    $image = $imagesDir . basename($_FILES["main_image"]["name"]);
 
     $title = $_POST['title'] ?? '';
     $description = $_POST['description'] ?? '';
@@ -55,10 +60,6 @@ if (isset($_POST['addArtshow'])) {
         if(!$addArtshow){
             echo "Errore nella creazione della mostra";
             exit();
-        }
-        
-        if( !move_uploaded_file($_FILES["main_image"]["tmp_name"], $image)){
-            echo "Errore nel salvataggio del file";
         }
         
         header("location: ../php/mostre.php");
