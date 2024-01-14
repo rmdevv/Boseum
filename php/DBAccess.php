@@ -1,5 +1,6 @@
 <?php
 namespace DB;
+use mysqli_sql_exception;
 class DBAccess{
     private const HOST_DB = "localhost";
     private const DATABASE_NAME = "michelonr";
@@ -342,7 +343,7 @@ class DBAccess{
                     FROM (Artworks AS A1 JOIN Users AS U1 ON A1.id_artist = U1.id)
                     JOIN (
                         SELECT DISTINCT Artworks.id
-                        FROM (Artworks LEFT OUTER JOIN Users ON Artworks.id_artist = Users.id) LEFT OUTER JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
+                        FROM (Artworks JOIN Users ON Artworks.id_artist = Users.id) JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
                         WHERE (Artworks.title LIKE '%$text%'
                             $time_filter
                             $height_filter
@@ -386,7 +387,7 @@ class DBAccess{
                     FROM Users AS U1
                     JOIN (
                         SELECT DISTINCT Users.id
-                        FROM (Users LEFT OUTER JOIN Artworks ON Users.id = Artworks.id_artist) LEFT OUTER JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
+                        FROM (Users JOIN Artworks ON Users.id = Artworks.id_artist) JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
                         WHERE (Users.username LIKE '%$text%' OR Users.name LIKE '%$text%' OR Users.lastname LIKE '%$text%')
                             AND NOT Users.is_admin
                             $time_filter
@@ -705,10 +706,13 @@ class DBAccess{
     }
 
     public function insertNewUser($username, $password, $name, $lastname, $image, $birth_date, $birth_place, $biography, $experience){
-        $query_insert = "INSERT INTO Users(username, password, name, lastname, is_admin, image, birth_date, birth_place, biography, experience)
-                            VALUES ('$username', '$password', '$name', '$lastname', 0, NULLIF('$image', ''), NULLIF('$birth_date', ''), NULLIF('$birth_place', ''), NULLIF('$biography', ''), NULLIF('$experience', ''))";
+        $query_insert = "INSERT INTO Users(username, password, name, lastname, image, birth_date, birth_place, biography, experience)
+                            VALUES ('$username', '$password', '$name', '$lastname', NULLIF('$image', ''), NULLIF('$birth_date', ''), NULLIF('$birth_place', ''), NULLIF('$biography', ''), NULLIF('$experience', ''))";
 
-        mysqli_query($this->connection, $query_insert) or die(mysqli_error($this->connection));
+        try{mysqli_query($this->connection, $query_insert);}
+        catch(mysqli_sql_exception){
+            return false;
+        }
         return mysqli_affected_rows($this->connection)>0;
     }
 }
