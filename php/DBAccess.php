@@ -38,7 +38,7 @@ class DBAccess{
     public function getArtist($id){
         $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image, Users.birth_date, Users.birth_place, Users.biography, Users.experience
                     FROM Users
-                    WHERE Users.id = $id AND NOT Users.isAmm";
+                    WHERE Users.id = $id AND NOT Users.is_admin";
 
         $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
@@ -55,7 +55,7 @@ class DBAccess{
     public function getArtistPreview($id){
         $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image
                     FROM Users
-                    WHERE Users.id = $id AND NOT Users.isAmm";
+                    WHERE Users.id = $id AND NOT Users.is_admin";
 
         $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0){
@@ -72,7 +72,7 @@ class DBAccess{
     public function getArtistWithArtworks($id){
         $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image, Users.birth_date, Users.birth_place, Users.biography, Users.experience, Artworks.*
                     FROM Users JOIN Artworks ON Users.id = Artworks.id_artist
-                    WHERE Users.id = $id AND NOT Users.isAmm
+                    WHERE Users.id = $id AND NOT Users.is_admin
                     ORDER BY Artworks.upload_time DESC";
 
         $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
@@ -90,7 +90,7 @@ class DBAccess{
     public function getArtistWithArtworksPreview($id){
         $query = "SELECT Users.id, Users.username, Users.name, Users.lastname, Users.image, Users.birth_date, Users.birth_place, Users.biography, Users.experience, Artworks.id AS id_artwork, Artworks.main_image, Artworks.title
                     FROM Users JOIN Artworks ON Users.id = Artworks.id_artist
-                    WHERE Users.id = $id AND NOT Users.isAmm
+                    WHERE Users.id = $id AND NOT Users.is_admin
                     ORDER BY Artworks.upload_time DESC";
 
         $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
@@ -108,7 +108,7 @@ class DBAccess{
     public function getArtistArtworksPreview($id){
         $query = "SELECT Artworks.id, Artworks.main_image, Artworks.title
                     FROM Users JOIN Artworks ON Users.id = Artworks.id_artist
-                    WHERE Users.id = $id AND NOT Users.isAmm
+                    WHERE Users.id = $id AND NOT Users.is_admin
                     ORDER BY Artworks.upload_time DESC";
 
         $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
@@ -389,7 +389,7 @@ class DBAccess{
                         SELECT DISTINCT Users.id
                         FROM (Users LEFT OUTER JOIN Artworks ON Users.id = Artworks.id_artist) LEFT OUTER JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
                         WHERE (Users.username LIKE '%$text%' OR Users.name LIKE '%$text%' OR Users.lastname LIKE '%$text%')
-                            AND NOT Users.isAmm
+                            AND NOT Users.is_admin
                             $time_filter
                             $labels_filter
                         ) AS QR ON U1.id = QR.id

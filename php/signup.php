@@ -97,12 +97,11 @@ if($birthdate!="" && $san->validateDate($birthdate) && $birthdate>"1900-01-01" &
 
 $connection = new DB\DBAccess();
 $connection->openDBConnection();
-if($connection->insertNewUser($username,$password,$name,$lastname,"","","","","") != false){
+if($connection->insertNewUser($username,password_hash($password, PASSWORD_BCRYPT),$name,$lastname,"","","","","") != false){
     $_SESSION['logged_id']=$connection->getUserLogin($username)[0]["id"];
     $connection->closeConnection();
     $_SESSION['is_admin']=false;
-    $_GET['id']=$_SESSION['logged_id'];
-    header("location: ../php/artista.php");
+    header("location: artista.php?id=".$_SESSION['logged_id']);
     exit;
 }
 else{
