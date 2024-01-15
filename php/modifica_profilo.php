@@ -121,14 +121,43 @@ if($artworksPreview && sizeof($artworksPreview) > 0){
                 </figure>";
     }
     $artworks .= "</div>".addPaginator();
+}    
+
+$details = "<dl>";
+$insertDetails = false;
+if($infoArtistArtworks[0]['birth_date']) {
+    $insertDetails = true;
+    $details .= "<dt>Data di nascita</dt>
+                        <dd>
+                            <time datetime=\"".$infoArtistArtworks[0]['birth_date']."\">".DateManager::toDMY($infoArtistArtworks[0]['birth_date'])."</time>
+                        </dd>";
+}
+if($infoArtistArtworks[0]['birth_place']) {
+    $insertDetails = true;
+    $details .= "<dt>Luogo di nascita</dt>
+                        <dd>".$infoArtistArtworks[0]['birth_place']."</dd>";
+}
+if($labels && sizeof($labels) > 0){
+    $insertDetails = true;
+    $labelsContainer = "<dt>Stili artistici</dt><dd id=\"artist_labels\"><ul class=\"label_list\">";
+    foreach($labels as $label){
+        $labelName = str_replace(" ", "", strtolower($label['label']));
+        $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=".$label['label']."\">".ucfirst($label['label'])."</a></li>";
+    }
+    $labelsContainer .= "</ul></dd></dl>";
+    $details .= $labelsContainer;
+}
+
+if(!$insertDetails){
+    $details = '';
 }
 
 
 $ret = file_get_contents("../templates/artista.html");
 /*TODO da definire*/
-$ret = str_replace("{{details}}","{{details}}",$ret);
 
 /*Definiti*/
+$ret = str_replace("{{details}}",$details,$ret);
 $ret = str_replace("{{artworks}}",
 "<p id=\"aiuto_modifica\">Clicca sull'immagine dell'opera che vuoi modificare o eliminare</p>".$artworks
 ,$ret);
