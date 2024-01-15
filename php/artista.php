@@ -31,12 +31,18 @@ if($isLoggedIn) {
             exit();
         }else {
             $artistButtons = "<div class=\"artist_button\">
-                        <a href=\"modifica_profilo.php\">Modifica profilo</a>
+                            <form action=\"modifica_profilo.php\" method=\"get\">
+                                <input type=\"hidden\" name=\"id\" value=\"$idArtist\">
+                                <button type=\"submit\" aria-label=\"modifica profilo\">Modifica Profilo</button>
+                            </form>
                     </div>";
         }
     }else if($idArtist == $_SESSION['logged_id']) {
         $artistButtons = "<div class=\"artist_button\">
-                        <a href=\"modifica_profilo.php\">Modifica profilo</a>
+                    <form action=\"modifica_profilo.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"id\" value=\"$idArtist\">
+                        <button type=\"submit\" aria-label=\"modifica profilo\">Modifica Profilo</button>
+                    </form>
                         <button id=\"logout_button\">Logout</button>
                     </div>";
     }
