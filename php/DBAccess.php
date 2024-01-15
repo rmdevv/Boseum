@@ -389,7 +389,7 @@ class DBAccess{
                         SELECT DISTINCT Users.id
                         FROM (Users LEFT OUTER JOIN Artworks ON Users.id = Artworks.id_artist) LEFT OUTER JOIN ArtworkLabels ON Artworks.id = ArtworkLabels.id_artwork
                         WHERE (Users.username LIKE '%$text%' OR Users.name LIKE '%$text%' OR Users.lastname LIKE '%$text%')
-                            AND NOT Users.is_admin
+                            AND NOT Users.isAmm
                             $time_filter
                             $labels_filter
                         ) AS QR ON U1.id = QR.id
