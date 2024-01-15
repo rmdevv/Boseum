@@ -100,7 +100,8 @@ $connection->openDBConnection();
 if($connection->insertNewUser($username,$password,$name,$lastname,"","","","","") != false){
     $_SESSION['logged_id']=$connection->getUserLogin($username)[0]["id"];
     $connection->closeConnection();
-    $_POST['logged_id']=$_SESSION['logged_id'];
+    $_SESSION['is_admin']=false;
+    $_GET['id']=$_SESSION['logged_id'];
     header("location: ../php/artista.php");
     exit;
 }
