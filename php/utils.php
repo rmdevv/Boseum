@@ -1,52 +1,51 @@
 <?php
-class Sanitizer{
-    public static function trimValues(&$value){
-        if(is_array($value)){
-            foreach($value as &$a){
-                $a=trim($a);
+class Sanitizer
+{
+    public static function trimValues(&$value)
+    {
+        if (is_array($value)) {
+            foreach ($value as &$a) {
+                $a = trim($a);
             }
-        }
-        else{
-            $value=trim($value);
+        } else {
+            $value = trim($value);
         }
         return $value;
     }
 
-    public static function sanitizeWord(&$value){
-        $value=preg_replace('/[^\p{L}-]/u',"",$value);
+    public static function sanitizeWord(&$value)
+    {
+        $value = preg_replace('/[^\p{L}-]/u', "", $value);
         return $value;
     }
 
-    public static function validateDate($value){
-        return preg_match('/$\d{4}-\d{2}-d{2}^/',$value);
+    public static function validateDate($value)
+    {
+        return preg_match('/^\d{4}-\d{2}-\d{2}$/', $value);
     }
-    public static function sanitizeDate(&$value){
-        $value=preg_replace('/[^\w\s-]/','',$value);
+    public static function sanitizeDate(&$value)
+    {
+        $value = preg_replace('/[^\w\s-]/', '', $value);
         return $value;
     }
-    public static function sanitize(&$value){
-        /*Elimina tutti i valori che non siano caratteri o spaziature (comprese lettere accentate)*/
-        $value=strip_tags($value,"\'()");
-        if(is_array($value)){
-            foreach($value as &$a){
-                $a=preg_replace('/[^\s\'()\p{L}-]/u',"",$a);
-                $a=htmlspecialchars($a);
-                $a=trim($a);
-            }
-        }
-        else{
-            $value=preg_replace('/[^\s\'()\p{L}-]/u',"",$value);
-            $value=htmlspecialchars($value);
-            $value=trim($value);
-        }
-        return $value;
-            /*  Per eseguire sanificare numeri o mail, basta utilizzare la funzione filter_var($var,FILTER_SANITIZE...).
-                Per le stringhe l'opzione FILTER_SANITIZE_STRING è deprecata
-                Qualcosa di simile é htmlspecialchars();*/
+
+    public static function sanitize($value)
+    {
+        // Elimina tutti i tag HTML e PHP
+        $sanitizedValue = strip_tags($value);
+
+        // Sanifica per l'output HTML
+        $sanitizedValue = htmlspecialchars($sanitizedValue, ENT_QUOTES, 'UTF-8');
+
+        // Rimuovi eventuali spazi extra
+        $sanitizedValue = trim($sanitizedValue);
+
+        return $sanitizedValue;
     }
 }
 
-function addPaginator(){
+function addPaginator()
+{
     return "
         <div>
             <div class=\"pagination\">
@@ -92,5 +91,3 @@ function addPaginator(){
         </div>
     ";
 }
-
-?>

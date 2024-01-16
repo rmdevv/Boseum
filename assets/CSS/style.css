@@ -1461,14 +1461,15 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 
 .create_artwork {
     margin: auto;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     border-bottom: 2px solid var(--colorMediumGrey);
+    border-top: 2px solid var(--colorMediumGrey);
 }
 
 .create_artwork form {
     display: flex;
     justify-content: center;
-    margin-bottom: 2em;
+    margin: 1em 0;
 }
 
 .artist_button {
@@ -1476,6 +1477,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     margin: 10px auto;
     display: flex;
     column-gap: 10px;
+    justify-content: center;
 }
 .button_danger{
     flex-grow: 1;

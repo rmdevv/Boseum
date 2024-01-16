@@ -1,7 +1,9 @@
 <?php
 
-class ImageProcessor {
-    public static function processImages($imageFiles, $destinationFolder = '../uploads/artworks/', $maxSize = 800, $jpegQuality = 85) {
+class ImageProcessor
+{
+    public static function processImages($imageFiles, $destinationFolder = '../uploads/artworks/', $maxSize = 800, $jpegQuality = 85)
+    {
         $savedImageNames = [];
 
         if (count($imageFiles['name']) > 0) {
@@ -25,9 +27,9 @@ class ImageProcessor {
         return $savedImageNames;
     }
 
-    public static function processImage($uploadedFile, $destinationFolder = '../uploads/artworks/', $maxSize = 800, $jpegQuality = 85) {
+    public static function processImage($uploadedFile, $destinationFolder = '../uploads/artworks/', $maxSize = 800, $jpegQuality = 85)
+    {
         // Check if there are no errors during the file upload
-        print_r($uploadedFile);
         if ($uploadedFile['error'] === UPLOAD_ERR_OK) {
             // Load the image based on the file type
             $image = self::loadImage($uploadedFile);
@@ -53,7 +55,7 @@ class ImageProcessor {
                 imagedestroy($resizedImage);
 
                 // echo 'Conversion and resizing completed successfully for ' . $uploadedFile['name'] . '. Saved as ' . $uniqueFilename . '<br>';
-                
+
                 return $outputFile;
             }
             // else {
@@ -67,7 +69,8 @@ class ImageProcessor {
         return false;
     }
 
-    private static function loadImage($uploadedFile) {
+    private static function loadImage($uploadedFile)
+    {
         $extension = strtolower(pathinfo($uploadedFile['name'], PATHINFO_EXTENSION));
 
         switch ($extension) {
@@ -81,7 +84,8 @@ class ImageProcessor {
         }
     }
 
-    private static function calculateResizedDimensions($image, $maxSize) {
+    private static function calculateResizedDimensions($image, $maxSize)
+    {
         $originalWidth = imagesx($image);
         $originalHeight = imagesy($image);
 
@@ -98,16 +102,16 @@ class ImageProcessor {
         return [$originalWidth, $originalHeight];
     }
 
-    private static function generateUniqueFilename() {
+    private static function generateUniqueFilename()
+    {
         return uniqid() . '.jpg';
     }
 
-    public static function deleteImage($path) {
+    public static function deleteImage($path)
+    {
         if (file_exists($path)) {
             return unlink($path);
         }
         return false;
     }
 }
-
-?>

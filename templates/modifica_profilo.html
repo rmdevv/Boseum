@@ -42,38 +42,51 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="index.html"><span lang="en">Home</span></a>
+                            <a href="index.php"><span lang="en">Home</span></a>
                         </li>
                         <li>
-                            <a href="artisti.html">Artisti</a>
+                            <a href="artisti.php">Artisti</a>
                         </li>
                         <li>
-                            <a href="opere.html">Opere</a>
+                            <a href="opere.php">Opere</a>
                         </li>
                         <li>
-                            <a href="mostre.html">Mostre</a>
+                            <a href="mostre.php">Mostre</a>
                         </li>
-                        <li>
-                            <a href="accedi.html" id="accountnav" lang="en"
-                                >Account</a
-                            >
-                        </li>
+                        <li>{{login_or_profile_title}}</li>
                     </ul>
                 </nav>
             </div>
         </header>
+        <nav id="breadcrumb">
+            <span>Ti trovi in:</span>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.php"><span lang="en">Home</span></a>
+                </li>
+                {{prev_page}}
+                <li>
+                    <span>Modifica profilo</span>
+                </li>
+            </ul>
+        </nav>
         <main id="content">
             <section class="ins_mod_page">
                 <div class="ins_mod_container">
                     <h2>Modifica profilo</h2>
                     <p>
                         Modifica i tuoi dati. I campi obbligatori sono segnati
-                        con (*).{{error}}
+                        con (*).
                     </p>
-                    <form action="../php/modifica_profilo.php" method="post" enctype="multipart/form-data">
+                    {{error_message}}
+                    <form
+                        action="../php/modifica_profilo.php"
+                        method="post"
+                        enctype="multipart/form-data">
                         <fieldset class="fieldset_item">
                             <legend>Immagine profilo</legend>
                             <div class="form_item">
+                                {{remove_profile_image}}
                                 <label for="profile-image-input"
                                     >Immagine profilo</label
                                 >
@@ -86,7 +99,7 @@
                                     <div class="artist_image_container">
                                         <img
                                             id="profile-image"
-                                            src="{{immagine profilo}}"
+                                            src="{{profile_image}}"
                                             alt="immagine profilo" />
                                     </div>
                                 </div>
@@ -116,26 +129,26 @@
                                         required />
                                 </div>
                                 <div class="form_item">
-                                    <label for="birthdate"
+                                    <label for="birth_date"
                                         >Data di nascita</label
                                     >
                                     <input
                                         type="date"
-                                        id="birthdate"
-                                        name="birthdate"
-                                        value="{{birthdate}}"
+                                        id="birth_date"
+                                        name="birth_date"
+                                        value="{{birth_date}}"
                                         min="1900-01-01" />
                                 </div>
                                 <div class="form_item">
-                                    <label for="birthplace"
+                                    <label for="birth_place"
                                         >Luogo di nascita</label
                                     >
                                     <input
                                         placeholder="Luogo di nascita"
                                         type="text"
-                                        id="birthplace"
-                                        name="birthplace"
-                                        value="{{birthplace}}" />
+                                        id="birth_place"
+                                        name="birth_place"
+                                        value="{{birth_place}}" />
                                 </div>
                             </div>
                             <div class="form_item">
@@ -145,8 +158,9 @@
                                     spellcheck="true"
                                     rows="3"
                                     id="biography"
-                                    name="biography"
-                                    >{{biography}}</textarea>
+                                    name="biography">
+{{biography}}</textarea
+                                >
                             </div>
                             <div class="form_item">
                                 <label for="experience">Esperienza</label>
@@ -155,16 +169,12 @@
                                     spellcheck="true"
                                     rows="3"
                                     id="experience"
-                                    name="experience"
-                                    >{{experience}}</textarea>
+                                    name="experience">
+{{experience}}</textarea
+                                >
                             </div>
                         </fieldset>
-
-                        <div class="form_button">
-                            <button type="submit" class="btn-primary">
-                                Conferma modifiche
-                            </button>
-                        </div>
+                        {{submit_button}}
                     </form>
                 </div>
             </section>

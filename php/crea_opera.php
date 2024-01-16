@@ -2,31 +2,32 @@
 
 require_once 'DBAccess.php';
 require_once 'ImageProcessor.php';
+require_once 'utils.php';
 
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-setlocale(LC_ALL,'it_IT');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+setlocale(LC_ALL, 'it_IT');
 
 session_start();
 $isLoggedIn = isset($_SESSION['logged_id']);
 $loginOrProfileTitle = "";
-if (!$isLoggedIn || !isset($_POST['id_artist']) || $_SESSION['logged_id'] != $_POST['id_artist']) {
-    if(!isset($_POST['save_new_artwork']) && !isset($_POST['update_artwork'])){
+if (!$isLoggedIn || !isset($_POST['id_artist']) || ($_SESSION['logged_id'] != $_POST['id_artist'] && !$_SESSION['is_admin'])) {
+    if (!isset($_POST['save_new_artwork']) && !isset($_POST['update_artwork'])) {
         header('Location: index.php');
         exit();
     }
-}else{
-    $loginOrProfileTitle = "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>";
+} else {
+    $loginOrProfileTitle = "<a href=\"artista.php?id=" . $_SESSION['logged_id'] . "\"><span lang=\"en\">Account</span></a>";
 }
 
-$connection=new DB\DBAccess();
+$connection = new DB\DBAccess();
 if (!$connection->openDBConnection()) {
     header("location: 500.php");
     exit();
 }
 
 $prevPage = "<li>
-<a href=\"artista.php?id=".$_SESSION['logged_id']."\">Account</a>
+<a href=\"artista.php?id=" . $_SESSION['logged_id'] . "\">Account</a>
 </li>";
 $pageTitle = "";
 $submitButton = "";
@@ -64,43 +65,43 @@ if (isset($_POST['save_new_artwork'])) {
     }
 
     $idArtist = $_SESSION['logged_id'];
-    $title = $_POST['title'] ?? '';
-    $description = $_POST['description'] ?? '';
-    $startDate = $_POST['start_date'] ?? '';
-    $endDate = $_POST['end_date'] ?? '';
-    $height = $_POST['height'] ?? '';
-    $width = $_POST['width'] ?? '';
-    $depth = $_POST['depth'] ?? '';
+    $title = isset($_POST['title']) ? Sanitizer::sanitize($_POST['title']) : '';
+    $description = isset($_POST['description']) ? Sanitizer::sanitize($_POST['description']) : '';
+    $startDate = isset($_POST['start_date']) ? Sanitizer::sanitize($_POST['start_date']) : '';
+    $endDate = isset($_POST['end_date']) ? Sanitizer::sanitize($_POST['end_date']) : '';
+    $height = isset($_POST['height']) ? Sanitizer::sanitize($_POST['height']) : '';
+    $width = isset($_POST['width']) ? Sanitizer::sanitize($_POST['width']) : '';
+    $depth = isset($_POST['depth']) ? Sanitizer::sanitize($_POST['depth']) : '';
 
-    foreach($labels as $label){
+    foreach ($labels as $label) {
         $labelName = str_replace(" ", "", strtolower($label['label']));
-        if(isset($_POST[$labelName])) array_push($labelsArtwork, $label['label']);
+        if (isset($_POST[$labelName])) array_push($labelsArtwork, $label['label']);
     }
 
     if (empty($title) || empty($mainImage) || empty($description)) {
         $errorCreateArtwork = "Parametri non sufficienti";
-    }else {
+    } else {
 
         $addArtwork = $connection->insertNewArtwork($title, $mainImage, $description, $height, $width, $depth, $startDate, $endDate, $idArtist, $additionalImagesPath, $labelsArtwork);
 
-        if(!$addArtwork){
+        if (!$addArtwork) {
             $errorCreateArtwork = "Errore nella creazione dell'opera";
         } else {
             $connection->closeConnection();
-            header("location: opera.php?id=".$addArtwork);
+            header("location: opera.php?id=" . $addArtwork);
             exit();
         }
     }
-}else if (isset($_POST['update_artwork'])) {
+} else if (isset($_POST['update_artwork'])) {
     $imagesDir = "../uploads/artworks/";
     $idArtwork = $_POST['id_artwork'];
 
     $mainImage = null;
-    if(!isset($_POST['disable_main_image'])){
-        if (isset($_FILES["main_image"]) && sizeof($_FILES["main_image"]) > 0) {
+    if (!isset($_POST['disable_main_image'])) {
+        if (isset($_FILES["main_image"]) && $_FILES["main_image"]['size'] !== 0) {
             $mainImage = ImageProcessor::processImage($_FILES["main_image"]);
             $artworkPreview = $connection->getArtworkPreview($idArtwork);
-            if($artworkPreview && sizeof($artworkPreview) > 0){
+            if ($artworkPreview && sizeof($artworkPreview) > 0) {
                 foreach ($artworkPreview as $artworkPreview) {
                     ImageProcessor::deleteImage($artworkPreview['main_image']);
                 }
@@ -110,55 +111,54 @@ if (isset($_POST['save_new_artwork'])) {
 
     $additionalImagesPath = null;
     if (!isset($_POST['disable_additional_images'])) {
-        if (isset($_FILES["additional_images"]) && sizeof($_FILES["additional_images"]) > 0) {
+        if (isset($_FILES["additional_images"]) && $_FILES["additional_images"]['size'] !== 0) {
             $additionalImagesPath = ImageProcessor::processImages($_FILES["additional_images"]);
-        }
-        $additionalImages = $connection->getArtworkAdditionalImages($idArtwork);
-        if($additionalImages && sizeof($additionalImages) > 0){
-            foreach ($additionalImages as $additionalImage) {
-                ImageProcessor::deleteImage($additionalImage['image']);
+            $additionalImages = $connection->getArtworkAdditionalImages($idArtwork);
+            if ($additionalImages && sizeof($additionalImages) > 0) {
+                foreach ($additionalImages as $additionalImage) {
+                    ImageProcessor::deleteImage($additionalImage['image']);
+                }
             }
         }
-    }else {
+    } else {
         $additionalImagesPath = array();
     }
 
-    $idArtist = $_SESSION['logged_id'];
-    $title = $_POST['title'] ?? '';
-    $description = $_POST['description'] ?? '';
-    $startDate = $_POST['start_date'] ?? '';
-    $endDate = $_POST['end_date'] ?? '';
-    $height = $_POST['height'] ?? '';
-    $width = $_POST['width'] ?? '';
-    $depth = $_POST['depth'] ?? '';
+    $title = isset($_POST['title']) ? Sanitizer::sanitize($_POST['title']) : '';
+    $description = isset($_POST['description']) ? Sanitizer::sanitize($_POST['description']) : '';
+    $startDate = isset($_POST['start_date']) ? Sanitizer::sanitize($_POST['start_date']) : '';
+    $endDate = isset($_POST['end_date']) ? Sanitizer::sanitize($_POST['end_date']) : '';
+    $height = isset($_POST['height']) ? Sanitizer::sanitize($_POST['height']) : '';
+    $width = isset($_POST['width']) ? Sanitizer::sanitize($_POST['width']) : '';
+    $depth = isset($_POST['depth']) ? Sanitizer::sanitize($_POST['depth']) : '';
     $labelsArtwork = array();
 
-    foreach($labels as $label){
+    foreach ($labels as $label) {
         $labelName = str_replace(" ", "", strtolower($label['label']));
-        if(isset($_POST[$labelName])) array_push($labelsArtwork, $label['label']);
+        if (isset($_POST[$labelName])) array_push($labelsArtwork, $label['label']);
     }
 
     if (empty($title) || empty($description)) {
         $errorModifyArtwork = "Parametri non sufficienti";
-    }else {
+    } else {
         $modifiedArtwork = $connection->modifyArtwork($idArtwork, $title, $mainImage, $description, $height, $width, $depth, $startDate, $endDate, $additionalImagesPath, $labelsArtwork);
 
-        if(!$modifiedArtwork){
+        if (!$modifiedArtwork) {
             $errorModifyArtwork = "Errore nell'aggiornamento dell'opera";
-        }else {
+        } else {
             $connection->closeConnection();
-            header("location: opera.php?id=".$modifiedArtwork);
+            header("location: opera.php?id=" . $modifiedArtwork);
             exit();
         }
     }
 }
 
 if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
-    if($_SESSION['is_admin']){
+    if ($_SESSION['is_admin']) {
         header('Location: admin.php');
         exit();
-    }else {
-        $errorMessage = "<p class=\"error_message\"><em>".$errorCreateArtwork."</em></p>";
+    } else {
+        $errorMessage = "<p class=\"error_message\"><em>" . $errorCreateArtwork . "</em></p>";
 
         $pageTitle = "Crea opera";
         $submitButton = "<div class=\"form_button\">
@@ -170,12 +170,12 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
                             </button>
                         </div>";
 
-        if($labels && sizeof($labels) > 0){
+        if ($labels && sizeof($labels) > 0) {
             $labelsContainer = "<ul id=\"labels_list\">";
-            foreach($labels as $label){
+            foreach ($labels as $label) {
                 $labelName = str_replace(" ", "", strtolower($label['label']));
                 $isChecked = false;
-                if($errorCreateArtwork && $labelsArtwork) {
+                if ($errorCreateArtwork && $labelsArtwork) {
                     $isChecked = in_array($label['label'], $artworkLabels);
                 }
                 $labelsContainer .= "
@@ -190,14 +190,14 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
                     $labelsContainer .= " checked";
                 }
                 $labelsContainer .= ">
-                    <label for=\"".$labelName."\">".ucfirst($label['label'])."</label>
+                    <label for=\"" . $labelName . "\">" . ucfirst($label['label']) . "</label>
                 </li>";
             }
             $labelsContainer .= "</ul>";
         }
     }
 } else if (isset($_POST["modify_artwork"]) || $errorModifyArtwork != "") {
-    $errorMessage = "<p class=\"error_message\"><em>".$errorModifyArtwork."</em></p>";
+    $errorMessage = "<p class=\"error_message\"><em>" . $errorModifyArtwork . "</em></p>";
 
     $pageTitle = "Modifica opera";
     $idArtwork = $_POST['id_artwork'];
@@ -234,11 +234,11 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
                                     />
                             </div>";
 
-    $infoArtworkArtist = $connection->getArtworkWithArtist($idArtwork);
+    $infoArtworkArtist = $connection->getArtwork($idArtwork);
     $artworkLabels = $connection->getArtworkLabels($idArtwork);
     $additionalImages = $connection->getArtworkAdditionalImages($idArtwork);
 
-    if($infoArtworkArtist and sizeof($infoArtworkArtist) > 0){
+    if ($infoArtworkArtist and sizeof($infoArtworkArtist) > 0) {
         $title = $infoArtworkArtist[0]['title'];
         $description = $infoArtworkArtist[0]['description'];
         $startDate = $infoArtworkArtist[0]['start_date'];
@@ -246,17 +246,17 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
         $height = $infoArtworkArtist[0]['height'];
         $width = $infoArtworkArtist[0]['width'];
         $depth = $infoArtworkArtist[0]['length'];
-    }else {
+    } else {
         echo "Errore, l'opera non esiste";
     }
 
     $prevPage = "<li>
-                <a href=\"opera.php?id=".$idArtwork."\">".$title."</a>
+                <a href=\"opera.php?id=" . $idArtwork . "\">" . $title . "</a>
             </li>";
 
-    if($labels && sizeof($labels) > 0){
+    if ($labels && sizeof($labels) > 0) {
         $labelsContainer = "<ul id=\"labels_list\">";
-        foreach($labels as $label){
+        foreach ($labels as $label) {
             $labelName = str_replace(" ", "", strtolower($label['label']));
             $isChecked = in_array(['label' => $label['label']], $artworkLabels);
             $labelsContainer .= "
@@ -264,21 +264,20 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
                 <input
                     type=\"checkbox\"
                     class=\"label_checkbox\"
-                    id=\"".$labelName."\"
-                    value=\"".$label['label']."\"
-                    name=\"".$labelName."\"";
+                    id=\"" . $labelName . "\"
+                    value=\"" . $label['label'] . "\"
+                    name=\"" . $labelName . "\"";
 
             if ($isChecked) {
                 $labelsContainer .= " checked";
             }
             $labelsContainer .= ">
-                <label for=\"".$labelName."\">".ucfirst($label['label'])."</label>
+                <label for=\"" . $labelName . "\">" . ucfirst($label['label']) . "</label>
             </li>";
         }
         $labelsContainer .= "</ul>";
     }
-
-}else {
+} else {
     header('Location: index.php');
     exit();
 }
@@ -302,5 +301,4 @@ $creaOpera = str_replace("{{width}}", $width, $creaOpera);
 $creaOpera = str_replace("{{depth}}", $depth, $creaOpera);
 $creaOpera = str_replace("{{submit_button}}", $submitButton, $creaOpera);
 $creaOpera = str_replace("{{error_message}}", $errorMessage, $creaOpera);
-echo($creaOpera);
-?>
+echo ($creaOpera);

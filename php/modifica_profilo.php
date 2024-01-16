@@ -4,92 +4,124 @@ require_once 'utils.php';
 require_once 'DateManager.php';
 require_once 'ImageProcessor.php';
 
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-setlocale(LC_ALL,'it_IT');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+setlocale(LC_ALL, 'it_IT');
 
 session_start();
-$id=$_SESSION["logged_id"] ?? '';
-
-if($_SESSION['is_admin']){
-    $id=$_GET["id"] ?? '';
+$isLoggedIn = isset($_SESSION['logged_id']);
+$loginOrProfileTitle = "";
+$submitButton = "";
+$removeProfileImage = "";
+if (!$isLoggedIn || !isset($_POST['id_artist']) || ($_SESSION['logged_id'] != $_POST['id_artist'] && !$_SESSION['is_admin'])) {
+    header('Location: login.php');
+    exit();
+} else {
+    $loginOrProfileTitle = "<a href=\"artista.php?id=" . $_SESSION['logged_id'] . "\"><span lang=\"en\">Account</span></a>";
+    $submitButton = "<input type=\"hidden\" name=\"id_artist\" value=\"" . $_POST['id_artist'] . "\">
+                    <div class=\"form_button\">
+                        <button
+                            class=\"btn-primary\"
+                            type=\"submit\"
+                            name=\"confirm_update\">
+                            Conferma modifiche
+                        </button>
+                    </div>";
+    $removeProfileImage = "<div class=\"disable_checkbox\">
+                                <label for=\"remove_profile_image\"
+                                    >Rimuovi foto profilo</label
+                                >
+                                <input
+                                    type=\"checkbox\"
+                                    id=\"remove_profile_image\"
+                                    name=\"remove_profile_image\"
+                                    />
+                            </div>";
 }
 
-if($id==""){
-    /*Se non é admin o non risulta loggato viene reindirizzato alla pagina di login*/
-    header("location:  ../php/index.php");
+$connection = new DB\DBAccess();
+if (!$connection->openDBConnection()) {
+    header("location: 500.php");
     exit();
 }
-$error='';
-$ret=file_get_contents("../templates/modifica_profilo.html");
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(!isset($_POST["name"]) || !isset($_POST["lastname"])) $error="</br>Inserire dati nei campi obbligatori";
-    else if(isset($_POST["birth_date"])&& !Sanitizer::validateDate($_POST["birth_date"])) $error="</br> Inserire una data corretta";
-    else{
-        $con=new DB\DBAccess();
-        if (!$con->openDBConnection()) {
-            header("location: ../php/500.php");
-            exit();
-        }
-        $userimg='';
-        if(isset($_FILES["profile_image"]) && sizeof($_FILES["profile_image"]) > 0){
-            $userimg= ImageProcessor::processImage($_FILES["profile_image"],"../uploads/users/");
+
+$idArtist = $_POST['id_artist'];
+$error = '';
+
+if (isset($_POST['confirm_update'])) {
+
+    $name = isset($_POST["name"]) ? Sanitizer::sanitize($_POST["name"]) : "";
+    $lastname = isset($_POST["lastname"]) ? Sanitizer::sanitize($_POST["lastname"]) : "";
+    $birthDate = isset($_POST["birth_date"]) ? (new DateTime($_POST["birth_date"]))->format("Y-m-d") : "";
+    $birthPlace = isset($_POST["birth_place"]) ? Sanitizer::sanitize($_POST["birth_place"]) : "";
+    $biography = isset($_POST["biography"]) ? Sanitizer::sanitize($_POST["biography"]) : "";
+    $experience = isset($_POST["experience"]) ? Sanitizer::sanitize($_POST["experience"]) : "";
+
+    if (!$name || !$lastname) {
+        $error = "<p class=\"error_message\"><em>Inserire dati nei campi obbligatori</em></p>";
+    } else if ($birthDate && !Sanitizer::validateDate($birthDate)) {
+        $error = "<p class=\"error_message\"><em>Inserire una data corretta</em></p>";
+    } else {
+        $mainImage = null;
+        if (isset($_POST['remove_profile_image'])) {
+            $mainImage = "";
+            $artistPreview = $connection->getArtistPreview($idArtist);
+            if ($artistPreview && sizeof($artistPreview) > 0) {
+                ImageProcessor::deleteImage($artistPreview[0]['image']);
+            }
+        } else if (isset($_FILES["profile_image"]) && $_FILES["profile_image"]['size'] !== 0) {
+            $mainImage = ImageProcessor::processImage($_FILES["profile_image"], "../uploads/users/");
+            $artistPreview = $connection->getArtistPreview($idArtist);
+            if ($artistPreview && sizeof($artistPreview) > 0) {
+                ImageProcessor::deleteImage($artistPreview[0]['image']);
+            }
         }
 
-        /*Devo recuperare l'username */
-        $data=$con->getArtist($id);
-        $con->closeConnection();
-        if(!$data | sizeof($data)<=0){
-            header("location: ../php/500.php");
-            exit();
-        }
-
-        $con->openDBConnection();
-        $righe=$con->modifyUser(
-            $id,
-            $data[0]["username"],
-            trim(Sanitizer::sanitize($_POST["name"])),
-            trim(Sanitizer::sanitize($_POST["lastname"])),
-            $userimg,
-            /*Lo posso fare perché la data ha un formato valido*/
-            isset($_POST["birthdate"])?$_POST["birthdate"]:'',
-            isset($_POST["birthplace"])?trim(Sanitizer::sanitize($_POST["birthplace"])):'',
-            isset($_POST["biography"])?trim(Sanitizer::sanitize($_POST["biography"])):'',
-            isset($_POST["experience"])?trim(Sanitizer::sanitize($_POST["experience"])):''
+        $isModified = $connection->modifyUser(
+            $idArtist,
+            $name,
+            $lastname,
+            $mainImage,
+            $birthDate,
+            $birthPlace,
+            $biography,
+            $experience
         );
-        $con->closeConnection();
-        if(isset($data[0]["image"]))unlink($data[0]["image"]);
-        unset($_POST["name"]);
-        unset($_POST["lastname"]);
-        unset($_POST["birthdate"]);
-        unset($_POST["birthplace"]);
-        unset($_POST["biography"]);
-        unset($_POST["experience"]);
-        unset($_POST["profile_image"]);
-        header("location: ../php/artista.php?id=".$id);
-        exit();
+
+        if ($isModified == 0) {
+            $error = "<p class=\"error_message\"><em>Errore nell'aggiornamento del profilo</em></p>";
+        } else {
+            $connection->closeConnection();
+            header("location: artista.php?id=" . $idArtist);
+            exit();
+        }
     }
 }
 
-$con=new DB\DBAccess();
-if (!$con->openDBConnection()) {
-    header("location: ../php/500.php");
+$artist = $connection->getArtist($idArtist);
+$connection->closeConnection();
+
+if ($artist && sizeof($artist) > 0) {
+    $prevPage = "<li>
+                <a href=\"artista.php?id=" . $idArtist . "\">" . $artist[0]['username'] . "</a>
+            </li>";
+
+    $modificaProfilo = file_get_contents("../templates/modifica_profilo.html");
+    $modificaProfilo = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $modificaProfilo);
+    $modificaProfilo = str_replace("{{prev_page}}", $prevPage, $modificaProfilo);
+    $modificaProfilo = str_replace("{{profile_image}}", $artist[0]["image"] ?? '../assets/images/default_user.svg', $modificaProfilo);
+    $modificaProfilo = str_replace("{{remove_profile_image}}", $removeProfileImage, $modificaProfilo);
+    $modificaProfilo = str_replace("{{nome}}", $artist[0]["name"], $modificaProfilo);
+    $modificaProfilo = str_replace("{{lastname}}", $artist[0]["lastname"], $modificaProfilo);
+    $modificaProfilo = str_replace("{{birth_date}}", $artist[0]["birth_date"] ?? '', $modificaProfilo);
+    $modificaProfilo = str_replace("{{birth_place}}", $artist[0]["birth_place"] ?? '', $modificaProfilo);
+    $modificaProfilo = str_replace("{{biography}}", $artist[0]["biography"] ?? '', $modificaProfilo);
+    $modificaProfilo = str_replace("{{experience}}", $artist[0]["experience"] ?? '', $modificaProfilo);
+    $modificaProfilo = str_replace("{{submit_button}}", $submitButton, $modificaProfilo);
+    $modificaProfilo = str_replace("{{error_message}}", $error, $modificaProfilo);
+
+    echo ($modificaProfilo);
+} else {
+    header("location: 500.php");
     exit();
 }
-$data=$con->getArtist($id);
-$con->closeConnection();
-if(!$data | sizeof($data)<=0){
-    header("location: ../php/500.php");
-    exit();
-}
-
-$ret=str_replace("{{immagine profilo}}",$data[0]["image"]??'../assets/images/default_user.svg',$ret);
-$ret=str_replace("{{nome}}",$data[0]["name"],$ret);
-$ret=str_replace("{{lastname}}",$data[0]["lastname"],$ret);
-$ret=str_replace("{{birthdate}}",$data[0]["birth_date"]??'',$ret);
-$ret=str_replace("{{birthplace}}",$data[0]["birth_place"]??'',$ret);
-$ret=str_replace("{{biography}}",$data[0]["biography"]??'',$ret);
-$ret=str_replace("{{experience}}",$data[0]["experience"]??'',$ret);
-$ret=str_replace("{{error}}",$error,$ret);
-
-echo($ret);

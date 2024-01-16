@@ -309,7 +309,6 @@ if (disableMainImage) {
 const disableAdditionalImages = document.getElementById(
     'disable_additional_images'
 )
-
 if (disableAdditionalImages) {
     disableAdditionalImages.addEventListener('change', () => {
         if (disableAdditionalImages.checked && additionalImagesInput) {
@@ -325,18 +324,34 @@ if (disableAdditionalImages) {
 }
 
 const profileImageInput = document.getElementById('profile-image-input')
+const profileImage = document.getElementById('profile-image')
+const profileImageSrc = profileImage ? profileImage.src : null
 if (profileImageInput) {
     profileImageInput.addEventListener('change', (event) => {
-        const profileImage = document.querySelector('#profile-image')
-
         if (event.target.files && event.target.files.length > 0) {
             file = event.target.files[0]
 
             profileImage.src = URL.createObjectURL(file)
             profileImage.alt = file.name
         } else {
-            profileImage.src = '../assets/images/default_user.svg'
+            profileImage.src = profileImageSrc
+                ? profileImageSrc
+                : '../assets/images/default_user.svg'
         }
+    })
+}
+
+const removeProfileImage = document.getElementById('remove_profile_image')
+if (removeProfileImage) {
+    removeProfileImage.addEventListener('change', () => {
+        if (removeProfileImage.checked && profileImageInput) {
+            profileImageInput.value = ''
+        }
+        profileImage.src = !removeProfileImage.checked
+            ? profileImageSrc
+            : '../assets/images/default_user.svg'
+        profileImageInput &&
+            (profileImageInput.disabled = removeProfileImage.checked)
     })
 }
 
