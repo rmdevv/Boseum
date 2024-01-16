@@ -340,3 +340,273 @@ cancelBookForm &&
         !confirmAction("Vuoi veramente annullare l'iscrizione?") &&
             event.preventDefault()
     })
+
+// test su validità di input
+
+function rulePassword(password) {
+    var re = /^[a-zA-Z0-9!?$&@%]+$/;     //qui ho messo che i caratteri speciali ammessi sono !?$&@%
+    return re.test(password);
+}
+
+function ruleUsername(user) {
+    var re = /^[a-z0-9]+(?:[._][a-z0-9]+)*$/;            //caratteri speciali ammessi solo . e _
+    return re.test(user);
+}
+
+function ruleName(name) {                               //Vale anche per lastname
+    var re = /^[A-Z][a-zàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚ]+(?: [A-Z][a-zàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚ]+)?$/;          //Controlla che le iniziali siano in maiuscolo e permetta la presenza di uno spazio e nome successivo (tipo 'De Santis')
+    return re.test(name);
+}
+
+function ruleBirthPlace(place) {
+    var re = /^(?:[A-Z][a-z]+(?: [A-Z][a-z]+)?(?: [A-Z][a-z]+)*)?$/;        //Ogni parola del paese deve iniziare con la maiuscola
+    return re.test(place);
+}
+
+function ruleComment(comment) {                                             //per descrizione, esperienze e biografia
+    var re = /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚ0-9.,;:'"()!? \n]+$/;
+    return re.test(comment);
+}
+
+function ruleTitle(title) {
+    var re = /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚ0-9.,;:'"()!? ]+$/;
+    return re.test(title);
+}
+
+function displayError(container, message) {
+    if (!container) {
+        container = document.createElement("p");
+        container.classList.add("error-message");
+        x.parentElement.append(container);
+    }
+    container.textContent = message;
+}
+
+function clearError(container) {
+    if (container) {
+        container.remove();
+    }
+}
+
+function checkTitle(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error-message')) {
+        const node = document.createElement("p");
+        node.classList.add("error-message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error-message');
+    if (x.value == "") {
+        displayError(errorContainer, "Per favore, inserisci una titolo all'opera.");
+        return false;
+    } else if (!ruleComment(x.value)) {
+        displayError(errorContainer, "Attenzione, il titolo dell'opera può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? ' \" (  ) ! ? ).");
+        return false;
+    } else if (x.value.length > 100) {
+        displayError(errorContainer, "Attenzione, il titolo della tua opera non può superare i 100 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
+function checkDescription(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error-message')) {
+        const node = document.createElement("p");
+        node.classList.add("error-message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error-message');
+    if (x.value == "") {
+        displayError(errorContainer, "Per favore, inserisci una descrizione dell'opera. Per dei consigli su come comporre una buona descrizione, puoi utilizzare le indicazioni sopra riportate.");
+        return false;
+    } else if (!ruleComment(x.value)) {
+        displayError(errorContainer, "Attenzione, la descrizione può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? ' \" (  ) ! ? ).");
+        return false;
+    } else if (x.value.length > 1000) {
+        displayError(errorContainer, "Attenzione, la descrizione non deve superare i 1000 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
+
+function checkArtshowTitle(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error-message')) {
+        const node = document.createElement("p");
+        node.classList.add("error-message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error-message');
+    if (x.value == "") {
+        displayError(errorContainer, "Per favore, inserisci una titolo alla mostra.");
+        return false;
+    } else if (!ruleComment(x.value)) {
+        displayError(errorContainer, "Attenzione, il titolo della mostra può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? ' \" (  ) ! ? ).");
+        return false;
+    } else if (x.value.length > 100) {
+        displayError(errorContainer, "Attenzione, il titolo della mostra non può superare i 100 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
+function checkArtshowDescription(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error-message')) {
+        const node = document.createElement("p");
+        node.classList.add("error-message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error-message');
+    if (x.value == "") {
+        displayError(errorContainer, "Per favore, inserisci una descrizione della mostra.");
+        return false;
+    } else if (!ruleComment(x.value)) {
+        displayError(errorContainer, "Attenzione, la descrizione può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? ' \" (  ) ! ? ).");
+        return false;
+    } else if (x.value.length > 1000) {
+        displayError(errorContainer, "Attenzione, la descrizione non deve superare i 1000 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
+function checkUsername(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error-message')) {
+        const node = document.createElement("p");
+        node.classList.add("error-message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error-message');
+    if (x.value == "") {
+        displayError(errorContainer, "Per favore, inserisci lo username che desideri utilizzare.");
+        return false;
+    } else if (!ruleUsername(x.value)) {
+        displayError(errorContainer, "Attenzione, lo username può contenere solo lettere minuscole e numeri. Sono ammessi punti e underscore all'interno.");
+        return false;
+    } else if (x.value.length > 30) {
+        displayError(errorContainer, "Attenzione, lo username non deve superare i 30 caratteri.");
+        return false;
+    } else if (x.value.length < 4) {
+        displayError(errorContainer, "Attenzione, lo username deve contenere almeno 4 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
+function checkPassword(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error-message')) {
+        const node = document.createElement("p");
+        node.classList.add("error-message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error-message');
+    if (x.value == "") {
+        displayError(errorContainer, "Per favore, inserisci la password che desideri utilizzare.");
+        return false;
+    } else if (!rulePassword(x.value)) {
+        displayError(errorContainer, "Attenzione, la password può contenere lettere non accentate e numeri. Sono ammessi i caratteri speciali !?$&@%.");
+        return false;
+    } else if (x.value.length > 30) {
+        displayError(errorContainer, "Attenzione, la password non deve superare i 255 caratteri.");
+        return false;
+    } else if (x.value.length < 4) {
+        displayError(errorContainer, "Attenzione, la password deve contenere almeno 4 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
+function checkName(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error-message')) {
+        const node = document.createElement("p");
+        node.classList.add("error-message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error-message');
+    if (x.value == "") {
+        displayError(errorContainer, "Per favore, inserisci il tuo nome.");
+        return false;
+    } else if (!ruleName(x.value)) {
+        displayError(errorContainer, "Per favore, assicurati di aver inserito non più di due nomi, con le iniziali maiuscole e formati da almeno 2 caratteri. Non superare i 30 caratteri totali.");
+        return false;
+    } else if (x.value.length > 30) {
+        displayError(errorContainer, "Attenzione, non puoi inserire un nome che supera i 30 caratteri.");
+        return false;
+    } else if (x.value.length < 2) {
+        displayError(errorContainer, "Attenzione, il tuo nome deve contenere almeno 2 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
+function checkUsernameLogin(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error-message')) {
+        const node = document.createElement("p");
+        node.classList.add("error-message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error-message');
+    if (x.value == "") {
+        displayError(errorContainer, "Per favore, inserisci il tuo username.");
+        return false;
+    } else if (!ruleUsername(x.value)) {
+        displayError(errorContainer, "Sicuro sia il tuo username? Ricorda che può contenere solo lettere minuscole e numeri. Sono ammessi punti e underscore all'interno.");
+        return false;
+    } else if (x.value.length > 30) {
+        displayError(errorContainer, "Sicuro sia il tuo username? Ricorda che non deve superare i 30 caratteri.");
+        return false;
+    } else if (x.value.length < 4) {
+        displayError(errorContainer, "Sicuro sia il tuo username? Ricorda che deve contenere almeno 4 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
+function checkPasswordLogin(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error-message')) {
+        const node = document.createElement("p");
+        node.classList.add("error-message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error-message');
+    if (x.value == "") {
+        displayError(errorContainer, "Per favore, inserisci la tua password.");
+        return false;
+    } else if (!rulePassword(x.value)) {
+        displayError(errorContainer, "Sicuro sia la tua password? Ricorda che può contenere lettere non accentate e numeri. Sono ammessi i caratteri speciali !?$&@%.");
+        return false;
+    } else if (x.value.length > 30) {
+        displayError(errorContainer, "Sicuro sia la tua password? Ricorda che non deve superare i 255 caratteri.");
+        return false;
+    } else if (x.value.length < 4) {
+        displayError(errorContainer, "Sicuro sia la tua password? Ricorda che deve contenere almeno 4 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
