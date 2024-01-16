@@ -31,11 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             header("location: ../php/500.php");
             exit();
         }
-        /*TODO Gestione file caricato (se presente)*/
         $userimg='';
-
         if(isset($_FILES["profile_image"]) && sizeof($_FILES["profile_image"]) > 0){
-            $userimg= ImageProcessor::processImage($_FILES["profile_image"],"../uploads/users");
+            $userimg= ImageProcessor::processImage($_FILES["profile_image"],"../uploads/users/");
         }
 
         /*Devo recuperare l'username */
@@ -60,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             isset($_POST["experience"])?trim(Sanitizer::sanitize($_POST["experience"])):''
         );
         $con->closeConnection();
+        if(isset($data[0]["image"]))unlink($data[0]["image"]);
         unset($_POST["name"]);
         unset($_POST["lastname"]);
         unset($_POST["birthdate"]);
