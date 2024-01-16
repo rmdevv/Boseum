@@ -40,7 +40,7 @@ if($isLoggedIn) {
         }
     }else if($idArtist == $_SESSION['logged_id']) {
         $artistButtons = "<div class=\"artist_button\">
-                    <form action=\"modifica_profilo.php\" method=\"post\">
+                    <form action=\"modifica_profilo.php\" method=\"get\">
                         <input type=\"hidden\" name=\"id\" value=\"$idArtist\">
                         <button class=\"button_reverse\" type=\"submit\" aria-label=\"modifica profilo\">Modifica Profilo</button>
                         </form>

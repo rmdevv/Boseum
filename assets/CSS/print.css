@@ -14,8 +14,6 @@ h3, h4, h5, h6{
     display: none;
 }
 
-/*da fare image replace per boseum con negativo logo*/
-
 .breadcrumb, .breadcrumb li{
     display: inline;
     list-style: none;
@@ -95,19 +93,20 @@ footer{
     display: none;
 }
 
-
 #artshow_maintext_info{
     font-size: 1em;
 }
 
 .artshow_gallery_item{
-    padding: 0.5cm 0 0.5cm;
+    width: 100%;
+    padding: 0.2cm;
+    border: 0.5px solid grey;
     display: flex;
     flex-direction: row;
 }
 
 .artshow_gallery_item_info{
-    padding: 1cm;
+    margin-left: 0.5cm;
 }
 
 .artshow_gallery_item_image img{
@@ -146,13 +145,9 @@ footer{
     flex-direction: row;
 }
 
-.artist_gallery_item_info{
-    padding: 1cm;
-}
-
 .artist_gallery_item_image img{
     width: auto;
-    height: 4cm;
+    height: 3cm;
 }
 
 .results_gallery .results_section .hidden{
@@ -175,15 +170,11 @@ footer{
 
 .artwork_gallery_item_image img{
     width: auto;
-    height: 4cm;
+    height: 4.5cm;
 }
 
 .artwork_gallery_item_image, .gallery_item figcaption{
     display: inline-block;
-}
-
-.gallery_item figcaption .artist_mini_preview_info{
-    margin-left: 1cm;
 }
 
 .artwork_interactions{
@@ -215,10 +206,6 @@ footer{
     display: none;
 }
 
-.artist_mini_preview a, .artist_mini_preview_info{
-    display: inline-block;
-}
-
 .artist_mini_preview a img{
     height: 3cm;
     width: auto;
@@ -239,4 +226,129 @@ footer{
 
 #content #artshow_layout .print_hidden{
     display: none;
+}
+
+
+
+
+.artist_section {
+    max-width: min(85vw, 900px);
+    margin: auto;
+}
+
+.artist_header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+    border-bottom: 2px solid var(--colorMediumGrey);
+}
+
+.artist_image_container {
+    width: 5cm;
+    height: auto;
+}
+
+.artist_image_container img {
+    height: auto;
+    width: 5cm;
+}
+
+.artist_info{
+    margin-top: 1cm;
+}
+
+.artist_info h2 {
+    font-size: 2em;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.artist_info h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.artist_info h2, .artist_info h3{
+    display: inline;
+}
+
+.artist_info dl {
+    display: grid;
+    column-gap: 2em;
+    row-gap: 0.8em;
+    align-items: center;
+}
+
+.artist_info dl dt {
+    grid-column-start: 1;
+    font-weight: 600;
+}
+
+.artist_info dl dd {
+    grid-column-start: 2;
+}
+
+.artwork_section{
+    display: flex;
+    flex-direction: column-reverse;
+}
+ .the_artwork{
+    margin: auto;
+}
+
+.artist_results_section .gallery_item{
+    display: inline-block;
+    margin-right: 0.5cm;
+    width: 8cm;
+}
+
+.artist_results_section .gallery_item .artist_gallery_item{
+    padding: 0.5cm;
+    border: 0.5px solid grey;
+}
+
+.artist_gallery_item_info{
+    margin-left: 0.5cm;
+    width: 3cm;
+    display: flex;
+    flex-direction: column;
+}
+
+.artist_gallery_item_title, .artist_mini_preview_info{
+    display: flex;
+}
+
+.gallery_item figcaption .artist_mini_preview_info{
+    margin-left: 1cm;
+}
+
+.results_section .gallery_item{
+    padding: 0.2cm;
+    border: 0.5px solid grey;
+}
+
+.artwork_info .artist_mini_preview .artist_mini_preview_info a{
+    margin-top: 0.4cm;
+    margin-left: 0.5cm;
+}
+
+
+.is_active{
+    display: none;
+}
+
+.additional_images_carousel{
+    display: flex;
+}
+
+.thumbnail_slide{
+    margin: auto;
+}
+
+
+.cardnextshow h4{
+    margin-top: 2cm;
 }

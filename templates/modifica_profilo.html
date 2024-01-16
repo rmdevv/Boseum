@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Modifica profilo | Boseum</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png" />
+        <meta
+            name="keywords"
+            content="museo d'arte, palazzo bo, università degli studi di padova, padova, profilo, informazioni" />
+        <meta
+            name="description"
+            content="Modifica il tuo profilo ufficiale Boseum" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../assets/css/style.css" media="screen" />
+        <link
+            rel="stylesheet"
+            href="../assets/css/mini.css"
+            media="screen and (max-width:600px)" />
+        <link rel="stylesheet" href="../assets/CSS/print.css" media="print" />
+    </head>
+    <body>
+        <header>
+            <nav class="navigationHelp" aria-label="Aiuti alla navigazione">
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+            </nav>
+            <h1 lang="en">Boseum</h1>
+
+            <div id="menu">
+                <input
+                    class="menu_checkbox"
+                    type="checkbox"
+                    id="hamburger-toggle"
+                    aria-label="Toggle Navigation" />
+                <label class="hamburger" for="hamburger-toggle">
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                    <span class="slice"></span>
+                </label>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="index.html"><span lang="en">Home</span></a>
+                        </li>
+                        <li>
+                            <a href="artisti.html">Artisti</a>
+                        </li>
+                        <li>
+                            <a href="opere.html">Opere</a>
+                        </li>
+                        <li>
+                            <a href="mostre.html">Mostre</a>
+                        </li>
+                        <li>
+                            <a href="accedi.html" id="accountnav" lang="en"
+                                >Account</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main id="content">
+            <section class="ins_mod_page">
+                <div class="ins_mod_container">
+                    <h2>Modifica profilo</h2>
+                    <p>
+                        Modifica i tuoi dati. I campi obbligatori sono segnati
+                        con (*).{{error}}
+                    </p>
+                    <form action="../php/modifica_profilo.php" method="post" enctype="multipart/form-data">
+                        <fieldset class="fieldset_item">
+                            <legend>Immagine profilo</legend>
+                            <div class="form_item">
+                                <label for="profile-image-input"
+                                    >Immagine profilo</label
+                                >
+                                <input
+                                    type="file"
+                                    id="profile-image-input"
+                                    name="profile_image"
+                                    accept="image/png, image/jpeg" />
+                                <div class="profile_image_section">
+                                    <div class="artist_image_container">
+                                        <img
+                                            id="profile-image"
+                                            src="{{immagine profilo}}"
+                                            alt="immagine profilo" />
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fieldset_item">
+                            <legend>Informazioni personali</legend>
+                            <div class="input_container">
+                                <div class="form_item">
+                                    <label for="name">Nome (*)</label>
+                                    <input
+                                        placeholder="Nome"
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        value="{{nome}}"
+                                        required />
+                                </div>
+                                <div class="form_item">
+                                    <label for="lastname">Cognome (*)</label>
+                                    <input
+                                        placeholder="Cognome"
+                                        type="text"
+                                        id="lastname"
+                                        name="lastname"
+                                        value="{{lastname}}"
+                                        required />
+                                </div>
+                                <div class="form_item">
+                                    <label for="birthdate"
+                                        >Data di nascita</label
+                                    >
+                                    <input
+                                        type="date"
+                                        id="birthdate"
+                                        name="birthdate"
+                                        value="{{birthdate}}"
+                                        min="1900-01-01" />
+                                </div>
+                                <div class="form_item">
+                                    <label for="birthplace"
+                                        >Luogo di nascita</label
+                                    >
+                                    <input
+                                        placeholder="Luogo di nascita"
+                                        type="text"
+                                        id="birthplace"
+                                        name="birthplace"
+                                        value="{{birthplace}}" />
+                                </div>
+                            </div>
+                            <div class="form_item">
+                                <label for="biography">Biografia</label>
+                                <textarea
+                                    placeholder="Biografia"
+                                    spellcheck="true"
+                                    rows="3"
+                                    id="biography"
+                                    name="biography"
+                                    >{{biography}}</textarea>
+                            </div>
+                            <div class="form_item">
+                                <label for="experience">Esperienza</label>
+                                <textarea
+                                    placeholder="Esperienza"
+                                    spellcheck="true"
+                                    rows="3"
+                                    id="experience"
+                                    name="experience"
+                                    >{{experience}}</textarea>
+                            </div>
+                        </fieldset>
+
+                        <div class="form_button">
+                            <button type="submit" class="btn-primary">
+                                Conferma modifiche
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div id="infofoot">
+                <p>Dove il sapere incontra l'arte</p>
+                <ul id="listinfofoot">
+                    <li>
+                        Vieni a trovarci in
+                        <a
+                            href="https://maps.app.goo.gl/iicWxkvzbn2m2wsUA"
+                            target="_blank"
+                            >via VIII Febbraio, <abbr title="Numero">n</abbr>.
+                            2, 35122 Padova</a
+                        >
+                    </li>
+                    <li>
+                        <abbr title="Telefono">Tel</abbr>:
+                        <a href="tel:+390498273939">+39 0498273939</a>
+                    </li>
+                    <li>
+                        <span lang="en">E-mail</span>:
+                        <a href="mailto:tour@unipd.it"
+                            ><span lang="en">tour</span>&commat;unipd.it</a
+                        >
+                    </li>
+                    <li>
+                        Seguici su
+                        <a
+                            href="https://www.instagram.com/visitunipd/?hl=it"
+                            target="_blank"
+                            lang="en"
+                            >Instagram</a
+                        >,
+                        <a
+                            href="https://it-it.facebook.com/visitunipd/"
+                            target="_blank"
+                            lang="en"
+                            >Facebook</a
+                        >
+                        e
+                        <a
+                            href="https://vm.tiktok.com/ZMe791AJx/"
+                            target="_blank"
+                            lang="en"
+                            >TikTok</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div id="logofoot">
+                <img
+                    src="../assets/images/logomini.svg"
+                    alt=""
+                    width="100"
+                    height="100" />
+            </div>
+            <div id="orariofoot">
+                <p id="descrOrariTable" class="navigationHelp">
+                    La tabella contiene gli orari di apertura del museo, aperto
+                    dal martedì alla domenica e chiuso il lunedì
+                </p>
+                <table aria-describedby="descrOrariTable">
+                    <caption>
+                        Orari di apertura
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Giorno</th>
+                            <th scope="col">Mattino</th>
+                            <th scope="col">Pomeriggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">Chiuso</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">da Martedì a Venerdì</th>
+                            <td data-title="mattino">Chiuso</td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>15:00</time>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sabato e Domenica</th>
+                            <td data-title="mattino">
+                                <time>08:00</time>-<time>11:00</time>
+                            </td>
+                            <td data-title="pomeriggio">
+                                <time>12:00</time>-<time>18:00</time>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+        <script src="../js/scripts.js"></script>
+    </body>
+</html>
