@@ -26,15 +26,17 @@ class Sanitizer{
     }
     public static function sanitize(&$value){
         /*Elimina tutti i valori che non siano caratteri o spaziature (comprese lettere accentate)*/
-        $value=strip_tags($value);
+        $value=strip_tags($value,"\'()");
         if(is_array($value)){
             foreach($value as &$a){
-                $a=preg_replace('/[^\s\p{L}-]/u',"",$a);
+                $a=preg_replace('/[^\s\'()\p{L}-]/u',"",$a);
+                $a=htmlspecialchars($a);
                 $a=trim($a);
             }
         }
         else{
-            $value=preg_replace('/[^\s\p{L}-]/u',"",$value);
+            $value=preg_replace('/[^\s\'()\p{L}-]/u',"",$value);
+            $value=htmlspecialchars($value);
             $value=trim($value);
         }
         return $value;
