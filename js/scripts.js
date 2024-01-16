@@ -376,7 +376,7 @@ function ruleTitle(title) {
 function displayError(container, message) {
     if (!container) {
         container = document.createElement("p");
-        container.classList.add("error-message");
+        container.classList.add("error_message");
         x.parentElement.append(container);
     }
     container.textContent = message;
@@ -390,12 +390,12 @@ function clearError(container) {
 
 function checkTitle(id) {
     let x = document.getElementById(id);
-    if (!x.parentElement.querySelector('.error-message')) {
+    if (!x.parentElement.querySelector('.error_message')) {
         const node = document.createElement("p");
-        node.classList.add("error-message");
+        node.classList.add("error_message");
         x.parentElement.append(node);
     }
-    const errorContainer = x.parentElement.querySelector('.error-message');
+    const errorContainer = x.parentElement.querySelector('.error_message');
     if (x.value == "") {
         displayError(errorContainer, "Per favore, inserisci una titolo all'opera.");
         return false;
@@ -413,12 +413,12 @@ function checkTitle(id) {
 
 function checkDescription(id) {
     let x = document.getElementById(id);
-    if (!x.parentElement.querySelector('.error-message')) {
+    if (!x.parentElement.querySelector('.error_message')) {
         const node = document.createElement("p");
-        node.classList.add("error-message");
+        node.classList.add("error_message");
         x.parentElement.append(node);
     }
-    const errorContainer = x.parentElement.querySelector('.error-message');
+    const errorContainer = x.parentElement.querySelector('.error_message');
     if (x.value == "") {
         displayError(errorContainer, "Per favore, inserisci una descrizione dell'opera. Per dei consigli su come comporre una buona descrizione, puoi utilizzare le indicazioni sopra riportate.");
         return false;
@@ -437,12 +437,12 @@ function checkDescription(id) {
 
 function checkArtshowTitle(id) {
     let x = document.getElementById(id);
-    if (!x.parentElement.querySelector('.error-message')) {
+    if (!x.parentElement.querySelector('.error_message')) {
         const node = document.createElement("p");
-        node.classList.add("error-message");
+        node.classList.add("error_message");
         x.parentElement.append(node);
     }
-    const errorContainer = x.parentElement.querySelector('.error-message');
+    const errorContainer = x.parentElement.querySelector('.error_message');
     if (x.value == "") {
         displayError(errorContainer, "Per favore, inserisci una titolo alla mostra.");
         return false;
@@ -460,12 +460,12 @@ function checkArtshowTitle(id) {
 
 function checkArtshowDescription(id) {
     let x = document.getElementById(id);
-    if (!x.parentElement.querySelector('.error-message')) {
+    if (!x.parentElement.querySelector('.error_message')) {
         const node = document.createElement("p");
-        node.classList.add("error-message");
+        node.classList.add("error_message");
         x.parentElement.append(node);
     }
-    const errorContainer = x.parentElement.querySelector('.error-message');
+    const errorContainer = x.parentElement.querySelector('.error_message');
     if (x.value == "") {
         displayError(errorContainer, "Per favore, inserisci una descrizione della mostra.");
         return false;
@@ -483,12 +483,12 @@ function checkArtshowDescription(id) {
 
 function checkUsername(id) {
     let x = document.getElementById(id);
-    if (!x.parentElement.querySelector('.error-message')) {
+    if (!x.parentElement.querySelector('.error_message')) {
         const node = document.createElement("p");
-        node.classList.add("error-message");
+        node.classList.add("error_message");
         x.parentElement.append(node);
     }
-    const errorContainer = x.parentElement.querySelector('.error-message');
+    const errorContainer = x.parentElement.querySelector('.error_message');
     if (x.value == "") {
         displayError(errorContainer, "Per favore, inserisci lo username che desideri utilizzare.");
         return false;
@@ -509,12 +509,12 @@ function checkUsername(id) {
 
 function checkPassword(id) {
     let x = document.getElementById(id);
-    if (!x.parentElement.querySelector('.error-message')) {
+    if (!x.parentElement.querySelector('.error_message')) {
         const node = document.createElement("p");
-        node.classList.add("error-message");
+        node.classList.add("error_message");
         x.parentElement.append(node);
     }
-    const errorContainer = x.parentElement.querySelector('.error-message');
+    const errorContainer = x.parentElement.querySelector('.error_message');
     if (x.value == "") {
         displayError(errorContainer, "Per favore, inserisci la password che desideri utilizzare.");
         return false;
@@ -535,12 +535,12 @@ function checkPassword(id) {
 
 function checkName(id) {
     let x = document.getElementById(id);
-    if (!x.parentElement.querySelector('.error-message')) {
+    if (!x.parentElement.querySelector('.error_message')) {
         const node = document.createElement("p");
-        node.classList.add("error-message");
+        node.classList.add("error_message");
         x.parentElement.append(node);
     }
-    const errorContainer = x.parentElement.querySelector('.error-message');
+    const errorContainer = x.parentElement.querySelector('.error_message');
     if (x.value == "") {
         displayError(errorContainer, "Per favore, inserisci il tuo nome.");
         return false;
@@ -561,12 +561,12 @@ function checkName(id) {
 
 function checkUsernameLogin(id) {
     let x = document.getElementById(id);
-    if (!x.parentElement.querySelector('.error-message')) {
+    if (!x.parentElement.querySelector('.error_message')) {
         const node = document.createElement("p");
-        node.classList.add("error-message");
+        node.classList.add("error_message");
         x.parentElement.append(node);
     }
-    const errorContainer = x.parentElement.querySelector('.error-message');
+    const errorContainer = x.parentElement.querySelector('.error_message');
     if (x.value == "") {
         displayError(errorContainer, "Per favore, inserisci il tuo username.");
         return false;
@@ -587,12 +587,12 @@ function checkUsernameLogin(id) {
 
 function checkPasswordLogin(id) {
     let x = document.getElementById(id);
-    if (!x.parentElement.querySelector('.error-message')) {
+    if (!x.parentElement.querySelector('.error_message')) {
         const node = document.createElement("p");
-        node.classList.add("error-message");
+        node.classList.add("error_message");
         x.parentElement.append(node);
     }
-    const errorContainer = x.parentElement.querySelector('.error-message');
+    const errorContainer = x.parentElement.querySelector('.error_message');
     if (x.value == "") {
         displayError(errorContainer, "Per favore, inserisci la tua password.");
         return false;
