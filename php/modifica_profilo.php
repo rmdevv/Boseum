@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         /*TODO Gestione file caricato (se presente)*/
         $userimg='';
+
         if(isset($_FILES["profile_image"]) && sizeof($_FILES["profile_image"]) > 0){
             $userimg= ImageProcessor::processImage($_FILES["profile_image"],"../uploads/users");
         }
@@ -52,7 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             trim(Sanitizer::sanitize($_POST["name"])),
             trim(Sanitizer::sanitize($_POST["lastname"])),
             $userimg,
-            isset($_POST["birthdate"])?Sanitizer::sanitizeDate($_POST["birthdate"]):'',
+            /*Lo posso fare perché la data ha un formato valido*/
+            isset($_POST["birthdate"])?$_POST["birthdate"]:'',
             isset($_POST["birthplace"])?trim(Sanitizer::sanitize($_POST["birthplace"])):'',
             isset($_POST["biography"])?trim(Sanitizer::sanitize($_POST["biography"])):'',
             isset($_POST["experience"])?trim(Sanitizer::sanitize($_POST["experience"])):''
@@ -64,6 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         unset($_POST["birthplace"]);
         unset($_POST["biography"]);
         unset($_POST["experience"]);
+        unset($_POST["profile_image"]);
         header("location: ../php/artista.php?id=".$id);
         exit();
     }
