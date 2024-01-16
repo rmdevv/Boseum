@@ -80,6 +80,7 @@
                                 <div class="form_item">
                                     <label for="username"> Username </label>
                                     <input
+                                        onblur="checkUsernameLogin('username')"
                                         placeholder="Username"
                                         type="text"
                                         id="username"
@@ -90,6 +91,7 @@
                                 <div class="form_item">
                                     <label for="password"> Password </label>
                                     <input
+                                        onblur="checkPasswordLogin('password')"
                                         placeholder="Password"
                                         type="password"
                                         id="password"
@@ -207,5 +209,6 @@
                 </table>
             </div>
         </footer>
+        <script src="../js/scripts.js"></script>
     </body>
 </html>

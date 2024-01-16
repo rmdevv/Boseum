@@ -128,6 +128,7 @@
                             <div class="form_item">
                                 <label for="title">Titolo (*)</label>
                                 <input
+                                    onblur="checkTitle('title')"
                                     type="text"
                                     name="title"
                                     id="title"
@@ -146,15 +147,18 @@
                                     inclusiva!
                                 </p>
                                 <label for="description">Descrizione (*)</label>
-                                <textarea
-                                    placeholder="Descrizione dell'opera"
-                                    spellcheck="true"
-                                    rows="3"
-                                    id="description"
-                                    name="description"
-                                    required>
+                                <div>
+                                    <textarea
+                                        onblur="checkDescription('description')"
+                                        placeholder="Descrizione dell'opera"
+                                        spellcheck="true"
+                                        rows="3"
+                                        id="description"
+                                        name="description"
+                                        required>
 {{description}}</textarea
-                                >
+                                    >
+                                </div>
                             </div>
                             <div class="filters_labels form_item">
                                 <span>Etichette correlate all'opera:</span>

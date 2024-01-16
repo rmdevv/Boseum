@@ -106,6 +106,7 @@
                             <div class="form_item">
                                 <label for="title">Titolo (*)</label>
                                 <input
+                                    onblur="checkArtshowTitle('title')"
                                     placeholder="Titolo della mostra"
                                     id="title"
                                     name="title"
@@ -114,6 +115,7 @@
                             <div class="form_item">
                                 <label for="description">Descrizione (*)</label>
                                 <textarea
+                                    onblur="checkArtshowDescription('description')"
                                     placeholder="Descrizione della mostra"
                                     spellcheck="true"
                                     rows="3"
