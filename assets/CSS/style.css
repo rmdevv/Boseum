@@ -1607,7 +1607,3 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     color: var(--color-white);
     outline-width: 0;
 }
-
-.error-message{
-    color: #DD3232;
-}
