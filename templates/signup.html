@@ -84,6 +84,7 @@
                                 <div class="form_item">
                                     <label for="username">Username (*)</label>
                                     <input
+                                        onblur="checkUsername('username')"
                                         placeholder="Username"
                                         type="text"
                                         id="username"
@@ -94,6 +95,7 @@
                                 <div class="form_item">
                                     <label for="password">Password (*)</label>
                                     <input
+                                        onblur="checkPassword('password')"
                                         placeholder="Password"
                                         type="password"
                                         id="password"
@@ -109,6 +111,7 @@
                                 <div class="form_item">
                                     <label for="name">Nome (*)</label>
                                     <input
+                                        onblur="checkName('name')"
                                         placeholder="Nome"
                                         type="text"
                                         id="name"
@@ -119,6 +122,7 @@
                                 <div class="form_item">
                                     <label for="lastname">Cognome (*)</label>
                                     <input
+                                        onblur="checkName('lastname')"
                                         placeholder="Cognome"
                                         type="text"
                                         id="lastname"
