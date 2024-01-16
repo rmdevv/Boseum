@@ -87,9 +87,7 @@ validazione($lastname,"Inserire un cognome");
 /*validazione data solo se la data non è nulla*/
 if($birthdate!="" && $san->validateDate($birthdate) && $birthdate>"1900-01-01" && $birthdate<=date("Y-m-d")){
     $ret = compilaerrore($username,$password,$name,$lastname,$birthdate,$birthplace);
-    echo(str_replace("{{messaggioerrore}}","
-    <br> <em>Inserire una data valida<em>
-    ", $ret));
+    echo(str_replace("{{messaggioerrore}}","<p><em>Inserire una data valida</em></p>", $ret));
     die();
 }
 

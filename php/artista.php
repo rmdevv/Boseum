@@ -24,6 +24,7 @@ $loginOrProfileTitle = $isLoggedIn ?
             : "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>")
         : "<a href=\"login.php\">Accedi</a>";
 $artistButtons="";
+$createArtwork = "";
 if($isLoggedIn) {
     if($_SESSION['is_admin']) {
         if($idArtist == $_SESSION['logged_id']) {
@@ -33,7 +34,7 @@ if($isLoggedIn) {
             $artistButtons = "<div class=\"artist_button\">
                             <form action=\"modifica_profilo.php\" method=\"get\">
                                 <input type=\"hidden\" name=\"id\" value=\"$idArtist\">
-                                <button type=\"submit\" aria-label=\"modifica profilo\">Modifica Profilo</button>
+                                <button class=\"button_reverse\" type=\"submit\" aria-label=\"modifica profilo\">Modifica Profilo</button>
                             </form>
                     </div>";
         }
@@ -41,10 +42,16 @@ if($isLoggedIn) {
         $artistButtons = "<div class=\"artist_button\">
                     <form action=\"modifica_profilo.php\" method=\"post\">
                         <input type=\"hidden\" name=\"id\" value=\"$idArtist\">
-                        <button type=\"submit\" aria-label=\"modifica profilo\">Modifica Profilo</button>
-                    </form>
-                        <button id=\"logout_button\">Logout</button>
+                        <button class=\"button_reverse\" type=\"submit\" aria-label=\"modifica profilo\">Modifica Profilo</button>
+                        </form>
+                        <button class=\"button_danger\" id=\"logout_button\" name=\"logout\">Logout</button>
                     </div>";
+        $createArtwork = "<div class=\"create_artwork\">
+                            <form action=\"crea_opera.php\" method=\"post\">
+                                <input type=\"hidden\" name=\"id_artist\" value=\"$idArtist\">
+                                <button class=\"button_reverse\" type=\"submit\" name=\"create_artwork\" aria-label=\"crea opera\">Crea opera</button>
+                            </form>
+                        </div>";
     }
 }
 
@@ -184,6 +191,7 @@ if(!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0){
     $artista = str_replace("{{lastname}}", $lastname, $artista);
     $artista = str_replace("{{username}}", $username, $artista);
     $artista = str_replace("{{artist_buttons}}", $artistButtons, $artista);
+    $artista = str_replace("{{create_artwork}}", $createArtwork, $artista);
     $artista = str_replace("{{image}}", $image, $artista);
     $artista = str_replace("{{details}}", $details, $artista);
     $artista = str_replace("{{biography}}", $biography, $artista);

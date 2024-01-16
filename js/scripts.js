@@ -160,59 +160,51 @@ const endDate = document.getElementById('end_date')
 const endDatePast = document.getElementById('end_date_past')
 
 if ((startDate || startDateFuture) && (endDate || endDatePast)) {
-    today = new Date()
+    const today = new Date().toLocaleDateString('fr-ca')
 
     if (startDate) {
+        startDate.max = today
+
         if (endDate) {
-            endDate.min = today.toLocaleDateString('fr-ca')
-            var max_limit = endDate.value
-            startDate.max = max_limit
+            endDate.min = today
             startDate.addEventListener('input', () => {
-                var min_limit = startDate.value
-                endDate.min = min_limit
+                endDate.min = startDate.value
             })
         } else {
-            endDatePast.max = today.toLocaleDateString('fr-ca')
-            var max_limit = endDatePast.value
-            startDate.max = max_limit
+            endDatePast.max = today
             startDate.addEventListener('input', () => {
-                var min_limit = startDate.value
-                endDatePast.min = min_limit
+                endDatePast.min = startDate.value
             })
         }
     }
 
     if (startDateFuture) {
-        if (endDate) {
-            endDate.min = today.toLocaleDateString('fr-ca')
-            startDateFuture.min = today.toLocaleDateString('fr-ca')
-            var max_limit = endDate.value
-            startDateFuture.max = max_limit
+        startDateFuture.min = today
 
+        if (endDate) {
+            endDate.min = today
             startDateFuture.addEventListener('input', () => {
-                var min_limit = startDateFuture.value
-                endDate.min = min_limit
+                endDate.min = startDateFuture.value
             })
         }
     }
+
     if (endDate) {
         endDate.addEventListener('input', () => {
-            var max_limit = endDate.value
             if (startDate) {
-                startDate.max = max_limit
+                startDate.max = endDate.value
             }
             if (startDateFuture) {
-                startDateFuture.max = max_limit
+                startDateFuture.max = endDate.value
             }
         })
     } else {
         endDatePast.addEventListener('input', () => {
-            var max_limit = endDate.value
             if (startDate) {
-                startDate.max = max_limit
+                startDate.max = endDatePast.value
             }
             if (startDateFuture) {
-                startDateFuture.max = max_limit
+                startDateFuture.max = endDatePast.value
             }
         })
     }
@@ -296,6 +288,39 @@ if (mainImageInput) {
             imgContainer.appendChild(img)
             mainImageContainer.appendChild(imgContainer)
         }
+    })
+}
+
+const disableMainImage = document.getElementById('disable_main_image')
+if (disableMainImage) {
+    disableMainImage.addEventListener('change', () => {
+        if (disableMainImage.checked && mainImageInput) {
+            mainImageInput.value = ''
+            const mainImageContainer =
+                document.querySelector('#main-image-viewer')
+            mainImageContainer.innerHTML = ''
+        }
+        mainImageInput &&
+            ((mainImageInput.disabled = disableMainImage.checked),
+            (mainImageInput.required = !disableMainImage.checked))
+    })
+}
+
+const disableAdditionalImages = document.getElementById(
+    'disable_additional_images'
+)
+
+if (disableAdditionalImages) {
+    disableAdditionalImages.addEventListener('change', () => {
+        if (disableAdditionalImages.checked && additionalImagesInput) {
+            additionalImagesInput.value = ''
+            const uploadImgContainer = document.querySelector(
+                '#additional-images-viewer'
+            )
+            uploadImgContainer.innerHTML = ''
+        }
+        additionalImagesInput &&
+            (additionalImagesInput.disabled = disableAdditionalImages.checked)
     })
 }
 

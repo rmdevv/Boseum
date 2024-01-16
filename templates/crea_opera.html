@@ -58,14 +58,27 @@
                 </nav>
             </div>
         </header>
+        <nav id="breadcrumb">
+            <span>Ti trovi in:</span>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.php"><span lang="en">Home</span></a>
+                </li>
+                {{prev_page}}
+                <li>
+                    <span>{{page_title}}</span>
+                </li>
+            </ul>
+        </nav>
         <main id="content">
             <section class="ins_mod_page">
                 <div class="ins_mod_container">
-                    <h2>Nuova opera</h2>
+                    <h2>{{page_title}}</h2>
                     <p>
                         Inserisci i dati dell'opera. I campi obbligatori sono
                         segnati con (*).
                     </p>
+                    {{error_message}}
                     <form
                         action="../php/crea_opera.php"
                         method="post"
@@ -74,6 +87,7 @@
                             <legend>Immagini dell'opera</legend>
                             <div class="input_container">
                                 <div class="form_item">
+                                    {{keep_main_image}}
                                     <label for="main-image-input"
                                         >Immagine principale (*)</label
                                     >
@@ -85,10 +99,13 @@
                                         required />
                                     <div
                                         class="images_viewer"
-                                        id="main-image-viewer"></div>
+                                        id="main-image-viewer">
+                                        {{main_image}}
+                                    </div>
                                 </div>
 
                                 <div class="form_item">
+                                    {{keep_additional_images}}
                                     <label for="additional-images-input"
                                         >Immagini di dettaglio</label
                                     >
@@ -100,7 +117,9 @@
                                         multiple />
                                     <div
                                         class="images_viewer"
-                                        id="additional-images-viewer"></div>
+                                        id="additional-images-viewer">
+                                        {{additional_images}}
+                                    </div>
                                 </div>
                             </div>
                         </fieldset>
@@ -112,7 +131,7 @@
                                     type="text"
                                     name="title"
                                     id="title"
-                                    value=""
+                                    value="{{title}}"
                                     placeholder="Titolo dell'opera" />
                             </div>
                             <div class="form_item">
@@ -133,12 +152,12 @@
                                     rows="3"
                                     id="description"
                                     name="description"
-                                    required></textarea>
+                                    required>
+{{description}}</textarea
+                                >
                             </div>
                             <div class="filters_labels form_item">
-                                <label for="labels_list"
-                                    >Etichette correlate all'opera:</label
-                                >
+                                <span>Etichette correlate all'opera:</span>
                                 {{labels}}
                             </div>
                         </fieldset>
@@ -154,7 +173,7 @@
                                         min="1900-01-01"
                                         id="start_date"
                                         name="start_date"
-                                        value="" />
+                                        value="{{start_date}}" />
                                 </div>
                                 <div class="form_item">
                                     <label for="end_date_past"
@@ -165,7 +184,7 @@
                                         min="1900-01-01"
                                         id="end_date_past"
                                         name="end_date"
-                                        value="" />
+                                        value="{{end_date}}" />
                                 </div>
                                 <div class="form_item">
                                     <label for="height">Altezza (cm)</label>
@@ -175,7 +194,7 @@
                                         max="300"
                                         id="height"
                                         name="height"
-                                        value="" />
+                                        value="{{height}}" />
                                 </div>
                                 <div class="form_item">
                                     <label for="width">Larghezza (cm)</label>
@@ -185,7 +204,7 @@
                                         max="300"
                                         id="width"
                                         name="width"
-                                        value="" />
+                                        value="{{width}}" />
                                 </div>
                                 <div class="form_item">
                                     <label for="depth">Profondità (cm)</label>
@@ -195,19 +214,12 @@
                                         max="300"
                                         id="depth"
                                         name="depth"
-                                        value="" />
+                                        value="{{depth}}" />
                                 </div>
                             </div>
                         </fieldset>
 
-                        <div class="form_button">
-                            <button
-                                type="submit"
-                                name="addartwork"
-                                class="btn-primary">
-                                Aggiungi l'opera
-                            </button>
-                        </div>
+                        {{submit_button}}
                     </form>
                 </div>
             </section>

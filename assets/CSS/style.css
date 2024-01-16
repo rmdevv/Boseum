@@ -240,7 +240,7 @@ a:visited {
 .cardnextshow a{
     text-decoration: none;
     display: block;
-    border: 3px solid var(--color-white);
+    border: 2px solid var(--color-white);
     border-radius: 3px;
     margin-top: 20px;
     padding: 5px 10px;
@@ -249,7 +249,7 @@ a:visited {
 }
 .cardnextshow a:visited{
     color: var(--navVisitedLinkColor);
-    border: 3px solid var(--navVisitedLinkColor);
+    border: 2px solid var(--navVisitedLinkColor);
 }
 .cardnextshow a:hover, .cardnextshow a:focus-visible {
     text-decoration: underline;
@@ -1295,6 +1295,21 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     flex-wrap: wrap;
 }
 
+.disable_checkbox {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--colorMediumGrey);
+    padding-bottom: 0.5em;    
+    margin-bottom: 1em;
+}
+
+.disable_checkbox input[type='checkbox'] {
+    width: unset;
+    height: 1em;
+    accent-color: var(--colorDarkGrey);
+    margin-left: 8px;
+}
+
 .form_item input, .form_item textarea {
     border-radius: 3px;
     padding: 0.8125rem 1rem;
@@ -1365,7 +1380,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     background-color: var(--bannerBackground);
 }
 
-.form_item input[type=file]:hover,.form_item input[type=file]:focus {
+.form_item input[type=file]:not([disabled]):hover,.form_item input[type=file]:not([disabled]):focus {
     cursor: pointer;
 }
 
@@ -1377,6 +1392,18 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
+}
+
+.form_item input[type=file]:disabled {
+    color: var(--color-grey-600);
+    background-color: var(--colorLightGrey);
+    cursor: default;
+}
+
+.form_item input[type=file]:disabled::file-selector-button {
+    background-color: var(--colorMediumGrey);
+    color: var(--color-grey-600);
+    cursor: default;
 }
 
 .images_viewer {
@@ -1429,8 +1456,19 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     align-items: center;
     justify-content: center;
     padding-bottom: 1em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+}
+
+.create_artwork {
+    margin: auto;
+    margin-bottom: 1em;
     border-bottom: 2px solid var(--colorMediumGrey);
+}
+
+.create_artwork form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
 }
 
 .artist_button {
@@ -1439,41 +1477,20 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     display: flex;
     column-gap: 10px;
 }
-
-.artist_button a{
-    text-decoration: none;
+.button_danger{
     flex-grow: 1;
-    display: block;
-    color: var(--colorDarkGrey);
-    border: 3px solid var(--colorDarkGrey);
-    border-radius: 3px;
-    padding: 5px 0;
-    text-align: center;
-}
-.artist_button a:hover {
-    background-color: var(--colorDarkGrey);
-    color: var(--color-white);
-}
-.artist_button a:focus-visible {
-    background-color: var(--colorDarkGrey);
-    color: var(--color-white);
-    outline-width: 0;
-}
-
-.artist_button button{
-    flex-grow: 1;
-    display: block;
     color: var(--flagColor);
-    border: 3px solid var(--flagColor);
+    border: 2px solid var(--flagColor);
     border-radius: 3px;
     padding: 5px 0;
     text-align: center;
+    text-decoration: none;
 }
-.artist_button button:hover {
+.button_danger:hover {
     background-color: var(--flagColor);
     color: var(--color-white);
 }
-.artist_button button:focus-visible {
+.button_danger:focus-visible {
     background-color: var(--flagColor);
     color: var(--color-white);
     outline-width: 0;
@@ -1573,10 +1590,22 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     margin-top: 2em;
 }
 
-.admin_button a{
+.admin_button {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    max-width: fit-content;
+    gap: 10px;
+}
+
+.admin_button button {
+    padding: 10px 10px;
+}
+
+/* .admin_button a{
     text-decoration: none;
     color: var(--colorDarkGrey);
-    border: 3px solid var(--colorDarkGrey);
+    border: 2px solid var(--colorDarkGrey);
     border-radius: 3px;
     padding: 5px 10px;
     text-align: center;
@@ -1593,7 +1622,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 
 .admin_button button{
     color: var(--flagColor);
-    border: 3px solid var(--flagColor);
+    border: 2px solid var(--flagColor);
     border-radius: 3px;
     padding: 5px 10px;
     text-align: center;
@@ -1606,4 +1635,4 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     background-color: var(--flagColor);
     color: var(--color-white);
     outline-width: 0;
-}
+} */

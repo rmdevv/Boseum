@@ -52,15 +52,17 @@ class ImageProcessor {
                 imagedestroy($image);
                 imagedestroy($resizedImage);
 
-                echo 'Conversion and resizing completed successfully for ' . $uploadedFile['name'] . '. Saved as ' . $uniqueFilename . '<br>';
+                // echo 'Conversion and resizing completed successfully for ' . $uploadedFile['name'] . '. Saved as ' . $uniqueFilename . '<br>';
                 
                 return $outputFile;
-            } else {
-                echo 'Error during image processing for ' . $uploadedFile['name'] . '. Please try again.<br>';
             }
-        } else {
-            echo 'Error during file upload for ' . $uploadedFile['name'] . '. Please try again.<br>';
+            // else {
+            //     echo 'Error during image processing for ' . $uploadedFile['name'] . '. Please try again.<br>';
+            // }
         }
+        // else {
+        //     echo 'Error during file upload for ' . $uploadedFile['name'] . '. Please try again.<br>';
+        // }
 
         return false;
     }
@@ -99,11 +101,13 @@ class ImageProcessor {
     private static function generateUniqueFilename() {
         return uniqid() . '.jpg';
     }
-}
 
-// $uploadedFiles = $_FILES['uploadedFiles']; // Assuming you have an input field named 'uploadedFiles' for multiple file uploads
-// $destinationFolder = '/path/to/destination/folder/';
-// $savedImageNames = ImageProcessor::processImages($uploadedFiles, $destinationFolder);
-// print_r($savedImageNames);
+    public static function deleteImage($path) {
+        if (file_exists($path)) {
+            return unlink($path);
+        }
+        return false;
+    }
+}
 
 ?>

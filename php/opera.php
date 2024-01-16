@@ -126,7 +126,11 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
 
     if($isLoggedIn && ($id_artista == $_SESSION['logged_id'] || $_SESSION['is_admin'])) {
         $artworkButtons = "<div class=\"artist_button\">
-                    <a href=\"crea_opera.php?id=".$idArtwork."\">Modifica opera</a>
+                    <form action=\"crea_opera.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"id_artwork\" value=\"$idArtwork\">
+                        <input type=\"hidden\" name=\"id_artist\" value=\"$id_artista\">
+                        <button class=\"button_reverse\" type=\"submit\" name=\"modify_artwork\" aria-label=\"modifica opera\">Modifica opera</button>
+                    </form>
                 </div>";
     }
 

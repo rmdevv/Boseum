@@ -631,38 +631,54 @@ class DBAccess{
         return mysqli_affected_rows($this->connection)>0;
     }
 
-    public function modifyArtwork($id, $title, $description, $height, $width, $length, $start_date, $end_date, $additional_images){
-        $mod_title="title = '$title'";
-        $mod_description="description = NULLIF('$description', '')";
-        $mod_height="height = NULLIF('$height', '')";
-        $mod_width="width = NULLIF('$width', '')";
-        $mod_length="length = NULLIF('$length', '')";
-        $mod_start_date="start_date = NULLIF('$start_date', '')";
+    public function modifyArtwork($id, $title, $main_image, $description, $height, $width, $length, $start_date, $end_date, $additional_images, $labels){
+        $mod_title="title = '$title',";
+        $mod_description="description = '$description',";
+        $mod_height="height = NULLIF('$height', ''),";
+        $mod_width="width = NULLIF('$width', ''),";
+        $mod_length="length = NULLIF('$length', ''),";
+        $mod_start_date="start_date = NULLIF('$start_date', ''),";
         $mod_end_date="end_date = NULLIF('$end_date', '')";
         
+        $main_image_not_empty = "";
+        if(!empty($main_image)){
+            $main_image_not_empty = "main_image = '$main_image' ,";
+        }
+
         $this->connection->begin_transaction();
         try {
             $query_update_artwork = "UPDATE Artworks
-                                        SET $mod_title, 
-                                            $mod_description, 
-                                            $mod_height, 
-                                            $mod_width, 
-                                            $mod_length, 
-                                            $mod_start_date, 
+                                        SET $mod_title 
+                                            $main_image_not_empty 
+                                            $mod_description 
+                                            $mod_height 
+                                            $mod_width 
+                                            $mod_length 
+                                            $mod_start_date 
                                             $mod_end_date
                                         WHERE Artworks.id = $id";
             $this->connection->query($query_update_artwork);
+            
+            if($additional_images !== null){
+                $query_delete_additional_images = "DELETE FROM ArtworkDetails WHERE ArtworkDetails.id_artwork = $id";
+                $this->connection->query($query_delete_additional_images);
 
-            $query_delete_additional_images = "DELETE FROM ArtworkDetails WHERE ArtworkDetails.id_artwork = $id";
+                foreach ($additional_images as $additional_image) {
+                    $query_insert_additional_images = "INSERT INTO ArtworkDetails(id_artwork, image) VALUES ($id, '$additional_image')";
+                    $this->connection->query($query_insert_additional_images);
+                }
+            }
+
+            $query_delete_additional_images = "DELETE FROM ArtworkLabels WHERE ArtworkLabels.id_artwork = $id";
             $this->connection->query($query_delete_additional_images);
 
-            foreach ($additional_images as $additional_image) {
-                $query_insert_additional_images = "INSERT INTO ArtworkDetails(id_artwork, image) VALUES ($id, '$additional_image')";
-                $this->connection->query($query_insert_additional_images);
+            foreach ($labels as $label) {
+                $query_insert_label = "INSERT INTO ArtworkLabels(id_artwork, label) VALUES ($id, '$label')";
+                $this->connection->query($query_insert_label);
             }
 
             $this->connection->commit();
-            return True;
+            return $id;
         } catch (\Exception $e) {
             $this->connection->rollback();
             return False;
