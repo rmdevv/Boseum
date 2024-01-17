@@ -399,7 +399,7 @@ function ruleName(name) {                               //Vale anche per lastnam
 }
 
 function ruleBirthPlace(place) {
-    var re = /^(?:[A-Z][a-z]+(?: [A-Z][a-z]+)?(?: [A-Z][a-z]+)*)?$/;        //Ogni parola del paese deve iniziare con la maiuscola
+    var re = /^(?:[A-ZÁÉÍÓÚÀÈÌÒÙ][a-zàèìòùáéíóú]+(?: [A-ZÁÉÍÓÚÀÈÌÒÙ][a-zàèìòùáéíóú]+)?(?: [A-ZÁÉÍÓÚÀÈÌÒÙ][a-zàèìòùáéíóú]+)*)?$/;        //Ogni parola del paese deve iniziare con la maiuscola
     return re.test(place);
 }
 
@@ -467,6 +467,46 @@ function checkDescription(id) {
         return false;
     } else if (x.value.length > 1000) {
         displayError(errorContainer, "Attenzione, la descrizione non deve superare i 1000 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
+function checkBio(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error_message')) {
+        const node = document.createElement("p");
+        node.classList.add("error_message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error_message');
+    if (!ruleComment(x.value)) {
+        displayError(errorContainer, "Attenzione, la biografia può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? ' \" (  ) ! ? ).");
+        return false;
+    } else if (x.value.length > 1000) {
+        displayError(errorContainer, "Attenzione, la biografia non deve superare i 1000 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
+function checkXp(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error_message')) {
+        const node = document.createElement("p");
+        node.classList.add("error_message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error_message');
+    if (!ruleComment(x.value)) {
+        displayError(errorContainer, "Attenzione, la tua esperienza può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? ' \" (  ) ! ? ).");
+        return false;
+    } else if (x.value.length > 1000) {
+        displayError(errorContainer, "Attenzione, la tua esperienza non deve superare i 1000 caratteri.");
         return false;
     } else {
         clearError(errorContainer);
@@ -599,6 +639,26 @@ function checkName(id) {
     }
 }
 
+function checkBirthPlace(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error_message')) {
+        const node = document.createElement("p");
+        node.classList.add("error_message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error_message');
+    if (!ruleBirthPlace(x.value)) {
+        displayError(errorContainer, "Per favore, assicurati di aver inserito il nome del luogo con le iniziali di ogni parola in maiuscolo. Sono ammesse solo lettere.");
+        return false;
+    } else if (x.value.length > 30) {
+        displayError(errorContainer, "Attenzione, il nome del luogo non deve superare i 30 caratteri.");
+        return false;
+    } else {
+        clearError(errorContainer);
+        return true;
+    }
+}
+
 function checkUsernameLogin(id) {
     let x = document.getElementById(id);
     if (!x.parentElement.querySelector('.error_message')) {
@@ -648,5 +708,90 @@ function checkPasswordLogin(id) {
     } else {
         clearError(errorContainer);
         return true;
+    }
+}
+
+function validateLogin(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error_message')) {
+        const node = document.createElement("p");
+        node.classList.add("error_message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error_message');
+    if (checkUsernameLogin('username') && checkPasswordLogin('password')) {
+        clearError(errorContainer);
+        return true;
+    } else {
+        displayError(errorContainer, "Per favore, compila correttamente il form seguendo gli aiuti forniti.");
+        return false;
+    }
+}
+
+function validateSignup(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error_message')) {
+        const node = document.createElement("p");
+        node.classList.add("error_message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error_message');
+    if (checkUsername('username') && checkPassword('password') && checkName('name') && checkName('lastname') && checkBirthPlace('birthplace')) {
+        clearError(errorContainer);
+        return true;
+    } else {
+        displayError(errorContainer, "Per favore, compila correttamente il form seguendo gli aiuti forniti.");
+        return false;
+    }
+}
+
+function validateNewArtshow(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error_message')) {
+        const node = document.createElement("p");
+        node.classList.add("error_message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error_message');
+    if (checkArtshowTitle('title') && checkArtshowDescription('description')) {
+        clearError(errorContainer);
+        return true;
+    } else {
+        displayError(errorContainer, "Per favore, compila correttamente il form seguendo gli aiuti forniti.");
+        return false;
+    }
+}
+
+function validateNewArtwork(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error_message')) {
+        const node = document.createElement("p");
+        node.classList.add("error_message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error_message');
+    if (checkTitle('title') && checkDescription('description')) {
+        clearError(errorContainer);
+        return true;
+    } else {
+        displayError(errorContainer, "Per favore, compila correttamente il form seguendo gli aiuti forniti.");
+        return false;
+    }
+}
+
+function validateProfile(id) {
+    let x = document.getElementById(id);
+    if (!x.parentElement.querySelector('.error_message')) {
+        const node = document.createElement("p");
+        node.classList.add("error_message");
+        x.parentElement.append(node);
+    }
+    const errorContainer = x.parentElement.querySelector('.error_message');
+    if (checkName('name') && checkName('lastname') && checkBirthPlace('birth_place') && checkBio('biography') && checkXp('experience')) {
+        clearError(errorContainer);
+        return true;
+    } else {
+        displayError(errorContainer, "Per favore, compila correttamente il form seguendo gli aiuti forniti.");
+        return false;
     }
 }
