@@ -81,6 +81,7 @@
                         segnati con (*).
                     </p>
                     <form
+                        onsubmit="return validateNewArtshow('submit_button')"
                         action="../php/crea_mostra.php"
                         method="post"
                         enctype="multipart/form-data">
@@ -154,6 +155,7 @@
                         <div class="form_button">
                             <button
                                 type="submit"
+                                id="submit_button"
                                 name="addArtshow"
                                 class="btn-primary">
                                 Aggiungi la mostra

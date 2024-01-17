@@ -74,7 +74,7 @@
                             Non sei ancora registrato?
                             <a href="signup.php">Registrati qui</a>
                         </p>
-                        <form action="login.php" method="post">
+                        <form action="login.php" method="post" onsubmit="return validateLogin('submit_button')">
                             <fieldset class="fieldset_item">
                                 <legend>Dati account</legend>
                                 <div class="form_item">
@@ -102,6 +102,7 @@
                             </fieldset>
                             <div class="form_button">
                                 <button
+                                    id="submit_button"
                                     type="submit"
                                     name="login"
                                     class="btn-primary">

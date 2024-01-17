@@ -77,7 +77,7 @@
                         <a href="login.php">Accedi qui</a>
                     </p>
                     {{messaggioerrore}}
-                    <form action="signup.php" method="post">
+                    <form action="signup.php" method="post" onsubmit="return validateSignup('submit_button')">
                         <fieldset class="fieldset_item">
                             <legend>Dati account</legend>
                             <div class="input_container">
@@ -146,6 +146,7 @@
                                         >Luogo di nascita</label
                                     >
                                     <input
+                                        onblur="checkBirthPlace('birthplace')"
                                         placeholder="Luogo di nascita"
                                         type="text"
                                         id="birthplace"
@@ -155,7 +156,7 @@
                             </div>
                         </fieldset>
                         <div class="form_button">
-                            <button type="submit" class="btn-primary">
+                            <button type="submit" class="btn-primary" id="submit_button">
                                 Registrati
                             </button>
                         </div>

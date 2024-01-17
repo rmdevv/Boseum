@@ -80,6 +80,7 @@
                     </p>
                     {{error_message}}
                     <form
+                        onsubmit="return validateProfile('submit_button')"
                         action="../php/modifica_profilo.php"
                         method="post"
                         enctype="multipart/form-data">
@@ -111,6 +112,7 @@
                                 <div class="form_item">
                                     <label for="name">Nome (*)</label>
                                     <input
+                                        onblur="checkName('name')"
                                         placeholder="Nome"
                                         type="text"
                                         id="name"
@@ -121,6 +123,7 @@
                                 <div class="form_item">
                                     <label for="lastname">Cognome (*)</label>
                                     <input
+                                        onblur="checkName('lastname')"
                                         placeholder="Cognome"
                                         type="text"
                                         id="lastname"
@@ -144,6 +147,7 @@
                                         >Luogo di nascita</label
                                     >
                                     <input
+                                        onblur="checkBirthPlace('birth_place')"
                                         placeholder="Luogo di nascita"
                                         type="text"
                                         id="birth_place"
@@ -154,6 +158,7 @@
                             <div class="form_item">
                                 <label for="biography">Biografia</label>
                                 <textarea
+                                    onblur="checkBio('biography')"
                                     placeholder="Biografia"
                                     spellcheck="true"
                                     rows="3"
@@ -165,6 +170,7 @@
                             <div class="form_item">
                                 <label for="experience">Esperienza</label>
                                 <textarea
+                                    onblur="checkXp('experience')"
                                     placeholder="Esperienza"
                                     spellcheck="true"
                                     rows="3"

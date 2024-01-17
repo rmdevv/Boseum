@@ -80,6 +80,7 @@
                     </p>
                     {{error_message}}
                     <form
+                        onsubmit="return validateNewArtwork('submit_button')"
                         action="../php/crea_opera.php"
                         method="post"
                         enctype="multipart/form-data">
