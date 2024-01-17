@@ -163,6 +163,7 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
         $pageTitle = "Crea opera";
         $submitButton = "<div class=\"form_button\">
                             <button
+                                id=\"submit_button\"
                                 type=\"submit\"
                                 name=\"save_new_artwork\"
                                 class=\"btn-primary\">
@@ -204,6 +205,7 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
     $submitButton = "<input type=\"hidden\" name=\"id_artwork\" value=\"$idArtwork\">
                     <div class=\"form_button\">
                         <button
+                            id=\"submit_button\"
                             type=\"submit\"
                             name=\"update_artwork\"
                             class=\"btn-primary\">

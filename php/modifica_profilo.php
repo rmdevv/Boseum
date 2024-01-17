@@ -21,6 +21,7 @@ if (!$isLoggedIn || !isset($_POST['id_artist']) || ($_SESSION['logged_id'] != $_
     $submitButton = "<input type=\"hidden\" name=\"id_artist\" value=\"" . $_POST['id_artist'] . "\">
                     <div class=\"form_button\">
                         <button
+                            id=\"submit_button\"
                             class=\"btn-primary\"
                             type=\"submit\"
                             name=\"confirm_update\">
