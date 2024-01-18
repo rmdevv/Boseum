@@ -25,7 +25,7 @@ class Sanitizer
     }
     public static function sanitizeDate(&$value)
     {
-        $value = preg_replace('/[^\w\s-]/', '', $value);
+        $value = preg_replace('/[^\d-]/', '', $value);
         return $value;
     }
 
