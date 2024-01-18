@@ -387,8 +387,7 @@ class DBAccess
         $present_in_artshow_filter = "";
         if ($isPresentInArtshow) {
             $present_in_artshow_filter = "JOIN ArtshowPrenotations ON U1.id = ArtshowPrenotations.id_artist JOIN Artshows ON ArtshowPrenotations.id_artshow = Artshows.id
-                                            WHERE CURRENT_DATE() >= Artshows.start_date AND CURRENT_DATE() <= Artshows.end_date
-                                            ORDER BY U1.username";
+                                            WHERE CURRENT_DATE() >= Artshows.start_date AND CURRENT_DATE() <= Artshows.end_date";
         }
 
         $query = "SELECT DISTINCT U1.id, U1.username, U1.name, U1.lastname, U1.image
@@ -401,7 +400,8 @@ class DBAccess
                             $time_filter
                             $labels_filter
                         ) AS QR ON U1.id = QR.id
-                    $present_in_artshow_filter";
+                    $present_in_artshow_filter 
+                    ORDER BY U1.name";
 
         $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);/* die("Errore in DBAccess".mysqli_error($this->connection)); */
         if (mysqli_num_rows($queryResult) != 0) {
