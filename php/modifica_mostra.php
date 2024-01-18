@@ -20,6 +20,7 @@ if (!$isLoggedIn || !isset($_POST['id_artshow'])) {
     $submitButton = "<input type=\"hidden\" name=\"id_artshow\" value=\"" . $_POST['id_artshow'] . "\">
                     <div class=\"form_button\">
                         <button
+                            id=\"submit_button\"
                             class=\"btn-primary\"
                             type=\"submit\"
                             name=\"confirm_update\">
