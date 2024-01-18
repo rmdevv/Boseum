@@ -377,7 +377,7 @@ function rulePassword(password) {
 }
 
 function ruleUsername(user) {
-    var re = /^[a-z0-9]+(?:[._][a-z0-9]+)*$/ //caratteri speciali ammessi solo . e _
+    var re = /^[a-z0-9]+(?:[._-][a-z0-9]+)*$/ //caratteri speciali ammessi solo . _ -
     return re.test(user)
 }
 
