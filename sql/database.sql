@@ -337,3 +337,24 @@ VALUES
 ('Natura libera', 'Esplora la bellezza selvaggia e incontaminata nella mostra &#x27;Natura Libera&#x27;. Gli studenti artisti danno vita alla natura attraverso dipinti e sculture che catturano la maestosità degli ambienti naturali. Un invito a connettersi con la forza libera e inesplorata del mondo naturale, attraverso gli occhi e le mani dei talenti emergenti.', '../uploads/artshows/2.jpg', '2024-01-19', '2024-01-21'),
 ('Arte in Movimento', '&#x27;Arte in Movimento&#x27; diventa il palcoscenico per gli studenti artisti che esplorano il movimento attraverso i dipinti. Ogni pennellata racconta una storia di creatività e libertà espressiva. Unisciti a noi per celebrare l&#x27;arte in evoluzione, con opere che incarnano l&#x27;energia e la visione dei talenti emergenti.', '../uploads/artshows/3.jpg', '2024-02-09', '2024-02-11'),
 ('Donne in Arte: Giornata Internazionale della Donna', 'In occasione dell&#x27;8 Marzo, la mostra &#x27;Donne in Arte&#x27; rende omaggio alla forza, alla bellezza e all&#x27;arte delle donne. Gli studenti artisti esplorano le molteplici sfaccettature dell&#x27;esperienza femminile attraverso dipinti, sculture e installazioni che riflettono la diversità, la resilienza e la creatività delle donne di ieri, oggi e domani. Un&#x27;occasione per celebrare e onorare il contributo unico delle donne nel mondo dell&#x27;arte e nella società.', '../uploads/artshows/4.jpg', '2024-03-08', '2024-03-10');
+
+INSERT INTO ArtshowPrenotations(id_artshow, id_artist)
+VALUES
+(1, 8),
+(1, 12),
+(1, 14),
+(1, 3),
+(1, 7),
+(1, 2),
+(2, 11),
+(2, 13),
+(2, 15),
+(2, 16),
+(3, 5),
+(3, 9),
+(3, 10),
+(3, 15),
+(4, 2),
+(4, 11),
+(4, 14),
+(4, 5);
