@@ -260,7 +260,8 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
         $labelsContainer = "<ul id=\"labels_list\">";
         foreach ($labels as $label) {
             $labelName = str_replace(" ", "", strtolower($label['label']));
-            $isChecked = in_array(['label' => $label['label']], $artworkLabels);
+            $isChecked = $artworkLabels ? in_array(['label' => $label['label']], $artworkLabels) : '';
+            /*TODO non funziona se in origine non sono selezionate labels*/
             $labelsContainer .= "
             <li>
                 <input
