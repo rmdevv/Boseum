@@ -516,62 +516,6 @@ footer a:visited{
     grid-column-start: 2;
 }
 
-.the_artwork_meta{
-    display: flex;
-    margin: 10px auto;
-    width: 100%;
-    justify-content: end;
-}
-
-.artwork_interactions{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    order: 4;
-    width: 100%;
-}
-.artwork_interaction{
-    margin:0;
-    padding:0;
-}
-.artwork_interaction button{
-    background:0 0;
-    margin: 0 5px;
-    padding: 0;
-    border:none;
-    cursor:pointer;
-}
-.artwork_interaction button .icon {
-    height: 1.5em;
-    width: 1.5em;
-    cursor:pointer;
-}
-.artwork_interaction button:hover{
-    opacity:.5
-}
-
-.artwork_interaction a{
-    background:0 0;
-    margin: 0 5px;
-    padding: 0;
-    border:none;
-    cursor:pointer;
-}
-.artwork_interaction a .icon {
-    height: 1.5em;
-    width: 1.5em;
-    cursor:pointer;
-}
-.artwork_interaction a:hover{
-    opacity:.5
-}
-
-.download_text,.enlarge_text{
-    display:none
-}
-
 .the_artwork{
     display:flex;
     flex:1;
@@ -585,7 +529,8 @@ footer a:visited{
     flex-direction:column;
     height:70vh;
     padding-top:30px;
-    position:relative
+    position:relative;
+    margin-bottom: 2em;
 }
 .artwork_image_wrapper{
     align-items:center;
@@ -1326,8 +1271,8 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 .form_item p{
     background-color: var(--colorMediumGrey);
     padding: 0.25rem 0.75rem;
-    border-radius: 10px;
-    margin-top: 0;
+    border-radius: 3px;
+    margin-top: 0.5em;
 }
 
 .form_button button {
