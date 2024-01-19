@@ -701,14 +701,18 @@ class DBAccess
     {
         $mod_title = "title = '$title'";
         $mod_description = "description = NULLIF('$description', '')";
-        $mod_image = "image = NULLIF('$image', '')";
         $mod_start_date = "start_date = NULLIF('$start_date', '')";
         $mod_end_date = "end_date = NULLIF('$end_date', '')";
 
+        $image_not_empty = "";
+        if (!empty($image)) {
+            $image_not_empty = "image = '$image' ,";
+        }
+
         $query_update_user = "UPDATE Artshows
-                            SET $mod_title, 
+                                SET $mod_title, 
                                 $mod_description, 
-                                $mod_image, 
+                                $image_not_empty 
                                 $mod_start_date, 
                                 $mod_end_date
                             WHERE Artshows.id = $id";

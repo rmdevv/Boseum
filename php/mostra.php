@@ -98,9 +98,9 @@ if(!$infoArtshow || sizeof($infoArtshow) <= 0){
             if($_SESSION['is_admin']){
                 $prenotationSection = "
                     <div class=\"artist_button\">
-                        <form action=\"modifica_mostra.php\" method=\"post\">
+                        <form action=\"crea_mostra.php\" method=\"post\">
                             <input type=\"hidden\" name=\"id_artshow\" value=\"$idArtshow\">
-                            <button class=\"button_reverse\" type=\"submit\" name=\"update_artshow\" aria-label=\"modifica mostra\">Modifica Mostra</button>
+                            <button class=\"button_reverse\" type=\"submit\" name=\"modify_artshow\" aria-label=\"modifica mostra\">Modifica mostra</button>
                         </form>
                     </div>
                 ";

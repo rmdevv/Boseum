@@ -64,22 +64,21 @@
                 <li>
                     <a href="index.php"><span lang="en">Home</span></a>
                 </li>
+                {{prev_page}}
                 <li>
-                    <a href="admin.php">Amministratore</a>
-                </li>
-                <li>
-                    <span>Crea mostra</span>
+                    <span>{{page_title}}</span>
                 </li>
             </ul>
         </nav>
         <main id="content">
             <section class="ins_mod_page">
                 <div class="ins_mod_container">
-                    <h2>Nuova mostra</h2>
+                    <h2>{{page_title}}</h2>
                     <p>
                         Inserisci i dati della mostra. I campi obbligatori sono
                         segnati con (*).
                     </p>
+                    {{error_message}}
                     <form
                         onsubmit="return validateNewArtshow('submit_button')"
                         action="../php/crea_mostra.php"
@@ -88,6 +87,7 @@
                         <fieldset class="fieldset_item">
                             <legend>Immagine della mostra</legend>
                             <div class="form_item">
+                                {{keep_main_image}}
                                 <label for="main-image-input"
                                     >Immagine (*)</label
                                 >
@@ -99,7 +99,9 @@
                                     required />
                                 <div
                                     class="images_viewer"
-                                    id="main-image-viewer"></div>
+                                    id="main-image-viewer">
+                                    {{main_image}}
+                                </div>
                             </div>
                         </fieldset>
                         <fieldset class="fieldset_item">
@@ -111,6 +113,7 @@
                                     placeholder="Titolo della mostra"
                                     id="title"
                                     name="title"
+                                    value="{{title}}"
                                     required />
                             </div>
                             <div class="form_item">
@@ -122,7 +125,7 @@
                                     rows="3"
                                     id="description"
                                     name="description"
-                                    required></textarea>
+                                    required>{{description}}</textarea>
                             </div>
                             <div class="input_container">
                                 <div class="form_item">
@@ -134,7 +137,7 @@
                                         min="1900-01-01"
                                         id="start_date_future"
                                         name="start_date"
-                                        value=""
+                                        value="{{start_date}}"
                                         required />
                                 </div>
                                 <div class="form_item">
@@ -146,21 +149,12 @@
                                         min="1900-01-01"
                                         id="end_date"
                                         name="end_date"
-                                        value=""
+                                        value="{{end_date}}"
                                         required />
                                 </div>
                             </div>
                         </fieldset>
-
-                        <div class="form_button">
-                            <button
-                                type="submit"
-                                id="submit_button"
-                                name="addArtshow"
-                                class="btn-primary">
-                                Aggiungi la mostra
-                            </button>
-                        </div>
+                        {{submit_button}}
                     </form>
                 </div>
             </section>

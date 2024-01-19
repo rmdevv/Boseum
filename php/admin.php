@@ -12,7 +12,7 @@ if($isLoggedIn && $_SESSION['is_admin']) {
     $adminButtons = "<div class=\"admin_button\">
                 <form action=\"crea_mostra.php\" method=\"post\">
                     <input type=\"hidden\" name=\"id_admin\" value=\"".$_SESSION['logged_id']."\">
-                    <button class=\"button_reverse\">Crea mostra</button>
+                    <button class=\"button_reverse\" type=\"submit\" name=\"create_artshow\" aria-label=\"crea mostra\">Crea mostra</button>
                 </form>
                 <button class=\"button_danger\" id=\"logout_button\">Logout</button>
             </div>";
