@@ -431,7 +431,7 @@ function checkTitle(id) {
     if (x.value == '') {
         displayError(
             errorContainer,
-            "Per favore, inserisci una titolo all'opera."
+            "Per favore, inserisci un titolo all'opera."
         )
         return false
     } else if (!ruleComment(x.value)) {
@@ -547,7 +547,7 @@ function checkArtshowTitle(id) {
     if (x.value == '') {
         displayError(
             errorContainer,
-            'Per favore, inserisci una titolo alla mostra.'
+            'Per favore, inserisci un titolo alla mostra.'
         )
         return false
     } else if (!ruleComment(x.value)) {
