@@ -160,7 +160,8 @@ VALUES
 (43, 'View of Toledo', '../uploads/artworks/43_0.jpg', 'Attraverso questo dipinto, ho voluto evocare l&#x27;atmosfera di mistero e incertezza che avvolge una tranquilla cittadina. Il cielo scuro che incombe sulla scena suggerisce un senso di imminente cambiamento o di tensione latente, creando un contrasto palpabile con la quiete apparente del luogo.', 121, 108, 0, '2021-11-29', '2022-07-26', 15),
 (44, 'Vase', '../uploads/artworks/44_0.jpg', 'Ho voluto esaltare la delicatezza e la semplicità della natura trasformando questo vasetto di vetro. Ogni fiorellino dipinto sulla superficie cristallina evoca un senso di fragilità e bellezza effimera. L&#x27;opera invita lo spettatore a riflettere sulla capacità dell&#x27;arte di catturare la grazia sottile e l&#x27;essenza intrinseca della vita, celebrando la meraviglia nascosta nei dettagli più piccoli e trascurati del nostro quotidiano.', 18, 8, 8, '2016-02-02', '2022-11-09', 16),
 (45, 'Vase', '../uploads/artworks/45_0.jpg', 'La delicatezza e la bellezza dei fiori si fonde alla fragilità del vetro. Ogni pennellata riflette la cura e l&#x27;attenzione dedicate alla creazione di un&#x27;opera d&#x27;arte unica e affascinante. L&#x27;opera invita lo spettatore a contemplare la fusione di artigianalità e estetica, sottolineando la capacità di trasformare un oggetto quotidiano in una testimonianza tangibile della bellezza della natura.', 19, 7, 7, '2013-05-04', '2019-03-17', 16),
-(46, 'Vase', '../uploads/artworks/46_0.jpg', 'La grazia senza tempo dei fiori si sposa con la delicatezza della porcellana. Ogni dettaglio del vaso è un&#x27;armoniosa sinfonia di eleganza e fragilità. Le curve sottili e le sfumature cromatiche creano un capolavoro unico, intessuto con la dedizione e l&#x27;arte di creare un oggetto di bellezza intramontabile. Il vaso invita chi lo osserva a immergersi in un mondo di raffinatezza e a contemplare la fusione di maestria artigianale ed estetica, trasformando il quotidiano in una testimonianza tangibile della sublime bellezza floreale.', 27, 0, 0, '2019-02-26', '2022-10-17', 16);
+(46, 'Vase', '../uploads/artworks/46_0.jpg', 'La grazia senza tempo dei fiori si sposa con la delicatezza della porcellana. Ogni dettaglio del vaso è un&#x27;armoniosa sinfonia di eleganza e fragilità. Le curve sottili e le sfumature cromatiche creano un capolavoro unico, intessuto con la dedizione e l&#x27;arte di creare un oggetto di bellezza intramontabile. Il vaso invita chi lo osserva a immergersi in un mondo di raffinatezza e a contemplare la fusione di maestria artigianale ed estetica, trasformando il quotidiano in una testimonianza tangibile della sublime bellezza floreale.', 27, 0, 0, '2019-02-26', '2022-10-17', 16),
+(47, 'The Holy Trinity', '../uploads/artworks/47_0.jpg', 'La rappresentazione della santa Trinità, Padre, Figlio e Spirito Santo, diventa chiave di lettura contemporanea. Ogni elemento delle Trinità è strettamente legato agli altri, pur essendo diversi, separati. La metafora trinitaria cerca di rappresentare la relazione che intercorre tra contenuto, presentazione e comportamento. Sono strettamente legati tra loro, concorrono allo stesso obiettivo: uno. C&#x27;è però anche la separazione: è trino.', 9, 5, 0, '2010-10-02', '2013-04-01', 17);
 
 
 INSERT INTO ArtworkLabels
@@ -312,7 +313,9 @@ VALUES
 (45, 'natura'),
 (45, 'oggetto'),
 (46, 'natura'),
-(46, 'oggetto');
+(46, 'oggetto'),
+(47, 'bianco e nero'),
+(47, 'sketch');
 
 
 INSERT INTO ArtworkDetails
