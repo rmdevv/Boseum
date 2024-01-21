@@ -149,7 +149,11 @@ if (isset($_POST["create_artshow"]) || $errorCreateArtshow != "") {
         </div>
     ";
 } else if (isset($_POST["modify_artshow"]) || $errorModifyArtshow != "" || $errorDeleteArtshow) {
-    $errorMessage = "<p class=\"error_message\"><em>" . $errorModifyArtshow . "</em></p>";
+    if ($errorModifyArtshow != "") {
+        $errorMessage = "<p class=\"error_message\"><em>" . $errorModifyArtshow . "</em></p>";
+    } else {
+        $errorMessage = "<p class=\"error_message\"><em>" . $errorDeleteArtshow . "</em></p>";
+    }
 
     $pageTitle = "Modifica mostra";
     $idArtshow = $_POST['id_artshow'];
