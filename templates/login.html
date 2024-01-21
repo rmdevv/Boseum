@@ -14,18 +14,12 @@
             name="description"
             content="Accedi al tuo profilo ufficiale Boseum" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link 
-            rel="stylesheet" 
-            href="../assets/CSS/style.css" 
-            media="screen" />
+        <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
         <link
             rel="stylesheet"
             href="../assets/CSS/mini.css"
             media="screen and (max-width:600px)" />
-        <link 
-            rel="stylesheet" 
-            href="../assets/CSS/print.css" 
-            media="print" />
+        <link rel="stylesheet" href="../assets/CSS/print.css" media="print" />
     </head>
     <body>
         <header>
@@ -74,11 +68,15 @@
                             Non sei ancora registrato?
                             <a href="signup.php">Registrati qui</a>
                         </p>
-                        <form action="login.php" method="post" onsubmit="return validateLogin('submit_button')">
+                        {{error_message}}
+                        <form
+                            action="login.php"
+                            method="post"
+                            onsubmit="return validateLogin('submit_button')">
                             <fieldset class="fieldset_item">
                                 <legend>Dati account</legend>
                                 <div class="form_item">
-                                    <label for="username"> Username </label>
+                                    <label for="username">Username</label>
                                     <input
                                         onblur="checkUsernameLogin('username')"
                                         placeholder="Username"
@@ -89,7 +87,7 @@
                                         required />
                                 </div>
                                 <div class="form_item">
-                                    <label for="password"> Password </label>
+                                    <label for="password">Password</label>
                                     <input
                                         onblur="checkPasswordLogin('password')"
                                         placeholder="Password"

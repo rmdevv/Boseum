@@ -391,7 +391,7 @@ function rulePassword(password) {
 }
 
 function ruleUsername(user) {
-    var re = /^[a-z0-9]+(?:[._-][a-z0-9]+)*$/ //caratteri speciali ammessi solo . _ -
+    var re = /^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*$/ //caratteri speciali ammessi solo . _ -
     return re.test(user)
 }
 
@@ -451,7 +451,7 @@ function checkTitle(id) {
     } else if (!ruleComment(x.value)) {
         displayError(
             errorContainer,
-            "Attenzione, il titolo dell'opera può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? ' \" (  ) ! ? )."
+            "Attenzione, il titolo dell'opera può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? ' \" - _ (  ) ! ? )."
         )
         return false
     } else if (x.value.length > 100) {
@@ -506,18 +506,23 @@ function checkBio(id) {
         x.parentElement.append(node)
     }
     const errorContainer = x.parentElement.querySelector('.error_message')
-    if (!ruleComment(x.value)) {
-        displayError(
-            errorContainer,
-            'Attenzione, la biografia può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? \' " (  ) ! ? ).'
-        )
-        return false
-    } else if (x.value.length > 1000) {
-        displayError(
-            errorContainer,
-            'Attenzione, la biografia non deve superare i 1000 caratteri.'
-        )
-        return false
+    if (x.value != '') {
+        if (!ruleComment(x.value)) {
+            displayError(
+                errorContainer,
+                'Attenzione, la biografia può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? \' " (  ) ! ? ).'
+            )
+            return false
+        } else if (x.value.length > 1000) {
+            displayError(
+                errorContainer,
+                'Attenzione, la biografia non deve superare i 1000 caratteri.'
+            )
+            return false
+        } else {
+            clearError(errorContainer)
+            return true
+        }
     } else {
         clearError(errorContainer)
         return true
@@ -532,18 +537,23 @@ function checkXp(id) {
         x.parentElement.append(node)
     }
     const errorContainer = x.parentElement.querySelector('.error_message')
-    if (!ruleComment(x.value)) {
-        displayError(
-            errorContainer,
-            'Attenzione, la tua esperienza può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? \' " (  ) ! ? ).'
-        )
-        return false
-    } else if (x.value.length > 1000) {
-        displayError(
-            errorContainer,
-            'Attenzione, la tua esperienza non deve superare i 1000 caratteri.'
-        )
-        return false
+    if (x.value != '') {
+        if (!ruleComment(x.value)) {
+            displayError(
+                errorContainer,
+                'Attenzione, la tua esperienza può contenere solo lettere, lettere accentate, numeri e segni di punteggiatura base (. , ; : ! ? \' " (  ) ! ? ).'
+            )
+            return false
+        } else if (x.value.length > 1000) {
+            displayError(
+                errorContainer,
+                'Attenzione, la tua esperienza non deve superare i 1000 caratteri.'
+            )
+            return false
+        } else {
+            clearError(errorContainer)
+            return true
+        }
     } else {
         clearError(errorContainer)
         return true

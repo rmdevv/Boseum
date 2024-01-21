@@ -21,7 +21,7 @@
             rel="stylesheet"
             href="../assets/CSS/mini.css"
             media="screen and (max-width:600px)" />
-        <!-- <link rel="stylesheet" href="stampa.css" media="print" /> -->
+        <link rel="stylesheet" href="../assets/CSS/print.css" media="print" />
     </head>
     <body>
         <header>
@@ -55,11 +55,7 @@
                         <li>
                             <a href="mostre.php">Mostre</a>
                         </li>
-                        <li>
-                            <a href="accedi.php" id="accountnav" lang="en"
-                                >Account</a
-                            >
-                        </li>
+                        <li><span lang="en">Sign up</span></li>
                     </ul>
                 </nav>
             </div>
@@ -76,8 +72,11 @@
                         Già registrato?
                         <a href="login.php">Accedi qui</a>
                     </p>
-                    {{messaggioerrore}}
-                    <form action="signup.php" method="post" onsubmit="return validateSignup('submit_button')">
+                    {{error_message}}
+                    <form
+                        action="signup.php"
+                        method="post"
+                        onsubmit="return validateSignup('submit_button')">
                         <fieldset class="fieldset_item">
                             <legend>Dati account</legend>
                             <div class="input_container">
@@ -100,7 +99,7 @@
                                         type="password"
                                         id="password"
                                         name="password"
-                                        value="{{password}}"
+                                        value=""
                                         required />
                                 </div>
                             </div>
@@ -138,7 +137,7 @@
                                         type="date"
                                         id="birthdate"
                                         name="birthdate"
-                                        value="{{birthdate}}"
+                                        value="{{birth_date}}"
                                         min="1900-01-01" />
                                 </div>
                                 <div class="form_item">
@@ -151,12 +150,16 @@
                                         type="text"
                                         id="birthplace"
                                         name="birthplace"
-                                        value="{{birthplace}}" />
+                                        value="{{birth_place}}" />
                                 </div>
                             </div>
                         </fieldset>
                         <div class="form_button">
-                            <button type="submit" class="btn-primary" id="submit_button">
+                            <button
+                                type="submit"
+                                class="btn-primary"
+                                id="submit_button"
+                                name="create_account">
                                 Registrati
                             </button>
                         </div>
