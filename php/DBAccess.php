@@ -183,14 +183,13 @@ class DBAccess
 
     public function getArtworkImages($id)
     {
-        $query = "SELECT Artworks.main_image
+        $query = "SELECT Artworks.main_image AS image
                     FROM Artworks
                     WHERE Artworks.id = $id
                     UNION
                     SELECT ArtworkDetails.image
                     FROM Artworks JOIN ArtworkDetails ON Artworks.id = ArtworkDetails.id_artwork
-                    WHERE Artworks.id = $id
-                    ORDER BY ArtworkDetails.image DESC";
+                    WHERE Artworks.id = $id";
 
         $queryResult = mysqli_query($this->connection, $query) or DBAccess::errorDB(true);
         if (mysqli_num_rows($queryResult) != 0) {
@@ -564,7 +563,7 @@ class DBAccess
                             VALUES ($id_artshow, $id_artist, CURRENT_TIMESTAMP())";
 
         mysqli_query($this->connection, $query_insert) or die(mysqli_error($this->connection));
-        return mysqli_affected_rows($this->connection) > 0;
+        return mysqli_affected_rows($this->connection) >= 0;
     }
 
     public function deletePrenotation($id_artist, $id_artshow)
@@ -574,7 +573,7 @@ class DBAccess
                             AND ArtshowPrenotations.id_artist = $id_artist";
 
         mysqli_query($this->connection, $query_delete) or die(mysqli_error($this->connection));
-        return mysqli_affected_rows($this->connection) > 0;
+        return mysqli_affected_rows($this->connection) >= 0;
     }
 
     public function insertNewArtwork($title, $main_image, $description = "", $height = "", $width = "", $length = "", $start_date = "", $end_date = "", $id_artist, $additional_images = array(), $labels = array())
@@ -612,7 +611,7 @@ class DBAccess
                             VALUES ('$title', '$description', NULLIF('$image', ''), '$start_date', '$end_date')";
 
         mysqli_query($this->connection, $query_insert) or die(mysqli_error($this->connection));
-        return mysqli_affected_rows($this->connection) > 0;
+        return mysqli_affected_rows($this->connection) >= 0;
     }
 
     public function modifyUser($id, $name, $lastname, $image, $birth_date, $birth_place, $biography, $experience)
@@ -639,7 +638,7 @@ class DBAccess
                             WHERE Users.id = $id";
 
         mysqli_query($this->connection, $query_update_user) or die(mysqli_error($this->connection));
-        return mysqli_affected_rows($this->connection) > 0;
+        return mysqli_affected_rows($this->connection) >= 0;
     }
 
     public function modifyArtwork($id, $title, $main_image, $description, $height, $width, $length, $start_date, $end_date, $additional_images, $labels)
@@ -718,7 +717,7 @@ class DBAccess
                             WHERE Artshows.id = $id";
 
         mysqli_query($this->connection, $query_update_user) or die(mysqli_error($this->connection));
-        return mysqli_affected_rows($this->connection) > 0;
+        return mysqli_affected_rows($this->connection) >= 0;
     }
 
     public function deleteArtwork($id_artwork)
@@ -792,6 +791,6 @@ class DBAccess
         } catch (mysqli_sql_exception) {
             return false;
         }
-        return mysqli_affected_rows($this->connection) > 0;
+        return mysqli_affected_rows($this->connection) >= 0;
     }
 }

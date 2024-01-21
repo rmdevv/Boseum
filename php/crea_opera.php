@@ -12,7 +12,7 @@ session_start();
 $isLoggedIn = isset($_SESSION['logged_id']);
 $loginOrProfileTitle = "";
 if (!$isLoggedIn || !isset($_POST['id_artist']) || ($_SESSION['logged_id'] != $_POST['id_artist'] && !$_SESSION['is_admin'])) {
-    if (!isset($_POST['save_new_artwork']) && !isset($_POST['update_artwork'])) {
+    if (!isset($_POST['save_new_artwork']) && !isset($_POST['update_artwork']) && !isset($_POST['delete_artwork'])) {
         header('Location: index.php');
         exit();
     }
@@ -43,10 +43,12 @@ $endDate = "";
 $height = "";
 $width = "";
 $depth = "";
+$deleteSection = "";
 
 $labelsArtwork = array();
 $errorCreateArtwork = "";
 $errorModifyArtwork = "";
+$errorDeleteArtwork = "";
 $errorMessage = "";
 
 $labels = $connection->getLabels();
@@ -151,6 +153,24 @@ if (isset($_POST['save_new_artwork'])) {
             exit();
         }
     }
+} else if (isset($_POST["delete_artwork"])) {
+    $idArtworkToDelete = $_POST['id_artwork'];
+
+    $artworkImages = $connection->getArtworkImages($idArtworkToDelete);
+    $isDeleted = $connection->deleteArtwork($idArtworkToDelete);
+
+    if ($isDeleted) {
+        if ($artworkImages && sizeof($artworkImages) > 0) {
+            foreach ($artworkImages as $artworkImage) {
+                ImageProcessor::deleteImage($artworkImage['image']);
+            }
+        }
+
+        header("location: login.php");
+        exit();
+    } else {
+        $errorDeleteArtwork = "Errore durante la cancellazione dell'opera.";
+    }
 }
 
 if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
@@ -197,8 +217,12 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
             $labelsContainer .= "</ul>";
         }
     }
-} else if (isset($_POST["modify_artwork"]) || $errorModifyArtwork != "") {
-    $errorMessage = "<p class=\"error_message\"><em>" . $errorModifyArtwork . "</em></p>";
+} else if (isset($_POST["modify_artwork"]) || $errorModifyArtwork != "" || $errorDeleteArtwork != "") {
+    if ($errorModifyArtwork != "") {
+        $errorMessage = "<p class=\"error_message\"><em>" . $errorModifyArtwork . "</em></p>";
+    } else {
+        $errorMessage = "<p class=\"error_message\"><em>" . $errorDeleteArtwork . "</em></p>";
+    }
 
     $pageTitle = "Modifica opera";
     $idArtwork = $_POST['id_artwork'];
@@ -235,6 +259,28 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
                                     name=\"keep_additional_images\"
                                     />
                             </div>";
+
+    $deleteSection = "<section class=\"danger_section_form\">
+                        <form
+                            id=\"delete_artwork\"
+                            action=\"../php/crea_opera.php\"
+                            method=\"post\">
+                            <fieldset class=\"fieldset_item_danger\">
+                                <legend>Zona pericolosa</legend>
+                                <p>Attenzione. L'eliminazione di un'opera è un'azione irreversibile.</p>
+                                <input type=\"hidden\" name=\"id_artwork\" value=\"$idArtwork\">
+                                <div class=\"form_button\">
+                                    <button
+                                        id=\"delete_artwork_button\"
+                                        type=\"submit\"
+                                        name=\"delete_artwork\"
+                                        class=\"btn-primary\">
+                                        Elimina opera
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </section>";
 
     $infoArtworkArtist = $connection->getArtwork($idArtwork);
     $artworkLabels = $connection->getArtworkLabels($idArtwork);
@@ -302,5 +348,6 @@ $creaOpera = str_replace("{{height}}", $height, $creaOpera);
 $creaOpera = str_replace("{{width}}", $width, $creaOpera);
 $creaOpera = str_replace("{{depth}}", $depth, $creaOpera);
 $creaOpera = str_replace("{{submit_button}}", $submitButton, $creaOpera);
+$creaOpera = str_replace("{{delete_section}}", $deleteSection, $creaOpera);
 $creaOpera = str_replace("{{error_message}}", $errorMessage, $creaOpera);
 echo ($creaOpera);

@@ -369,6 +369,20 @@ cancelBookForm &&
             event.preventDefault()
     })
 
+const deleteArtwork = document.getElementById('delete_artwork')
+deleteArtwork &&
+    deleteArtwork.addEventListener('submit', (event) => {
+        !confirmAction("Vuoi veramente eliminare l'opera?") &&
+            event.preventDefault()
+    })
+
+const deleteArtshow = document.getElementById('delete_artshow')
+deleteArtshow &&
+    deleteArtshow.addEventListener('submit', (event) => {
+        !confirmAction('Vuoi veramente eliminare la mostra?') &&
+            event.preventDefault()
+    })
+
 // test su validità di input
 
 function rulePassword(password) {
@@ -396,7 +410,7 @@ function ruleBirthPlace(place) {
 
 function ruleComment(comment) {
     //per descrizione, esperienze e biografia
-    var re = /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚ0-9.,;:'"()!? \n]+$/
+    var re = /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚ0-9.,;:_'"()!? \n-]+$/
     return re.test(comment)
 }
 

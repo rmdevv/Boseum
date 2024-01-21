@@ -4,26 +4,26 @@ require_once 'DBAccess.php';
 require_once 'ImageProcessor.php';
 require_once 'utils.php';
 
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-setlocale(LC_ALL,'it_IT');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+setlocale(LC_ALL, 'it_IT');
 
 session_start();
 $isLoggedIn = isset($_SESSION['logged_id']);
-if($isLoggedIn && !$_SESSION['is_admin']){
+$loginOrProfileTitle = "";
+if ($isLoggedIn && !$_SESSION['is_admin']) {
     header("Location: ../php/index.php");
     exit();
 }
 
-$loginOrProfileTitle = "";
 if (!$isLoggedIn) {
     header('Location: ../php/login.php');
     exit();
-}else{
-    $loginOrProfileTitle = "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>";
+} else {
+    $loginOrProfileTitle = "<a href=\"artista.php?id=" . $_SESSION['logged_id'] . "\"><span lang=\"en\">Account</span></a>";
 }
 
-$connection=new DB\DBAccess();
+$connection = new DB\DBAccess();
 if (!$connection->openDBConnection()) {
     header("location: ../php/500.php");
     exit();
@@ -38,9 +38,11 @@ $title = "";
 $description = "";
 $startDate = "";
 $endDate = "";
+$deleteSection = "";
 
 $errorCreateArtshow = "";
 $errorModifyArtshow = "";
+$errorDeleteArtshow = "";
 $errorMessage = "";
 
 if (isset($_POST['save_new_artshow'])) {
@@ -56,25 +58,24 @@ if (isset($_POST['save_new_artshow'])) {
     $description = isset($_POST['description']) ? Sanitizer::sanitize($_POST['description']) : '';
     $startDate = isset($_POST['start_date']) ? (new DateTime(Sanitizer::sanitize($_POST['start_date'])))->format("Y-m-d") : '';
     $endDate = isset($_POST['end_date']) ? (new DateTime(Sanitizer::sanitize($_POST['end_date'])))->format("Y-m-d") : '';
-    
+
     if (empty($title) || empty($image) || empty($description) || empty($startDate) || empty($endDate)) {
         $errorCreateArtshow = "Parametri non sufficienti";
-    } else if (!Sanitizer::validateDate($startDate) && !Sanitizer::validateDate($endDate)){
+    } else if (!Sanitizer::validateDate($startDate) && !Sanitizer::validateDate($endDate)) {
         $errorCreateArtshow = "Le date inserite non sono corrette";
     } else {
-        
+
         $addArtshow = $connection->insertNewArtshow($title, $description, $image, $startDate, $endDate);
-        
-        if(!$addArtshow){
+
+        if (!$addArtshow) {
             $errorCreateArtshow = "Errore nella creazione dell'opera";
             exit();
-        } else{
+        } else {
             $connection->closeConnection();
             header("location: ../php/mostre.php");
             exit();
         }
     }
-
 } else if (isset($_POST['update_artshow'])) {
     $imagesDir = "../uploads/artshow/";
     $idArtshow = $_POST['id_artshow'];
@@ -96,11 +97,11 @@ if (isset($_POST['save_new_artshow'])) {
     $description = isset($_POST['description']) ? Sanitizer::sanitize($_POST['description']) : '';
     $startDate = isset($_POST['start_date']) ? (new DateTime(Sanitizer::sanitize($_POST['start_date'])))->format("Y-m-d") : '';
     $endDate = isset($_POST['end_date']) ? (new DateTime(Sanitizer::sanitize($_POST['end_date'])))->format("Y-m-d") : '';
-    
+
 
     if (empty($title) || empty($description) || empty($startDate) || empty($endDate)) {
         $errorModifyArtshow = "Parametri non sufficienti";
-    } else if(!Sanitizer::validateDate($startDate) && !Sanitizer::validateDate($endDate)){
+    } else if (!Sanitizer::validateDate($startDate) && !Sanitizer::validateDate($endDate)) {
         $errorModifyArtshow = "Le date inserite non sono corrette";
     } else {
         $modifiedArtshow = $connection->modifyArtshow($idArtshow, $title, $description, $mainImage, $startDate, $endDate);
@@ -112,6 +113,22 @@ if (isset($_POST['save_new_artshow'])) {
             header("location: mostra.php?id=" . $idArtshow);
             exit();
         }
+    }
+} else if (isset($_POST["delete_artshow"])) {
+    $idArtshowToDelete = $_POST['id_artshow'];
+
+    $artshow = $connection->getArtshow($idArtshowToDelete);
+    $isDeleted = $connection->deleteArtshow($idArtshowToDelete);
+
+    if ($isDeleted) {
+        if ($artshow && sizeof($artshow) > 0) {
+            ImageProcessor::deleteImage($artshow[0]['image']);
+        }
+
+        header("location: login.php");
+        exit();
+    } else {
+        $errorDeleteArtshow = "Errore durante la cancellazione della mostra.";
     }
 }
 
@@ -131,8 +148,7 @@ if (isset($_POST["create_artshow"]) || $errorCreateArtshow != "") {
             </button>
         </div>
     ";
-
-} else if (isset($_POST["modify_artshow"]) || $errorModifyArtshow != "") {
+} else if (isset($_POST["modify_artshow"]) || $errorModifyArtshow != "" || $errorDeleteArtshow) {
     $errorMessage = "<p class=\"error_message\"><em>" . $errorModifyArtshow . "</em></p>";
 
     $pageTitle = "Modifica mostra";
@@ -160,6 +176,28 @@ if (isset($_POST["create_artshow"]) || $errorCreateArtshow != "") {
                                 />
                         </div>";
 
+    $deleteSection = "<section class=\"danger_section_form\">
+                        <form
+                            id=\"delete_artshow\"
+                            action=\"../php/crea_mostra.php\"
+                            method=\"post\">
+                            <fieldset class=\"fieldset_item_danger\">
+                                <legend>Zona pericolosa</legend>
+                                <p>Attenzione. L'eliminazione di una mostra è un'azione irreversibile.</p>
+                                <input type=\"hidden\" name=\"id_artshow\" value=\"$idArtshow\">
+                                <div class=\"form_button\">
+                                    <button
+                                        id=\"delete_artshow_button\"
+                                        type=\"submit\"
+                                        name=\"delete_artshow\"
+                                        class=\"btn-primary\">
+                                        Elimina mostra
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </section>";
+
     $infoArtshow = $connection->getArtshow($idArtshow);
 
     if ($infoArtshow and sizeof($infoArtshow) > 0) {
@@ -179,7 +217,6 @@ if (isset($_POST["create_artshow"]) || $errorCreateArtshow != "") {
             <a href=\"mostra.php?id=" . $idArtshow . "\">" . $title . "</a>
         </li>
     ";
-
 } else {
     header('Location: index.php');
     exit();
@@ -197,7 +234,7 @@ $creaMostra = str_replace("{{description}}", $description, $creaMostra);
 $creaMostra = str_replace("{{start_date}}", $startDate, $creaMostra);
 $creaMostra = str_replace("{{end_date}}", $endDate, $creaMostra);
 $creaMostra = str_replace("{{submit_button}}", $submitButton, $creaMostra);
+$creaMostra = str_replace("{{delete_section}}", $deleteSection, $creaMostra);
 $creaMostra = str_replace("{{error_message}}", $errorMessage, $creaMostra);
 
-echo($creaMostra);
-?>
+echo ($creaMostra);

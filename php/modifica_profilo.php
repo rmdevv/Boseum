@@ -78,7 +78,7 @@ if (isset($_POST['confirm_update'])) {
             }
         }
 
-        $isModified = $connection->modifyUser(
+        $isUserModified = $connection->modifyUser(
             $idArtist,
             $name,
             $lastname,
@@ -89,8 +89,13 @@ if (isset($_POST['confirm_update'])) {
             $experience
         );
 
-        if ($isModified == 0) {
-            $error = "<p class=\"error_message\"><em>Errore nell'aggiornamento del profilo</em></p>";
+        if (!$isUserModified) {
+            $error = "<p class=\"error_message\"><em>Errore nell'aggiornamento del profilo</em></p>" . $name .
+                $lastname .
+                $birthDate .
+                $birthPlace .
+                $biography .
+                $experience;
         } else {
             $connection->closeConnection();
             header("location: artista.php?id=" . $idArtist);

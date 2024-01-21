@@ -1207,6 +1207,20 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     font-weight: bold;
 }
 
+.danger_section_form {
+    margin: 3em auto 0;
+    max-width: 600px;
+    text-align: center;
+}
+
+.danger_section_form form fieldset {
+    border-color: #DD3232;
+}
+
+.danger_section_form form fieldset legend {
+    color: #DD3232;
+}
+
 .ins_mod_page {
     display: flex;
     align-items: center;
