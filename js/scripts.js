@@ -699,24 +699,24 @@ function checkName(id) {
     }
     const errorContainer = x.parentElement.querySelector('.error_message')
     if (x.value == '') {
-        displayError(errorContainer, 'Per favore, inserisci il tuo nome.')
+        displayError(errorContainer, 'Per favore, inserisci un valore.')
         return false
     } else if (!ruleName(x.value)) {
         displayError(
             errorContainer,
-            'Per favore, assicurati di aver inserito non più di due nomi, con le iniziali maiuscole e formati da almeno 2 caratteri. Non superare i 30 caratteri totali.'
+            'Per favore, assicurati di aver inserito non più di due valori, con le iniziali maiuscole e formati da almeno 2 caratteri. Non superare i 30 caratteri totali.'
         )
         return false
     } else if (x.value.length > 30) {
         displayError(
             errorContainer,
-            'Attenzione, non puoi inserire un nome che supera i 30 caratteri.'
+            'Attenzione, non puoi inserire più di 30 caratteri.'
         )
         return false
     } else if (x.value.length < 2) {
         displayError(
             errorContainer,
-            'Attenzione, il tuo nome deve contenere almeno 2 caratteri.'
+            'Attenzione, il valore deve contenere almeno 2 caratteri.'
         )
         return false
     } else {
