@@ -61,7 +61,8 @@ if (isset($_POST['save_new_artshow'])) {
 
     if (empty($title) || empty($image) || empty($description) || empty($startDate) || empty($endDate)) {
         $errorCreateArtshow = "Parametri non sufficienti";
-    } else if (!Sanitizer::validateDate($startDate) && !Sanitizer::validateDate($endDate)) {
+    } else if (!Sanitizer::validateDate($startDate) || !Sanitizer::validateDate($endDate) ||
+            !validDate($startDate,$endDate,$startDate) || !validDate($startDate,$endDate,$endDate)) {
         $errorCreateArtshow = "Le date inserite non sono corrette";
     } else {
 

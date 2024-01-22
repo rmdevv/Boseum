@@ -30,7 +30,7 @@ if (isset($_POST['create_account'])) {
 
     if (!($username && $password && $name && $lastname)) {
         $errorMessage = "<p class=\"error_message\"><em>Parametri non sufficienti</em></p>";
-    } else if ($birthdate != "" && Sanitizer::validateDate($birthdate) && ($birthdate < "1900-01-01" || $birthdate >= date("Y-m-d"))) {
+    } else if ($birthdate != "" && Sanitizer::validateDate($birthdate) && validDate("1900-01-01",date("Y-m-d"),$birthdate)) {
         $errorMessage = "<p class=\"error_message\"><em>Inserire una data valida</em></p>";
     } else {
         $connection = new DB\DBAccess();
