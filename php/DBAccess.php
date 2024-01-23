@@ -7,7 +7,7 @@ use mysqli_sql_exception;
 class DBAccess
 {
     private const HOST_DB = "localhost";
-    private const DATABASE_NAME = "michelonr";
+    private const DATABASE_NAME = "rmichelo";
     private const USERNAME = "root";
     private const PASSWORD = "";
 

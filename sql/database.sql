@@ -1,4 +1,4 @@
-USE michelonr;
+USE rmichelo;
 
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Artworks;
@@ -41,13 +41,13 @@ CREATE TABLE Labels (
 ) ENGINE=INNODB;
 
 CREATE TABLE ArtworkLabels (
-    id_artwork INT NOT NULL REFERENCES Artwork(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    id_artwork INT NOT NULL REFERENCES Artworks(id) ON UPDATE CASCADE ON DELETE CASCADE,
     label VARCHAR(20) NOT NULL REFERENCES Labels(label) ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (id_artwork, label)
 ) ENGINE=INNODB;
 
 CREATE TABLE ArtworkDetails (
-    id_artwork INT NOT NULL REFERENCES Artwork(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    id_artwork INT NOT NULL REFERENCES Artworks(id) ON UPDATE CASCADE ON DELETE CASCADE,
     image VARCHAR(100) NOT NULL UNIQUE,
     PRIMARY KEY (id_artwork, image)
 ) ENGINE=INNODB;
@@ -62,14 +62,14 @@ CREATE TABLE Artshows (
 ) ENGINE=INNODB;
 
 CREATE TABLE ArtshowPrenotations (
-    id_artshow INT NOT NULL REFERENCES Artshow(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    id_artshow INT NOT NULL REFERENCES Artshows(id) ON UPDATE CASCADE ON DELETE CASCADE,
     id_artist INT NOT NULL REFERENCES Users(id) ON UPDATE CASCADE ON DELETE CASCADE,
     time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_artshow, id_artist)
 ) ENGINE=INNODB;
 
-INSERT INTO Users(username, password, is_admin) VALUES
-('admin', '$2b$12$9sm6jSUZr5up9OBU3GsTOewCMm4NUj5xK1EFwviI76xxAAcmTm.Je', True);
+INSERT INTO Users(username, password, name, lastname, is_admin) VALUES
+('admin', '$2b$12$9sm6jSUZr5up9OBU3GsTOewCMm4NUj5xK1EFwviI76xxAAcmTm.Je', 'Admin', 'Admin', True);
 
 INSERT INTO Labels VALUES
     ('dipinto'),
@@ -341,7 +341,7 @@ VALUES
 ('Arte in Movimento', '&#x27;Arte in Movimento&#x27; diventa il palcoscenico per gli studenti artisti che esplorano il movimento attraverso i dipinti. Ogni pennellata racconta una storia di creatività e libertà espressiva. Unisciti a noi per celebrare l&#x27;arte in evoluzione, con opere che incarnano l&#x27;energia e la visione dei talenti emergenti.', '../uploads/artshows/3.jpg', '2024-02-09', '2024-02-11'),
 ('Donne in Arte: Giornata Internazionale della Donna', 'In occasione dell&#x27;8 Marzo, la mostra &#x27;Donne in Arte&#x27; rende omaggio alla forza, alla bellezza e all&#x27;arte delle donne. Gli studenti artisti esplorano le molteplici sfaccettature dell&#x27;esperienza femminile attraverso dipinti, sculture e installazioni che riflettono la diversità, la resilienza e la creatività delle donne di ieri, oggi e domani. Un&#x27;occasione per celebrare e onorare il contributo unico delle donne nel mondo dell&#x27;arte e nella società.', '../uploads/artshows/4.jpg', '2024-03-08', '2024-03-10');
 
-INSERT INTO ArtshowPrenotations(id_artshow, id_artist)
+INSERT INTO ArtshowPrenotations(id_artshow, id_artist, time)
 VALUES
 (1, 8, '2024-01-04 15:30:15'),
 (1, 12, '2024-01-04 12:02:03'),
