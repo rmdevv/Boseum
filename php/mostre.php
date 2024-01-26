@@ -38,23 +38,19 @@ if ($artshows && sizeof($artshows) > 0) {
         $end_date = DateManager::toDMY($end_date_reverse);
         $artshowsContainer .= "
             <div class=\"gallery_item\">
+                <a
+                href=\"mostra.php?id=".$artshow['id']."\">
                 <div class=\"artshow_gallery_item\">
                     <div class=\"artshow_gallery_item_image\">
-                        <a
-                            href=\"mostra.php?id=".$artshow['id']."\">
-                            <img
-                                src=\"".$artshow['image']."\"
-                                alt=\"".$artshow['title']."\" />
-                        </a>
+                        <img
+                            src=\"".$artshow['image']."\"
+                            alt=\"".$artshow['title']."\" />
                     </div>
                     <div class=\"artshow_gallery_item_info\">
                         <div class=\"artshow_gallery_item_title\">
-                            <a
-                            aria-hidden=\"true\"
-                            tabindex=\"-1\"
-                            href=\"mostra.php?id=".$artshow['id']."\" title=\"".$artshow['title']."\">
+                            <p>
                                 ".$artshow['title']."
-                            </a>
+                            </p>
                         </div>
                         <div class=\"artshow_gallery_item_dates\">
                             <p>
@@ -70,6 +66,7 @@ if ($artshows && sizeof($artshows) > 0) {
                         </div>
                     </div>
                 </div>
+            </a>
             </div>";
     }
     $artshowsContainer .= '</div>'.addPaginator();
