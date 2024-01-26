@@ -121,23 +121,17 @@ if (!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0) {
         $startDateReverse = DateManager::toDMY($artistNextArtshow[0]['start_date']);
         $endDateReverse = DateManager::toDMY($artistNextArtshow[0]['end_date']);
         $nextArtshow = "<div class=\"gallery_item\">
+                            <a
+                            href=\"mostra.php?id=" . $artistNextArtshow[0]['id'] . "\">
                             <div class=\"artshow_gallery_item\">
                                 <div class=\"artshow_gallery_item_image\">
-                                    <a
-                                        href=\"mostra.php?id=" . $artistNextArtshow[0]['id'] . "\">
                                         <img
                                             src=\"" . $artistNextArtshow[0]['image'] . "\"
                                             alt=\"\" />
-                                    </a>
                                 </div>
                                 <div class=\"artshow_gallery_item_info\">
                                     <div class=\"artshow_gallery_item_title\">
-                                        <a
-                                            aria-hidden=\"true\"
-                                            tabindex=\"-1\"
-                                            href=\"mostra.php?id=" . $artistNextArtshow[0]['id'] . "\">
                                             " . $artistNextArtshow[0]['title'] . "
-                                        </a>
                                     </div>
                                     <div class=\"artshow_gallery_item_dates\">
                                         <p>
@@ -153,6 +147,7 @@ if (!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0) {
                                     </div>
                                 </div>
                             </div>
+                        </a>
                         </div>";
     }
 
