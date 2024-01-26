@@ -1043,14 +1043,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     width: 40%;
     line-height: 0;
     box-sizing: border-box;
-}
-
-.artshow_gallery_item_image a {
-    height: 100%;
-    z-index: 1;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
 }
 
 .artshow_gallery_item_info {
@@ -1065,26 +1058,41 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     margin: 10px 0;
     font-family: var(--elegant-font-family);
 }
-.artshow_gallery_item_title a{
-    border:none;
-    text-decoration: none;
-}
-.artshow_gallery_item_title a:hover{
-    text-decoration: underline;
-}
 
 .artshow_gallery_item_image img {
     height: 100%;
     transition: all .2s ease-out;
 }
 
-.artshow_gallery_item_image a:focus img, .artshow_gallery_item_image a:hover img {
+.artshow_results_section a{
+    text-decoration: none;
+}
+
+.artshow_results_section a:focus img, .artshow_results_section a:hover img{
     transform: scale(1.1);
     filter: brightness(0.8);
 }
 
-.artshow_gallery_item_dates {
+.artshow_results_section a:focus .artshow_gallery_item_title, .artshow_results_section a:hover .artshow_gallery_item_title{
+    text-decoration: underline;
+}
+
+.artist_next_artshow a{
+    text-decoration: none;
+}
+
+.artist_next_artshow a:focus img, .artist_next_artshow a:hover img{
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+
+.artist_next_artshow a:focus .artshow_gallery_item_title, .artist_next_artshow a:hover .artshow_gallery_item_title{
+    text-decoration: underline;
+}
+
+.artshow_gallery_item_dates{
     font-size: 0.7em;
+    color: var(--txtColor);
 }
 
 #artshow_layout{
