@@ -61,15 +61,17 @@ if (isset($_POST['save_new_artshow'])) {
 
     if (empty($title) || empty($image) || empty($description) || empty($startDate) || empty($endDate)) {
         $errorCreateArtshow = "Parametri non sufficienti";
-    } else if (!Sanitizer::validateDate($startDate) || !Sanitizer::validateDate($endDate) ||
-            !validDate($startDate,$endDate,$startDate) || !validDate($startDate,$endDate,$endDate)) {
+    } else if (
+        !Sanitizer::validateDate($startDate) || !Sanitizer::validateDate($endDate) ||
+        !validDate($startDate, $endDate, $startDate) || !validDate($startDate, $endDate, $endDate)
+    ) {
         $errorCreateArtshow = "Le date inserite non sono corrette";
     } else {
 
         $addArtshow = $connection->insertNewArtshow($title, $description, $image, $startDate, $endDate);
 
         if (!$addArtshow) {
-            $errorCreateArtshow = "Errore nella creazione dell'opera";
+            $errorCreateArtshow = "Errore nella creazione della mostra";
             exit();
         } else {
             $connection->closeConnection();
@@ -108,7 +110,7 @@ if (isset($_POST['save_new_artshow'])) {
         $modifiedArtshow = $connection->modifyArtshow($idArtshow, $title, $description, $mainImage, $startDate, $endDate);
 
         if (!$modifiedArtshow) {
-            $errorModifyArtshow = "Errore nell'aggiornamento dell'opera";
+            $errorModifyArtshow = "Errore nell'aggiornamento della mostra.";
         } else {
             $connection->closeConnection();
             header("location: mostra.php?id=" . $idArtshow);
@@ -129,13 +131,11 @@ if (isset($_POST['save_new_artshow'])) {
         header("location: login.php");
         exit();
     } else {
-        $errorDeleteArtshow = "Errore durante la cancellazione della mostra.";
+        $errorDeleteArtshow = "Errore durante la cancellazione della mostra";
     }
 }
 
 if (isset($_POST["create_artshow"]) || $errorCreateArtshow != "") {
-
-    $errorMessage = "<p class=\"error_message\"><em>" . $errorCreateArtshow . "</em></p>";
 
     $pageTitle = "Crea mostra";
     $submitButton = "
@@ -150,11 +150,6 @@ if (isset($_POST["create_artshow"]) || $errorCreateArtshow != "") {
         </div>
     ";
 } else if (isset($_POST["modify_artshow"]) || $errorModifyArtshow != "" || $errorDeleteArtshow) {
-    if ($errorModifyArtshow != "") {
-        $errorMessage = "<p class=\"error_message\"><em>" . $errorModifyArtshow . "</em></p>";
-    } else {
-        $errorMessage = "<p class=\"error_message\"><em>" . $errorDeleteArtshow . "</em></p>";
-    }
 
     $pageTitle = "Modifica mostra";
     $idArtshow = $_POST['id_artshow'];
@@ -170,15 +165,15 @@ if (isset($_POST["create_artshow"]) || $errorCreateArtshow != "") {
                     </div>";
 
     $keepMainImage = "<div class=\"disable_checkbox\">
+                        <input
+                            type=\"checkbox\"
+                            id=\"disable_main_image\"
+                            name=\"keep_main_image\"
+                            />
                             <label for=\"disable_main_image\"
                                 >Mantieni l'immagine della mostra
                                 già in uso</label
                             >
-                            <input
-                                type=\"checkbox\"
-                                id=\"disable_main_image\"
-                                name=\"keep_main_image\"
-                                />
                         </div>";
 
     $deleteSection = "<section class=\"danger_section_form\">
@@ -211,7 +206,7 @@ if (isset($_POST["create_artshow"]) || $errorCreateArtshow != "") {
         $startDate = $infoArtshow[0]['start_date'];
         $endDate = $infoArtshow[0]['end_date'];
     } else {
-        echo "Errore, l'opera non esiste";
+        echo "Errore, la mostra non esiste";
     }
 
     $prevPage = "
@@ -227,6 +222,14 @@ if (isset($_POST["create_artshow"]) || $errorCreateArtshow != "") {
     exit();
 }
 $connection->closeConnection();
+
+if ($errorCreateArtshow != "") {
+    $errorMessage = "<p class=\"error_message\"><em>" . $errorCreateArtshow . "</em></p>";
+} else if ($errorModifyArtshow != "") {
+    $errorMessage = "<p class=\"error_message\"><em>" . $errorModifyArtshow . "</em></p>";
+} elseif ($errorDeleteArtshow != "") {
+    $errorMessage = "<p class=\"error_message\"><em>" . $errorDeleteArtshow . "</em></p>";
+}
 
 $creaMostra = file_get_contents("../templates/crea_mostra.html");
 $creaMostra = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $creaMostra);

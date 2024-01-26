@@ -244,7 +244,7 @@ a:visited {
     border: 2px solid var(--color-white);
     border-radius: 3px;
     margin-top: 20px;
-    padding: 5px 10px;
+    padding: 8px 10px;
     text-align: center;
     color: var(--color-white);
 }
@@ -598,7 +598,7 @@ footer a:visited{
     margin-bottom: 5px;
     box-sizing: border-box;
     font-size: 0.8em;
-    padding: 5px 15px;
+    padding: 6px 15px;
     user-select: none;
 }
 .label a:hover{
@@ -696,6 +696,8 @@ footer a:visited{
 
 .artist_gallery_item_image a:focus img, .artist_gallery_item_image a:hover img{
     transform: scale(1.1);
+    filter: brightness(0.8);
+    outline: 0;
 }
 
 button{
@@ -713,7 +715,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 }
 .button_reverse{
     min-width:160px;
-    padding:.5em .75em;
+    padding:0.6em 0.75em;
     text-decoration:none
 }
 .button_reverse{
@@ -728,7 +730,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     border: 1.5px solid var(--color-grey-600);
     border-radius: 4px;
     display: flex;
-    height: 40px;
+    height: 45px;
     width: 100%;
     align-items: center;
 }
@@ -844,6 +846,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 }
 .artwork_gallery_item_image a:focus img, .artwork_gallery_item_image a:hover img {
     transform: scale(1.1);
+    filter: brightness(0.8);
 }
 
 .artwork_gallery_item_title{
@@ -886,8 +889,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     border-radius: 4px;
     border: 1.5px solid var(--color-grey-600);
     height: 30px;
-    padding-left: 10px;
-    padding-right: 5px;
+    padding: 5px 5px 5px 10px;
     margin-bottom: 10px;
 }
 
@@ -914,12 +916,12 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     cursor: pointer;
     font-weight: 600;
     height: 100%;
-    padding: 10px;
+    padding: 12px;
     text-overflow: ellipsis;
 }
 .select_filter_container input {
     border-radius: 3px;
-    padding: 0.7rem 1rem;
+    padding: 0.8rem 1rem;
     border: 1px solid var(--color-grey-600);
     box-sizing: border-box;
     min-width: 150px;
@@ -937,7 +939,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 .filters_labels {
     padding-bottom: 25px;
 }
-.filters_labels > label {
+.filters_labels > p {
     font-weight: 600;
 }
 .filters_labels ul {
@@ -961,10 +963,13 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 }
 .filters_labels ul li label {
     cursor: inherit;
+    padding: 0.5em 0;
 }
 .label_checkbox {
     accent-color: var(--colorDarkGrey);
     margin-right: 8px;
+    width: 15px;
+    height: 15px;
 }
 
 .return_top_button {
@@ -1075,6 +1080,7 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 
 .artshow_gallery_item_image a:focus img, .artshow_gallery_item_image a:hover img {
     transform: scale(1.1);
+    filter: brightness(0.8);
 }
 
 .artshow_gallery_item_dates {
@@ -1259,15 +1265,21 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     display: flex;
     align-items: center;
     border-bottom: 2px solid var(--colorMediumGrey);
-    padding-bottom: 0.5em;    
+    padding-bottom: 0.5em;
     margin-bottom: 1em;
+}
+
+.disable_checkbox label {
+    padding: 0.5em 0;
 }
 
 .disable_checkbox input[type='checkbox'] {
     width: unset;
     height: 1em;
     accent-color: var(--colorDarkGrey);
-    margin-left: 8px;
+    margin-left: 1em;
+    width: 15px;
+    height: 15px;
 }
 
 .form_item input, .form_item textarea {

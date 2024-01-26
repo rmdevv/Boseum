@@ -14,18 +14,12 @@
             name="description"
             content="Sito ufficiale del Boseum, museo d'arte universitario con sede nel Palazzo Bo a Padova" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link 
-            rel="stylesheet" 
-            href="../assets/CSS/style.css" 
-            media="screen" />
+        <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
         <link
             rel="stylesheet"
             href="../assets/CSS/mini.css"
             media="screen and (max-width:600px)" />
-        <link 
-            rel="stylesheet" 
-            href="../assets/CSS/print.css" 
-            media="print" />
+        <link rel="stylesheet" href="../assets/CSS/print.css" media="print" />
     </head>
     <body>
         <header>
@@ -38,9 +32,9 @@
                 <input
                     class="menu_checkbox"
                     type="checkbox"
-                    id="hamburger-toggle"
-                    aria-label="Toggle Navigation" />
+                    id="hamburger-toggle" />
                 <label class="hamburger" for="hamburger-toggle">
+                    <span id="hamburger-label">Mostra/nascondi menu</span>
                     <span class="slice"></span>
                     <span class="slice"></span>
                     <span class="slice"></span>
@@ -67,7 +61,7 @@
         <div id="bannermain">
             <h2>Benvenuto al<span lang="en"> Boseum </span></h2>
         </div>
-        <nav id="breadcrumb">
+        <nav id="breadcrumb" aria-label="Breadcrumb">
             <span>Ti trovi in:</span>
             <ul class="breadcrumb">
                 <li>
@@ -123,6 +117,7 @@
             </div>
             <div class="cardmain">
                 <iframe
+                    title="Mappa Palazzo Bo"
                     src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Palazzo%20del%20Bo,%20university,%20Padua,%20Italy+()&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
                 </iframe>
                 <div class="cardmaintext">
@@ -169,7 +164,9 @@
             <div id="partners">
                 <ul class="partners_cards">
                     <li>
-                        <a href="https://www.instagram.com/morninglory_official/" target="_blank"
+                        <a
+                            href="https://www.instagram.com/morninglory_official/"
+                            target="_blank"
                             ><img
                                 src="../assets/images/morglo.png"
                                 alt="Logo di Mornin' Glory"
@@ -185,14 +182,18 @@
                         /></a>
                     </li>
                     <li>
-                        <a href="https://play.google.com/store/apps/developer?id=Verzotto+Davide&hl=it&gl=US" target="_blank"
+                        <a
+                            href="https://play.google.com/store/apps/developer?id=Verzotto+Davide&hl=it&gl=US"
+                            target="_blank"
                             ><img
                                 src="../assets/images/verzsoft.png"
                                 alt="Logo di VerzSoft"
                         /></a>
                     </li>
                     <li>
-                        <a href="https://github.com/CodingCowboys10" target="_blank"
+                        <a
+                            href="https://github.com/CodingCowboys10"
+                            target="_blank"
                             ><img
                                 src="../assets/images/codcowb.png"
                                 alt="Logo di Coding Cowboys"
@@ -206,7 +207,9 @@
                         /></a>
                     </li>
                     <li>
-                        <a href="https://github.com/DerekGusatto02/DEMETER" target="_blank"
+                        <a
+                            href="https://github.com/DerekGusatto02/DEMETER"
+                            target="_blank"
                             ><img
                                 src="../assets/images/demeter.png"
                                 alt="Logo di Demeter"
@@ -261,13 +264,6 @@
                         >
                     </li>
                 </ul>
-            </div>
-            <div id="logofoot">
-                <img
-                    src="../assets/images/logomini.svg"
-                    alt=""
-                    width="100"
-                    height="100" />
             </div>
             <div id="orariofoot">
                 <p id="descrOrariTable" class="navigationHelp">

@@ -29,14 +29,14 @@ if (!$isLoggedIn || !isset($_POST['id_artist']) || ($_SESSION['logged_id'] != $_
                         </button>
                     </div>";
     $removeProfileImage = "<div class=\"disable_checkbox\">
-                                <label for=\"remove_profile_image\"
-                                    >Rimuovi foto profilo</label
-                                >
                                 <input
                                     type=\"checkbox\"
                                     id=\"remove_profile_image\"
                                     name=\"remove_profile_image\"
                                     />
+                                <label for=\"remove_profile_image\"
+                                    >Rimuovi foto profilo</label
+                                >
                             </div>";
 }
 

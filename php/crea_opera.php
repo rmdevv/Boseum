@@ -136,8 +136,7 @@ if (isset($_POST['save_new_artwork'])) {
     $labelsArtwork = array();
 
     foreach ($labels as $label) {
-        $labelName = str_replace(" ", "", strtolower($label['label']));
-        if (isset($_POST[$labelName])) array_push($labelsArtwork, $label['label']);
+        if (isset($_POST[$label['label']])) array_push($labelsArtwork, $label['label']);
     }
 
     if (empty($title) || empty($description)) {
@@ -178,8 +177,6 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
         header('Location: admin.php');
         exit();
     } else {
-        $errorMessage = "<p class=\"error_message\"><em>" . $errorCreateArtwork . "</em></p>";
-
         $pageTitle = "Crea opera";
         $submitButton = "<div class=\"form_button\">
                             <button
@@ -194,7 +191,6 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
         if ($labels && sizeof($labels) > 0) {
             $labelsContainer = "<ul id=\"labels_list\">";
             foreach ($labels as $label) {
-                $labelName = str_replace(" ", "", strtolower($label['label']));
                 $isChecked = false;
                 if ($errorCreateArtwork && $labelsArtwork) {
                     $isChecked = in_array($label['label'], $artworkLabels);
@@ -204,26 +200,20 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
                     <input
                         type=\"checkbox\"
                         class=\"label_checkbox\"
-                        id=\"" . $labelName . "\"
+                        id=\"" . $label['label'] . "\"
                         value=\"" . $label['label'] . "\"
-                        name=\"" . $labelName . "\"";
+                        name=\"" . $label['label'] . "\"";
                 if ($isChecked) {
                     $labelsContainer .= " checked";
                 }
                 $labelsContainer .= ">
-                    <label for=\"" . $labelName . "\">" . ucfirst($label['label']) . "</label>
+                    <label for=\"" . $label['label'] . "\">" . ucfirst($label['label']) . "</label>
                 </li>";
             }
             $labelsContainer .= "</ul>";
         }
     }
 } else if (isset($_POST["modify_artwork"]) || $errorModifyArtwork != "" || $errorDeleteArtwork != "") {
-    if ($errorModifyArtwork != "") {
-        $errorMessage = "<p class=\"error_message\"><em>" . $errorModifyArtwork . "</em></p>";
-    } else {
-        $errorMessage = "<p class=\"error_message\"><em>" . $errorDeleteArtwork . "</em></p>";
-    }
-
     $pageTitle = "Modifica opera";
     $idArtwork = $_POST['id_artwork'];
     $submitButton = "<input type=\"hidden\" name=\"id_artwork\" value=\"$idArtwork\">
@@ -238,26 +228,26 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
                     </div>";
 
     $keepMainImage = "<div class=\"disable_checkbox\">
-                            <label for=\"disable_main_image\"
-                                >Mantieni l'immagine principale
-                                precedente</label
-                            >
                             <input
                                 type=\"checkbox\"
                                 id=\"disable_main_image\"
                                 name=\"keep_main_image\"
                                 />
+                            <label for=\"disable_main_image\"
+                                >Mantieni l'immagine principale
+                                precedente</label
+                            >
                         </div>";
     $keepAdditionalImages = "<div class=\"disable_checkbox\">
+                            <input
+                                type=\"checkbox\"
+                                id=\"disable_additional_images\"
+                                name=\"keep_additional_images\"
+                                />
                                 <label for=\"disable_additional_images\"
                                     >Mantieni le immagini di dettaglio
                                     precedenti</label
                                 >
-                                <input
-                                    type=\"checkbox\"
-                                    id=\"disable_additional_images\"
-                                    name=\"keep_additional_images\"
-                                    />
                             </div>";
 
     $deleteSection = "<section class=\"danger_section_form\">
@@ -305,22 +295,21 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
     if ($labels && sizeof($labels) > 0) {
         $labelsContainer = "<ul id=\"labels_list\">";
         foreach ($labels as $label) {
-            $labelName = str_replace(" ", "", strtolower($label['label']));
             $isChecked = $artworkLabels ? in_array(['label' => $label['label']], $artworkLabels) : '';
             $labelsContainer .= "
             <li>
                 <input
                     type=\"checkbox\"
                     class=\"label_checkbox\"
-                    id=\"" . $labelName . "\"
+                    id=\"" . $label['label'] . "\"
                     value=\"" . $label['label'] . "\"
-                    name=\"" . $labelName . "\"";
+                    name=\"" . $label['label'] . "\"";
 
             if ($isChecked) {
                 $labelsContainer .= " checked";
             }
             $labelsContainer .= ">
-                <label for=\"" . $labelName . "\">" . ucfirst($label['label']) . "</label>
+                <label for=\"" . $label['label'] . "\">" . ucfirst($label['label']) . "</label>
             </li>";
         }
         $labelsContainer .= "</ul>";
@@ -330,6 +319,18 @@ if (isset($_POST["create_artwork"]) || $errorCreateArtwork != "") {
     exit();
 }
 $connection->closeConnection();
+
+$height = $height ? "value=\"$height\"" : "";
+$width = $width ? "value=\"$width\"" : "";
+$depth = $depth ? "value=\"$depth\"" : "";
+
+if ($errorCreateArtwork != "") {
+    $errorMessage = "<p class=\"error_message\"><em>" . $errorCreateArtwork . "</em></p>";
+} else if ($errorModifyArtwork != "") {
+    $errorMessage = "<p class=\"error_message\"><em>" . $errorModifyArtwork . "</em></p>";
+} elseif ($errorDeleteArtwork != "") {
+    $errorMessage = "<p class=\"error_message\"><em>" . $errorDeleteArtwork . "</em></p>";
+}
 
 $creaOpera = file_get_contents("../templates/crea_opera.html");
 $creaOpera = str_replace("{{login_or_profile_title}}", $loginOrProfileTitle, $creaOpera);

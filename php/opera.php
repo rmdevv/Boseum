@@ -4,25 +4,25 @@ require_once 'DBAccess.php';
 require_once 'DateManager.php';
 require_once 'utils.php';
 
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-setlocale(LC_ALL,'it_IT');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+setlocale(LC_ALL, 'it_IT');
 
 session_start();
 $isLoggedIn = isset($_SESSION['logged_id']);
 $loginOrProfileTitle = $isLoggedIn ?
-        "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>"
-        : "<a href=\"login.php\">Accedi</a>";
+    "<a href=\"artista.php?id=" . $_SESSION['logged_id'] . "\"><span lang=\"en\">Account</span></a>"
+    : "<a href=\"login.php\">Accedi</a>";
 
-$connection=new DB\DBAccess();
+$connection = new DB\DBAccess();
 if (!$connection->openDBConnection()) {
     header("location: ../php/500.php");
     exit();
 }
 
 if (!isset($_GET["id"])) {
-	header("location: opere.php");
-	exit();
+    header("location: opere.php");
+    exit();
 }
 
 $idArtwork = $_GET["id"];
@@ -36,15 +36,14 @@ $similarArtworks = $connection->getSimilarArtworks($idArtwork);
 
 $connection->closeConnection();
 
-if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
+if (!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0) {
     header("location: ../php/404.php");
-}else{
+} else {
     $labelsContainer = '';
-    if($labels && sizeof($labels) > 0){
+    if ($labels && sizeof($labels) > 0) {
         $labelsContainer = "<h3>Labels</h3><ul class=\"label_list\">";
-        foreach($labels as $label){
-            $labelName = str_replace(" ", "", strtolower($label['label']));
-            $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?".$labelName."=".$label['label']."\">".ucfirst($label['label'])."</a></li>";
+        foreach ($labels as $label) {
+            $labelsContainer .= "<li class=\"label\"><a href=\"opere.php?" . $label['label'] . "=" . $label['label'] . "\">" . ucfirst($label['label']) . "</a></li>";
         }
         $labelsContainer .= "</ul>";
     }
@@ -57,7 +56,7 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
     $user_name = $infoArtworkArtist[0]['name'];
     $user_lastname = $infoArtworkArtist[0]['lastname'];
     $src_artista = $infoArtworkArtist[0]['image'];
-    if(!$src_artista){
+    if (!$src_artista) {
         $src_artista = '../assets/images/default_user.svg';
     }
     $height = $infoArtworkArtist[0]['height'];
@@ -77,33 +76,33 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
     $uploadTime = DateManager::toFormattedTimestamp($uploadTimeReversed);
 
     $additionalImagesContainer = '';
-    if($additionalImages && sizeof($additionalImages)> 0){
+    if ($additionalImages && sizeof($additionalImages) > 0) {
         $additionalImagesContainer = "<div class=\"additional_images_carousel\"
                         id=\"additional_images_carousel\"
                         aria-label=\"Slider di immagini di dettaglio\">
                         <div class=\"thumbnail_slide is_active\" tabindex=\"0\">
-                            <img src=\"".$mainImage."\" alt=\"\" />
+                            <img src=\"" . $mainImage . "\" alt=\"\" />
                         </div>";
-        foreach($additionalImages as $additionalImage){
+        foreach ($additionalImages as $additionalImage) {
             $additionalImagesContainer .= "<div class=\"thumbnail_slide\" tabindex=\"0\">
-                            <img src=\"".$additionalImage['image']."\" alt=\"\" />
+                            <img src=\"" . $additionalImage['image'] . "\" alt=\"\" />
                         </div>";
         }
         $additionalImagesContainer .= "</div>";
     }
 
     $similarArtworksContainer = '<p>Questa opera non assomiglia a nessun\'altra opera presente nel sito.</p>';
-    if($similarArtworks && sizeof($similarArtworks) > 0){
+    if ($similarArtworks && sizeof($similarArtworks) > 0) {
         $similarArtworksContainer = "<div class=\"results_section\" id=\"paginated_section\">";
-        foreach($similarArtworks as $similarArtwork){
-            $similarArtworksContainer .= 
-                    "<figure class=\"gallery_item\">
+        foreach ($similarArtworks as $similarArtwork) {
+            $similarArtworksContainer .=
+                "<figure class=\"gallery_item\">
                         <div class=\"artwork_gallery_item_image\">
                             <a
-                                href=\"opera.php?id=".$similarArtwork['id']."\">
+                                href=\"opera.php?id=" . $similarArtwork['id'] . "\">
                                 <img
-                                    src=\"".$similarArtwork['main_image']."\"
-                                    alt=\"".$similarArtwork['title']."\" />
+                                    src=\"" . $similarArtwork['main_image'] . "\"
+                                    alt=\"" . $similarArtwork['title'] . "\" />
                             </a>
                         </div>
                         <figcaption>
@@ -111,20 +110,20 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
                                 <a
                                 aria-hidden=\"true\"
                                 tabindex=\"-1\"
-                                href=\"opera.php?id=".$similarArtwork['id']."\">"
-                                .$similarArtwork['title'].
-                                "</a>
+                                href=\"opera.php?id=" . $similarArtwork['id'] . "\">"
+                . $similarArtwork['title'] .
+                "</a>
                             </div>
                             <div class=\"artist_mini_preview_info\">
-                                <a href=\"artista.php?id=".$similarArtwork['artist_id']."\">".$similarArtwork['username']."</a>
+                                <a href=\"artista.php?id=" . $similarArtwork['artist_id'] . "\">" . $similarArtwork['username'] . "</a>
                             </div>
                         </figcaption>
                     </figure>";
         }
-        $similarArtworksContainer .= "</div>".addPaginator();
+        $similarArtworksContainer .= "</div>" . addPaginator();
     }
 
-    if($isLoggedIn && ($id_artista == $_SESSION['logged_id'] || $_SESSION['is_admin'])) {
+    if ($isLoggedIn && ($id_artista == $_SESSION['logged_id'] || $_SESSION['is_admin'])) {
         $artworkButtons = "<div class=\"artist_button\">
                     <form action=\"crea_opera.php\" method=\"post\">
                         <input type=\"hidden\" name=\"id_artwork\" value=\"$idArtwork\">
@@ -157,6 +156,5 @@ if(!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0){
     $opera = str_replace("{{upload_time_reversed}}", $uploadTimeReversed, $opera);
     $opera = str_replace("{{additional_images}}", $additionalImagesContainer, $opera);
     $opera = str_replace("{{similar_images}}", $similarArtworksContainer, $opera);
-    echo($opera);
+    echo ($opera);
 }
-?>

@@ -14,18 +14,12 @@
             name="description"
             content="Gli artisti di Boseum, studenti e studentesse universitarie con la vocazione per l'arte" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link 
-            rel="stylesheet" 
-            href="../assets/CSS/style.css" 
-            media="screen" />
+        <link rel="stylesheet" href="../assets/CSS/style.css" media="screen" />
         <link
             rel="stylesheet"
             href="../assets/CSS/mini.css"
             media="screen and (max-width:600px)" />
-        <link 
-            rel="stylesheet" 
-            href="../assets/CSS/print.css" 
-            media="print" />
+        <link rel="stylesheet" href="../assets/CSS/print.css" media="print" />
     </head>
     <body>
         <header>
@@ -85,7 +79,6 @@
                             class="search_bar_input"
                             placeholder="Username - nome - cognome (facoltativo)"
                             type="search"
-                            inputmode="text"
                             id="searchbar"
                             value="{{title}}"
                             name="title" />
@@ -105,7 +98,7 @@
                         </button>
                     </div>
                     <section class="filters_section">
-                        <details open>
+                        <details>
                             <summary>
                                 <span>Filtri</span>
                             </summary>
@@ -116,7 +109,7 @@
                                         class="input_number"
                                         type="number"
                                         placeholder="2000"
-                                        value="{{date}}"
+                                        {{date}}
                                         min="1950"
                                         max="2024"
                                         id="date"
@@ -135,7 +128,7 @@
                                 </div>
 
                                 <div class="filters_labels">
-                                    <label for="labels_list">Etichette:</label>
+                                    <p>Etichette:</p>
                                     {{labels}}
                                 </div>
                             </section>

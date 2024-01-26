@@ -64,7 +64,7 @@ header h1{
     transition: all 0.5s ease;
 }
 
-.hamburger .slice:not(:first-child) {
+.hamburger .slice:not(:nth-child(2)) {
     margin-top: 10px;
 }
 
@@ -88,16 +88,22 @@ header h1{
     position: fixed;
 }
 
-#menu .menu_checkbox:checked ~ .hamburger .slice:nth-child(1) {
+#menu .menu_checkbox:checked ~ .hamburger .slice:nth-child(2) {
     transform: translateY(12px) rotate(45deg);
 }
 
-#menu .menu_checkbox:checked ~ .hamburger .slice:nth-child(2) {
+#menu .menu_checkbox:checked ~ .hamburger .slice:nth-child(3) {
     opacity: 0;
 }
 
-#menu .menu_checkbox:checked ~ .hamburger .slice:nth-child(3) {
+#menu .menu_checkbox:checked ~ .hamburger .slice:nth-child(4) {
     transform: translateY(-12px) rotate(-45deg);
+}
+
+#hamburger-label {
+    position: absolute;
+    text-indent: -9999px;
+    font-size: 1px;
 }
 
 .cardmain {
