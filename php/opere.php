@@ -98,7 +98,7 @@ if ($artworks && sizeof($artworks) > 0) {
             <div class=\"artwork_gallery_item_image\">
                 <a
                     href=\"opera.php?id=" . $idArtowrk . "\">
-                    <img src=\"" . $mainImage . "\" alt=\"" . $title . "\" />
+                    <img src=\"" . $mainImage . "\" />
                 </a>
             </div>
             <figcaption>

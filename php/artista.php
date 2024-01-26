@@ -160,8 +160,7 @@ if (!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0) {
                             <a
                                 href=\"opera.php?id=" . $artwork['id'] . "\">
                                 <img
-                                    src=\"" . $artwork['main_image'] . "\"
-                                    alt=\"" . $artwork['title'] . "\" />
+                                    src=\"" . $artwork['main_image'] . "\" />
                             </a>
                         </div>
                         <figcaption>

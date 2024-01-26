@@ -101,18 +101,12 @@ if (!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0) {
                             <a
                                 href=\"opera.php?id=" . $similarArtwork['id'] . "\">
                                 <img
-                                    src=\"" . $similarArtwork['main_image'] . "\"
-                                    alt=\"" . $similarArtwork['title'] . "\" />
+                                    src=\"" . $similarArtwork['main_image'] . "\" />
                             </a>
                         </div>
                         <figcaption>
                             <div class=\"artwork_gallery_item_title\">
-                                <a
-                                aria-hidden=\"true\"
-                                tabindex=\"-1\"
-                                href=\"opera.php?id=" . $similarArtwork['id'] . "\">"
-                . $similarArtwork['title'] .
-                "</a>
+                                <h3>" . $similarArtwork['title'] . "</h3>
                             </div>
                             <div class=\"artist_mini_preview_info\">
                                 <a href=\"artista.php?id=" . $similarArtwork['artist_id'] . "\">" . $similarArtwork['username'] . "</a>
