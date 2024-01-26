@@ -103,10 +103,7 @@ if ($artworks && sizeof($artworks) > 0) {
             </div>
             <figcaption>
                 <div class=\"artwork_gallery_item_title\">
-                    <a
-                    aria-hidden=\"true\"
-                    tabindex=\"-1\"
-                    href=\"opera.php?id=" . $idArtowrk . "\">" . $title . "</a>
+                    <h3>$title</h3>
                 </div>
                 <div class=\"artist_mini_preview_info\">
                     <a href=\"artista.php?id=" . $idArtist . "\">" . $username . "</a>

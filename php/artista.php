@@ -170,14 +170,7 @@ if (!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0) {
                             </a>
                         </div>
                         <figcaption>
-                            <div class=\"artwork_gallery_item_title\">
-                                <a
-                                aria-hidden=\"true\"
-                                tabindex=\"-1\"
-                                href=\"opera.php?id=" . $artwork['id'] . "\">"
-                . $artwork['title'] .
-                "</a>
-                            </div>
+                            <h3 class=\"artwork_gallery_item_title\">".$artwork['title']."</h3>
                         </figcaption>
                     </figure>";
         }
