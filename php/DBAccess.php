@@ -444,7 +444,7 @@ class DBAccess
 
     public function getNextArtshow()
     {
-        $query = "SELECT id, title, image, start_date, end_date FROM artshows
+        $query = "SELECT id, title, image, start_date, end_date FROM Artshows
         WHERE (start_date >= CURRENT_DATE OR end_date >= CURRENT_DATE)
         ORDER BY start_date LIMIT 1";
 
