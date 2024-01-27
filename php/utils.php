@@ -91,17 +91,20 @@ function addPaginator()
         </div>
     ";
 }
-function validDate(string $begin_date, string $end_date, string $val){
-    if($val<$begin_date || $val>$end_date) return false;
+function validDate(string $begin_date, string $end_date, string $val)
+{
+    if ($val < $begin_date || $val > $end_date) return false;
     return true;
 }
 
-function futureDate(string $val){
-    if($val<date("Y-m-d")) return false;
+function futureDate(string $val)
+{
+    if ($val < date("Y-m-d")) return false;
     return true;
 }
 
-function pastDate(string $val){
-    if($val>=date("Y-m-d")) return false;
+function pastDate(string $val)
+{
+    if ($val >= date("Y-m-d")) return false;
     return true;
 }

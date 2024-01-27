@@ -50,8 +50,13 @@ if (paginatedList) {
         button.removeAttribute('disabled')
     }
 
-    const backToTop = () => {
+    const backToTopList = () => {
         document.getElementById('top_gallery').scrollIntoView()
+    }
+
+    const backToTop = () => {
+        document.body.scrollTop = 0
+        document.documentElement.scrollTop = 0
     }
 
     const handlePageButtonsStatus = () => {
@@ -111,7 +116,7 @@ if (paginatedList) {
             }
         })
 
-        scroll && backToTop()
+        scroll && backToTopList()
     }
 
     getPaginationNumbers()
