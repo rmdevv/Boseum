@@ -1,4 +1,4 @@
-ErrorDocument 404 /php/404.php
-ErrorDocument 500 /php/500.php
+ RewriteRule ^$ php/ [L]
 
-DirectoryIndex /php/index.php
+ErrorDocument 404 /rmichelo/php/404.php
+ErrorDocument 500 /rmichelo/php/500.php

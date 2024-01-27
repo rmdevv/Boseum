@@ -98,10 +98,10 @@ if (!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0) {
             $similarArtworksContainer .=
                 "<figure class=\"gallery_item\">
                         <div class=\"artwork_gallery_item_image\">
-                            <a
+                            <a aria-label=\"Visita la pagina dell'opera " . $similarArtwork['title'] . "\"
                                 href=\"opera.php?id=" . $similarArtwork['id'] . "\">
                                 <img
-                                    src=\"" . $similarArtwork['main_image'] . "\" />
+                                    src=\"" . $similarArtwork['main_image'] . "\" alt=\"\"/>
                             </a>
                         </div>
                         <figcaption>

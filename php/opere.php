@@ -96,9 +96,9 @@ if ($artworks && sizeof($artworks) > 0) {
         $figuresContainer .= "
         <figure class=\"gallery_item\">
             <div class=\"artwork_gallery_item_image\">
-                <a
+                <a aria-label=\"Visita la pagina dell'opera " . $title . "\"
                     href=\"opera.php?id=" . $idArtwork . "\">
-                    <img src=\"" . $mainImage . "\" />
+                    <img src=\"" . $mainImage . "\" alt=\"\"/>
                 </a>
             </div>
             <figcaption>

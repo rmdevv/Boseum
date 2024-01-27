@@ -159,10 +159,10 @@ if (!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0) {
         foreach ($artworksPreview as $artwork) {
             $artworks .= "<figure class=\"gallery_item\">
                         <div class=\"artwork_gallery_item_image\">
-                            <a
+                            <a aria-label=\"Visita la pagina dell'opera " . $artwork['title'] . "\"
                                 href=\"opera.php?id=" . $artwork['id'] . "\">
                                 <img
-                                    src=\"" . $artwork['main_image'] . "\" />
+                                    src=\"" . $artwork['main_image'] . "\" alt=\"\"/>
                             </a>
                         </div>
                         <figcaption>
