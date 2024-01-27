@@ -131,7 +131,9 @@ if (!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0) {
                                 </div>
                                 <div class=\"artshow_gallery_item_info\">
                                     <div class=\"artshow_gallery_item_title\">
-                                            " . $artistNextArtshow[0]['title'] . "
+                                            <h3>
+                                                " . $artistNextArtshow[0]['title'] . "
+                                            </h3>
                                     </div>
                                     <div class=\"artshow_gallery_item_dates\">
                                         <p>
@@ -164,7 +166,7 @@ if (!$infoArtistArtworks || sizeof($infoArtistArtworks) <= 0) {
                             </a>
                         </div>
                         <figcaption>
-                            <h3 class=\"artwork_gallery_item_title\">".$artwork['title']."</h3>
+                            <h3 class=\"artwork_gallery_item_title\">" . $artwork['title'] . "</h3>
                         </figcaption>
                     </figure>";
         }

@@ -68,10 +68,6 @@ header h1{
     margin-top: 10px;
 }
 
-#menu .menu_checkbox:focus-visible ~ .hamburger {
-    outline: auto;
-}
-
 #menu nav a {
     visibility: hidden;
 }

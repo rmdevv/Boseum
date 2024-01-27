@@ -87,7 +87,7 @@ $figuresContainer = "";
 if ($artworks && sizeof($artworks) > 0) {
     $figuresContainer = "<div class=\"results_section\" id=\"paginated_section\">";
     foreach ($artworks as $artwork) {
-        $idArtowrk = $artwork['artistID'];
+        $idArtwork = $artwork['artistID'];
         $title = $artwork['title'];
         $mainImage = $artwork['main_image'];
         $idArtist = $artwork['artworkID'];
@@ -97,13 +97,13 @@ if ($artworks && sizeof($artworks) > 0) {
         <figure class=\"gallery_item\">
             <div class=\"artwork_gallery_item_image\">
                 <a
-                    href=\"opera.php?id=" . $idArtowrk . "\">
+                    href=\"opera.php?id=" . $idArtwork . "\">
                     <img src=\"" . $mainImage . "\" />
                 </a>
             </div>
             <figcaption>
                 <div class=\"artwork_gallery_item_title\">
-                    <h3>$title</h3>
+                    <h3>" . $title . "</h3>
                 </div>
                 <div class=\"artist_mini_preview_info\">
                     <a href=\"artista.php?id=" . $idArtist . "\">" . $username . "</a>
