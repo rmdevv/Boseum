@@ -1163,6 +1163,10 @@ button:disabled,button:disabled:focus,button:disabled:hover{
     color: var(--flagColor);
 }
 
+.fieldset_item .form_item p.error_message {
+    background-color: var(--bgColor);
+}
+
 .login_page {
     display: flex;
     align-items: center;
