@@ -60,7 +60,9 @@ if (isset($_POST['confirm_update'])) {
 
     if (!$name || !$lastname) {
         $error = "<p class=\"error_message\"><em>Inserire dati nei campi obbligatori</em></p>";
-    } else if ($birthDate && !Sanitizer::validateDate($birthDate)) {
+    } else if (
+        $birthDate && (!Sanitizer::validateDate($birthDate) || !validDate("1900-01-01", date("Y-m-d"), $birthDate))
+    ) {
         $error = "<p class=\"error_message\"><em>Inserire una data corretta</em></p>";
     } else {
         $mainImage = null;

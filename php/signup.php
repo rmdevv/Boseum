@@ -16,21 +16,21 @@ if (isset($_SESSION['logged_id'])) {
 $username = "";
 $name = "";
 $lastname = "";
-$birthplace = "";
-$birthdate = "";
+$birthPlace = "";
+$birthDate = "";
 $errorMessage = "";
 
 if (isset($_POST['create_account'])) {
-    $username = isset($_POST["username"]) ? Sanitizer::sanitizeWord($_POST["username"]) : "";
+    $username = isset($_POST["username"]) ? Sanitizer::sanitize($_POST["username"]) : "";
     $password = isset($_POST["password"]) ? htmlspecialchars($_POST["password"]) : "";
     $name = isset($_POST["name"]) ? Sanitizer::sanitize($_POST["name"]) : "";
     $lastname = isset($_POST["lastname"]) ? Sanitizer::sanitize($_POST["lastname"]) : "";
-    $birthplace = isset($_POST["birthplace"]) ? Sanitizer::sanitize($_POST["birthplace"]) : "";
-    $birthdate = isset($_POST["birthdate"]) ? Sanitizer::sanitizeDate($_POST["birthdate"]) : "";
+    $birthPlace = isset($_POST["birth_place"]) ? Sanitizer::sanitize($_POST["birth_place"]) : "";
+    $birthDate = isset($_POST["birth_date"]) ? Sanitizer::sanitizeDate($_POST["birth_date"]) : "";
 
     if (!($username && $password && $name && $lastname)) {
         $errorMessage = "<p class=\"error_message\"><em>Parametri non sufficienti</em></p>";
-    } else if ($birthdate != "" && Sanitizer::validateDate($birthdate) && validDate("1900-01-01",date("Y-m-d"),$birthdate)) {
+    } else if ($birthDate && (!Sanitizer::validateDate($birthDate) || !validDate("1900-01-01", date("Y-m-d"), $birthDate))) {
         $errorMessage = "<p class=\"error_message\"><em>Inserire una data valida</em></p>";
     } else {
         $connection = new DB\DBAccess();
@@ -39,7 +39,7 @@ if (isset($_POST['create_account'])) {
             exit();
         }
 
-        $isUserCreated = $connection->insertNewUser($username, password_hash($password, PASSWORD_BCRYPT), $name, $lastname, "", $birthdate, $birthplace, "", "");
+        $isUserCreated = $connection->insertNewUser($username, password_hash($password, PASSWORD_BCRYPT), $name, $lastname, "", $birthDate, $birthPlace, "", "");
 
         if ($isUserCreated) {
             $_SESSION['logged_id'] = $connection->getUserLogin($username)[0]["id"];
@@ -58,7 +58,7 @@ $signup = file_get_contents("../templates/signup.html");
 $signup = str_replace("{{username}}", $username, $signup);
 $signup = str_replace("{{name}}", $name, $signup);
 $signup = str_replace("{{lastname}}", $lastname, $signup);
-$signup = str_replace("{{birth_place}}", $birthplace, $signup);
-$signup = str_replace("{{birth_date}}", $birthdate, $signup);
+$signup = str_replace("{{birth_place}}", $birthPlace, $signup);
+$signup = str_replace("{{birth_date}}", $birthDate, $signup);
 $signup = str_replace("{{error_message}}", $errorMessage, $signup);
 echo ($signup);

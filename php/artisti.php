@@ -63,14 +63,14 @@ if ($artists and sizeof($artists) > 0) {
         $username = $artist['username'];
         $name = $artist['name'];
         $lastname = $artist['lastname'];
-        $image = $artist['image'];
+        $profileImage = $artist['image'] ? $artist['image'] : '../assets/images/default_user.svg';
         $artistContainer .= "
             <div class=\"gallery_item\">
                 <div class=\"artist_gallery_item\">
                     <div class=\"artist_gallery_item_image\">
                         <a
                             href=\"artista.php?id=" . $id . "\">
-                            <img src=\"" . $image . "\" alt=\"" . $name . " " . $lastname . "\">
+                            <img src=\"" . $profileImage . "\" alt=\"" . $name . " " . $lastname . "\">
                         </a>
                     </div>
                     <div class=\"artist_gallery_item_info\">

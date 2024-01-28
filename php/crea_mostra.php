@@ -104,7 +104,7 @@ if (isset($_POST['save_new_artshow'])) {
 
     if (empty($title) || empty($description) || empty($startDate) || empty($endDate)) {
         $errorModifyArtshow = "Parametri non sufficienti";
-    } else if (!Sanitizer::validateDate($startDate) && !Sanitizer::validateDate($endDate)) {
+    } else if (!Sanitizer::validateDate($startDate) || !Sanitizer::validateDate($endDate)) {
         $errorModifyArtshow = "Le date inserite non sono corrette";
     } else {
         $modifiedArtshow = $connection->modifyArtshow($idArtshow, $title, $description, $mainImage, $startDate, $endDate);

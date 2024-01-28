@@ -783,8 +783,8 @@ class DBAccess
 
     public function insertNewUser($username, $password, $name, $lastname, $image, $birth_date, $birth_place, $biography, $experience)
     {
-        $query_insert = "INSERT INTO Users(username, password, name, lastname, image, birth_date, birth_place, biography, experience)
-                            VALUES ('$username', '$password', '$name', '$lastname', NULLIF('$image', ''), NULLIF('$birth_date', ''), NULLIF('$birth_place', ''), NULLIF('$biography', ''), NULLIF('$experience', ''))";
+        $query_insert = "INSERT INTO Users(username, password, name, lastname, is_admin, image, birth_date, birth_place, biography, experience)
+                            VALUES ('$username', '$password', '$name', '$lastname', 0, NULLIF('$image', ''), NULLIF('$birth_date', ''), NULLIF('$birth_place', ''), NULLIF('$biography', ''), NULLIF('$experience', ''))";
 
         try {
             mysqli_query($this->connection, $query_insert);

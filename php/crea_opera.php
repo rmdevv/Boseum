@@ -82,8 +82,9 @@ if (isset($_POST['save_new_artwork'])) {
 
     if (empty($title) || empty($mainImage) || empty($description)) {
         $errorCreateArtwork = "Parametri non sufficienti";
+    } else if ($birthdate && (!Sanitizer::validateDate($startDate) || !Sanitizer::validateDate($endDate))) {
+        $errorModifyArtshow = "Le date inserite non sono corrette";
     } else {
-
         $addArtwork = $connection->insertNewArtwork($title, $mainImage, $description, $height, $width, $depth, $startDate, $endDate, $idArtist, $additionalImagesPath, $labelsArtwork);
 
         if (!$addArtwork) {

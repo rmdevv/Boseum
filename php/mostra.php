@@ -4,17 +4,17 @@ require_once 'DBAccess.php';
 require_once 'DateManager.php';
 require_once 'utils.php';
 
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-setlocale(LC_ALL,'it_IT');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+setlocale(LC_ALL, 'it_IT');
 
 session_start();
 $isLoggedIn = isset($_SESSION['logged_id']);
 $loginOrProfileTitle = $isLoggedIn ?
-        "<a href=\"artista.php?id=".$_SESSION['logged_id']."\"><span lang=\"en\">Account</span></a>"
-        : "<a href=\"login.php\">Accedi</a>";
+    "<a href=\"artista.php?id=" . $_SESSION['logged_id'] . "\"><span lang=\"en\">Account</span></a>"
+    : "<a href=\"login.php\">Accedi</a>";
 
-$connection=new DB\DBAccess();
+$connection = new DB\DBAccess();
 if (!$connection->openDBConnection()) {
     header("location: ../php/500.php");
     exit();
@@ -23,7 +23,6 @@ if (!$connection->openDBConnection()) {
 if ($isLoggedIn && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['book'])) {
         $connection->insertPrenotation($_SESSION["logged_id"], $_POST["id_artshow"]);
-
     } else if (isset($_POST["cancel_book"])) {
         $connection->deletePrenotation($_SESSION["logged_id"], $_POST["id_artshow"]);
     }
@@ -33,7 +32,7 @@ if ($isLoggedIn && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
 if (!isset($_GET["id"])) {
     // header("location: mostre.php");
-	exit();
+    exit();
 }
 $idArtshow = $_GET["id"];
 
@@ -41,15 +40,15 @@ $infoArtshow = $connection->getArtshow($idArtshow);
 $partecipantsArtshow = $connection->getArtshowsPartecipants($idArtshow);
 
 $prenotation = null;
-if($isLoggedIn && $idArtshow){
+if ($isLoggedIn && $idArtshow) {
     $prenotation = $connection->getLoggedUserPrenotationArtshow($_SESSION['logged_id'], $idArtshow);
 }
 
 $connection->closeConnection();
 
-if(!$infoArtshow || sizeof($infoArtshow) <= 0){
+if (!$infoArtshow || sizeof($infoArtshow) <= 0) {
     header("location: ../php/404.php");
-}else{
+} else {
     $title = $infoArtshow[0]['title'];
     $description = $infoArtshow[0]['description'];
     $image = $infoArtshow[0]['image'];
@@ -58,44 +57,46 @@ if(!$infoArtshow || sizeof($infoArtshow) <= 0){
     $endDateReverse = $infoArtshow[0]['end_date'];
     $endDate = DateManager::toDMY($endDateReverse);
     $partecipantsArtshowContainer = '<p>Attualmente nessun artista ha deciso di partecipare questa mostra.</p>';
-    if($partecipantsArtshow && sizeof($partecipantsArtshow) > 0){
+    if ($partecipantsArtshow && sizeof($partecipantsArtshow) > 0) {
         $partecipantsArtshowContainer = "<h2 id=\"top_gallery\">Artisti partecipanti</h2><div class=\"artist_results_section\" id=\"paginated_section\">";
-        foreach($partecipantsArtshow as $partecipantArtshow){
+        foreach ($partecipantsArtshow as $partecipantArtshow) {
+
+            $profileImage = $partecipantArtshow['image'] ? $partecipantArtshow['image'] : '../assets/images/default_user.svg';
             $partecipantsArtshowContainer .= "<div class=\"gallery_item\">
                     <div class=\"artist_gallery_item\">
                         <div class=\"artist_gallery_item_image\">
                             <a
-                                href=\"artista.php?id=".$partecipantArtshow['id']."\">
+                                href=\"artista.php?id=" . $partecipantArtshow['id'] . "\">
                                 <img
-                                    src=\"".$partecipantArtshow['image']."\"
-                                    alt=\"".$partecipantArtshow['username']."\" />
+                                    src=\"" . $profileImage . "\"
+                                    alt=\"" . $partecipantArtshow['username'] . "\" />
                             </a>
                         </div>
                         <div class=\"artist_gallery_item_info\">
                             <div class=\"artist_gallery_item_title\">
                                 <p>
-                                ".$partecipantArtshow['name']." ".$partecipantArtshow['lastname']."
+                                " . $partecipantArtshow['name'] . " " . $partecipantArtshow['lastname'] . "
                                 </p>
                             </div>
                             <div class=\"artist_mini_preview_info\">
                                 <a
                                 aria-hidden=\"true\"
                                 tabindex=\"-1\"
-                                href=\"artista.php?id=".$partecipantArtshow['id']."\"
-                                    >".$partecipantArtshow['username']."</a
+                                href=\"artista.php?id=" . $partecipantArtshow['id'] . "\"
+                                    >" . $partecipantArtshow['username'] . "</a
                                 >
                             </div>
                         </div>
                     </div>
                 </div>";
         }
-        $partecipantsArtshowContainer .= "</div>".addPaginator();
+        $partecipantsArtshowContainer .= "</div>" . addPaginator();
     }
 
     $prenotationSection = "";
-    if($isLoggedIn){
-        if($startDateReverse && new DateTime($startDateReverse) > new DateTime()){
-            if($_SESSION['is_admin']){
+    if ($isLoggedIn) {
+        if ($startDateReverse && new DateTime($startDateReverse) > new DateTime()) {
+            if ($_SESSION['is_admin']) {
                 $prenotationSection = "
                     <div class=\"artist_button\">
                         <form action=\"crea_mostra.php\" method=\"post\">
@@ -104,7 +105,7 @@ if(!$infoArtshow || sizeof($infoArtshow) <= 0){
                         </form>
                     </div>
                 ";
-            }else if(!$prenotation) {
+            } else if (!$prenotation) {
                 $prenotationSection = "
                     <form id=\"artshow_prenotation\"  method=\"post\">
                         <h2>Partecipa alla mostra</h2>
@@ -112,25 +113,25 @@ if(!$infoArtshow || sizeof($infoArtshow) <= 0){
                             Unisciti all'esposizione con pochi <span lang=\"en\">click</span>!
                             Esponi le tue opere quando vuoi durante i giorni di apertura.
                         </p>
-                        <input type=\"hidden\" name=\"id_artshow\" value=\"".$idArtshow."\">
+                        <input type=\"hidden\" name=\"id_artshow\" value=\"" . $idArtshow . "\">
                         <button class=\"button_reverse\" name=\"book\" id=\"book_button\">
                             Partecipa
                         </button>
                     </form>";
-            }else {
+            } else {
                 $prenotationSection = "
                     <form id=\"artshow_cancel_prenotation\"  method=\"post\">
                         <h2>Parteciperai alla mostra!</h2>
                         <p>
-                            Data e orario in cui è stata effettuata la prenotazione: <time datetime=\"".$prenotation[0]["time"]."\">".DateManager::toFormattedTimestamp($prenotation[0]["time"])."</time>
+                            Data e orario in cui è stata effettuata la prenotazione: <time datetime=\"" . $prenotation[0]["time"] . "\">" . DateManager::toFormattedTimestamp($prenotation[0]["time"]) . "</time>
                         </p>
-                        <input type=\"hidden\" name=\"id_artshow\" value=\"".$idArtshow."\">
+                        <input type=\"hidden\" name=\"id_artshow\" value=\"" . $idArtshow . "\">
                         <button class=\"button_reverse\" name=\"cancel_book\" id=\"cancel_book_button\">
                             Annulla iscrizione
                         </button>
                     </form>";
             }
-        }else if($endDateReverse && (new DateTime($endDateReverse))->format('Y-m-d') >= (new DateTime())->format('Y-m-d')){
+        } else if ($endDateReverse && (new DateTime($endDateReverse))->format('Y-m-d') >= (new DateTime())->format('Y-m-d')) {
             $prenotationSection = "
                         <h2>Mostra in corso!</h2>
                         <p>Questa mostra è in corso ora e pronta ad affascinarti!
@@ -154,6 +155,5 @@ if(!$infoArtshow || sizeof($infoArtshow) <= 0){
     $mostra = str_replace("{{prenotation}}", $prenotationSection, $mostra);
     $mostra = str_replace("{{partecipants}}", $partecipantsArtshowContainer, $mostra);
 
-    echo($mostra);
+    echo ($mostra);
 }
-?>
