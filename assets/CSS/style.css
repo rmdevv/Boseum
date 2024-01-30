@@ -1161,6 +1161,9 @@ button:disabled,button:disabled:focus,button:disabled:hover{
 
 .error_message {
     color: var(--flagColor);
+    background-color: var(--bgColor);
+    padding: 0.5em 1em;
+    border-radius: 3px;
 }
 
 .fieldset_item .form_item p.error_message {
