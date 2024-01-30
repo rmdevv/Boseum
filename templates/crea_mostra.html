@@ -81,7 +81,7 @@
                     </p>
                     {{error_message}}
                     <form
-                        onsubmit="return validateNewArtshow('submit_button')"
+                        id="artshow_form"
                         action="../php/crea_mostra.php"
                         method="post"
                         enctype="multipart/form-data">
@@ -110,7 +110,6 @@
                             <div class="form_item">
                                 <label for="title">Titolo (*)</label>
                                 <input
-                                    onblur="checkArtshowTitle('title')"
                                     placeholder="Titolo della mostra"
                                     id="title"
                                     name="title"
@@ -120,7 +119,6 @@
                             <div class="form_item">
                                 <label for="description">Descrizione (*)</label>
                                 <textarea
-                                    onblur="checkArtshowDescription('description')"
                                     placeholder="Descrizione della mostra"
                                     spellcheck="true"
                                     rows="3"

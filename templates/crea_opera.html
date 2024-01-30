@@ -81,7 +81,7 @@
                     </p>
                     {{error_message}}
                     <form
-                        onsubmit="return validateNewArtwork('submit_button')"
+                        id="artwork_form"
                         action="../php/crea_opera.php"
                         method="post"
                         enctype="multipart/form-data">
@@ -130,7 +130,6 @@
                             <div class="form_item">
                                 <label for="title">Titolo (*)</label>
                                 <input
-                                    onblur="checkTitle('title')"
                                     type="text"
                                     name="title"
                                     id="title"
@@ -151,7 +150,6 @@
                                 <label for="description">Descrizione (*)</label>
                                 <div>
                                     <textarea
-                                        onblur="checkDescription('description')"
                                         placeholder="Descrizione dell'opera"
                                         spellcheck="true"
                                         rows="3"

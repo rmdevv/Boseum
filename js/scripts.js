@@ -836,114 +836,145 @@ function checkPasswordLogin(id) {
     }
 }
 
-function validateLogin(id) {
-    let x = document.getElementById(id)
-    if (!x.parentElement.querySelector('.error_message')) {
-        const node = document.createElement('p')
-        node.classList.add('error_message')
-        x.parentElement.append(node)
-    }
-    const errorContainer = x.parentElement.querySelector('.error_message')
-    if (checkUsernameLogin('username') && checkPasswordLogin('password')) {
-        clearError(errorContainer)
-        return true
-    } else {
-        displayError(
-            errorContainer,
-            'Per favore, compila correttamente il form seguendo gli aiuti forniti.'
-        )
-        return false
-    }
+//LOGIN
+const formLogin = document.getElementById("form_login")
+if(formLogin){
+    formLogin.addEventListener("submit", (e)=>{
+        let x = document.getElementById('submit_button')
+        if (!x.parentElement.querySelector('.error_message')) {
+            const node = document.createElement('p')
+            node.classList.add('error_message')
+            x.parentElement.append(node)
+        }
+        const errorContainer = x.parentElement.querySelector('.error_message')
+        if (checkUsernameLogin('username') && checkPasswordLogin('password')) {
+            clearError(errorContainer)
+        } else {
+            displayError(
+                errorContainer,
+                'Per favore, compila correttamente il form seguendo gli aiuti forniti.'
+            )
+            e.preventDefault()
+        }
+    })
+    document.getElementById("username").addEventListener('blur', ()=>{checkUsernameLogin('username')})
+    document.getElementById("password").addEventListener('blur', ()=>{checkPasswordLogin('password')})
 }
 
-function validateSignup(id) {
-    let x = document.getElementById(id)
-    if (!x.parentElement.querySelector('.error_message')) {
-        const node = document.createElement('p')
-        node.classList.add('error_message')
-        x.parentElement.append(node)
-    }
-    const errorContainer = x.parentElement.querySelector('.error_message')
-    if (
-        checkUsername('username') &&
-        checkPassword('password') &&
-        checkName('name') &&
-        checkName('lastname') &&
-        checkBirthPlace('birthplace')
-    ) {
-        clearError(errorContainer)
-        return true
-    } else {
-        displayError(
-            errorContainer,
-            'Per favore, compila correttamente il form seguendo gli aiuti forniti.'
-        )
-        return false
-    }
+//SIGNUP
+const formSignup = document.getElementById("signup_form")
+if(formSignup){
+    formSignup.addEventListener("submit", (e)=>{
+        let x = document.getElementById('submit_button')
+        if (!x.parentElement.querySelector('.error_message')) {
+            const node = document.createElement('p')
+            node.classList.add('error_message')
+            x.parentElement.append(node)
+        }
+        const errorContainer = x.parentElement.querySelector('.error_message')
+        if (
+            checkUsername('username') &&
+            checkPassword('password') &&
+            checkName('name') &&
+            checkName('lastname') &&
+            checkBirthPlace('birthplace')
+        ) {
+            clearError(errorContainer)
+        } else {
+            displayError(
+                errorContainer,
+                'Per favore, compila correttamente il form seguendo gli aiuti forniti.'
+            )
+            e.preventDefault()
+        }
+    })
+    document.getElementById("username").addEventListener('blur', ()=>{checkUsername('username')})
+    document.getElementById("password").addEventListener('blur', ()=>{checkPassword('password')})
+    document.getElementById("name").addEventListener('blur', ()=>{checkName('name')})
+    document.getElementById("lastname").addEventListener('blur', ()=>{checkName('lastname')})
+    document.getElementById("birthplace").addEventListener('blur', ()=>{checkBirthPlace('birthplace')})
 }
 
-function validateNewArtshow(id) {
-    let x = document.getElementById(id)
-    if (!x.parentElement.querySelector('.error_message')) {
-        const node = document.createElement('p')
-        node.classList.add('error_message')
-        x.parentElement.append(node)
-    }
-    const errorContainer = x.parentElement.querySelector('.error_message')
-    if (checkArtshowTitle('title') && checkArtshowDescription('description')) {
-        clearError(errorContainer)
-        return true
-    } else {
-        displayError(
-            errorContainer,
-            'Per favore, compila correttamente il form seguendo gli aiuti forniti.'
-        )
-        return false
-    }
+//CREAOPERA
+const artworkForm = document.getElementById("artwork_form")
+if(artworkForm){
+    artworkForm.addEventListener("submit", (e)=>{
+        let x = document.getElementById('submit_button')
+        if (!x.parentElement.querySelector('.error_message')) {
+            const node = document.createElement('p')
+            node.classList.add('error_message')
+            x.parentElement.append(node)
+        }
+        const errorContainer = x.parentElement.querySelector('.error_message')
+        if (checkTitle('title') && checkDescription('description')) {
+            clearError(errorContainer)
+        } else {
+            displayError(
+                errorContainer,
+                'Per favore, compila correttamente il form seguendo gli aiuti forniti.'
+            )
+            e.preventDefault()
+        }
+    })
+    document.getElementById("title").addEventListener('blur', ()=>{checkTitle('title')})
+    document.getElementById("description").addEventListener('blur', ()=>{checkDescription('description')})
 }
 
-function validateNewArtwork(id) {
-    let x = document.getElementById(id)
-    if (!x.parentElement.querySelector('.error_message')) {
-        const node = document.createElement('p')
-        node.classList.add('error_message')
-        x.parentElement.append(node)
-    }
-    const errorContainer = x.parentElement.querySelector('.error_message')
-    if (checkTitle('title') && checkDescription('description')) {
-        clearError(errorContainer)
-        return true
-    } else {
-        displayError(
-            errorContainer,
-            'Per favore, compila correttamente il form seguendo gli aiuti forniti.'
-        )
-        return false
-    }
+//CREAMOSTRA
+const artshowForm = document.getElementById("artshow_form")
+if(artshowForm){
+    artshowForm.addEventListener("submit", (e)=>{
+        let x = document.getElementById('submit_button')
+        if (!x.parentElement.querySelector('.error_message')) {
+            const node = document.createElement('p')
+            node.classList.add('error_message')
+            x.parentElement.append(node)
+        }
+        const errorContainer = x.parentElement.querySelector('.error_message')
+        if (checkArtshowTitle('title') && checkArtshowDescription('description')) {
+            clearError(errorContainer)
+        } else {
+            displayError(
+                errorContainer,
+                'Per favore, compila correttamente il form seguendo gli aiuti forniti.'
+            )
+            e.preventDefault()
+        }
+    })
+    document.getElementById("title").addEventListener('blur', ()=>{checkArtshowTitle('title')})
+    document.getElementById("description").addEventListener('blur', ()=>{checkArtshowDescription('description')})
 }
 
-function validateProfile(id) {
-    let x = document.getElementById(id)
-    if (!x.parentElement.querySelector('.error_message')) {
-        const node = document.createElement('p')
-        node.classList.add('error_message')
-        x.parentElement.append(node)
-    }
-    const errorContainer = x.parentElement.querySelector('.error_message')
-    if (
-        checkName('name') &&
-        checkName('lastname') &&
-        checkBirthPlace('birth_place') &&
-        checkBio('biography') &&
-        checkXp('experience')
-    ) {
-        clearError(errorContainer)
-        return true
-    } else {
-        displayError(
-            errorContainer,
-            'Per favore, compila correttamente il form seguendo gli aiuti forniti.'
-        )
-        return false
-    }
+//MODIFICAPROFILO
+const editProfileForm = document.getElementById("edit_profile_form")
+if(editProfileForm){
+    editProfileForm.addEventListener("submit", (e)=>{
+        let x = document.getElementById('submit_button')
+        if (!x.parentElement.querySelector('.error_message')) {
+            const node = document.createElement('p')
+            node.classList.add('error_message')
+            x.parentElement.append(node)
+        }
+        const errorContainer = x.parentElement.querySelector('.error_message')
+        if (
+            checkName('name') &&
+            checkName('lastname') &&
+            checkBirthPlace('birth_place') &&
+            checkBio('biography') &&
+            checkXp('experience')
+        ) {
+            clearError(errorContainer)
+        } else {
+            displayError(
+                errorContainer,
+                'Per favore, compila correttamente il form seguendo gli aiuti forniti.'
+            )
+            e.preventDefault()
+        }
+    })
+    document.getElementById("name").addEventListener('blur', ()=>{checkName('name')})
+    document.getElementById("lastname").addEventListener('blur', ()=>{checkName('lastname')})
+    document.getElementById("birth_place").addEventListener('blur', ()=>{checkBirthPlace('birth_place')})
+    document.getElementById("biography").addEventListener('blur', ()=>{checkBio('biography')})
+    document.getElementById("experience").addEventListener('blur', ()=>{checkXp('experience')})
 }
