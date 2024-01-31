@@ -60,11 +60,11 @@ if (!$infoArtworkArtist || sizeof($infoArtworkArtist) <= 0) {
         $src_artista = '../assets/images/default_user.svg';
     }
     $height = $infoArtworkArtist[0]['height'];
-    $height == 0 ? $height = '-' : $height .= ' cm';
+    $height == 0 ? $height = '-' : $height .= ' <abbr title="centimetri">cm</abbr>';
     $width = $infoArtworkArtist[0]['width'];
-    $width == 0 ? $width = '-' : $width .= ' cm';
+    $width == 0 ? $width = '-' : $width .= ' <abbr>cm</abbr>';
     $length = $infoArtworkArtist[0]['length'];
-    $length == 0 ? $length = '-' : $length .= ' cm';
+    $length == 0 ? $length = '-' : $length .= ' <abbr>cm</abbr>';
 
     $startDateReverse = $infoArtworkArtist[0]['start_date'];
     $startDate = DateManager::toDMY($startDateReverse);
