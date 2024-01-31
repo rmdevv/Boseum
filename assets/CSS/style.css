@@ -19,7 +19,7 @@
     --linkColor: rgb(0,0,0);
     --visitedLinkColor: rgb(100,100,100);
     --navVisitedLinkColor: rgb(0,0,0);
-    --navLinkColor: rgb(0,0,0);
+    --navLinkColor: rgb(255,255,255);
 
     --flagColor: #DD3232;
     --imageBackground: rgb(248,248,248);
@@ -175,6 +175,7 @@ a:visited {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: #100e0d;
     height: 50vh;
     display: flex;
     justify-content: center;
