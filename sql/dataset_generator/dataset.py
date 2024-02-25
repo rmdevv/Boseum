@@ -424,6 +424,22 @@ ARTISTS = [
                 "description": "La grazia senza tempo dei fiori si sposa con la delicatezza della porcellana. Ogni dettaglio del vaso è un'armoniosa sinfonia di eleganza e fragilità. Le curve sottili e le sfumature cromatiche creano un capolavoro unico, intessuto con la dedizione e l'arte di creare un oggetto di bellezza intramontabile. Il vaso invita chi lo osserva a immergersi in un mondo di raffinatezza e a contemplare la fusione di maestria artigianale ed estetica, trasformando il quotidiano in una testimonianza tangibile della sublime bellezza floreale."
             }
         ]
+    },
+    {
+        "user_data": {
+            "gender": "F",
+            "biography": "Professoressa del corso di laurea in Informatica. Questo sito è pensato per gli studenti, ma io mi sento ancora una studentessa dentro, quindi non ci sono problemi. Nel tempo libero vado a caccia di barriere architettoniche, per rendere il mondo più accessibile.",
+            "experience": "La mia vera arte la esprimo con il CSS e controllando il contrasto dei colori, per assicurarmi di essere sempre tripla A. Quando non faccio queste cose mi diletto a dipingere, fornendo sempre una alternativa audio per tutti i non vedenti. Accessibilità prima di tutto.",
+            "password": ""
+        },
+        "user_artworks": [
+            {
+                "id_met": 342562,
+                "title": "The Holy Trinity",
+                "labels": ["bianco e nero", "sketch"],
+                "description": "La rappresentazione della santa Trinità, Padre, Figlio e Spirito Santo, diventa chiave di lettura contemporanea. Ogni elemento delle Trinità è strettamente legato agli altri, pur essendo diversi, separati. La metafora trinitaria cerca di rappresentare la relazione che intercorre tra contenuto, presentazione e comportamento. Sono strettamente legati tra loro, concorrono allo stesso obiettivo: uno. C'è però anche la separazione: è trino."
+            }
+        ]
     }
 ]
 
